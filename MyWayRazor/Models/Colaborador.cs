@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyWayRazor.Data
+namespace MyWayRazor.Models
 {
     public class Colaborador : IBaseEntity
     {

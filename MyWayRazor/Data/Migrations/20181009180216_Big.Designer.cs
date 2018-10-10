@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWayRazor.Data;
 
-namespace MyWayRazor.Data.Migrations
+namespace MyWayRazor.Migrations.MywayDb
 {
     [DbContext(typeof(MywayDbContext))]
-    partial class MywayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181009180216_Big")]
+    partial class Big
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

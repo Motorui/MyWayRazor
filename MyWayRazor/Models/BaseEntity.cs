@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyWayRazor.Data
+namespace MyWayRazor.Models
 {
     public interface IBaseEntity
     {

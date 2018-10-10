@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyWayRazor.Data
+namespace MyWayRazor.Models
 {
     [Table("Uh")]
     public class Uh : IBaseEntity

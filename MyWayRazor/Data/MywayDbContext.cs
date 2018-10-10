@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using MyWayRazor.Models;
 
 namespace MyWayRazor.Data
 {
@@ -18,11 +19,27 @@ namespace MyWayRazor.Data
             _httpContextAccessor = httpContextAccessor;
         }
 
+        public DbSet<Assistencia> Assistencias { get; set; }
+        public DbSet<BolsaHoras> BolsasHoras { get; set; }
+        public DbSet<CargaHoraria> CargasHorarias { get; set; }
+        public DbSet<CentroCusto> CentrosCusto { get; set; }
         public DbSet<Colaborador> Colaboradores { get; set; }
+        public DbSet<Contrato> Contratos { get; set; }
+        public DbSet<DadosPessoais> DadosPessoais { get; set; }
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<Fatura> Faturas { get; set; }
+        public DbSet<Formacao> Formacoes { get; set; }
+        public DbSet<FormacaoColaborador> FormacoesColaboradores { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<Observacao> Observacoes { get; set; }
+        public DbSet<Resumo> Resumos { get; set; }
+        public DbSet<Sla> Slas { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<Telefone> Telefones { get; set; }
         public DbSet<Uh> Uhs { get; set; }
+        public DbSet<VinculoLaboral> VinculosLaborais { get; set; }
 
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+    public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             OnBeforeSaving();
             return base.SaveChanges(acceptAllChangesOnSuccess);
