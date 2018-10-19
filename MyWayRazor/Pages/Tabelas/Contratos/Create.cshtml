@@ -1,0 +1,34 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Contratos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Criar novo registo</h2>
+
+<h4>Contrato</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Contrato.ContratoTipo" class="control-label"></label>
+                <input asp-for="Contrato.ContratoTipo" class="form-control" />
+                <span asp-validation-for="Contrato.ContratoTipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Voltar para a listagem</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

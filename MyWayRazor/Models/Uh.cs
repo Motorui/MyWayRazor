@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyWayRazor.Models
 {
@@ -11,8 +9,8 @@ namespace MyWayRazor.Models
     public class Uh : IBaseEntity
     {
         [Key]
-        public int UhID { get; set; }
-        [Required, MaxLength(5), Display(Name = "Código IATA:")]
+        public int UhId { get; set; }
+        [Required, MaxLength(5), Display(Name = "Código IATA:", ShortName = "IATA:")]
         public string IATA { get; set; }
         [Required, MaxLength(25), Display(Name = "Unidade de handling:", ShortName ="UH:")]
         public string UhNome { get; set; }

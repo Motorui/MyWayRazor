@@ -5,13 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWayRazor.Models
 {
-    [Table("Status")]
-    public class Status : IBaseEntity
+    [Table("Horario")]
+    public class Horario : IBaseEntity
     {
         [Key]
-        public int StatusID { get; set; }
-        [Required, MaxLength(25), Display(Name = "Status:")]
-        public string Statuses { get; set; }
+        public int HorarioId { get; set; }
+        [Required, MaxLength(2), Display(Name = "Horário:")]
+        public int HorarioHora { get; set; }
 
         public DateTime? CreatedAt { get; set; }
         public string CreatedBy { get; set; }

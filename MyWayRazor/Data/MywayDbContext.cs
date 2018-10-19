@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Models;
+using MyWayRazor.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MyWayRazor.Data
 {
-    public class MywayDbContext : DbContext
+    public class MywayDbContext : IdentityDbContext<MyWayUser>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
@@ -19,25 +19,24 @@ namespace MyWayRazor.Data
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public DbSet<Assistencia> Assistencias { get; set; }
-        public DbSet<BolsaHoras> BolsasHoras { get; set; }
-        public DbSet<CargaHoraria> CargasHorarias { get; set; }
-        public DbSet<CentroCusto> CentrosCusto { get; set; }
+        //public DbSet<Assistencia> Assistencias { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Colaborador> Colaboradores { get; set; }
         public DbSet<Contrato> Contratos { get; set; }
-        public DbSet<DadosPessoais> DadosPessoais { get; set; }
-        public DbSet<Email> Emails { get; set; }
-        public DbSet<Fatura> Faturas { get; set; }
-        public DbSet<Formacao> Formacoes { get; set; }
-        public DbSet<FormacaoColaborador> FormacoesColaboradores { get; set; }
-        public DbSet<Fornecedor> Fornecedores { get; set; }
-        public DbSet<Observacao> Observacoes { get; set; }
-        public DbSet<Resumo> Resumos { get; set; }
-        public DbSet<Sla> Slas { get; set; }
+        //public DbSet<DadosPessoais> DadosPessoais { get; set; }
+        public DbSet<Departamento> Departamentos { get; set; }
+        //public DbSet<Email> Emails { get; set; }
+        public DbSet<Equipa> Equipas { get; set; }
+        //public DbSet<Formacao> Formacoes { get; set; }
+        //public DbSet<FormacaoColaborador> FormacoesColaboradores { get; set; }
+        public DbSet<Funcao> Funcoes { get; set; }
+        public DbSet<Horario> Horarios { get; set; }
+        //public DbSet<Observacao> Observacoes { get; set; }
+        //public DbSet<Resumo> Resumos { get; set; }
+        //public DbSet<Sla> Slas { get; set; }
         public DbSet<Status> Statuses { get; set; }
-        public DbSet<Telefone> Telefones { get; set; }
+        //public DbSet<Telefone> Telefones { get; set; }
         public DbSet<Uh> Uhs { get; set; }
-        public DbSet<VinculoLaboral> VinculosLaborais { get; set; }
 
     public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {

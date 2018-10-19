@@ -35,16 +35,16 @@ namespace MyWayRazor
             });
 
             //contexto da applicação "Identity"
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            //contexto da base de dados mywway
             services.AddDbContext<MywayDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<MywayDbContext>();
+
+            //contexto da base de dados mywway
+            //services.AddDbContext<MywayDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
 
             //configuração de segurança "login"
             services.Configure<IdentityOptions>(options =>
@@ -79,7 +79,16 @@ namespace MyWayRazor
                 options.SlidingExpiration = true;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.AllowAreas = true;
+                    options.Conventions.AuthorizeFolder("/");
+                    options.Conventions.AuthorizeAreaFolder("Identity", "/Identity/Account/Manage");
+                    options.Conventions.AuthorizeAreaPage("Identity", "/Identity/Account/Logout");
+                    options.Conventions.AllowAnonymousToPage("/Identity/Account/Login");
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

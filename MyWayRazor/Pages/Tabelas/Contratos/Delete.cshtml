@@ -1,0 +1,51 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Contratos.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Apagar Contrato</h2>
+
+<h3 class="text-danger">Tem a certeza que deseja apagar este registo?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.ContratoTipo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.ContratoTipo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.LastUpdatedBy)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Contrato.ContratoId" />
+        <input type="submit" value="Apagar" class="btn btn-default" /> |
+        <a asp-page="./Index">Voltar para a listagem</a>
+    </form>
+</div>

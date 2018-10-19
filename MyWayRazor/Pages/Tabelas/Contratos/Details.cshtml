@@ -1,0 +1,48 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Contratos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhe</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.ContratoTipo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.ContratoTipo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.LastUpdatedBy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Contrato.ContratoId">Editar registo</a> |
+    <a asp-page="./Index">Voltar para a listagem</a>
+</div>

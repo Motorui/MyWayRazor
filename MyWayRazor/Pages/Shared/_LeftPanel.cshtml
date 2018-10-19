@@ -6,7 +6,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a asp-controller="Home" asp-action="Index" class="logo">
+    <a asp-page="/Index" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>M</b>W</span>
         <!-- logo for regular state and mobile devices -->
@@ -201,23 +201,11 @@
         <!-- /.search form -->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MENU</li>
+            <li class="header">Tabelas</li>
             <!-- Optionally, you can add icons to the links -->
             @*<li class="active "><a asp-controller="Resumos" asp-action="Index"><i class="fa fa-link"></i> <span>Resumos</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>*@
+        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>*@
             <li class="treeview ">
-                <a href="#">
-                    <i class="fa fa-link"></i> <span>Resumos</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a asp-controller="Resumos" asp-action="Index">Listagem</a></li>
-                    <li><a asp-controller="Resumos" asp-action="Create">Criar Resumo</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-link"></i> <span>Unidades de Handling</span>
                     <span class="pull-right-container">
@@ -225,8 +213,32 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a asp-controller="Uhs" asp-action="Index">Listagem</a></li>
-                    <li><a asp-controller="Uhs" asp-action="Create">Criar UH</a></li>
+                    <li><a asp-page="/Tabelas/Uhs/Index">Listagem</a></li>
+                    <li><a asp-page="/Tabelas/Uhs/Create">Criar Uh</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Status</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Tabelas/Statuses/Index">Listagem</a></li>
+                    <li><a asp-page="/Tabelas/Statuses/Create">Criar Status</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Contratos</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Tabelas/Contratos/Index">Listagem</a></li>
+                    <li><a asp-page="/Tabelas/Contratos/Create">Criar</a></li>
                 </ul>
             </li>
         </ul>
