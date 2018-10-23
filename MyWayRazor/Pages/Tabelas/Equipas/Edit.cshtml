@@ -1,0 +1,45 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Equipas.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar Registo</h2>
+
+<h4>Equipa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Equipa.EquipaId" />
+            <div class="form-group">
+                <label asp-for="Equipa.EquipaNome" class="control-label"></label>
+                <input asp-for="Equipa.EquipaNome" class="form-control" />
+                <span asp-validation-for="Equipa.EquipaNome" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="visibility: hidden; display: none;">
+                <label asp-for="Equipa.CreatedAt" class="control-label"></label>
+                <input asp-for="Equipa.CreatedAt" class="form-control" />
+                <span asp-validation-for="Equipa.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="visibility: hidden; display: none;">
+                <label asp-for="Equipa.CreatedBy" class="control-label"></label>
+                <input asp-for="Equipa.CreatedBy" class="form-control" />
+                <span asp-validation-for="Equipa.CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Voltar para a listagem</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

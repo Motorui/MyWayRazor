@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using MyWayRazor.Data;
 using MyWayRazor.Models;
 
 namespace MyWayRazor.Pages.Tabelas.Statuses
@@ -34,6 +30,9 @@ namespace MyWayRazor.Pages.Tabelas.Statuses
                 return Page();
             }
 
+            Status.Statuses = Request.Form["Status.Statuses"].ToString().ToUpper();
+            Status.CreatedAt = DateTime.Now.Date;
+            Status.CreatedBy = User.Identity.Name.ToString();
             _context.Statuses.Add(Status);
             await _context.SaveChangesAsync();
 

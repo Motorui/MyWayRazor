@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 
 namespace MyWayRazor.Areas.Identity.Data
 {
@@ -11,7 +7,6 @@ namespace MyWayRazor.Areas.Identity.Data
     public class MyWayUser : IdentityUser
     {
         [PersonalData]
-        [MaxLength(), Display(Name = "Nome")]
         public string Name { get; set; }
     }
 }

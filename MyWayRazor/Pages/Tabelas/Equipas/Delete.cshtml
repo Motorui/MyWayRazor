@@ -1,0 +1,52 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Equipas.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Apagar Equipa</h2>
+
+<h3 class="text-danger">Tem a certeza que deseja apagar este registo?</h3>
+<div>
+    <h4>Equipa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipa.EquipaNome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Equipa.EquipaNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipa.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Equipa.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipa.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Equipa.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipa.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Equipa.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipa.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Equipa.LastUpdatedBy)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Equipa.EquipaId" />
+        <input type="submit" value="Apagar" class="btn btn-default" /> |
+        <a asp-page="./Index">Voltar para a listagem</a>
+    </form>
+</div>

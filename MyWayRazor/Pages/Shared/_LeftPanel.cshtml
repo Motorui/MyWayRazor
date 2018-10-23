@@ -1,7 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using MyWayRazor.Areas.Identity.Data;
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<MyWayUser> SignInManager
+@inject UserManager<MyWayUser> UserManager
 <!-- Main Header -->
 <header class="main-header">
 
@@ -39,7 +40,7 @@
                                     <a href="#">
                                         <div class="pull-left">
                                             <!-- User Image -->
-                                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                            <img src="~/AdminLTE/dist/img/user6-128x128.jpg" class="img-circle" alt="User Image">
                                         </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
@@ -123,56 +124,56 @@
                 <!-- User Account Menu -->
                 @if (SignInManager.IsSignedIn(User))
                 {
-                <li class="dropdown user user-menu">
-                    <!-- Menu Toggle Button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <!-- The user image in the navbar-->
-                        <img src="~/AdminLTE/dist/img/avatar5.png" class="user-image" alt="User Image">
-                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">@UserManager.GetUserName(User)!</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- The user image in the menu -->
-                        <li class="user-header">
-                            <img src="~/AdminLTE/dist/img/avatar5.png" class="img-circle" alt="User Image">
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <img src="~/AdminLTE/dist/img/avatar5.png" class="user-image" alt="User Image">
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            <span class="hidden-xs">@UserManager.GetUserAsync(User).Result.Name</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <img src="~/AdminLTE/dist/img/avatar5.png" class="img-circle" alt="User Image">
 
-                            <p>
-                                @UserManager.GetUserName(User)
-                                @*<small>Member since Nov. 2012</small>*@
-                            </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <!-- <li class="user-body">
-                        <div class="row">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
+                                <p>
+                                    @UserManager.GetUserAsync(User).Result.Name
+                                    @*<small>Member since Nov. 2012</small>*@
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <!-- <li class="user-body">
+                            <div class="row">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Sales</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
                             </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                        <!-- </li> -->
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a class="btn btn-default btn-flat" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Conta</a>
-                            </div>
-                            <div class="pull-right">
-                                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-                                    <button type="submit" class="btn btn-default btn-flat">Logout</button>
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                            <!-- /.row -->
+                            <!-- </li> -->
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a class="btn btn-default btn-flat" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Conta</a>
+                                </div>
+                                <div class="pull-right">
+                                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+                                        <button type="submit" class="btn btn-default btn-flat">Logout</button>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                 }
                 else
                 {
-                <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+                    <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
                 }
                 <!-- Control Sidebar Toggle Button -->
                 <li>
@@ -201,10 +202,25 @@
         <!-- /.search form -->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">Menu</li>
+            <li class="treeview ">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Colaboradores</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Colaboradores/Index">Listagem</a></li>
+                    <li><a asp-page="/Colaboradores/Create">Criar Colaborador</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Tabelas</li>
             <!-- Optionally, you can add icons to the links -->
             @*<li class="active "><a asp-controller="Resumos" asp-action="Index"><i class="fa fa-link"></i> <span>Resumos</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>*@
+            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>*@
             <li class="treeview ">
                 <a href="#">
                     <i class="fa fa-link"></i> <span>Unidades de Handling</span>
@@ -241,8 +257,68 @@
                     <li><a asp-page="/Tabelas/Contratos/Create">Criar</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Departamentos</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Tabelas/Departamentos/Index">Listagem</a></li>
+                    <li><a asp-page="/Tabelas/Departamentos/Create">Criar</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Funções</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Tabelas/Funcoes/Index">Listagem</a></li>
+                    <li><a asp-page="/Tabelas/Funcoes/Create">Criar</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Equipas</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Tabelas/Equipas/Index">Listagem</a></li>
+                    <li><a asp-page="/Tabelas/Equipas/Create">Criar</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Categorias</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Tabelas/Categorias/Index">Listagem</a></li>
+                    <li><a asp-page="/Tabelas/Categorias/Create">Criar</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Horários</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Tabelas/Horarios/Index">Listagem</a></li>
+                    <li><a asp-page="/Tabelas/Horarios/Create">Criar</a></li>
+                </ul>
+            </li>
         </ul>
-        <!-- /.sidebar-menu -->
+            <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
 </aside>

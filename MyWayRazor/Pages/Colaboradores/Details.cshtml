@@ -1,0 +1,127 @@
+﻿@page
+@model MyWayRazor.Pages.Colaboradores.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Colaborador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Uh)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Uh.IATA)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Departamento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Departamento.DepartamentoNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.NumCartao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.NumCartao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.NumPw)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.NumPw)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Funcao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Funcao.FuncaoNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Equipa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Equipa.EquipaNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Categoria)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Categoria.CategoriaNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.HorarioPraticadoId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.HorarioPraticadoId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.HorarioContratadoId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.HorarioContratadoId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.DataAdmissão)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.DataAdmissão)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.DataFim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.DataFim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Contrato)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Contrato.ContratoTipo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Status.Statuses)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.LastUpdatedBy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Colaborador.ColaboradorID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -35,16 +35,16 @@ namespace MyWayRazor
             });
 
             //contexto da applicação "Identity"
-            services.AddDbContext<MywayDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<MywayDbContext>();
-
-            //contexto da base de dados mywway
             //services.AddDbContext<MywayDbContext>(options =>
             //    options.UseSqlServer(
             //        Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDefaultIdentity<IdentityUser>()
+            //    .AddEntityFrameworkStores<MywayDbContext>();
+
+            //contexto da base de dados mywway
+            services.AddDbContext<MywayDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
 
             //configuração de segurança "login"
             services.Configure<IdentityOptions>(options =>

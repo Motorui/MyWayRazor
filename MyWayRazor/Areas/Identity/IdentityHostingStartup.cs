@@ -16,12 +16,12 @@ namespace MyWayRazor.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<MywayDbContext>(options =>
+                services.AddDbContext<IdentityContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("DefaultConnection")));
+                        context.Configuration.GetConnectionString("IdentityContextConnection")));
 
                 services.AddDefaultIdentity<MyWayUser>()
-                    .AddEntityFrameworkStores<MywayDbContext>();
+                    .AddEntityFrameworkStores<IdentityContext>();
             });
         }
     }

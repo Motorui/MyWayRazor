@@ -1,0 +1,52 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Funcoes.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Apagar Função</h2>
+
+<h3 class="text-danger">Tem a certeza que deseja apagar este registo?</h3>
+<div>
+    <h4>Função</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Funcao.FuncaoNome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Funcao.FuncaoNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Funcao.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Funcao.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Funcao.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Funcao.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Funcao.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Funcao.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Funcao.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Funcao.LastUpdatedBy)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Funcao.FuncaoId" />
+        <input type="submit" value="Apagar" class="btn btn-default" /> |
+        <a asp-page="./Index">Voltar para a listagem</a>
+    </form>
+</div>

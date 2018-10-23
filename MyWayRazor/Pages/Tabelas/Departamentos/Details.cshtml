@@ -1,0 +1,54 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Departamentos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhe</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.DepartamentoNumero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.DepartamentoNumero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.DepartamentoNome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.DepartamentoNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.LastUpdatedBy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Departamento.DepartamentoId">Editar registo</a> |
+    <a asp-page="./Index">Voltar para a listagem</a>
+</div>

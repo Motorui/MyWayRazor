@@ -1,0 +1,49 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Categorias.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhe</h2>
+
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.CategoriaNome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.CategoriaNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.LastUpdatedBy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Categoria.CategoriaId">Editar</a> |
+    <a asp-page="./Index">Voltar para a listagem</a>
+</div>

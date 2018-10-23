@@ -1,0 +1,45 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Horarios.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar Registo</h2>
+
+<h4>Horario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Horario.HorarioId" />
+            <div class="form-group">
+                <label asp-for="Horario.HorarioHora" class="control-label"></label>
+                <input asp-for="Horario.HorarioHora" class="form-control" />
+                <span asp-validation-for="Horario.HorarioHora" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="visibility: hidden; display: none;">
+                <label asp-for="Horario.CreatedAt" class="control-label"></label>
+                <input asp-for="Horario.CreatedAt" class="form-control" />
+                <span asp-validation-for="Horario.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="visibility: hidden; display: none;">
+                <label asp-for="Horario.CreatedBy" class="control-label"></label>
+                <input asp-for="Horario.CreatedBy" class="form-control" />
+                <span asp-validation-for="Horario.CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Voltar para a listagem</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

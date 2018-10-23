@@ -1,0 +1,61 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Funcoes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Funções</h2>
+
+    <p>
+        <a asp-page="Create">Criar novo registo</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Funcao[0].FuncaoNome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Funcao[0].CreatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Funcao[0].CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Funcao[0].LastUpdatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Funcao[0].LastUpdatedBy)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Funcao)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FuncaoNome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastUpdatedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.FuncaoId">Editar</a> |
+                        <a asp-page="./Details" asp-route-id="@item.FuncaoId">Detalhes</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.FuncaoId">Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

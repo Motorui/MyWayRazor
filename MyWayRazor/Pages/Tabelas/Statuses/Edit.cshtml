@@ -5,7 +5,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Editar Registo</h2>
 
 <h4>Status</h4>
 <hr />
@@ -19,25 +19,15 @@
                 <input asp-for="Status.Statuses" class="form-control" />
                 <span asp-validation-for="Status.Statuses" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="visibility: hidden; display: none;">
                 <label asp-for="Status.CreatedAt" class="control-label"></label>
                 <input asp-for="Status.CreatedAt" class="form-control" />
                 <span asp-validation-for="Status.CreatedAt" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="visibility: hidden; display: none;">
                 <label asp-for="Status.CreatedBy" class="control-label"></label>
                 <input asp-for="Status.CreatedBy" class="form-control" />
                 <span asp-validation-for="Status.CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status.LastUpdatedAt" class="control-label"></label>
-                <input asp-for="Status.LastUpdatedAt" class="form-control" />
-                <span asp-validation-for="Status.LastUpdatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status.LastUpdatedBy" class="control-label"></label>
-                <input asp-for="Status.LastUpdatedBy" class="form-control" />
-                <span asp-validation-for="Status.LastUpdatedBy" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -47,7 +37,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="Index">Voltar para a listagem</a>
 </div>
 
 @section Scripts {

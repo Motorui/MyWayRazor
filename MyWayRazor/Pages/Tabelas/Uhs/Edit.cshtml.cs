@@ -46,6 +46,10 @@ namespace MyWayRazor.Pages.Tabelas.Uhs
                 return Page();
             }
 
+            Uh.IATA = Request.Form["Uh.IATA"].ToString().ToUpper();
+            Uh.UhNome = Request.Form["Uh.UhNome"].ToString().ToUpper();
+            Uh.LastUpdatedAt = DateTime.Now.Date;
+            Uh.LastUpdatedBy = User.Identity.Name.ToString();
             _context.Attach(Uh).State = EntityState.Modified;
 
             try

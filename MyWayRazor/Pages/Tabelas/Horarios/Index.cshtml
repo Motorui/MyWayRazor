@@ -1,0 +1,60 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Horarios.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Horários</h2>
+
+<p>
+    <a asp-page="Create">Criar novo registo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario[0].HorarioHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario[0].CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario[0].CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario[0].LastUpdatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario[0].LastUpdatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Horario) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorarioHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.HorarioId">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.HorarioId">Detalhes</a> |
+                <a asp-page="./Delete" asp-route-id="@item.HorarioId">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

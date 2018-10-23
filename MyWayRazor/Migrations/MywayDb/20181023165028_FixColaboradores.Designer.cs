@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWayRazor.Data;
 
-namespace MyWayRazor.Migrations
+namespace MyWayRazor.Migrations.MywayDb
 {
     [DbContext(typeof(MywayDbContext))]
-    [Migration("20181019102632_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20181023165028_FixColaboradores")]
+    partial class FixColaboradores
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,173 +20,6 @@ namespace MyWayRazor.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType");
-
-                    b.Property<string>("ClaimValue");
-
-                    b.Property<string>("RoleId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType");
-
-                    b.Property<string>("ClaimValue");
-
-                    b.Property<string>("UserId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
-
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
-
-                    b.Property<string>("ProviderDisplayName");
-
-                    b.Property<string>("UserId")
-                        .IsRequired();
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserLogins");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId");
-
-                    b.Property<string>("RoleId");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId");
-
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
-
-                    b.Property<string>("Value");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("MyWayRazor.Areas.Identity.Data.MyWayUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
-                });
 
             modelBuilder.Entity("MyWayRazor.Models.Categoria", b =>
                 {
@@ -219,6 +52,8 @@ namespace MyWayRazor.Migrations
 
                     b.Property<int>("CategoriaId");
 
+                    b.Property<int?>("ColaboradorHorarioPraticadoIdHorarioId");
+
                     b.Property<int>("ContratoId");
 
                     b.Property<DateTime?>("CreatedAt");
@@ -237,8 +72,6 @@ namespace MyWayRazor.Migrations
 
                     b.Property<int>("HorarioContratadoId");
 
-                    b.Property<int?>("HorarioId");
-
                     b.Property<int>("HorarioPraticadoId");
 
                     b.Property<DateTime?>("LastUpdatedAt");
@@ -249,11 +82,9 @@ namespace MyWayRazor.Migrations
                         .IsRequired()
                         .HasMaxLength(150);
 
-                    b.Property<int>("NumCartao")
-                        .HasMaxLength(6);
+                    b.Property<int>("NumCartao");
 
-                    b.Property<int>("NumPw")
-                        .HasMaxLength(15);
+                    b.Property<int>("NumPw");
 
                     b.Property<int>("StatusId");
 
@@ -263,6 +94,8 @@ namespace MyWayRazor.Migrations
 
                     b.HasIndex("CategoriaId");
 
+                    b.HasIndex("ColaboradorHorarioPraticadoIdHorarioId");
+
                     b.HasIndex("ContratoId");
 
                     b.HasIndex("DepartamentoId");
@@ -271,7 +104,7 @@ namespace MyWayRazor.Migrations
 
                     b.HasIndex("FuncaoId");
 
-                    b.HasIndex("HorarioId");
+                    b.HasIndex("HorarioContratadoId");
 
                     b.HasIndex("StatusId");
 
@@ -317,8 +150,7 @@ namespace MyWayRazor.Migrations
                         .IsRequired()
                         .HasMaxLength(150);
 
-                    b.Property<int>("DepartamentoNumero")
-                        .HasMaxLength(15);
+                    b.Property<int>("DepartamentoNumero");
 
                     b.Property<DateTime?>("LastUpdatedAt");
 
@@ -385,8 +217,7 @@ namespace MyWayRazor.Migrations
 
                     b.Property<string>("CreatedBy");
 
-                    b.Property<int>("HorarioHora")
-                        .HasMaxLength(2);
+                    b.Property<int>("HorarioHora");
 
                     b.Property<DateTime?>("LastUpdatedAt");
 
@@ -447,57 +278,16 @@ namespace MyWayRazor.Migrations
                     b.ToTable("Uh");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.HasOne("MyWayRazor.Areas.Identity.Data.MyWayUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.HasOne("MyWayRazor.Areas.Identity.Data.MyWayUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MyWayRazor.Areas.Identity.Data.MyWayUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.HasOne("MyWayRazor.Areas.Identity.Data.MyWayUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("MyWayRazor.Models.Colaborador", b =>
                 {
                     b.HasOne("MyWayRazor.Models.Categoria", "Categoria")
                         .WithMany("Colaboradores")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MyWayRazor.Models.Horario", "ColaboradorHorarioPraticadoId")
+                        .WithMany()
+                        .HasForeignKey("ColaboradorHorarioPraticadoIdHorarioId");
 
                     b.HasOne("MyWayRazor.Models.Contrato", "Contrato")
                         .WithMany("Colaboradores")
@@ -519,9 +309,10 @@ namespace MyWayRazor.Migrations
                         .HasForeignKey("FuncaoId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyWayRazor.Models.Horario", "Horario")
-                        .WithMany("Colaboradores")
-                        .HasForeignKey("HorarioId");
+                    b.HasOne("MyWayRazor.Models.Horario", "HorarioContratado")
+                        .WithMany()
+                        .HasForeignKey("HorarioContratadoId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MyWayRazor.Models.Status", "Status")
                         .WithMany("Colaboradores")

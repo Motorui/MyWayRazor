@@ -42,7 +42,8 @@ namespace MyWayRazor.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Full name")]
+            [MaxLength(50)]
+            [Display(Name = "Nome")]
             public string Name { get; set; }
 
             [Required]
@@ -139,7 +140,6 @@ namespace MyWayRazor.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
 
             var userId = await _userManager.GetUserIdAsync(user);
             var email = await _userManager.GetEmailAsync(user);

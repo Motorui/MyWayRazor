@@ -1,0 +1,60 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Equipas.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Criar novo registo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipa[0].EquipaNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipa[0].CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipa[0].CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipa[0].LastUpdatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipa[0].LastUpdatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Equipa) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipaNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.EquipaId">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.EquipaId">Detalhes</a> |
+                <a asp-page="./Delete" asp-route-id="@item.EquipaId">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

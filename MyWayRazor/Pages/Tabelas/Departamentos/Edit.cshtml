@@ -1,0 +1,48 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Departamentos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar Registo</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Departamento.DepartamentoId" />
+            <div class="form-group">
+                <label asp-for="Departamento.DepartamentoNumero" class="control-label"></label>
+                <input asp-for="Departamento.DepartamentoNumero" class="form-control" />
+                <span asp-validation-for="Departamento.DepartamentoNumero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Departamento.DepartamentoNome" class="control-label"></label>
+                <input asp-for="Departamento.DepartamentoNome" class="form-control" />
+                <span asp-validation-for="Departamento.DepartamentoNome" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="visibility: hidden; display: none;">
+                <label asp-for="Departamento.CreatedAt" class="control-label"></label>
+                <input asp-for="Departamento.CreatedAt" class="form-control" />
+                <span asp-validation-for="Departamento.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="visibility: hidden; display: none;">
+                <label asp-for="Departamento.CreatedBy" class="control-label"></label>
+                <input asp-for="Departamento.CreatedBy" class="form-control" />
+                <span asp-validation-for="Departamento.CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Gravar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Voltar para a listagem</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

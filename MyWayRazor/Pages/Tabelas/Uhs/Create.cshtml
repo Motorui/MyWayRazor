@@ -5,9 +5,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>Criar novo registo</h2>
 
-<h4>Uh</h4>
+<h4>Unidades de Handling</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,34 +24,14 @@
                 <span asp-validation-for="Uh.UhNome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Uh.CreatedAt" class="control-label"></label>
-                <input asp-for="Uh.CreatedAt" class="form-control" />
-                <span asp-validation-for="Uh.CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Uh.CreatedBy" class="control-label"></label>
-                <input asp-for="Uh.CreatedBy" class="form-control" />
-                <span asp-validation-for="Uh.CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Uh.LastUpdatedAt" class="control-label"></label>
-                <input asp-for="Uh.LastUpdatedAt" class="form-control" />
-                <span asp-validation-for="Uh.LastUpdatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Uh.LastUpdatedBy" class="control-label"></label>
-                <input asp-for="Uh.LastUpdatedBy" class="form-control" />
-                <span asp-validation-for="Uh.LastUpdatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Gravar" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Voltar para a listagem</a>
 </div>
 
 @section Scripts {

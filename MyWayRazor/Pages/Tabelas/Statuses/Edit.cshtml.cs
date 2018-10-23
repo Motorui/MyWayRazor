@@ -46,6 +46,9 @@ namespace MyWayRazor.Pages.Tabelas.Statuses
                 return Page();
             }
 
+            Status.Statuses = Request.Form["Status.Statuses"].ToString().ToUpper();
+            Status.LastUpdatedAt = DateTime.Now.Date;
+            Status.LastUpdatedBy = User.Identity.Name.ToString();
             _context.Attach(Status).State = EntityState.Modified;
 
             try

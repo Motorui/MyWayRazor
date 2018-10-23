@@ -4,12 +4,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Models;
-using MyWayRazor.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MyWayRazor.Data
 {
-    public class MywayDbContext : IdentityDbContext<MyWayUser>
+    public partial class MywayDbContext : DbContext
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
@@ -93,6 +91,7 @@ namespace MyWayRazor.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Uh>().ToTable("Uh");
             modelBuilder.Entity<Status>().ToTable("Status");
+
         }
 
     }
