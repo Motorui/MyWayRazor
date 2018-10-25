@@ -50,11 +50,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Colaborador.HorarioPraticadoId" class="control-label"></label>
-                <select asp-for="Colaborador.HorarioPraticadoId" class="form-control" asp-items="ViewBag.HorarioID"></select>
+                <select asp-for="Colaborador.HorarioPraticadoId" class ="form-control" asp-items="ViewBag.HorarioPraticadoId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Colaborador.HorarioContratadoId" class="control-label"></label>
-                <select asp-for="Colaborador.HorarioContratadoId" class="form-control" asp-items="ViewBag.HorarioID"></select>
+                <select asp-for="Colaborador.HorarioContratadoId" class ="form-control" asp-items="ViewBag.HorarioContratadoId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Colaborador.DataAdmissão" class="control-label"></label>
@@ -73,6 +73,26 @@
             <div class="form-group">
                 <label asp-for="Colaborador.StatusId" class="control-label"></label>
                 <select asp-for="Colaborador.StatusId" class ="form-control" asp-items="ViewBag.StatusId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.CreatedAt" class="control-label"></label>
+                <input asp-for="Colaborador.CreatedAt" class="form-control" />
+                <span asp-validation-for="Colaborador.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.CreatedBy" class="control-label"></label>
+                <input asp-for="Colaborador.CreatedBy" class="form-control" />
+                <span asp-validation-for="Colaborador.CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.LastUpdatedAt" class="control-label"></label>
+                <input asp-for="Colaborador.LastUpdatedAt" class="form-control" />
+                <span asp-validation-for="Colaborador.LastUpdatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.LastUpdatedBy" class="control-label"></label>
+                <input asp-for="Colaborador.LastUpdatedBy" class="form-control" />
+                <span asp-validation-for="Colaborador.LastUpdatedBy" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

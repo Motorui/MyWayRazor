@@ -5,10 +5,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Colaboradores</h2>
+<h2>Index</h2>
 
 <p>
-    <a asp-page="Create">Criar novo colaborador</a>
+    <a asp-page="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -38,10 +38,10 @@
                 @Html.DisplayNameFor(model => model.Colaborador[0].Categoria)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].HorarioPraticadoId)
+                @Html.DisplayNameFor(model => model.Colaborador[0].HorarioPraticado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].HorarioContratadoId)
+                @Html.DisplayNameFor(model => model.Colaborador[0].HorarioContratado)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Colaborador[0].DataAdmissão)
@@ -98,10 +98,10 @@
                 @Html.DisplayFor(modelItem => item.Categoria.CategoriaNome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HorarioPraticadoId)
+                @Html.DisplayFor(modelItem => item.HorarioPraticado.HorarioId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HorarioContratadoId)
+                @Html.DisplayFor(modelItem => item.HorarioContratado.HorarioId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataAdmissão)
@@ -128,9 +128,9 @@
                 @Html.DisplayFor(modelItem => item.LastUpdatedBy)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ColaboradorID">Editar</a> |
-                <a asp-page="./Details" asp-route-id="@item.ColaboradorID">Detalhe</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ColaboradorID">Apagar</a>
+                <a asp-page="./Edit" asp-route-id="@item.ColaboradorID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ColaboradorID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ColaboradorID">Delete</a>
             </td>
         </tr>
 }

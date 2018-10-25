@@ -48,7 +48,7 @@ namespace MyWayRazor.Migrations.MywayDb
                 {
                     DepartamentoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DepartamentoNumero = table.Column<int>(maxLength: 15, nullable: false),
+                    DepartamentoNumero = table.Column<int>(nullable: false),
                     DepartamentoNome = table.Column<string>(maxLength: 150, nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     CreatedBy = table.Column<string>(nullable: true),
@@ -100,7 +100,7 @@ namespace MyWayRazor.Migrations.MywayDb
                 {
                     HorarioId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    HorarioHora = table.Column<int>(maxLength: 2, nullable: false),
+                    HorarioHora = table.Column<int>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     CreatedBy = table.Column<string>(nullable: true),
                     LastUpdatedAt = table.Column<DateTime>(nullable: true),
@@ -154,15 +154,14 @@ namespace MyWayRazor.Migrations.MywayDb
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UhId = table.Column<int>(nullable: false),
                     DepartamentoId = table.Column<int>(nullable: false),
-                    NumCartao = table.Column<int>(maxLength: 6, nullable: false),
-                    NumPw = table.Column<int>(maxLength: 15, nullable: false),
+                    NumCartao = table.Column<int>(nullable: false),
+                    NumPw = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(maxLength: 150, nullable: false),
                     FuncaoId = table.Column<int>(nullable: false),
                     EquipaId = table.Column<int>(nullable: false),
                     CategoriaId = table.Column<int>(nullable: false),
-                    HorarioPraticadoId = table.Column<int>(nullable: false),
-                    HorarioContratadoId = table.Column<int>(nullable: false),
-                    HorarioId = table.Column<int>(nullable: true),
+                    HorarioPraticadoId = table.Column<int>(nullable: true),
+                    HorarioContratadoId = table.Column<int>(nullable: true),
                     DataAdmissão = table.Column<DateTime>(nullable: false),
                     DataFim = table.Column<DateTime>(nullable: false),
                     ContratoId = table.Column<int>(nullable: false),
@@ -206,8 +205,14 @@ namespace MyWayRazor.Migrations.MywayDb
                         principalColumn: "FuncaoId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Colaborador_Horario_HorarioId",
-                        column: x => x.HorarioId,
+                        name: "FK_Colaborador_Horario_HorarioContratadoId",
+                        column: x => x.HorarioContratadoId,
+                        principalTable: "Horario",
+                        principalColumn: "HorarioId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Colaborador_Horario_HorarioPraticadoId",
+                        column: x => x.HorarioPraticadoId,
                         principalTable: "Horario",
                         principalColumn: "HorarioId",
                         onDelete: ReferentialAction.Restrict);
@@ -251,9 +256,14 @@ namespace MyWayRazor.Migrations.MywayDb
                 column: "FuncaoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Colaborador_HorarioId",
+                name: "IX_Colaborador_HorarioContratadoId",
                 table: "Colaborador",
-                column: "HorarioId");
+                column: "HorarioContratadoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Colaborador_HorarioPraticadoId",
+                table: "Colaborador",
+                column: "HorarioPraticadoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Colaborador_StatusId",

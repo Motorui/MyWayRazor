@@ -26,10 +26,10 @@ namespace MyWayRazor.Pages.Colaboradores
         ViewData["DepartamentoId"] = new SelectList(_context.Departamentos, "DepartamentoId", "DepartamentoNome");
         ViewData["EquipaId"] = new SelectList(_context.Equipas, "EquipaId", "EquipaNome");
         ViewData["FuncaoId"] = new SelectList(_context.Funcoes, "FuncaoId", "FuncaoNome");
+        ViewData["HorarioContratadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioHora");
+        ViewData["HorarioPraticadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioHora");
         ViewData["StatusId"] = new SelectList(_context.Statuses, "StatusID", "Statuses");
         ViewData["UhId"] = new SelectList(_context.Uhs, "UhId", "IATA");
-        ViewData["HorarioPraticadoId"] = new SelectList(_context.Horarios, "HorarioID", "HorarioHora");
-        ViewData["HorarioContratadoId"] = new SelectList(_context.Horarios, "HorarioID", "HorarioHora");
             return Page();
         }
 
@@ -43,9 +43,6 @@ namespace MyWayRazor.Pages.Colaboradores
                 return Page();
             }
 
-            Colaborador.Nome = Request.Form["Colaborador.Nome"].ToString().ToUpper();
-            Colaborador.CreatedAt = DateTime.Now.Date;
-            Colaborador.CreatedBy = User.Identity.Name.ToString();
             _context.Colaboradores.Add(Colaborador);
             await _context.SaveChangesAsync();
 

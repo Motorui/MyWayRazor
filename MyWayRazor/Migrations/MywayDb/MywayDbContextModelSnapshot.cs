@@ -66,9 +66,9 @@ namespace MyWayRazor.Migrations.MywayDb
 
                     b.Property<int>("FuncaoId");
 
-                    b.Property<int>("HorarioContratadoId");
+                    b.Property<int?>("HorarioContratadoId");
 
-                    b.Property<int>("HorarioPraticadoId");
+                    b.Property<int?>("HorarioPraticadoId");
 
                     b.Property<DateTime?>("LastUpdatedAt");
 
@@ -302,14 +302,12 @@ namespace MyWayRazor.Migrations.MywayDb
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MyWayRazor.Models.Horario", "HorarioContratado")
-                        .WithMany("ColaboradorHorarioContratadoId")
-                        .HasForeignKey("HorarioContratadoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("HorarioContratadoId");
 
                     b.HasOne("MyWayRazor.Models.Horario", "HorarioPraticado")
-                        .WithMany("ColaboradorHorarioPraticadoId")
-                        .HasForeignKey("HorarioPraticadoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("HorarioPraticadoId");
 
                     b.HasOne("MyWayRazor.Models.Status", "Status")
                         .WithMany("Colaboradores")

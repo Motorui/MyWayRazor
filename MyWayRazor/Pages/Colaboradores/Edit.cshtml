@@ -56,12 +56,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Colaborador.HorarioPraticadoId" class="control-label"></label>
-                <input asp-for="Colaborador.HorarioPraticadoId" class="form-control" />
+                <select asp-for="Colaborador.HorarioPraticadoId" class="form-control" asp-items="ViewBag.HorarioPraticadoId"></select>
                 <span asp-validation-for="Colaborador.HorarioPraticadoId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Colaborador.HorarioContratadoId" class="control-label"></label>
-                <input asp-for="Colaborador.HorarioContratadoId" class="form-control" />
+                <select asp-for="Colaborador.HorarioContratadoId" class="form-control" asp-items="ViewBag.HorarioContratadoId"></select>
                 <span asp-validation-for="Colaborador.HorarioContratadoId" class="text-danger"></span>
             </div>
             <div class="form-group">

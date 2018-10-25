@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\MywayDb\20181019181554_FirstData.cs" />
+    <Compile Remove="Migrations\MywayDb\20181019181554_FirstData.Designer.cs" />
     <Compile Remove="Migrations\MywayDb\20181023164918_fixcolaboradores.cs" />
     <Compile Remove="Migrations\MywayDb\20181023164918_fixcolaboradores.Designer.cs" />
+    <Compile Remove="Migrations\MywayDb\20181023165028_FixColaboradores.cs" />
+    <Compile Remove="Migrations\MywayDb\20181023165028_FixColaboradores.Designer.cs" />
+    <Compile Remove="Migrations\MywayDb\20181023173902_FixColaboradores.cs" />
+    <Compile Remove="Migrations\MywayDb\20181023173902_FixColaboradores.Designer.cs" />
+    <Compile Remove="Migrations\MywayDb\20181023174712_FirstData.cs" />
+    <Compile Remove="Migrations\MywayDb\20181023174712_FirstData.Designer.cs" />
+    <Compile Remove="Migrations\MywayDb\20181023174835_FirstData.cs" />
+    <Compile Remove="Migrations\MywayDb\20181023174835_FirstData.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using MyWayRazor.Data;
+using MyWayRazor.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace MyWayRazor
 {
@@ -25,6 +22,11 @@ namespace MyWayRazor
                 {
                     var context = services.GetRequiredService<MywayDbContext>();
                     DbInitializer.Initialize(context);
+
+                    var userManager = services.GetRequiredService<UserManager<MyWayUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var icontext = services.GetRequiredService<IdentityContext>();
+                    IdentityInitializer.SeedData(userManager, roleManager, icontext);
                 }
                 catch (Exception ex)
                 {

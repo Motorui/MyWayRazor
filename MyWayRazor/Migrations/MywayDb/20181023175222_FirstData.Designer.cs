@@ -10,8 +10,8 @@ using MyWayRazor.Data;
 namespace MyWayRazor.Migrations.MywayDb
 {
     [DbContext(typeof(MywayDbContext))]
-    [Migration("20181023165028_FixColaboradores")]
-    partial class FixColaboradores
+    [Migration("20181023175222_FirstData")]
+    partial class FirstData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,8 +52,6 @@ namespace MyWayRazor.Migrations.MywayDb
 
                     b.Property<int>("CategoriaId");
 
-                    b.Property<int?>("ColaboradorHorarioPraticadoIdHorarioId");
-
                     b.Property<int>("ContratoId");
 
                     b.Property<DateTime?>("CreatedAt");
@@ -70,9 +68,9 @@ namespace MyWayRazor.Migrations.MywayDb
 
                     b.Property<int>("FuncaoId");
 
-                    b.Property<int>("HorarioContratadoId");
+                    b.Property<int?>("HorarioContratadoId");
 
-                    b.Property<int>("HorarioPraticadoId");
+                    b.Property<int?>("HorarioPraticadoId");
 
                     b.Property<DateTime?>("LastUpdatedAt");
 
@@ -94,8 +92,6 @@ namespace MyWayRazor.Migrations.MywayDb
 
                     b.HasIndex("CategoriaId");
 
-                    b.HasIndex("ColaboradorHorarioPraticadoIdHorarioId");
-
                     b.HasIndex("ContratoId");
 
                     b.HasIndex("DepartamentoId");
@@ -105,6 +101,8 @@ namespace MyWayRazor.Migrations.MywayDb
                     b.HasIndex("FuncaoId");
 
                     b.HasIndex("HorarioContratadoId");
+
+                    b.HasIndex("HorarioPraticadoId");
 
                     b.HasIndex("StatusId");
 
@@ -285,10 +283,6 @@ namespace MyWayRazor.Migrations.MywayDb
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyWayRazor.Models.Horario", "ColaboradorHorarioPraticadoId")
-                        .WithMany()
-                        .HasForeignKey("ColaboradorHorarioPraticadoIdHorarioId");
-
                     b.HasOne("MyWayRazor.Models.Contrato", "Contrato")
                         .WithMany("Colaboradores")
                         .HasForeignKey("ContratoId")
@@ -311,8 +305,11 @@ namespace MyWayRazor.Migrations.MywayDb
 
                     b.HasOne("MyWayRazor.Models.Horario", "HorarioContratado")
                         .WithMany()
-                        .HasForeignKey("HorarioContratadoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("HorarioContratadoId");
+
+                    b.HasOne("MyWayRazor.Models.Horario", "HorarioPraticado")
+                        .WithMany()
+                        .HasForeignKey("HorarioPraticadoId");
 
                     b.HasOne("MyWayRazor.Models.Status", "Status")
                         .WithMany("Colaboradores")

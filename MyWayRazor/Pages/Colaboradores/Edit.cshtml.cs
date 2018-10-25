@@ -36,6 +36,8 @@ namespace MyWayRazor.Pages.Colaboradores
                 .Include(c => c.Departamento)
                 .Include(c => c.Equipa)
                 .Include(c => c.Funcao)
+                .Include(c => c.HorarioContratado)
+                .Include(c => c.HorarioPraticado)
                 .Include(c => c.Status)
                 .Include(c => c.Uh).FirstOrDefaultAsync(m => m.ColaboradorID == id);
 
@@ -48,6 +50,8 @@ namespace MyWayRazor.Pages.Colaboradores
            ViewData["DepartamentoId"] = new SelectList(_context.Departamentos, "DepartamentoId", "DepartamentoNome");
            ViewData["EquipaId"] = new SelectList(_context.Equipas, "EquipaId", "EquipaNome");
            ViewData["FuncaoId"] = new SelectList(_context.Funcoes, "FuncaoId", "FuncaoNome");
+           ViewData["HorarioContratadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioId");
+           ViewData["HorarioPraticadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioId");
            ViewData["StatusId"] = new SelectList(_context.Statuses, "StatusID", "Statuses");
            ViewData["UhId"] = new SelectList(_context.Uhs, "UhId", "IATA");
             return Page();

@@ -1,17 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+ï»¿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyWayRazor.Areas.Identity.Data;
 
 namespace MyWayRazor
 {
@@ -34,19 +31,12 @@ namespace MyWayRazor
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //contexto da applicação "Identity"
-            //services.AddDbContext<MywayDbContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddEntityFrameworkStores<MywayDbContext>();
-
             //contexto da base de dados mywway
             services.AddDbContext<MywayDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            //configuração de segurança "login"
+            //configuraÃ§Ã£o de seguranÃ§a "login"
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -92,7 +82,9 @@ namespace MyWayRazor
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, MywayDbContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, MywayDbContext context,
+            UserManager<MyWayUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -113,7 +105,6 @@ namespace MyWayRazor
 
             app.UseMvc();
 
-            DbInitializer.Initialize(context);
         }
     }
 }

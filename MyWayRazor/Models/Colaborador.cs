@@ -12,9 +12,11 @@ namespace MyWayRazor.Models
         public int ColaboradorID { get; set; }
 
         //link com tabela Uh (unidades de handling)
+        [Display(Name ="Unidade de handling:", ShortName ="UH:")]
         public int UhId { get; set; }
         public Uh Uh { get; set; }
         //link com tabela Departamentos
+        [Display(Name = "Departamento:", ShortName = "Dpto.:")]
         public int DepartamentoId { get; set; }
         public Departamento Departamento { get; set; }
 
@@ -26,32 +28,37 @@ namespace MyWayRazor.Models
         public string Nome { get; set; }
 
         //link com a tabela Funções
+        [Display(Name = "Funções:")]
         public int FuncaoId { get; set; }
         public Funcao Funcao { get; set; }
         //link com a tabela Equipas
+        [Display(Name = "Equipas:")]
         public int EquipaId { get; set; }
         public Equipa Equipa { get; set; }
         //link com a tabela Categorias
+        [Display(Name = "Categorias:", ShortName = "Cat.:")]
         public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
 
         //link com a tabela Horario (horário praticado)
-        [Display(Name = "Horário Praticado:")]
-        public int HorarioPraticadoId { get; set; }
-        public Horario ColaboradorHorarioPraticadoId { get; set; }
+        [ForeignKey("HorarioPraticado"), Column(Order = 0), Display(Name = "Horário Praticado:")]
+        public int? HorarioPraticadoId { get; set; }
+        public virtual Horario HorarioPraticado { get; set; }
         //link com a tabela Horario (Horário Contratado)
-        [Display(Name = "Horário Contratado:")]
-        public int HorarioContratadoId { get; set; }
-        public Horario HorarioContratado { get; set; }
+        [ForeignKey("HorarioContratado"), Column(Order = 0), Display(Name = "Horário Contratado:")]
+        public int? HorarioContratadoId { get; set; }
+        public virtual Horario HorarioContratado { get; set; }
 
         [DataType(DataType.Date), Display(Name = "Data de Admissão:")]
         public DateTime DataAdmissão { get; set; }
         [DataType(DataType.Date), Display(Name = "Fim de contrato:")]
         public DateTime DataFim { get; set; }
         //link com a tabela contratos
+        [Display(Name = "Contrato:")]
         public int ContratoId { get; set; }
         public Contrato Contrato { get; set; }
         //link com a tabela Status
+        [Display(Name = "Status:")]
         public int StatusId { get; set; }
         public Status Status { get; set; }
 
