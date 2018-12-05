@@ -1,0 +1,21 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Access denied";
+}
+
+<div class="login-box">
+    <div class="login-logo">
+        <a asp-page="/Index"><b>MyWay</b> 3.0</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+
+        <h1 class="headline text-yellow text-center">403</h1>
+        <h3>
+            <i class="fa fa-warning text-yellow"></i> Oops! Não tem acesso a esta página.
+            <a asp-page="/Index" class="input-lg">Voltar</a>
+        </h3>
+
+    </div>
+</div>

@@ -9,7 +9,7 @@
     <!-- Logo -->
     <a asp-page="/Index" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>M</b>W</span>
+        <span class="logo-mini"><b>MW</b>3</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>My</b>Way</span>
     </a>
@@ -220,7 +220,7 @@
             <li class="header">Tabelas</li>
             <!-- Optionally, you can add icons to the links -->
             @*<li class="active "><a asp-controller="Resumos" asp-action="Index"><i class="fa fa-link"></i> <span>Resumos</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>*@
+        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>*@
             <li class="treeview ">
                 <a href="#">
                     <i class="fa fa-link"></i> <span>Unidades de Handling</span>
@@ -315,6 +315,17 @@
                 <ul class="treeview-menu">
                     <li><a asp-page="/Tabelas/Horarios/Index">Listagem</a></li>
                     <li><a asp-page="/Tabelas/Horarios/Create">Criar</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Admin</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/Admin/Admin">Admin</a></li>
                 </ul>
             </li>
         </ul>

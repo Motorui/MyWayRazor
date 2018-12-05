@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyWayRazor.Areas.Identity.Data;
 using MyWayRazor.Data;
+using System;
 
 [assembly: HostingStartup(typeof(MyWayRazor.Areas.Identity.IdentityHostingStartup))]
 namespace MyWayRazor.Areas.Identity
@@ -18,9 +19,11 @@ namespace MyWayRazor.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("IdentityContextConnection")));
 
-                services.AddDefaultIdentity<MyWayUser>()
-                    .AddRoles<IdentityRole>()
-                    .AddEntityFrameworkStores<IdentityContext>();
+                services.AddIdentity<MyWayUser, IdentityRole>()
+                //services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
             });
         }
     }

@@ -5,134 +5,132 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Colaboradores</h2>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].Uh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].Departamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].NumCartao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].NumPw)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].Funcao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].Equipa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].Categoria)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].HorarioPraticado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].HorarioContratado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].DataAdmissão)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].DataFim)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].Contrato)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].LastUpdatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colaborador[0].LastUpdatedBy)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Colaborador) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uh.IATA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Departamento.DepartamentoNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumCartao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumPw)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Funcao.FuncaoNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Equipa.EquipaNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categoria.CategoriaNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HorarioPraticado.HorarioId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HorarioContratado.HorarioId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataAdmissão)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataFim)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contrato.ContratoTipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status.Statuses)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdatedBy)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ColaboradorID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ColaboradorID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ColaboradorID">Delete</a>
-            </td>
-        </tr>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title"><a asp-page="Create" class="right">Criar novo registo</a></h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="ColaboradoresTbl" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].Uh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].Departamento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].NumCartao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].NumPw)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].Funcao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].DataFim)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].Contrato)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colaborador[0].Status)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Colaborador)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Uh.IATA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Departamento.DepartamentoNome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumCartao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumPw)
+                        </td>
+                        <td>
+                            <a asp-page="./Details" asp-route-id="@item.ColaboradorID">@Html.DisplayFor(modelItem => item.Nome)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Funcao.FuncaoNome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataFim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Contrato.ContratoTipo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status.Statuses)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.ColaboradorID">Editar</a> |
+                            <a asp-page="./Details" asp-route-id="@item.ColaboradorID">Detalhes</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.ColaboradorID">Apagar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            @*<tfoot>
+                <tr>
+                    <th>Rendering engine</th>
+                    <th>Browser</th>
+                    <th>Platform(s)</th>
+                    <th>Engine version</th>
+                    <th>CSS grade</th>
+                </tr>
+            </tfoot>*@
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+@section Scripts
+    {
+    <script src="~/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ColaboradoresTbl').DataTable(
+                {
+                    language: {
+                        processing: "Processando ...",
+                        search: "Pesquisar:&nbsp;",
+                        lengthMenu: "Mostrar &nbsp;_MENU_&nbsp; items",
+                        info: "A exibir _START_ a _END_ de _TOTAL_ entradas",
+                        infoEmpty: "Não existem items a exibir",
+                        infoFiltered: "(Filtro de um total de _MAX_ entradas)",
+                        infoPostFix: "",
+                        loadingRecords: "Carregando ...",
+                        zeroRecords: "Não existem dados",
+                        emptyTable: "Nenhum dado disponível na tabela",
+                        paginate: {
+                            first: "Primeiro",
+                            previous: "Anterior",
+                            next: "Seguinte",
+                            last: "Último"
+                        },
+                        aria: {
+                            sortAscending: ": ordenar a coluna por ordem crescente",
+                            sortDescending: ": ordenar a coluna por ordem decrescente"
+                        }
+                    }
+                }
+            );
+        });
+    </script>
 }
-    </tbody>
-</table>

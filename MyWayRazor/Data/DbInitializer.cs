@@ -412,11 +412,71 @@ namespace MyWayRazor.Data
                 context.SaveChanges();
             }
 
+            if (!context.Horarios.Any(h => h.HorarioHora == 36))
+            {
+                Horario horario = new Horario
+                {
+                    HorarioHora = 36,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Sistema",
+                    LastUpdatedAt = null,
+                    LastUpdatedBy = null
+                };
+
+                context.Horarios.Add(horario);
+                context.SaveChanges();
+            }
+
             if (!context.Horarios.Any(h => h.HorarioHora == 25))
             {
                 Horario horario = new Horario
                 {
                     HorarioHora = 25,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Sistema",
+                    LastUpdatedAt = null,
+                    LastUpdatedBy = null
+                };
+
+                context.Horarios.Add(horario);
+                context.SaveChanges();
+            }
+
+            if (!context.Horarios.Any(h => h.HorarioHora == 20))
+            {
+                Horario horario = new Horario
+                {
+                    HorarioHora = 20,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Sistema",
+                    LastUpdatedAt = null,
+                    LastUpdatedBy = null
+                };
+
+                context.Horarios.Add(horario);
+                context.SaveChanges();
+            }
+
+            if (!context.Horarios.Any(h => h.HorarioHora == 18))
+            {
+                Horario horario = new Horario
+                {
+                    HorarioHora = 18,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Sistema",
+                    LastUpdatedAt = null,
+                    LastUpdatedBy = null
+                };
+
+                context.Horarios.Add(horario);
+                context.SaveChanges();
+            }
+
+            if (!context.Horarios.Any(h => h.HorarioHora == 12))
+            {
+                Horario horario = new Horario
+                {
+                    HorarioHora = 12,
                     CreatedAt = DateTime.Now,
                     CreatedBy = "Sistema",
                     LastUpdatedAt = null,

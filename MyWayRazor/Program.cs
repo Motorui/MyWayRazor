@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MyWayRazor.Data;
 using MyWayRazor.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using System.IO;
 
 namespace MyWayRazor
 {
@@ -40,6 +41,9 @@ namespace MyWayRazor
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
     }
