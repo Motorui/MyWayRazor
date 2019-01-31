@@ -1,8 +1,8 @@
 @using Microsoft.AspNetCore.Identity
-@using MyWayRazor.Areas.Identity.Data;
+@using MyWayRazor.Areas.Identity.Models;
 
-@inject SignInManager<MyWayUser> SignInManager
-@inject UserManager<MyWayUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {

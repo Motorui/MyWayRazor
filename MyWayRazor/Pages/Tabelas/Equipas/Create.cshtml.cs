@@ -12,9 +12,9 @@ namespace MyWayRazor.Pages.Tabelas.Equipas
 {
     public class CreateModel : PageModel
     {
-        private readonly MyWayRazor.Data.MywayDbContext _context;
+        private readonly MyWayRazor.Data.ApplicationDbContext _context;
 
-        public CreateModel(MyWayRazor.Data.MywayDbContext context)
+        public CreateModel(MyWayRazor.Data.ApplicationDbContext context)
         {
             _context = context;
         }

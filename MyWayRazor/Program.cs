@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using MyWayRazor.Data;
 using MyWayRazor.Areas.Identity.Data;
+using MyWayRazor.Areas.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using System.IO;
 
@@ -21,13 +22,11 @@ namespace MyWayRazor
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<MywayDbContext>();
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    IdentityInitializer.SeedData(userManager, roleManager, context);
                     DbInitializer.Initialize(context);
-
-                    var userManager = services.GetRequiredService<UserManager<MyWayUser>>();
-                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    var icontext = services.GetRequiredService<IdentityContext>();
-                    IdentityInitializer.SeedData(userManager, roleManager, icontext);
                 }
                 catch (Exception ex)
                 {

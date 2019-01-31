@@ -6,7 +6,7 @@ namespace MyWayRazor.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(MywayDbContext context)
+        public static void Initialize(ApplicationDbContext context)
         {
             SeedCategorias(context);
             SeedContratos(context);
@@ -17,7 +17,7 @@ namespace MyWayRazor.Data
             SeedStatuses(context);
             SeedUhs(context);
         }
-        public static void SeedCategorias(MywayDbContext context)
+        public static void SeedCategorias(ApplicationDbContext context)
         {
             if (!context.Categorias.Any(c => c.CategoriaNome == "ASSISTENTE A PASSAGEIROS DE MOBILIDADE REDUZIDA"))
             {
@@ -81,7 +81,7 @@ namespace MyWayRazor.Data
 
         }
 
-        public static void SeedContratos(MywayDbContext context)
+        public static void SeedContratos(ApplicationDbContext context)
         {
             if (!context.Contratos.Any(c => c.ContratoTipo == "PERMANENTE"))
             {
@@ -144,7 +144,7 @@ namespace MyWayRazor.Data
             }
         }
 
-        public static void SeedDepartamentos(MywayDbContext context)
+        public static void SeedDepartamentos(ApplicationDbContext context)
         {
             if (!context.Departamentos.Any(d => d.DepartamentoNumero == 71680))
             {
@@ -163,7 +163,7 @@ namespace MyWayRazor.Data
             }
         }
 
-        public static void SeedEquipas(MywayDbContext context)
+        public static void SeedEquipas(ApplicationDbContext context)
         {
             if (!context.Equipas.Any(e => e.EquipaNome == "N/A"))
             {
@@ -227,7 +227,7 @@ namespace MyWayRazor.Data
 
         }
 
-        public static void SeedFuncoes(MywayDbContext context)
+        public static void SeedFuncoes(ApplicationDbContext context)
         {
             if (!context.Funcoes.Any(f => f.FuncaoNome == "COORDENADOR"))
             {
@@ -380,7 +380,7 @@ namespace MyWayRazor.Data
             }
         }
 
-        public static void SeedHorarios(MywayDbContext context)
+        public static void SeedHorarios(ApplicationDbContext context)
         {
             if (!context.Horarios.Any(h => h.HorarioHora == 40))
             {
@@ -488,7 +488,7 @@ namespace MyWayRazor.Data
             }
         }
 
-        public static void SeedStatuses(MywayDbContext context)
+        public static void SeedStatuses(ApplicationDbContext context)
         {
             if(!context.Statuses.Any(s => s.Statuses == "ATIVO"))
             {
@@ -522,7 +522,7 @@ namespace MyWayRazor.Data
 
         }
 
-        public static void SeedUhs(MywayDbContext context)
+        public static void SeedUhs(ApplicationDbContext context)
         {
             if (!context.Uhs.Any(u => u.IATA == "LIS"))
             {

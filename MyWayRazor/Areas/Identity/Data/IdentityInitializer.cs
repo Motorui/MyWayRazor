@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
+using MyWayRazor.Areas.Identity.Models;
 using MyWayRazor.Data;
-
 
 namespace MyWayRazor.Areas.Identity.Data
 {
     public static class IdentityInitializer
     {
-        public static void SeedData(UserManager<MyWayUser> userManager, RoleManager<IdentityRole> roleManager, IdentityContext context)
+        public static void Initialize(ApplicationDbContext context)
+        {
+        }
+            public static void SeedData(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, ApplicationDbContext context)
         {
             
             SeedRoles(roleManager);
@@ -18,12 +18,12 @@ namespace MyWayRazor.Areas.Identity.Data
 
         }
 
-        public static void SeedUsers (UserManager<MyWayUser> userManager)
+        public static void SeedUsers (UserManager<ApplicationUser> userManager)
         {
 
             if (userManager.FindByNameAsync("rui.santos@portway.pt").Result == null)
             {
-                MyWayUser user = new MyWayUser
+                ApplicationUser user = new ApplicationUser
                 {
                     Id = Guid.NewGuid().ToString(),
                     UserName = "rui.santos@portway.pt",
@@ -43,7 +43,7 @@ namespace MyWayRazor.Areas.Identity.Data
 
             if (userManager.FindByNameAsync("jpgerardo.ptw@Portway.pt").Result == null)
             {
-                MyWayUser user = new MyWayUser
+                ApplicationUser user = new ApplicationUser
                 {
                     Id = Guid.NewGuid().ToString(),
                     UserName = "jpgerardo.ptw@Portway.pt",
@@ -61,11 +61,11 @@ namespace MyWayRazor.Areas.Identity.Data
             }
         }
 
-        public static void SeedRoles (RoleManager<IdentityRole> roleManager)
+        public static void SeedRoles (RoleManager<ApplicationRole> roleManager)
         {
             if (!roleManager.RoleExistsAsync("Utilizador").Result)
             {
-                IdentityRole role = new IdentityRole
+                ApplicationRole role = new ApplicationRole
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "Utilizador"
@@ -76,7 +76,7 @@ namespace MyWayRazor.Areas.Identity.Data
 
             if (!roleManager.RoleExistsAsync("Supervisor").Result)
             {
-                IdentityRole role = new IdentityRole
+                ApplicationRole role = new ApplicationRole
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "Supervisor"
@@ -87,7 +87,7 @@ namespace MyWayRazor.Areas.Identity.Data
 
             if (!roleManager.RoleExistsAsync("Administrador").Result)
             {
-                IdentityRole role = new IdentityRole
+                ApplicationRole role = new ApplicationRole
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "Administrador"

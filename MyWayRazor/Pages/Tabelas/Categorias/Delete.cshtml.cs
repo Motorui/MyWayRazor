@@ -12,9 +12,9 @@ namespace MyWayRazor.Pages.Tabelas.Categorias
 {
     public class DeleteModel : PageModel
     {
-        private readonly MyWayRazor.Data.MywayDbContext _context;
+        private readonly MyWayRazor.Data.ApplicationDbContext _context;
 
-        public DeleteModel(MyWayRazor.Data.MywayDbContext context)
+        public DeleteModel(MyWayRazor.Data.ApplicationDbContext context)
         {
             _context = context;
         }

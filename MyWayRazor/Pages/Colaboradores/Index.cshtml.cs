@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
@@ -12,9 +9,9 @@ namespace MyWayRazor.Pages.Colaboradores
 {
     public class IndexModel : PageModel
     {
-        private readonly MyWayRazor.Data.MywayDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public IndexModel(MyWayRazor.Data.MywayDbContext context)
+        public IndexModel(ApplicationDbContext context)
         {
             _context = context;
         }

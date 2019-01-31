@@ -12,9 +12,9 @@ namespace MyWayRazor.Pages.Tabelas.Departamentos
 {
     public class IndexModel : PageModel
     {
-        private readonly MyWayRazor.Data.MywayDbContext _context;
+        private readonly MyWayRazor.Data.ApplicationDbContext _context;
 
-        public IndexModel(MyWayRazor.Data.MywayDbContext context)
+        public IndexModel(MyWayRazor.Data.ApplicationDbContext context)
         {
             _context = context;
         }

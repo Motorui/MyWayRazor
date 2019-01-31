@@ -1,0 +1,174 @@
+﻿@page
+@model MyWayRazor.Pages.Analise.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chegadas compreendidas entre as @Model.Agora e as @Model.AgoraMaisUmaHora:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @foreach (var groupStand in Model.AssistenciasPRMA.GroupBy(m => m.Stand))
+                    {
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Stand @groupStand.Key</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>SSR</td>
+                                            <td>Voo</td>
+                                            <td>Hora</td>
+                                            <td>Saida</td>
+                                        </tr>
+                                        @foreach (var item in groupStand)
+                                        {
+                                            <tr class="@(@item.SSR.Contains("WCHC") || @item.SSR.Contains("WCHS") ? "alert alert-danger" : "")">
+                                                <td>@item.SSR</td>
+                                                <td>@item.Voo</td>
+                                                <td>@item.Data.ToShortTimeString()</td>
+                                                <td>@item.Exit</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Partidas compreendidas entre as @Model.Agora e as @Model.AgoraMaisUmaHora:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @foreach (var groupStand in Model.AssistenciasPRMD.GroupBy(m => m.Stand))
+                    {
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Stand @groupStand.Key</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>SSR</td>
+                                            <td>VOO</td>
+                                            <td>BRD</td>
+                                            <td>STD</td>
+                                            <td>GATE</td>
+                                        </tr>
+                                        @foreach (var item in groupStand)
+                                        {
+                                            <tr class="@(@item.SSR.Contains("WCHC") || @item.SSR.Contains("WCHS") ? "alert alert-danger" : "")">
+                                                <td>@item.SSR</td>
+                                                <td>@item.Voo</td>
+                                                <td>@item.Data.AddMinutes(-40).ToShortTimeString()</td>
+                                                <td>@item.Data.ToShortTimeString()</td>
+                                                <td>@item.Gate</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chegadas até final do dia:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @foreach (var groupStand in Model.AssistenciasPRMATotal.GroupBy(m => m.Stand))
+                    {
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Stand @groupStand.Key</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>SSR</td>
+                                            <td>Voo</td>
+                                            <td>Hora</td>
+                                            <td>Saida</td>
+                                        </tr>
+                                        @foreach (var item in groupStand)
+                                        {
+                                            <tr class="@(@item.SSR.Contains("WCHC") || @item.SSR.Contains("WCHS") ? "alert alert-danger" : "")">
+                                                <td>@item.SSR</td>
+                                                <td>@item.Voo</td>
+                                                <td>@item.Data.ToShortTimeString()</td>
+                                                <td>@item.Exit</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Partidas até final do dia:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @foreach (var groupStand in Model.AssistenciasPRMDTotal.GroupBy(m => m.Stand))
+                    {
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Stand @groupStand.Key</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>SSR</td>
+                                            <td>Voo</td>
+                                            <td>Hora</td>
+                                            <td>Saida</td>
+                                        </tr>
+                                        @foreach (var item in groupStand)
+                                        {
+                                            <tr class="@(@item.SSR.Contains("WCHC") || @item.SSR.Contains("WCHS") ? "alert alert-danger" : "")">
+                                                <td>@item.SSR</td>
+                                                <td>@item.Voo</td>
+                                                <td>@item.Data.ToShortTimeString()</td>
+                                                <td>@item.Exit</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

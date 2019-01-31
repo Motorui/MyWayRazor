@@ -1,0 +1,50 @@
+﻿@page
+@model MyWayRazor.Areas.Identity.Pages.Admin.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<h4>@ViewData["Title"]</h4>
+@*<partial name="_StatusMessage" , for="StatusMessage" />*@
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ApplicationUser.Id" />
+            <div class="form-group">
+                <label asp-for="ApplicationUser.Name" class="control-label"></label>
+                <input asp-for="ApplicationUser.Name" class="form-control" />
+                <span asp-validation-for="ApplicationUser.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationUser.Email" class="control-label"></label>
+                <input asp-for="ApplicationUser.Email" class="form-control" />
+                <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @foreach (var item in Model.ApplicationUser.UserRoles)
+                {
+                 <p>
+                    @Html.DisplayFor(modelItem => item.Role.Name)
+                </p>
+                }
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(x => x.RolesList.SelectedValue, Model.RolesList)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Voltar para a listagem</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

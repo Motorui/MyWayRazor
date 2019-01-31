@@ -47,14 +47,13 @@
 
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
+        <partial name="_Header" />
         <partial name="_LeftPanel" />
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->
             <section class="content container-fluid">
-
                 @RenderBody()
-
             </section>
             <!-- /.content -->
         </div>
@@ -68,9 +67,7 @@
             <!-- Default to the left -->
             <strong>Copyright &copy; 2018 <a href="#">Rui Pereira</a>.</strong> Todos os direitos reservados.
         </footer>
-
         <partial name="_ControlSidebar" />
-
     </div>
     <!-- ./wrapper -->
     <!-- REQUIRED JS SCRIPTS -->

@@ -12,9 +12,9 @@ namespace MyWayRazor.Pages.Tabelas.Contratos
 {
     public class DetailsModel : PageModel
     {
-        private readonly MyWayRazor.Data.MywayDbContext _context;
+        private readonly MyWayRazor.Data.ApplicationDbContext _context;
 
-        public DetailsModel(MyWayRazor.Data.MywayDbContext context)
+        public DetailsModel(MyWayRazor.Data.ApplicationDbContext context)
         {
             _context = context;
         }

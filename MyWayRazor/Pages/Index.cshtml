@@ -6,20 +6,10 @@
 
 <div class="row">
     <div class="col-md-3">
-        <h2>Tabelas:</h2>
+        <h2></h2>
         <ul>
             @*<li><a asp-page="/Colaborador/Index">Colaboradores</a></li>*@
             @*<li><a asp-page="/Tabelas/Uhs/Index">UH</a></li>*@
         </ul>
-    </div>
-    <div class="col-md-3">
-        @if (User.IsInRole("Administrador"))
-        {
-            <h1>O utilizador é administrador</h1>
-        }
-        @if (User.IsInRole("Supervisor"))
-        {
-            <h1>O utilizador é supervisor</h1>
-        }
     </div>
 </div>

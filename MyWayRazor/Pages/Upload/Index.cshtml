@@ -1,0 +1,27 @@
+﻿@page
+@model MyWayRazor.Pages.Upload.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" asp-for="Upload" />
+    <input type="submit" />
+</form>
+<h3>@ViewData["confirmation"]</h3>
+@section Scripts
+    {
+    <script type="text/javascript">
+        @if (!ViewData.ModelState.IsValid && ViewData.ModelState["erro"].Errors.Count > 0)
+        {
+            <text>
+            $(document).ready(function() {
+                alert('@Html.Raw(ViewData.ModelState["erro"].Errors.First().ErrorMessage).ToString()');
+            });
+            </text>
+        }
+    </script>
+}

@@ -13,9 +13,9 @@ namespace MyWayRazor.Pages.Tabelas.Statuses
 {
     public class EditModel : PageModel
     {
-        private readonly MyWayRazor.Data.MywayDbContext _context;
+        private readonly MyWayRazor.Data.ApplicationDbContext _context;
 
-        public EditModel(MyWayRazor.Data.MywayDbContext context)
+        public EditModel(MyWayRazor.Data.ApplicationDbContext context)
         {
             _context = context;
         }

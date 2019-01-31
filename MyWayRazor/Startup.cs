@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyWayRazor.Areas.Identity.Data;
+using MyWayRazor.Areas.Identity.Models;
 
 namespace MyWayRazor
 {
@@ -31,14 +31,15 @@ namespace MyWayRazor
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //contexto da base de dados mywway
-            services.AddDbContext<MywayDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            //contexto da base de dados
+            services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddIdentity<MyWayUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<IdentityContext>()
-            //    .AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.Stores.MaxLengthForKeys = 128)
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultUI()
+            .AddDefaultTokenProviders();
 
             //configuração de segurança "login"
             services.Configure<IdentityOptions>(options =>
@@ -81,17 +82,18 @@ namespace MyWayRazor
                     options.Conventions.AuthorizeAreaPage("Identity", "/Identity/Account/Logout");
                     options.Conventions.AllowAnonymousToPage("/Identity/Account/Login");
                 })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.Configure<IISOptions>(options =>
             {
                 options.ForwardClientCertificate = false;
                 options.AutomaticAuthentication = false;
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, MywayDbContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -107,9 +109,7 @@ namespace MyWayRazor
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseAuthentication();
-
             app.UseMvc();
 
         }
