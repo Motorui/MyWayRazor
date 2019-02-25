@@ -1,0 +1,26 @@
+[
+  {
+    "StatusID": 1,
+    "Statuses": ""
+  },
+  {
+    "StatusID": 2,
+    "Statuses": "Espera"
+  },
+  {
+    "StatusID": 3,
+    "Statuses": "Cancelado"
+  },
+  {
+    "StatusID": 4,
+    "Statuses": "Encaminhado"
+  },
+  {
+    "StatusID": 5,
+    "Statuses": "Finalizado"
+  },
+  {
+    "StatusID": 6,
+    "Statuses": "Ausente"
+  }
+]

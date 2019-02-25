@@ -35,7 +35,7 @@ namespace MyWayRazor.Pages.Tabelas.Funcoes
             }
 
             Funcao.FuncaoNome = Request.Form["Funcao.FuncaoNome"].ToString().ToUpper();
-            Funcao.LastUpdatedAt = DateTime.Now.Date;
+            Funcao.LastUpdatedAt = DateTime.UtcNow.Date;
             Funcao.LastUpdatedBy = User.Identity.Name.ToString();
             _context.Funcoes.Add(Funcao);
             await _context.SaveChangesAsync();

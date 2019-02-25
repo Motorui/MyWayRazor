@@ -1,0 +1,106 @@
+﻿@page
+@model MyWayRazor.Pages.tempFolder.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>AssistenciasPRM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AssistenciasPRM.ID" />
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Aeroporto" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Aeroporto" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Aeroporto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Msg" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Msg" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Msg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Notif" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Notif" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Notif" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Data" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Data" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Voo" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Voo" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Voo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Mov" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Mov" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Mov" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.OrigDest" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.OrigDest" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.OrigDest" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Pax" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Pax" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Pax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.SSR" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.SSR" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.SSR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.AC" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.AC" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.AC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Stand" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Stand" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Stand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Exit" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Exit" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Exit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.CkIn" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.CkIn" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.CkIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Gate" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Gate" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Gate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistenciasPRM.Transferencia" class="control-label"></label>
+                <input asp-for="AssistenciasPRM.Transferencia" class="form-control" />
+                <span asp-validation-for="AssistenciasPRM.Transferencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

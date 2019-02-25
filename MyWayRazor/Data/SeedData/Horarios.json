@@ -1,0 +1,44 @@
+[
+  {
+    "HorarioId": 1,
+    "HorarioHora": 40,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "HorarioId": 2,
+    "HorarioHora": 38,
+    "CreatedAt": "2018-10-25T11:23:39.9779922",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "HorarioId": 3,
+    "HorarioHora": 36,
+    "CreatedAt": "2018-10-25T11:23:40.2417707",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "HorarioId": 4,
+    "HorarioHora": 25,
+    "CreatedAt": "2018-10-25T11:23:40.5183892",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "HorarioId": 5,
+    "HorarioHora": 20,
+    "CreatedAt": "2018-10-25T11:23:40.8003868",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "HorarioId": 6,
+    "HorarioHora": 18,
+    "CreatedAt": "2018-10-25T11:23:41.0987970",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "HorarioId": 7,
+    "HorarioHora": 12,
+    "CreatedAt": "2018-10-25T11:23:41.4138488",
+    "CreatedBy": "SISTEMA"
+  }
+]

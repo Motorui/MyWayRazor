@@ -46,7 +46,7 @@ namespace MyWayRazor.Pages.Tabelas.Horarios
                 return Page();
             }
 
-            Horario.LastUpdatedAt = DateTime.Now.Date;
+            Horario.LastUpdatedAt = DateTime.UtcNow.Date;
             Horario.LastUpdatedBy = User.Identity.Name.ToString();
             _context.Attach(Horario).State = EntityState.Modified;
 

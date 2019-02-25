@@ -1,0 +1,26 @@
+[
+  {
+    "ContratoId": 1,
+    "ContratoTipo": "PERMANENTE",
+    "CreatedAt": "2018-10-25T11:23:36.6371940",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "ContratoId": 2,
+    "ContratoTipo": "TERMO CERTO",
+    "CreatedAt": "2018-10-25T11:23:36.7121040",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "ContratoId": 3,
+    "ContratoTipo": "TERMO INCERTO",
+    "CreatedAt": "2018-10-25T11:23:36.7943570",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "ContratoId": 4,
+    "ContratoTipo": "MULTITEMPO",
+    "CreatedAt": "2018-10-25T11:23:36.8929403",
+    "CreatedBy": "SISTEMA"
+  }
+]

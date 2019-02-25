@@ -1,0 +1,658 @@
+[
+  {
+    "StandId": 1,
+    "StandN": "104",
+    "Remoto": true,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 2,
+    "StandN": "105",
+    "Remoto": true,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 3,
+    "StandN": "106",
+    "Remoto": true,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 4,
+    "StandN": "107",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 5,
+    "StandN": "108",
+    "Remoto": true,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 7,
+    "StandN": "114",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 8,
+    "StandN": "115",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 9,
+    "StandN": "116",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 10,
+    "StandN": "117",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 11,
+    "StandN": "122",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 12,
+    "StandN": "123",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 13,
+    "StandN": "124",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 14,
+    "StandN": "125",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 15,
+    "StandN": "126",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 16,
+    "StandN": "141",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 17,
+    "StandN": "142",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 18,
+    "StandN": "143",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 19,
+    "StandN": "144",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 20,
+    "StandN": "145",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 21,
+    "StandN": "146",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 22,
+    "StandN": "147",
+    "Remoto": false,
+    "PlataformaId": 1,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 23,
+    "StandN": "200",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 24,
+    "StandN": "201",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 25,
+    "StandN": "202",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 26,
+    "StandN": "203",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 27,
+    "StandN": "204",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 28,
+    "StandN": "205",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 29,
+    "StandN": "206",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 30,
+    "StandN": "207",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 31,
+    "StandN": "208",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 32,
+    "StandN": "209",
+    "Remoto": true,
+    "PlataformaId": 2,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 33,
+    "StandN": "221",
+    "Remoto": true,
+    "PlataformaId": 3,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 34,
+    "StandN": "222",
+    "Remoto": true,
+    "PlataformaId": 3,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 35,
+    "StandN": "223",
+    "Remoto": true,
+    "PlataformaId": 3,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 36,
+    "StandN": "224",
+    "Remoto": true,
+    "PlataformaId": 3,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 37,
+    "StandN": "225",
+    "Remoto": true,
+    "PlataformaId": 3,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 38,
+    "StandN": "301",
+    "Remoto": true,
+    "PlataformaId": 4,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 39,
+    "StandN": "302",
+    "Remoto": true,
+    "PlataformaId": 4,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 40,
+    "StandN": "401",
+    "Remoto": true,
+    "PlataformaId": 4,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 41,
+    "StandN": "402",
+    "Remoto": true,
+    "PlataformaId": 4,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 42,
+    "StandN": "403",
+    "Remoto": true,
+    "PlataformaId": 4,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 43,
+    "StandN": "404",
+    "Remoto": true,
+    "PlataformaId": 4,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 44,
+    "StandN": "405",
+    "Remoto": true,
+    "PlataformaId": 4,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 45,
+    "StandN": "411",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 47,
+    "StandN": "412",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 48,
+    "StandN": "413",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 49,
+    "StandN": "414",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 50,
+    "StandN": "415",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 51,
+    "StandN": "416",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 52,
+    "StandN": "421",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 53,
+    "StandN": "422",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 54,
+    "StandN": "423",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 55,
+    "StandN": "424",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 56,
+    "StandN": "425",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 57,
+    "StandN": "426",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 58,
+    "StandN": "501",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 59,
+    "StandN": "502",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 60,
+    "StandN": "503",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 61,
+    "StandN": "504",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 62,
+    "StandN": "505",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 64,
+    "StandN": "506",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 65,
+    "StandN": "601",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 66,
+    "StandN": "602",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 67,
+    "StandN": "603",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 68,
+    "StandN": "604",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 69,
+    "StandN": "605",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 70,
+    "StandN": "606",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 71,
+    "StandN": "607",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 72,
+    "StandN": "608",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 73,
+    "StandN": "609",
+    "Remoto": true,
+    "PlataformaId": 5,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 74,
+    "StandN": "701",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 75,
+    "StandN": "702",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 76,
+    "StandN": "703",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 77,
+    "StandN": "704",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 78,
+    "StandN": "705",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 79,
+    "StandN": "706",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 80,
+    "StandN": "801",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 81,
+    "StandN": "802",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 82,
+    "StandN": "803",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 83,
+    "StandN": "804",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 84,
+    "StandN": "805",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "StandId": 85,
+    "StandN": "806",
+    "Remoto": true,
+    "PlataformaId": 6,
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  }
+]

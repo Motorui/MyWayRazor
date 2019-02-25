@@ -32,7 +32,7 @@ namespace MyWayRazor.Pages.Tabelas.Departamentos
 
             //Departamento.DepartamentoNumero =  new int(Request.Form["Departamento.DepartamentoNumero"].ToString);
             Departamento.DepartamentoNome = Request.Form["Departamento.DepartamentoNome"].ToString().ToUpper();
-            Departamento.CreatedAt = DateTime.Now.Date;
+            Departamento.CreatedAt = DateTime.UtcNow.Date;
             Departamento.CreatedBy = User.Identity.Name.ToString();
             _context.Departamentos.Add(Departamento);
             await _context.SaveChangesAsync();

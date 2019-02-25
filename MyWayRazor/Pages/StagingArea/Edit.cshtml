@@ -1,0 +1,155 @@
+﻿@page
+@model MyWayRazor.Pages.StagingArea.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Staging</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Staging.ID" />
+            <div class="form-group">
+                <label asp-for="Staging.Msg" class="control-label"></label>
+                <input asp-for="Staging.Msg" class="form-control" />
+                <span asp-validation-for="Staging.Msg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Notif" class="control-label"></label>
+                <input asp-for="Staging.Notif" class="form-control" />
+                <span asp-validation-for="Staging.Notif" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Data" class="control-label"></label>
+                <input asp-for="Staging.Data" class="form-control" />
+                <span asp-validation-for="Staging.Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Voo" class="control-label"></label>
+                <input asp-for="Staging.Voo" class="form-control" />
+                <span asp-validation-for="Staging.Voo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Mov" class="control-label"></label>
+                <input asp-for="Staging.Mov" class="form-control" />
+                <span asp-validation-for="Staging.Mov" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.OrigemDestino" class="control-label"></label>
+                <input asp-for="Staging.OrigemDestino" class="form-control" />
+                <span asp-validation-for="Staging.OrigemDestino" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Pax" class="control-label"></label>
+                <input asp-for="Staging.Pax" class="form-control" />
+                <span asp-validation-for="Staging.Pax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Ssr" class="control-label"></label>
+                <input asp-for="Staging.Ssr" class="form-control" />
+                <span asp-validation-for="Staging.Ssr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.AirCraft" class="control-label"></label>
+                <input asp-for="Staging.AirCraft" class="form-control" />
+                <span asp-validation-for="Staging.AirCraft" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Stand" class="control-label"></label>
+                <input asp-for="Staging.Stand" class="form-control" />
+                <span asp-validation-for="Staging.Stand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.CheckIn" class="control-label"></label>
+                <input asp-for="Staging.CheckIn" class="form-control" />
+                <span asp-validation-for="Staging.CheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Gate" class="control-label"></label>
+                <input asp-for="Staging.Gate" class="form-control" />
+                <span asp-validation-for="Staging.Gate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Remark" class="control-label"></label>
+                <input asp-for="Staging.Remark" class="form-control" />
+                <span asp-validation-for="Staging.Remark" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Etd" class="control-label"></label>
+                <input asp-for="Staging.Etd" class="form-control" />
+                <span asp-validation-for="Staging.Etd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Antecipar" class="control-label"></label>
+                <input asp-for="Staging.Antecipar" class="form-control" />
+                <span asp-validation-for="Staging.Antecipar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Horario" class="control-label"></label>
+                <input asp-for="Staging.Horario" class="form-control" />
+                <span asp-validation-for="Staging.Horario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.StatusId" class="control-label"></label>
+                <select asp-for="Staging.StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
+                <span asp-validation-for="Staging.StatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Staging.Destino" /> @Html.DisplayNameFor(model => model.Staging.Destino)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Staging.Alerta" /> @Html.DisplayNameFor(model => model.Staging.Alerta)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.Observacao" class="control-label"></label>
+                <input asp-for="Staging.Observacao" class="form-control" />
+                <span asp-validation-for="Staging.Observacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.CreatedAt" class="control-label"></label>
+                <input asp-for="Staging.CreatedAt" class="form-control" />
+                <span asp-validation-for="Staging.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.CreatedBy" class="control-label"></label>
+                <input asp-for="Staging.CreatedBy" class="form-control" />
+                <span asp-validation-for="Staging.CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.LastUpdatedAt" class="control-label"></label>
+                <input asp-for="Staging.LastUpdatedAt" class="form-control" />
+                <span asp-validation-for="Staging.LastUpdatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staging.LastUpdatedBy" class="control-label"></label>
+                <input asp-for="Staging.LastUpdatedBy" class="form-control" />
+                <span asp-validation-for="Staging.LastUpdatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

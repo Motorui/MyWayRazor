@@ -17,7 +17,7 @@
         <!-- /.search form -->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">Menu</li>
+            <li class="header">Recursos Humanos</li>
             <li class="treeview ">
                 <a href="#">
                     <i class="fa fa-link"></i> <span>Colaboradores</span>
@@ -33,7 +33,7 @@
             <li class="header">Análises</li>
             <li class="treeview ">
                 <a href="#">
-                    <i class="fa fa-link"></i> <span>Menu</span>
+                    <i class="fa fa-link"></i> <span>Análise</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -41,6 +41,33 @@
                 <ul class="treeview-menu">
                     <li><a asp-page="/Upload/Index">Upload Excel</a></li>
                     <li><a asp-page="/Analise/Index">Análise</a></li>
+                    <li><a asp-page="/Analise/Diario">Análise Diária</a></li>
+                </ul>
+            </li>
+            <li class="header">To-Do List</li>
+            <li class="treeview ">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>To-Do</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/ToDoList/Index">Listagem</a></li>
+                    <li><a asp-page="/ToDoList/Create">Criar Tarefa</a></li>
+                </ul>
+            </li>
+            <li class="header">Gestão de Recursos</li>
+            <li class="treeview ">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Staging</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/StagingArea/Index">Staging Area</a></li>
+                    <li><a asp-page="/StagingArea/Create">Gerir</a></li>
                 </ul>
             </li>
         </ul>

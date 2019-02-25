@@ -1,0 +1,121 @@
+﻿@page
+@model MyWayRazor.Pages.tempFolder.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Aeroporto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Msg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Notif)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Voo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Mov)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].OrigDest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Pax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].SSR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].AC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Stand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Exit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].CkIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Gate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Transferencia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AssistenciasPRM) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aeroporto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Msg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mov)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrigDest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CkIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transferencia)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

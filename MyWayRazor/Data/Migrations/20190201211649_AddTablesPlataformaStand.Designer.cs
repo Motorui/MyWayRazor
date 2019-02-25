@@ -10,8 +10,8 @@ using MyWayRazor.Data;
 namespace MyWayRazor.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190128184412_AssistenciasPRM")]
-    partial class MigrationAssistenciasPRM
+    [Migration("20190201211649_AddTablesPlataformaStand")]
+    partial class AddTablesPlataformaStand
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -186,6 +186,47 @@ namespace MyWayRazor.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Analise.AssistenciasPRM", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AC");
+
+                    b.Property<string>("Aeroporto");
+
+                    b.Property<string>("CkIn");
+
+                    b.Property<DateTime>("Data");
+
+                    b.Property<string>("Exit");
+
+                    b.Property<string>("Gate");
+
+                    b.Property<string>("Mov");
+
+                    b.Property<string>("Msg");
+
+                    b.Property<string>("Notif");
+
+                    b.Property<string>("OrigDest");
+
+                    b.Property<string>("Pax");
+
+                    b.Property<string>("SSR");
+
+                    b.Property<string>("Stand");
+
+                    b.Property<string>("Transferencia");
+
+                    b.Property<string>("Voo");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("AssistenciasPRMS");
                 });
 
             modelBuilder.Entity("MyWayRazor.Models.Categoria", b =>
@@ -416,6 +457,56 @@ namespace MyWayRazor.Data.Migrations
                     b.ToTable("Status");
                 });
 
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Plataforma", b =>
+                {
+                    b.Property<int>("PlataformaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<string>("PlataformaN")
+                        .IsRequired();
+
+                    b.HasKey("PlataformaId");
+
+                    b.ToTable("Plataformas");
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Stand", b =>
+                {
+                    b.Property<int>("StandId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<int>("PlataformaId");
+
+                    b.Property<bool>("Remoto");
+
+                    b.Property<string>("StandN")
+                        .IsRequired();
+
+                    b.HasKey("StandId");
+
+                    b.HasIndex("PlataformaId");
+
+                    b.ToTable("Stands");
+                });
+
             modelBuilder.Entity("MyWayRazor.Models.Uh", b =>
                 {
                     b.Property<int>("UhId")
@@ -531,6 +622,14 @@ namespace MyWayRazor.Data.Migrations
                     b.HasOne("MyWayRazor.Models.Uh", "Uh")
                         .WithMany("Colaboradores")
                         .HasForeignKey("UhId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Stand", b =>
+                {
+                    b.HasOne("MyWayRazor.Models.Tabelas.Plataforma", "Plataforma")
+                        .WithMany("Stands")
+                        .HasForeignKey("PlataformaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -22,7 +22,7 @@ namespace MyWayRazor.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MyWayRazor.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyWayRazor.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,140 @@ namespace MyWayRazor.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;CategoriaId&quot;: 1,
+        ///    &quot;CategoriaNome&quot;: &quot;ASSISTENTE A PASSAGEIROS DE MOBILIDADE REDUZIDA&quot;,
+        ///    &quot;CreatedAt&quot;: &quot;2018-10-25T11:23:36.4136761&quot;,
+        ///    &quot;CreatedBy&quot;: &quot;SISTEMA&quot;
+        ///  },
+        ///  {
+        ///    &quot;CategoriaId&quot;: 2,
+        ///    &quot;CategoriaNome&quot;: &quot;TECNICO TRAFEGO ASSISTENCIA ESCALA&quot;,
+        ///    &quot;CreatedAt&quot;: &quot;2018-10-25T11:23:36.4758668&quot;,
+        ///    &quot;CreatedBy&quot;: &quot;SISTEMA&quot;
+        ///  },
+        ///  {
+        ///    &quot;CategoriaId&quot;: 3,
+        ///    &quot;CategoriaNome&quot;: &quot;OPERADOR ASSISTENCIA ESCALA&quot;,
+        ///    &quot;CreatedAt&quot;: &quot;2018-10-25T11:23:36.5156390&quot;,
+        ///    &quot;CreatedBy&quot;: &quot;SISTEM [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string CategoriasJson {
+            get {
+                return ResourceManager.GetString("CategoriasJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;ColaboradorID&quot;:1,&quot;UhId&quot;:1,&quot;DepartamentoId&quot;:1,&quot;NumCartao&quot;:53163,&quot;NumPw&quot;:7785,&quot;Nome&quot;:&quot;ALBERTO MIGUEL FARIA DA COSTA&quot;,&quot;FuncaoId&quot;:8,&quot;EquipaId&quot;:3,&quot;CategoriaId&quot;:1,&quot;HorarioPraticadoId&quot;:1,&quot;HorarioContratadoId&quot;:1,&quot;DataAdmissão&quot;:&quot;2017-04-08T00:00:00&quot;,&quot;DataFim&quot;:&quot;2021-04-07T00:00:00&quot;,&quot;ContratoId&quot;:3,&quot;StatusId&quot;:1,&quot;CreatedAt&quot;:&quot;2018-11-25T00:00:00&quot;,&quot;CreatedBy&quot;:&quot;rui.santos@portway.pt&quot;,&quot;LastUpdatedBy&quot;:&quot;&quot;},{&quot;ColaboradorID&quot;:2,&quot;UhId&quot;:1,&quot;DepartamentoId&quot;:1,&quot;NumCartao&quot;:51706,&quot;NumPw&quot;:6619,&quot;Nome&quot;:&quot;ANA CLARA MARQUES LOPES&quot;,&quot;Funcao [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ColaboradoresJson {
+            get {
+                return ResourceManager.GetString("ColaboradoresJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;ContratoId&quot;:1,&quot;ContratoTipo&quot;:&quot;PERMANENTE&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:36.6371940&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;ContratoId&quot;:2,&quot;ContratoTipo&quot;:&quot;TERMO CERTO&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:36.7121040&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;ContratoId&quot;:3,&quot;ContratoTipo&quot;:&quot;TERMO INCERTO&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:36.7943570&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;ContratoId&quot;:4,&quot;ContratoTipo&quot;:&quot;MULTITEMPO&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:36.8929403&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;}].
+        /// </summary>
+        public static string ContratosJson {
+            get {
+                return ResourceManager.GetString("ContratosJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;DepartamentoId&quot;:1,&quot;DepartamentoNumero&quot;:71680,&quot;DepartamentoNome&quot;:&quot;Lisboa - PMRs&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.0064466&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;}].
+        /// </summary>
+        public static string DepartamentosJson {
+            get {
+                return ResourceManager.GetString("DepartamentosJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;EquipaId&quot;:1,&quot;EquipaNome&quot;:&quot;N\/A&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.1371391&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;EquipaId&quot;:2,&quot;EquipaNome&quot;:&quot;A&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.2570725&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;EquipaId&quot;:3,&quot;EquipaNome&quot;:&quot;B&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.3874794&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;EquipaId&quot;:4,&quot;EquipaNome&quot;:&quot;C&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.5237759&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;}].
+        /// </summary>
+        public static string EquipasJson {
+            get {
+                return ResourceManager.GetString("EquipasJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;FuncaoId&quot;:1,&quot;FuncaoNome&quot;:&quot;COORDENADOR&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.6824260&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;FuncaoId&quot;:2,&quot;FuncaoNome&quot;:&quot;ASSISTENTE ADMINISTRATIVA&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.8470417&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;FuncaoId&quot;:3,&quot;FuncaoNome&quot;:&quot;SUPERVISOR&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:38.0134061&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;FuncaoId&quot;:4,&quot;FuncaoNome&quot;:&quot;ALOCADOR&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:38.1885485&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;FuncaoId&quot;:5,&quot;FuncaoNome&quot;:&quot;ASSISTENTE PMR&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:38. [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string FuncoesJson {
+            get {
+                return ResourceManager.GetString("FuncoesJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;HorarioId&quot;:1,&quot;HorarioHora&quot;:40,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:39.7196886&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;HorarioId&quot;:2,&quot;HorarioHora&quot;:38,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:39.9779922&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;HorarioId&quot;:3,&quot;HorarioHora&quot;:36,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:40.2417707&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;HorarioId&quot;:4,&quot;HorarioHora&quot;:25,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:40.5183892&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;HorarioId&quot;:5,&quot;HorarioHora&quot;:20,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:40.8003868&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;HorarioId&quot;:6,&quot;HorarioHor [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string HorariosJson {
+            get {
+                return ResourceManager.GetString("HorariosJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;PlataformaId&quot;:1,&quot;PlataformaN&quot;:&quot;Plataformas10a14&quot;,&quot;CreatedAt&quot;: &quot;2018-10-25T11:23:39.7196886&quot;,&quot;CreatedBy&quot;: &quot;SISTEMA&quot;},{&quot;PlataformaId&quot;:2,&quot;PlataformaN&quot;:&quot;Plataformas20&quot;,&quot;CreatedAt&quot;: &quot;2018-10-25T11:23:39.7196886&quot;,&quot;CreatedBy&quot;: &quot;SISTEMA&quot;},{&quot;PlataformaId&quot;:3,&quot;PlataformaN&quot;:&quot;Plataformas22&quot;,&quot;CreatedAt&quot;: &quot;2018-10-25T11:23:39.7196886&quot;,&quot;CreatedBy&quot;: &quot;SISTEMA&quot;},{&quot;PlataformaId&quot;:4,&quot;PlataformaN&quot;:&quot;Plataformas30a40&quot;,&quot;CreatedAt&quot;: &quot;2018-10-25T11:23:39.7196886&quot;,&quot;CreatedBy&quot;: &quot;SISTEMA&quot;},{&quot;PlataformaId&quot;:5,&quot;PlataformaN&quot;:&quot;Plataformas4 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string PlataformasJson {
+            get {
+                return ResourceManager.GetString("PlataformasJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///    {
+        ///        &quot;StandId&quot;: 1,
+        ///        &quot;StandN&quot;: &quot;104&quot;,
+        ///        &quot;Remoto&quot;: true,
+        ///        &quot;PlataformaId&quot;: 1,
+        ///        &quot;CreatedAt&quot;: &quot;2018-10-25T11:23:39.7196886&quot;,
+        ///        &quot;CreatedBy&quot;: &quot;SISTEMA&quot;
+        ///    },
+        ///    {
+        ///        &quot;StandId&quot;: 2,
+        ///        &quot;StandN&quot;: &quot;105&quot;,
+        ///        &quot;Remoto&quot;: true,
+        ///        &quot;PlataformaId&quot;: 1,
+        ///        &quot;CreatedAt&quot;: &quot;2018-10-25T11:23:39.7196886&quot;,
+        ///        &quot;CreatedBy&quot;: &quot;SISTEMA&quot;
+        ///    },
+        ///    {
+        ///        &quot;StandId&quot;: 3,
+        ///        &quot;StandN&quot;: &quot;106&quot;,
+        ///        &quot;Remoto&quot;: true,
+        ///        &quot;PlataformaId&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string StandsJson {
+            get {
+                return ResourceManager.GetString("StandsJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;UhId&quot;:1,&quot;IATA&quot;:&quot;LIS&quot;,&quot;UhNome&quot;:&quot;LISBOA&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:42.4371089&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;UhId&quot;:2,&quot;IATA&quot;:&quot;OPO&quot;,&quot;UhNome&quot;:&quot;PORTO&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:42.7844907&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;UhId&quot;:3,&quot;IATA&quot;:&quot;FAO&quot;,&quot;UhNome&quot;:&quot;FARO&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:43.1448285&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;UhId&quot;:4,&quot;IATA&quot;:&quot;FNC&quot;,&quot;UhNome&quot;:&quot;FUNCHAL&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:43.5376776&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;}].
+        /// </summary>
+        public static string UhsJson {
+            get {
+                return ResourceManager.GetString("UhsJson", resourceCulture);
             }
         }
     }

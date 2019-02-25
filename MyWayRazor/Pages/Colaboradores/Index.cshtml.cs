@@ -28,7 +28,6 @@ namespace MyWayRazor.Pages.Colaboradores
                 .Include(c => c.Funcao)
                 .Include(c => c.HorarioContratado)
                 .Include(c => c.HorarioPraticado)
-                .Include(c => c.Status)
                 .Include(c => c.Uh).ToListAsync();
         }
     }

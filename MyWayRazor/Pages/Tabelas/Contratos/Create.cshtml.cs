@@ -31,7 +31,7 @@ namespace MyWayRazor.Pages.Tabelas.Contratos
             }
 
             Contrato.ContratoTipo = Request.Form["Contrato.ContratoTipo"].ToString().ToUpper();
-            Contrato.CreatedAt = DateTime.Now.Date;
+            Contrato.CreatedAt = DateTime.UtcNow.Date;
             Contrato.CreatedBy = User.Identity.Name.ToString();
             _context.Contratos.Add(Contrato);
             await _context.SaveChangesAsync();

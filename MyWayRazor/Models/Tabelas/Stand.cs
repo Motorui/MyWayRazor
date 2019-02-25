@@ -1,21 +1,30 @@
-﻿using MyWayRazor.Models.Atrasos;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyWayRazor.Models.Tabelas
 {
-    public class Stand
+    public class Stand : IBaseEntity
     {
         [Key]
         public int StandId { get; set; }
 
         [Required]
-        [Range(0, 999)]
+        [Range(Int32.MaxValue, 999)]
         [Display(Name = "Stand")]
-        public int NumStand { get; set; }
+        public int StandN { get; set; }
+        public bool Remoto { get; set; }
 
+        [Display(Name = "Plataforma:")]
+        public int PlataformaId { get; set; }
+        public Plataforma Plataforma { get; set; }
+
+        [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
+        public DateTime? CreatedAt { get; set; }
+        [Display(Name = "Registo criado por:", ShortName = "Criado por:")]
+        public string CreatedBy { get; set; }
+        [Display(Name = "Registo atualizado em:", ShortName = "Atualizado em:")]
+        public DateTime? LastUpdatedAt { get; set; }
+        [Display(Name = "Registo atualizado por:", ShortName = "Atualizado por:")]
+        public string LastUpdatedBy { get; set; }
     }
 }

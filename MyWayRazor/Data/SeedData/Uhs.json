@@ -1,0 +1,30 @@
+[
+  {
+    "UhId": 1,
+    "IATA": "LIS",
+    "UhNome": "LISBOA",
+    "CreatedAt": "2018-10-25T11:23:42.4371089",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "UhId": 2,
+    "IATA": "OPO",
+    "UhNome": "PORTO",
+    "CreatedAt": "2018-10-25T11:23:42.7844907",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "UhId": 3,
+    "IATA": "FAO",
+    "UhNome": "FARO",
+    "CreatedAt": "2018-10-25T11:23:43.1448285",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "UhId": 4,
+    "IATA": "FNC",
+    "UhNome": "FUNCHAL",
+    "CreatedAt": "2018-10-25T11:23:43.5376776",
+    "CreatedBy": "SISTEMA"
+  }
+]

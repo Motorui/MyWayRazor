@@ -4,12 +4,105 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row">
-    <div class="col-md-3">
-        <h2></h2>
-        <ul>
-            @*<li><a asp-page="/Colaborador/Index">Colaboradores</a></li>*@
-            @*<li><a asp-page="/Tabelas/Uhs/Index">UH</a></li>*@
-        </ul>
+<section class="content">
+    <div class="box">
+        <div class="box-header">
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Tarefa</th>
+                        <th>Data</th>
+                        <th>Passaram</th>
+                        <th>%</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ToDoList.OrderBy(d => d.CreatedAt).Where(f => f.Done == false))
+                    {
+                    <tr>
+                        <td>
+                            <p class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="@("#collapse"+item.ToDoId)" aria-expanded="true" class="">
+                                    @Html.DisplayFor(modelItem => item.ToDoTittle)
+                                </a>
+                            </p>
+                            <div id="@("collapse"+item.ToDoId)" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                <div class="box-body">
+                                    @Html.DisplayFor(modelItem => item.ToDoText)
+                                    <p>
+                                        Tarefa criada por:
+                                        <a href="mailto:@Html.DisplayFor(modelItem => item.CreatedBy)">
+                                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                                        </a>
+                                        em @Html.DisplayFor(modelItem => item.CreatedAt)
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            @if (item.CreatedAt != null)
+                            {
+                                @item.CreatedAt.Value.ToLocalTime()
+                            }
+                        </td>
+                        <td>
+                            @if (item.CreatedAt != null)
+                            {
+                                var horas = Math.Round((DateTime.UtcNow.ToLocalTime() - item.CreatedAt.Value.ToLocalTime()).TotalHours);
+                                var minutos = (DateTime.UtcNow.ToLocalTime() - item.CreatedAt.Value.ToLocalTime()).Minutes;
+                                @(horas + "h" + minutos)
+                            }
+                        </td>
+                        <td>
+                            <div class="progress progress-xs">
+                                @if (item.CreatedAt != null)
+                                {
+                                    var dateNow = TimeSpan.FromTicks(DateTime.UtcNow.Ticks);
+                                    var dateStart = TimeSpan.FromTicks(item.CreatedAt.Value.Ticks);
+                                    var dateEnd = TimeSpan.FromTicks(item.CreatedAt.Value.AddDays(1).Ticks);
+                                    var percentage = (Math.Round(((dateNow - dateStart) / (dateEnd - dateStart)) * 100));
+                                    var percentageFormated = (percentage.ToString() + "%");
+                                    var format = ((percentage > 75) ? "progress-bar progress-bar-danger" :
+                                        ((percentage > 50) ? "progress-bar progress-bar-warning" : "progress-bar progress-bar-success"));
+                                    <div class="@(format)" style="width: @(percentageFormated)"></div>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <span class="@(item.Done == true ? "label label-success" : "label label-danger")">
+                                @(item.Done == true ? "Arquivado" : "Pendente")
+                            </span>
+                        </td>
+                        <td>
+                            <form asp-action="MarkDone" method="POST">
+                                <input type="checkbox" class="done-checkbox">
+                                <input type="hidden" name="id" value="@item.ToDoId">
+                            </form>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix no-border">
+            <a class="btn btn-default pull-right" href="/ToDoList/Create">
+                <i class="fa fa-plus"></i> Adicionar item
+            </a>
+        </div>
     </div>
+</section>
+@section Scripts
+    {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+}
+<div id="confirmDialog" title="Remove Assignment" hidden>
+    <p>Do you want to save changes </p>
 </div>

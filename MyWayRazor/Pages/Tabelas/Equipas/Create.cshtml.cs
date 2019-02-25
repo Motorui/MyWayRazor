@@ -35,7 +35,7 @@ namespace MyWayRazor.Pages.Tabelas.Equipas
             }
 
             Equipa.EquipaNome = Request.Form["Equipa.EquipaNome"].ToString().ToUpper();
-            Equipa.CreatedAt = DateTime.Now.Date;
+            Equipa.CreatedAt = DateTime.UtcNow.Date;
             Equipa.CreatedBy = User.Identity.Name.ToString();
             _context.Equipas.Add(Equipa);
             await _context.SaveChangesAsync();

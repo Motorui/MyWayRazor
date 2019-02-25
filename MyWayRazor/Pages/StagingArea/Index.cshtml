@@ -1,0 +1,130 @@
+﻿@page
+@model MyWayRazor.Pages.StagingArea.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Staging</h2>
+<h3 class="clearfix">@Model.Message</h3>
+<div class="box">
+    <div class="box-header">
+
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="StagingTbl" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Notif)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Data)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Voo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].OrigDest)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Pax)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].SSR)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].AC)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Stand)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssistenciasPRM[0].Gate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AssistenciasPRM
+                   .OrderBy(d => d.Data)
+          .Where(m => m.Mov == "D" & m.Data >= DateTime.UtcNow)
+          )
+                {
+                    <tr class="@(item.Data <= DateTime.UtcNow.AddMinutes(-90) ? "danger":"null")">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notif)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Voo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrigDest)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pax)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SSR)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Stand)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gate)
+                        </td>
+                        <td>
+                            @*<a asp-action="Create" asp-route-id="@item.ID">Inserir</a>*@
+                            <a asp-page="./Create" asp-route-id="@item.ID">Inserir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+@section Scripts
+    {
+    <script src="~/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#StagingTbl').DataTable(
+                {
+                    language: {
+                        processing: "Processando ...",
+                        search: "Pesquisar:&nbsp;",
+                        lengthMenu: "Mostrar &nbsp;_MENU_&nbsp; items",
+                        info: "A exibir _START_ a _END_ de _TOTAL_ entradas",
+                        infoEmpty: "Não existem items a exibir",
+                        infoFiltered: "(Filtro de um total de _MAX_ entradas)",
+                        infoPostFix: "",
+                        loadingRecords: "Carregando ...",
+                        zeroRecords: "Não existem dados",
+                        emptyTable: "Nenhum dado disponível na tabela",
+                        paginate: {
+                            first: "Primeiro",
+                            previous: "Anterior",
+                            next: "Seguinte",
+                            last: "Último"
+                        },
+                        aria: {
+                            sortAscending: ": ordenar a coluna por ordem crescente",
+                            sortDescending: ": ordenar a coluna por ordem decrescente"
+                        }
+                    }
+                }
+            );
+        });
+    </script>
+}

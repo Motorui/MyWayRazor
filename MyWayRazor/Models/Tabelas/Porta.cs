@@ -1,17 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MyWayRazor.Models
+namespace MyWayRazor.Models.Tabelas
 {
-    [Table("Status")]
-    public class Status : IBaseEntity
+    public class Porta : IBaseEntity
     {
         [Key]
-        public int StatusID { get; set; }
-        [Required, MaxLength(25), Display(Name = "Status:")]
-        public string Statuses { get; set; }
+        public int PortaID { get; set; }
+
+        [Required]
+        [Display(Name = "Porta")]
+        public string PortaNum { get; set; }
+
+        [Display(Name = "Deslocação")]
+        public int PortaTempo { get; set; }
+
+        //bool Schengen 0 NãoSchengen 1
+        [Display(Name = "Schengen?")]
+        public bool Schengen { get; set; }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }
@@ -21,7 +27,5 @@ namespace MyWayRazor.Models
         public DateTime? LastUpdatedAt { get; set; }
         [Display(Name = "Registo atualizado por:", ShortName = "Atualizado por:")]
         public string LastUpdatedBy { get; set; }
-
-        public ICollection<Colaborador> Colaboradores { get; set; }
     }
 }

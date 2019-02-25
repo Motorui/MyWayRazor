@@ -44,7 +44,7 @@ namespace MyWayRazor.Pages.Tabelas.Contratos
             }
 
             Contrato.ContratoTipo = Request.Form["Contrato.ContratoTipo"].ToString().ToUpper();
-            Contrato.LastUpdatedAt = DateTime.Now.Date;
+            Contrato.LastUpdatedAt = DateTime.UtcNow.Date;
             Contrato.LastUpdatedBy = User.Identity.Name.ToString();
             _context.Attach(Contrato).State = EntityState.Modified;
 

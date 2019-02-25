@@ -47,7 +47,7 @@ namespace MyWayRazor.Pages.Tabelas.Categorias
             }
 
             Categoria.CategoriaNome = Request.Form["Categoria.CategoriaNome"].ToString().ToUpper();
-            Categoria.LastUpdatedAt = DateTime.Now.Date;
+            Categoria.LastUpdatedAt = DateTime.UtcNow.Date;
             Categoria.LastUpdatedBy = User.Identity.Name.ToString();
             _context.Attach(Categoria).State = EntityState.Modified;
 

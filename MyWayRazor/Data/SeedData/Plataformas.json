@@ -1,0 +1,38 @@
+[
+  {
+    "PlataformaId": 1,
+    "PlataformaN": "Plataformas10a14",
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "PlataformaId": 2,
+    "PlataformaN": "Plataformas20",
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "PlataformaId": 3,
+    "PlataformaN": "Plataformas22",
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "PlataformaId": 4,
+    "PlataformaN": "Plataformas30a40",
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "PlataformaId": 5,
+    "PlataformaN": "Plataformas41a60",
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "PlataformaId": 6,
+    "PlataformaN": "Plataformas70a80",
+    "CreatedAt": "2018-10-25T11:23:39.7196886",
+    "CreatedBy": "SISTEMA"
+  }
+]

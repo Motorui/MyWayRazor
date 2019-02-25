@@ -1,0 +1,26 @@
+[
+  {
+    "EquipaId": 1,
+    "EquipaNome": "N\/A",
+    "CreatedAt": "2018-10-25T11:23:37.1371391",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "EquipaId": 2,
+    "EquipaNome": "A",
+    "CreatedAt": "2018-10-25T11:23:37.2570725",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "EquipaId": 3,
+    "EquipaNome": "B",
+    "CreatedAt": "2018-10-25T11:23:37.3874794",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "EquipaId": 4,
+    "EquipaNome": "C",
+    "CreatedAt": "2018-10-25T11:23:37.5237759",
+    "CreatedBy": "SISTEMA"
+  }
+]

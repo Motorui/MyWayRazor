@@ -47,7 +47,7 @@ namespace MyWayRazor.Pages.Tabelas.Equipas
             }
 
             Equipa.EquipaNome = Request.Form["Equipa.EquipaNome"].ToString().ToUpper();
-            Equipa.LastUpdatedAt = DateTime.Now.Date;
+            Equipa.LastUpdatedAt = DateTime.UtcNow.Date;
             Equipa.LastUpdatedBy = User.Identity.Name.ToString();
             _context.Attach(Equipa).State = EntityState.Modified;
 

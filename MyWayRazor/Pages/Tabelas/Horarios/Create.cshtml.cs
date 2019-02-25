@@ -34,7 +34,7 @@ namespace MyWayRazor.Pages.Tabelas.Horarios
                 return Page();
             }
 
-            Horario.CreatedAt = DateTime.Now.Date;
+            Horario.CreatedAt = DateTime.UtcNow.Date;
             Horario.CreatedBy = User.Identity.Name.ToString();
             _context.Horarios.Add(Horario);
             await _context.SaveChangesAsync();

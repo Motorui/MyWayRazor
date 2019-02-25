@@ -59,6 +59,25 @@ namespace MyWayRazor.Areas.Identity.Data
                     "Supervisor").Wait();
                 }
             }
+
+            if (userManager.FindByNameAsync("alsmywaysup@ana.pt").Result == null)
+            {
+                ApplicationUser user = new ApplicationUser
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    UserName = "alsmywaysup@ana.pt",
+                    Email = "alsmywaysup@ana.pt",
+                    Name = "Supervisão MyWay"
+                };
+
+                IdentityResult result = userManager.CreateAsync(user, "123456").Result;
+
+                if (result.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user,
+                    "Supervisor").Wait();
+                }
+            }
         }
 
         public static void SeedRoles (RoleManager<ApplicationRole> roleManager)

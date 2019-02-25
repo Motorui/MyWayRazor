@@ -36,7 +36,7 @@ namespace MyWayRazor.Pages.Tabelas.Uhs
 
             Uh.IATA = Request.Form["Uh.IATA"].ToString().ToUpper();
             Uh.UhNome = Request.Form["Uh.UhNome"].ToString().ToUpper();
-            Uh.CreatedAt = DateTime.Now.Date;
+            Uh.CreatedAt = DateTime.UtcNow.Date;
             Uh.CreatedBy = User.Identity.Name.ToString();
             _context.Uhs.Add(Uh);
             await _context.SaveChangesAsync();

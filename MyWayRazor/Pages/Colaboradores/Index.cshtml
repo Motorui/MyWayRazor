@@ -40,9 +40,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Colaborador[0].Contrato)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Colaborador[0].Status)
-                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -73,9 +70,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Contrato.ContratoTipo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status.Statuses)
                         </td>
                         <td>
                             <a asp-page="./Edit" asp-route-id="@item.ColaboradorID">Editar</a> |

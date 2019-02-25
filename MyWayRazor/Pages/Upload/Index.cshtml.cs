@@ -1,16 +1,18 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using MyWayRazor.Data;
-using ExcelDataReader;
+﻿using ExcelDataReader;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MyWayRazor.Data;
+using MyWayRazor.Helpers;
 using MyWayRazor.Models.Analise;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Upload
 {
@@ -18,37 +20,41 @@ namespace MyWayRazor.Pages.Upload
     {
         private readonly ApplicationDbContext db;
         private readonly string folderName = "Temp";
-        private string Mensagem { get; set; }
         private static readonly string[] supportedTypes = new[] { "xls", "xlsx" };
-        private IHostingEnvironment _environment;
-        private readonly ILogger _logger;
+        private IHostingEnvironment env;
 
         public IndexModel(IHostingEnvironment environment, ILogger<IndexModel> logger, ApplicationDbContext context)
         {
-            _environment = environment;
-            _logger = logger;
+            env = environment;
             db = context;
         }
 
         public void OnGet()
         {
-            DelDir(folderName);
-            TruncateTable();
+            //DelDir(folderName);
+            //TruncateTable();
         }
 
-        [BindProperty]
+        [BindProperty, Required(ErrorMessage = "Por favor selecione um ficheiro!"), Attachment]
         public IFormFile Upload { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
-            Mensagem = "";
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
             if (Upload != null && Upload.Length > 0)
             {
-                var myFile = Path.Combine(_environment.ContentRootPath, folderName, Upload.FileName);
+                TruncateTable();
+
+                var myFile = Path.Combine(env.ContentRootPath, folderName, Upload.FileName);
                 var fileExt = Path.GetExtension(Upload.FileName).Substring(1);
 
                 if (!supportedTypes.Contains(fileExt))
                 {
-                    Mensagem = "Tipo de ficheiro não permitido, apenas aceita ficheiros Excel";
+                    ModelState.AddModelError(string.Empty,
+                        "Tipo de ficheiro não permitido, apenas aceita ficheiros Excel");
                 }
                 else
                 {
@@ -58,35 +64,50 @@ namespace MyWayRazor.Pages.Upload
                         {
                             await Upload.CopyToAsync(fileStream);
                             fileStream.Close();
+                        }
 
-                            var stream = System.IO.File.Open(myFile, FileMode.Open, FileAccess.Read);
+                        var stream = System.IO.File.Open(myFile, FileMode.Open, FileAccess.Read);
 
-                            if (fileExt == ".xls")
+                        using (var excelStream = ExcelReaderFactory.CreateReader(stream))
+                        {
+                            var excelTable = excelStream.AsDataSet().Tables[0];
+                            if (
+                                excelTable.Rows[0].ItemArray[0].ToString() != null
+                                && !((string)excelTable.Rows[0].ItemArray[0]).Contains("Aeroporto")
+                                && !((string)excelTable.Rows[0].ItemArray[1]).Contains("Msg")
+                                && !((string)excelTable.Rows[0].ItemArray[2]).Contains("Notif")
+                                && !((string)excelTable.Rows[0].ItemArray[3]).Contains("Data")
+                                && !((string)excelTable.Rows[0].ItemArray[4]).Contains("Voo")
+                                && !((string)excelTable.Rows[0].ItemArray[5]).Contains("Mov")
+                                && !((string)excelTable.Rows[0].ItemArray[6]).Contains("Orig Dest")
+                                && !((string)excelTable.Rows[0].ItemArray[7]).Contains("Pax")
+                                && !((string)excelTable.Rows[0].ItemArray[8]).Contains("SSR")
+                                && !((string)excelTable.Rows[0].ItemArray[9]).Contains("AC")
+                                && !((string)excelTable.Rows[0].ItemArray[10]).Contains("Stand")
+                                && !((string)excelTable.Rows[0].ItemArray[11]).Contains("Exit")
+                                && !((string)excelTable.Rows[0].ItemArray[12]).Contains("Ck In")
+                                )
                             {
-                                using (var excelReader = ExcelReaderFactory.CreateBinaryReader(stream))
-                                {
-                                    AddExcelToDB(excelReader);
-                                }
+                                ModelState.AddModelError("Error",
+                                    "Por favor envie o ficheiro correto o cabeçalho não corresponde");
+                                return Page();
                             }
                             else
                             {
-                                using (var excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream))
-                                {
-                                    AddExcelToDB(excelReader);
-                                }
+                                AddExcelToDB(excelStream);
                             }
+
                         }
                     }
                 }
             }
             else
             {
-                Mensagem = "Necessita de selecionar um ficheiro";
+                ModelState.AddModelError(string.Empty,
+                    "Necessita de selecionar um ficheiro");
             }
 
-            if (Mensagem.Length > 0)
-                ModelState.AddModelError("erro", Mensagem);
-
+            //return RedirectToPage("/Upload/Index");
             return RedirectToPage("/Analise/Index");
 
         }
@@ -97,13 +118,6 @@ namespace MyWayRazor.Pages.Upload
 
             for (var i = 1; i < excelTable.Rows.Count; i++)
             {
-                if (!((string)excelTable.Rows[0].ItemArray[0]).Contains("Aeroporto") | !((string)excelTable.Rows[0].ItemArray[1]).Contains("Msg"))
-                {
-                    ModelState.AddModelError("erro",
-                        "Por favor envie o ficheiro correto o cabeçalho não corresponde");
-                    break;
-                }
-
                 var aeroporto = (string)excelTable.Rows[i].ItemArray[0];
                 var msg = (string)excelTable.Rows[i].ItemArray[1];
                 var notif = (string)excelTable.Rows[i].ItemArray[2];
@@ -138,18 +152,26 @@ namespace MyWayRazor.Pages.Upload
                     Gate = gate,
                     Transferencia = transferencia
                 };
+                var current = db.AssistenciasPRMS.Find(currentExcel.Data, currentExcel.Voo, currentExcel.Pax);
+                if (current == null)
+                {
+                    db.AssistenciasPRMS.Add(currentExcel);
+                }
+                else
+                {
+                    db.Entry(current).CurrentValues.SetValues(currentExcel);
+                }
 
-                this.db.AssistenciasPRMS.Add(currentExcel);
             }
 
-            this.db.SaveChanges();
+            db.SaveChanges();
         }
 
         private void DelDir(string fn)
         {
             try
             {
-                string contentRootPath = _environment.ContentRootPath;
+                string contentRootPath = env.ContentRootPath;
                 var myPath = Path.Combine(contentRootPath, fn);
 
                 if (!Directory.Exists(myPath))
@@ -177,7 +199,7 @@ namespace MyWayRazor.Pages.Upload
             try
             {
                 db.Database.ExecuteSqlCommand("Delete from AssistenciasPRMS");
-            }            
+            }
             catch (Exception)
             {
                 throw;

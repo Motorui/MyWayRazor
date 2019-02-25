@@ -44,7 +44,7 @@ namespace MyWayRazor.Pages.Tabelas.Departamentos
             }
 
             Departamento.DepartamentoNome = Request.Form["Departamento.DepartamentoNome"].ToString().ToUpper();
-            Departamento.LastUpdatedAt = DateTime.Now.Date;
+            Departamento.LastUpdatedAt = DateTime.UtcNow.Date;
             Departamento.LastUpdatedBy = User.Identity.Name.ToString();
             _context.Attach(Departamento).State = EntityState.Modified;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWayRazor.Models.Tabelas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -57,10 +58,6 @@ namespace MyWayRazor.Models
         [Display(Name = "Contrato:")]
         public int ContratoId { get; set; }
         public Contrato Contrato { get; set; }
-        //link com a tabela Status
-        [Display(Name = "Status:")]
-        public int StatusId { get; set; }
-        public Status Status { get; set; }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }

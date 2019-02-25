@@ -1,101 +1,842 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
-		Microsoft ResX Schema
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
 
-		Version 1.3
-
-		The primary goals of this format is to allow a simple XML format 
-		that is mostly human readable. The generation and parsing of the 
-		various data types are done through the TypeConverter classes 
-		associated with the data types.
-
-		Example:
-
-		... ado.net/XML headers & schema ...
-		<resheader name="resmimetype">text/microsoft-resx</resheader>
-		<resheader name="version">1.3</resheader>
-		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-		<data name="Name1">this is my long string</data>
-		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-			[base64 mime encoded serialized .NET Framework object]
-		</data>
-		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-			[base64 mime encoded string representing a byte array form of the .NET Framework object]
-		</data>
-
-		There are any number of "resheader" rows that contain simple 
-		name/value pairs.
-
-		Each data row contains a name, and value. The row also contains a 
-		type or mimetype. Type corresponds to a .NET class that support 
-		text/value conversion through the TypeConverter architecture. 
-		Classes that don't support this are serialized and stored with the 
-		mimetype set.
-
-		The mimetype is used for serialized objects, and tells the 
-		ResXResourceReader how to depersist the object. This is currently not 
-		extensible. For a given mimetype the value must be set accordingly:
-
-		Note - application/x-microsoft.net.object.binary.base64 is the format 
-		that the ResXResourceWriter will generate, however the reader can 
-		read any of the formats listed below.
-
-		mimetype: application/x-microsoft.net.object.binary.base64
-		value   : The object must be serialized with 
-			: System.Serialization.Formatters.Binary.BinaryFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.soap.base64
-		value   : The object must be serialized with 
-			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.bytearray.base64
-		value   : The object must be serialized into a byte array 
-			: using a System.ComponentModel.TypeConverter
-			: and then encoded with base64 encoding.
-	-->
-	
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>1.3</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CategoriasJson" xml:space="preserve">
+    <value>[
+  {
+    "CategoriaId": 1,
+    "CategoriaNome": "ASSISTENTE A PASSAGEIROS DE MOBILIDADE REDUZIDA",
+    "CreatedAt": "2018-10-25T11:23:36.4136761",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "CategoriaId": 2,
+    "CategoriaNome": "TECNICO TRAFEGO ASSISTENCIA ESCALA",
+    "CreatedAt": "2018-10-25T11:23:36.4758668",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "CategoriaId": 3,
+    "CategoriaNome": "OPERADOR ASSISTENCIA ESCALA",
+    "CreatedAt": "2018-10-25T11:23:36.5156390",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "CategoriaId": 4,
+    "CategoriaNome": "TECNICO",
+    "CreatedAt": "2018-10-25T11:23:36.5656321",
+    "CreatedBy": "SISTEMA"
+  }
+]</value>
+    <comment>Seed de categorias profissionais</comment>
+  </data>
+  <data name="ColaboradoresJson" xml:space="preserve">
+    <value>[{"ColaboradorID":1,"UhId":1,"DepartamentoId":1,"NumCartao":53163,"NumPw":7785,"Nome":"ALBERTO MIGUEL FARIA DA COSTA","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-04-08T00:00:00","DataFim":"2021-04-07T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":2,"UhId":1,"DepartamentoId":1,"NumCartao":51706,"NumPw":6619,"Nome":"ANA CLARA MARQUES LOPES","FuncaoId":3,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-05-01T00:00:00","DataFim":"2019-04-30T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":3,"UhId":1,"DepartamentoId":1,"NumCartao":51707,"NumPw":6622,"Nome":"ANA FLOR PEREIRA NEVES","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-05-01T00:00:00","DataFim":"2019-04-30T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":4,"UhId":1,"DepartamentoId":1,"NumCartao":43872,"NumPw":5382,"Nome":"ANTONIO ANGELO VITORETTI","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-07-15T00:00:00","DataFim":"2016-07-14T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":5,"UhId":1,"DepartamentoId":1,"NumCartao":37797,"NumPw":5057,"Nome":"ANTONIO JORGE BAPTISTA DA ROCHA","FuncaoId":4,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-09-11T00:00:00","DataFim":"2014-09-10T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":6,"UhId":1,"DepartamentoId":1,"NumCartao":50544,"NumPw":6627,"Nome":"ANTÓNIO JOSÉ SANTOS ALVES","FuncaoId":4,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-05-01T00:00:00","DataFim":"2019-04-30T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":7,"UhId":1,"DepartamentoId":1,"NumCartao":51266,"NumPw":5104,"Nome":"ANTONIO MIGUEL FERNANDES CAPELO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":5,"DataAdmissão":"2011-02-01T00:00:00","DataFim":"2015-01-31T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":8,"UhId":1,"DepartamentoId":1,"NumCartao":31271,"NumPw":6070,"Nome":"ANTÓNIO MIGUEL RODRIGUES SILVA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-05-01T00:00:00","DataFim":"2018-04-30T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":9,"UhId":1,"DepartamentoId":1,"NumCartao":6296,"NumPw":6264,"Nome":"BRUNO RICARDO ABADESSO NUNES SILVA","FuncaoId":4,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-11-10T00:00:00","DataFim":"2018-11-09T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":10,"UhId":1,"DepartamentoId":1,"NumCartao":49770,"NumPw":6798,"Nome":"CARLOS ALBERTO DOS SANTOS LAMEIRAS","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2015-09-25T00:00:00","DataFim":"2019-09-24T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":11,"UhId":1,"DepartamentoId":1,"NumCartao":54526,"NumPw":7020,"Nome":"CARLOS MANUEL NUNES TIAGO","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-05-16T00:00:00","DataFim":"2020-05-15T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":12,"UhId":1,"DepartamentoId":1,"NumCartao":44662,"NumPw":5402,"Nome":"CIPRIAN GAVRILIUC","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-11-05T00:00:00","DataFim":"2016-11-04T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":13,"UhId":1,"DepartamentoId":1,"NumCartao":52204,"NumPw":7028,"Nome":"FÁBIO FILIPE PINTO BRANCO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-05-22T00:00:00","DataFim":"2020-05-21T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":14,"UhId":1,"DepartamentoId":1,"NumCartao":48518,"NumPw":5858,"Nome":"FÁBIO MIGUEL FERREIRA MOTA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-04-01T00:00:00","DataFim":"2018-03-31T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":15,"UhId":1,"DepartamentoId":1,"NumCartao":46018,"NumPw":5855,"Nome":"FABIO RAFAEL RATO VARELA","FuncaoId":3,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-04-01T00:00:00","DataFim":"2018-03-31T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":16,"UhId":1,"DepartamentoId":1,"NumCartao":48890,"NumPw":6074,"Nome":"FERNANDO PEDRO VIDEIRA VIANA RODRIGUES","FuncaoId":4,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-05-01T00:00:00","DataFim":"2018-04-30T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":17,"UhId":1,"DepartamentoId":1,"NumCartao":48511,"NumPw":6061,"Nome":"FILIPE JOAQUIM ARAUJO DE MELO ALVES","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-05-01T00:00:00","DataFim":"2018-04-30T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":18,"UhId":1,"DepartamentoId":1,"NumCartao":13401,"NumPw":5213,"Nome":"GIVANILDO ALVES DA SILVA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2011-06-12T00:00:00","DataFim":"2015-06-11T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":19,"UhId":1,"DepartamentoId":1,"NumCartao":22501,"NumPw":6628,"Nome":"GONÇALO SANTOS NUNES DE VASCONCELOS E MENESES","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":6,"DataAdmissão":"2015-05-01T00:00:00","DataFim":"2019-04-30T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":20,"UhId":1,"DepartamentoId":1,"NumCartao":28358,"NumPw":4513,"Nome":"HENRIQUE MANUEL DA ENCARNAÇAO RAMIRES DOS SANTOS","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-03-24T00:00:00","DataFim":"2016-03-23T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":21,"UhId":1,"DepartamentoId":1,"NumCartao":46701,"NumPw":5756,"Nome":"JAIME MAGNO MORGADO","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2013-06-07T00:00:00","DataFim":"2017-06-06T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":22,"UhId":1,"DepartamentoId":1,"NumCartao":44598,"NumPw":5406,"Nome":"JAIME NELSON DOS SANTOS PINHO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-11-29T00:00:00","DataFim":"2016-11-28T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":23,"UhId":1,"DepartamentoId":1,"NumCartao":32660,"NumPw":6625,"Nome":"JOÃO CARLOS VIEIRA CORREIA","FuncaoId":3,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-05-01T00:00:00","DataFim":"2019-04-30T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":24,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":5675,"Nome":"JOAO PEDRO MARQUES GERARDO","FuncaoId":1,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2013-04-22T00:00:00","DataFim":"2017-04-21T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":25,"UhId":1,"DepartamentoId":1,"NumCartao":56158,"NumPw":7600,"Nome":"JOÃO PEDRO QUINTELA ALVES SILVA","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-12-16T00:00:00","DataFim":"2020-12-15T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":26,"UhId":1,"DepartamentoId":1,"NumCartao":47307,"NumPw":5772,"Nome":"JORGE MANUEL BERNARDO RIBEIRO","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2013-11-10T00:00:00","DataFim":"2017-11-09T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":27,"UhId":1,"DepartamentoId":1,"NumCartao":37315,"NumPw":6077,"Nome":"LUÍS EDUARDO BARRETO GONÇALVES","FuncaoId":3,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-05-07T00:00:00","DataFim":"2018-05-06T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":28,"UhId":1,"DepartamentoId":1,"NumCartao":16048,"NumPw":6621,"Nome":"LUÍS FERNANDO MARTINS DIAS","FuncaoId":3,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-05-01T00:00:00","DataFim":"2019-04-30T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":29,"UhId":1,"DepartamentoId":1,"NumCartao":52174,"NumPw":6766,"Nome":"LUÍS FILIPE OLIVEIRA DE SOUSA","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-06-01T00:00:00","DataFim":"2019-05-31T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":30,"UhId":1,"DepartamentoId":1,"NumCartao":38881,"NumPw":7599,"Nome":"MÁRCIA DOS SANTOS MENDES","FuncaoId":3,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-12-16T00:00:00","DataFim":"2020-12-15T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":31,"UhId":1,"DepartamentoId":1,"NumCartao":52178,"NumPw":6768,"Nome":"MARCOS PAULO ANDRADE RODRIGUES","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-06-01T00:00:00","DataFim":"2019-05-31T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":32,"UhId":1,"DepartamentoId":1,"NumCartao":37099,"NumPw":5061,"Nome":"MIGUEL BRANDAO DE MACEDO SANTOS","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-09-04T00:00:00","DataFim":"2014-09-03T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":33,"UhId":1,"DepartamentoId":1,"NumCartao":40579,"NumPw":5235,"Nome":"NELSON PEREIRA DOS SANTOS MARQUES","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2011-09-21T00:00:00","DataFim":"2015-09-20T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":34,"UhId":1,"DepartamentoId":1,"NumCartao":54538,"NumPw":7019,"Nome":"NUNO CARLOS PEREIRA GODINHO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-05-22T00:00:00","DataFim":"2020-05-21T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":35,"UhId":1,"DepartamentoId":1,"NumCartao":57624,"NumPw":7871,"Nome":"NUNO GONÇALO VENTURA ROCHA","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-05-19T00:00:00","DataFim":"2021-05-18T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":36,"UhId":1,"DepartamentoId":1,"NumCartao":57621,"NumPw":7974,"Nome":"NUNO MIGUEL DUARTE GOMES","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-01T00:00:00","DataFim":"2021-05-31T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":37,"UhId":1,"DepartamentoId":1,"NumCartao":46696,"NumPw":5757,"Nome":"NUNO MIGUEL GONÇALVES FRANCO","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2013-06-16T00:00:00","DataFim":"2017-06-15T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":38,"UhId":1,"DepartamentoId":1,"NumCartao":36193,"NumPw":5325,"Nome":"OSCAR ZEFERINO BARRAL PEREIRA DA SILVA","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-03-21T00:00:00","DataFim":"2016-03-20T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":39,"UhId":1,"DepartamentoId":1,"NumCartao":58138,"NumPw":7975,"Nome":"PAULO ADRIANO MATEUS RIBEIRO","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-01T00:00:00","DataFim":"2021-05-31T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":40,"UhId":1,"DepartamentoId":1,"NumCartao":48948,"NumPw":6767,"Nome":"PAULO ALEXANDRE MIRANDA DE MATOS","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-06-01T00:00:00","DataFim":"2019-05-31T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":41,"UhId":1,"DepartamentoId":1,"NumCartao":53556,"NumPw":7017,"Nome":"PAULO JORGE DE CARVALHO VALERIO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-05-19T00:00:00","DataFim":"2020-05-18T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":42,"UhId":1,"DepartamentoId":1,"NumCartao":51718,"NumPw":6599,"Nome":"PAULO JORGE PIRES LOUREIRO","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":6,"DataAdmissão":"2015-04-23T00:00:00","DataFim":"2019-04-22T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":43,"UhId":1,"DepartamentoId":1,"NumCartao":47316,"NumPw":5907,"Nome":"PAULO MIGUEL CARMONA GROU","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-04-05T00:00:00","DataFim":"2018-04-04T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":44,"UhId":1,"DepartamentoId":1,"NumCartao":42704,"NumPw":5326,"Nome":"PEDRO FILIPE RAPOSO SANTOS","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-03-21T00:00:00","DataFim":"2016-03-20T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":45,"UhId":1,"DepartamentoId":1,"NumCartao":40516,"NumPw":5383,"Nome":"PEDRO MIGUEL LOUREIRO DOS SANTOS","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-07-23T00:00:00","DataFim":"2016-07-22T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":46,"UhId":1,"DepartamentoId":1,"NumCartao":17068,"NumPw":3564,"Nome":"PEDRO RICARDO GAMBOA PEREIRA","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2013-10-09T00:00:00","DataFim":"2017-10-08T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":47,"UhId":1,"DepartamentoId":1,"NumCartao":50549,"NumPw":6296,"Nome":"RICARDO MIGUEL SUBTIL PAULINO","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2014-12-12T00:00:00","DataFim":"2018-12-11T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":48,"UhId":1,"DepartamentoId":1,"NumCartao":28935,"NumPw":5012,"Nome":"RODOLFO GOMES SANTOS","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-04-28T00:00:00","DataFim":"2019-04-27T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":49,"UhId":1,"DepartamentoId":1,"NumCartao":54610,"NumPw":7022,"Nome":"RODRIGO NASCIMENTO SILVA LEMOS","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-05-22T00:00:00","DataFim":"2020-05-21T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":50,"UhId":1,"DepartamentoId":1,"NumCartao":42556,"NumPw":5324,"Nome":"RUBEN SAMUEL DE OLIVEIRA ROCHA","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-03-21T00:00:00","DataFim":"2016-03-20T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":51,"UhId":1,"DepartamentoId":1,"NumCartao":21869,"NumPw":6765,"Nome":"RUI MANUEL CAMELO QUINTAS","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-06-01T00:00:00","DataFim":"2019-05-31T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":52,"UhId":1,"DepartamentoId":1,"NumCartao":53540,"NumPw":6848,"Nome":"RUI MIGUEL MEDINA SILVA","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-03-25T00:00:00","DataFim":"2020-03-24T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":53,"UhId":1,"DepartamentoId":1,"NumCartao":46699,"NumPw":5758,"Nome":"RUI PEDRO DE OLIVEIRA CARDOSO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2013-07-01T00:00:00","DataFim":"2017-06-30T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":54,"UhId":1,"DepartamentoId":1,"NumCartao":50542,"NumPw":6266,"Nome":"SANDRO MIGUEL GUINCHO FERREIRA","FuncaoId":4,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-11-16T00:00:00","DataFim":"2018-11-15T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":55,"UhId":1,"DepartamentoId":1,"NumCartao":53549,"NumPw":6812,"Nome":"SÉRGIO FILIPE GOMES RODRIGUES","FuncaoId":3,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":5,"DataAdmissão":"2016-01-08T00:00:00","DataFim":"2020-01-07T00:00:00","ContratoId":3,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":56,"UhId":1,"DepartamentoId":1,"NumCartao":51721,"NumPw":6600,"Nome":"SÉRGIO LUÍS BRITO FARINHA","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2015-04-23T00:00:00","DataFim":"2019-04-22T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":57,"UhId":1,"DepartamentoId":1,"NumCartao":42778,"NumPw":5328,"Nome":"SERGIO MIGUEL DOS SANTOS HENRIQUE","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-03-24T00:00:00","DataFim":"2016-03-23T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":58,"UhId":1,"DepartamentoId":1,"NumCartao":52177,"NumPw":6764,"Nome":"SÉRGIO MIGUEL MARIA PEREIRA","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-06-01T00:00:00","DataFim":"2019-05-31T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":59,"UhId":1,"DepartamentoId":1,"NumCartao":52180,"NumPw":6763,"Nome":"SUSANA CRISTINA PEREIRA DA LUZ","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-06-01T00:00:00","DataFim":"2019-05-31T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":60,"UhId":1,"DepartamentoId":1,"NumCartao":43825,"NumPw":5419,"Nome":"TIAGO LUIS FERRÃO DA SILVA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2013-01-21T00:00:00","DataFim":"2017-01-20T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":61,"UhId":1,"DepartamentoId":1,"NumCartao":48887,"NumPw":6065,"Nome":"TIAGO PIMENTA CORTEGAÇA","FuncaoId":3,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2014-05-01T00:00:00","DataFim":"2018-04-30T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":62,"UhId":1,"DepartamentoId":1,"NumCartao":46137,"NumPw":6624,"Nome":"VASCO ANDRÉ FIGUEIREDO DA SILVA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2015-05-01T00:00:00","DataFim":"2019-04-30T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":63,"UhId":1,"DepartamentoId":1,"NumCartao":43826,"NumPw":5379,"Nome":"VITOR HUGO CARRILHO DA SILVA","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-06-28T00:00:00","DataFim":"2016-06-27T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":64,"UhId":1,"DepartamentoId":1,"NumCartao":46212,"NumPw":6601,"Nome":"WILLIAM SILVA GOMES JUNIOR","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2015-04-27T00:00:00","DataFim":"2019-04-26T00:00:00","ContratoId":3,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":65,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":8356,"Nome":"ANA RITA DE MELO SANTOS DA CRUZ","FuncaoId":9,"EquipaId":1,"CategoriaId":4,"HorarioPraticadoId":2,"HorarioContratadoId":2,"DataAdmissão":"2018-09-10T00:00:00","DataFim":"2019-09-09T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":66,"UhId":1,"DepartamentoId":1,"NumCartao":71821,"NumPw":8324,"Nome":"ANDRÉ DE SOUSA FARIA COSTA","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":67,"UhId":1,"DepartamentoId":1,"NumCartao":58443,"NumPw":8222,"Nome":"DENISE ALEXANDRA MADUEÑO FERNANDES","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":68,"UhId":1,"DepartamentoId":1,"NumCartao":71903,"NumPw":8337,"Nome":"EDILSON CARLOS BORGES BARROS SILVA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-07-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":69,"UhId":1,"DepartamentoId":1,"NumCartao":71824,"NumPw":8295,"Nome":"GONÇALO LOPES FONSECA","FuncaoId":4,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":70,"UhId":1,"DepartamentoId":1,"NumCartao":49732,"NumPw":8338,"Nome":"HÉLIO MIGUEL MAGALHAES BARBOSA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-07-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":71,"UhId":1,"DepartamentoId":1,"NumCartao":71826,"NumPw":8319,"Nome":"HUGO MIGUEL RODRIGUES MENDES","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-11T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":72,"UhId":1,"DepartamentoId":1,"NumCartao":58439,"NumPw":6811,"Nome":"JOÃO JOSÉ HORTA NOBRE","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2018-07-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":73,"UhId":1,"DepartamentoId":1,"NumCartao":70452,"NumPw":8297,"Nome":"JORGE MANUEL TEIXEIRA NETO","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":74,"UhId":1,"DepartamentoId":1,"NumCartao":71831,"NumPw":8298,"Nome":"LEANDRO DE SOUSA MARTINS","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":75,"UhId":1,"DepartamentoId":1,"NumCartao":58450,"NumPw":8223,"Nome":"MÁRCIO IVO FERNANDES DOS SANTOS","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":76,"UhId":1,"DepartamentoId":1,"NumCartao":58452,"NumPw":8325,"Nome":"PAULO JORGE ANTUNES DA SILVA","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":77,"UhId":1,"DepartamentoId":1,"NumCartao":71104,"NumPw":8336,"Nome":"PAULO JORGE DE AGUAIR ROSALIS","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-07-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":78,"UhId":1,"DepartamentoId":1,"NumCartao":47309,"NumPw":8355,"Nome":"PAULO JORGE DE BRITO DUARTE","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-08-11T00:00:00","DataFim":"2018-11-10T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":79,"UhId":1,"DepartamentoId":1,"NumCartao":71105,"NumPw":8226,"Nome":"PAULO JORGE MILEU TEIXEIRA","FuncaoId":4,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":80,"UhId":1,"DepartamentoId":1,"NumCartao":51401,"NumPw":8229,"Nome":"PEDRO CARVALHO SANDE","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":81,"UhId":1,"DepartamentoId":1,"NumCartao":71841,"NumPw":6102,"Nome":"PEDRO DIOGO DOS SANTOS AMARAL","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-07-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":82,"UhId":1,"DepartamentoId":1,"NumCartao":58167,"NumPw":8224,"Nome":"RICARDO RUA SOL","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":83,"UhId":1,"DepartamentoId":1,"NumCartao":55249,"NumPw":8294,"Nome":"SÍLVIA CARLA MIRANDA DE SOUSA","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":84,"UhId":1,"DepartamentoId":1,"NumCartao":71106,"NumPw":8227,"Nome":"VERA MÓNICA MOREIRA MARTINS","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":85,"UhId":1,"DepartamentoId":1,"NumCartao":54236,"NumPw":8317,"Nome":"VÍTOR MANUEL DOS SANTOS LAMEIRAS","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":2,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":86,"UhId":1,"DepartamentoId":1,"NumCartao":40512,"NumPw":5212,"Nome":"ALEXANDRE PEREIRA RAPOSO","FuncaoId":4,"EquipaId":2,"CategoriaId":2,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2012-03-01T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":87,"UhId":1,"DepartamentoId":1,"NumCartao":37126,"NumPw":4979,"Nome":"ANGELO CARLOS SIXPENCE CAZANÇA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":88,"UhId":1,"DepartamentoId":1,"NumCartao":1143,"NumPw":2013,"Nome":"ANTÓNIO FERNANDO LOPES FIDALGO","FuncaoId":7,"EquipaId":3,"CategoriaId":3,"HorarioPraticadoId":2,"HorarioContratadoId":3,"DataAdmissão":"1990-06-01T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":89,"UhId":1,"DepartamentoId":1,"NumCartao":37100,"NumPw":4975,"Nome":"BRUNO DANIEL VEIGA MIRA","FuncaoId":4,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":90,"UhId":1,"DepartamentoId":1,"NumCartao":37093,"NumPw":4964,"Nome":"BRUNO MIGUEL CARDOSO BATISTA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":91,"UhId":1,"DepartamentoId":1,"NumCartao":37107,"NumPw":4980,"Nome":"BUBACAR DJASSI","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":92,"UhId":1,"DepartamentoId":1,"NumCartao":36414,"NumPw":5025,"Nome":"ELDER CARLOS BORGES","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":93,"UhId":1,"DepartamentoId":1,"NumCartao":14643,"NumPw":3445,"Nome":"GHEORGHE ADELIN MEDISAN","FuncaoId":8,"EquipaId":3,"CategoriaId":3,"HorarioPraticadoId":2,"HorarioContratadoId":3,"DataAdmissão":"2001-05-02T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":94,"UhId":1,"DepartamentoId":1,"NumCartao":37062,"NumPw":4999,"Nome":"IVAN DANIEL LOURENÇO GARCIA CORREIA","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":95,"UhId":1,"DepartamentoId":1,"NumCartao":36882,"NumPw":5097,"Nome":"JOAO CARLOS QUITERIO ALVES","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":5,"DataAdmissão":"2011-01-05T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":96,"UhId":1,"DepartamentoId":1,"NumCartao":13122,"NumPw":3258,"Nome":"JOÃO DANIEL ALÍPIO GUERREIRO TEOTÓNIO","FuncaoId":5,"EquipaId":4,"CategoriaId":3,"HorarioPraticadoId":2,"HorarioContratadoId":3,"DataAdmissão":"2001-03-01T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":97,"UhId":1,"DepartamentoId":1,"NumCartao":1171,"NumPw":2045,"Nome":"JOÃO MANUEL SIMÃO CARRILHO","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":2,"HorarioContratadoId":3,"DataAdmissão":"1995-06-19T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":98,"UhId":1,"DepartamentoId":1,"NumCartao":629,"NumPw":2055,"Nome":"JOSÉ ANTÓNIO DIAS CRUZ","FuncaoId":4,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":2,"HorarioContratadoId":3,"DataAdmissão":"1984-04-01T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":99,"UhId":1,"DepartamentoId":1,"NumCartao":3902,"NumPw":2062,"Nome":"JOSÉ MANUEL CARDOSO DA COSTA LEONARDO","FuncaoId":3,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":2,"HorarioContratadoId":3,"DataAdmissão":"1985-04-01T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":100,"UhId":1,"DepartamentoId":1,"NumCartao":37011,"NumPw":5001,"Nome":"JULIO AUGUSTO DA CRUZ","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":101,"UhId":1,"DepartamentoId":1,"NumCartao":633,"NumPw":3010,"Nome":"MANUEL FRANCISCO CORREIA MATA LANÇA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":2,"HorarioContratadoId":3,"DataAdmissão":"2000-07-01T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":102,"UhId":1,"DepartamentoId":1,"NumCartao":36920,"NumPw":5002,"Nome":"MARCO ANTONIO SILVA FRAGOSO","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":103,"UhId":1,"DepartamentoId":1,"NumCartao":33948,"NumPw":4840,"Nome":"MARCO PAULO DE ANDRADE RODRIGUES","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":5,"DataAdmissão":"2009-10-11T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":104,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":5064,"Nome":"MARIA DA CONCEIÇÃO SANTOS PEREIRA RODRIGUES","FuncaoId":2,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":6,"DataAdmissão":"2010-10-06T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":105,"UhId":1,"DepartamentoId":1,"NumCartao":23989,"NumPw":5003,"Nome":"MIGUEL FILIPE PACHECO ELIAS","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":106,"UhId":1,"DepartamentoId":1,"NumCartao":37069,"NumPw":5006,"Nome":"NUNO RICARDO MONTEIRO LOPES","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":107,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":6425,"Nome":"PAULO FABRICIO VIEIRA MENEZES CATANHO","FuncaoId":10,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":2,"HorarioContratadoId":6,"DataAdmissão":"2015-03-16T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":108,"UhId":1,"DepartamentoId":1,"NumCartao":46781,"NumPw":5669,"Nome":"PAULO JORGE DE OLIVEIRA SANTOS","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":7,"DataAdmissão":"2013-04-20T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":109,"UhId":1,"DepartamentoId":1,"NumCartao":37066,"NumPw":5010,"Nome":"RICARDO JORGE MARQUES BARROCAS","FuncaoId":3,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":110,"UhId":1,"DepartamentoId":1,"NumCartao":28030,"NumPw":4500,"Nome":"RICARDO JOSÉ RIBEIRO DOS SANTOS","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":2,"HorarioContratadoId":6,"DataAdmissão":"2007-06-09T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":111,"UhId":1,"DepartamentoId":1,"NumCartao":24899,"NumPw":4065,"Nome":"RUI ALEXANDRE ALVES PEREIRA","FuncaoId":1,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":2,"HorarioContratadoId":6,"DataAdmissão":"2005-05-02T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":112,"UhId":1,"DepartamentoId":1,"NumCartao":36922,"NumPw":5013,"Nome":"RUI SAMUEL VENANCIO LEITÃO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":113,"UhId":1,"DepartamentoId":1,"NumCartao":37095,"NumPw":5014,"Nome":"TIAGO FILIPE DE BARROS MORAIS LINHARES","FuncaoId":3,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":114,"UhId":1,"DepartamentoId":1,"NumCartao":45373,"NumPw":5015,"Nome":"VALDEMIRO VEIGA FERNANDES","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2010-06-14T00:00:00","DataFim":"2099-12-31T00:00:00","ContratoId":1,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":115,"UhId":1,"DepartamentoId":1,"NumCartao":76802,"NumPw":9201303,"Nome":"ALINE PEREZ GARCIA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":116,"UhId":1,"DepartamentoId":1,"NumCartao":81242,"NumPw":9201528,"Nome":"AMILCAR JORGE COIMBRA DOS SANTOS","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2020-05-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":117,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"ANA CATARINA DA FONSECA FERNANDES","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":118,"UhId":1,"DepartamentoId":1,"NumCartao":77774,"NumPw":9201358,"Nome":"ANA FILIPA MARTINHO RAMOS","FuncaoId":6,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":1,"DataAdmissão":"2017-08-15T00:00:00","DataFim":"2019-08-15T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":119,"UhId":1,"DepartamentoId":1,"NumCartao":81022,"NumPw":9201492,"Nome":"ANA FILIPA SILVA RODRIGUES PEREIRA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-14T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":120,"UhId":1,"DepartamentoId":1,"NumCartao":81179,"NumPw":9201493,"Nome":"ANA PAULA DA RIBEIRA RAMOS","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":121,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"ANA RITA PEIXOTO DA COSTA PEREIRA DA SILVA","FuncaoId":3,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":122,"UhId":1,"DepartamentoId":1,"NumCartao":80415,"NumPw":9201464,"Nome":"ANABELA FERNANDES CONCEIÇÃO","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-20T00:00:00","DataFim":"2020-04-19T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":123,"UhId":1,"DepartamentoId":1,"NumCartao":81243,"NumPw":9201534,"Nome":"ANDRE BENTO VERDE","FuncaoId":6,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-06-05T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":124,"UhId":1,"DepartamentoId":1,"NumCartao":77817,"NumPw":9201359,"Nome":"ANDRE FILIPE VENTURA","FuncaoId":7,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-08-15T00:00:00","DataFim":"2019-08-15T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":125,"UhId":1,"DepartamentoId":1,"NumCartao":71289,"NumPw":9201300,"Nome":"ANDRE MORAIS CARNEIRO","FuncaoId":6,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2017-07-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":126,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"ANGELA SOFIA GOMES FERREIRA","FuncaoId":6,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":127,"UhId":1,"DepartamentoId":1,"NumCartao":75315,"NumPw":9201215,"Nome":"ANTONIO JOSE PEREIRA RAMALHO","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-04-23T00:00:00","DataFim":"2019-04-23T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":128,"UhId":1,"DepartamentoId":1,"NumCartao":53548,"NumPw":9200965,"Nome":"ANTÓNIO JOSÉ RIBEIRO MARQUES","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-09-01T00:00:00","DataFim":"2020-08-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":129,"UhId":1,"DepartamentoId":1,"NumCartao":75812,"NumPw":9201231,"Nome":"ANTÓNIO MIGUEL DE MATOS PINTO","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":130,"UhId":1,"DepartamentoId":1,"NumCartao":80831,"NumPw":9201494,"Nome":"ANTÓNIO TOVAR DE CARVALHO PATRICIO","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-14T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":131,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"BERNARDO MIGUEL TOMAS CORREIA","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":132,"UhId":1,"DepartamentoId":1,"NumCartao":82043,"NumPw":9201549,"Nome":"BRENO MICAEL GODINHO FILIPE","FuncaoId":6,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-06-15T00:00:00","DataFim":"2020-06-14T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":133,"UhId":1,"DepartamentoId":1,"NumCartao":80781,"NumPw":9201507,"Nome":"BRUNA ANDREIA DA CONCEIÇÃO HENRIQUES","FuncaoId":6,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-05-14T00:00:00","DataFim":"2020-05-13T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":134,"UhId":1,"DepartamentoId":1,"NumCartao":80736,"NumPw":9201508,"Nome":"BRUNO DA COSTA ALBUQUERQUE","FuncaoId":6,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":135,"UhId":1,"DepartamentoId":1,"NumCartao":80737,"NumPw":9201474,"Nome":"BRUNO RAFAEL BARRADAS AFONSO","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-22T00:00:00","DataFim":"2020-04-21T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":136,"UhId":1,"DepartamentoId":1,"NumCartao":78309,"NumPw":9201390,"Nome":"CAROLINA CARDOSO FERREIRA CHAVES","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-09-08T00:00:00","DataFim":"2019-09-08T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":137,"UhId":1,"DepartamentoId":1,"NumCartao":81302,"NumPw":9201527,"Nome":"CATARINA FILIPA MARQUES PEREIRA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-06T00:00:00","DataFim":"2020-06-05T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":138,"UhId":1,"DepartamentoId":1,"NumCartao":76571,"NumPw":9201271,"Nome":"CATARINA FILIPE CID SIMOES","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-10T00:00:00","DataFim":"2019-06-10T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":139,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"CATARINA LUISA BRAGA BATISTA","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":140,"UhId":1,"DepartamentoId":1,"NumCartao":81067,"NumPw":9201520,"Nome":"CATARINA PEREIRA BUAL VALENTE SALVADO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2020-05-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":141,"UhId":1,"DepartamentoId":1,"NumCartao":81916,"NumPw":9201548,"Nome":"CLAUDIA CRISTINA RODRIGUES MARQUES","FuncaoId":6,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2020-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":142,"UhId":1,"DepartamentoId":1,"NumCartao":81304,"NumPw":9201625,"Nome":"DALILA MARIA FERREIRA MARCÃO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-07-21T00:00:00","DataFim":"2020-07-20T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":143,"UhId":1,"DepartamentoId":1,"NumCartao":58743,"NumPw":9201270,"Nome":"DAVID EMANUEL CONDE BARROS","FuncaoId":6,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2017-06-12T00:00:00","DataFim":"2019-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":144,"UhId":1,"DepartamentoId":1,"NumCartao":77559,"NumPw":9201320,"Nome":"DAVID JOSE AMARO MADEIRA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2019-07-18T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":145,"UhId":1,"DepartamentoId":1,"NumCartao":76718,"NumPw":9201282,"Nome":"DAVID LUÍS ALVES NOBRE","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-14T00:00:00","DataFim":"2019-06-14T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":146,"UhId":1,"DepartamentoId":1,"NumCartao":80417,"NumPw":9201495,"Nome":"DEISY IRINA VEIGA DE FERNANDES DA SILVA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-14T00:00:00","DataFim":"2020-05-13T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":147,"UhId":1,"DepartamentoId":1,"NumCartao":77359,"NumPw":9201332,"Nome":"DIOGO FILIPE DE PINHO MENDES MIRANDA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2019-07-18T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":148,"UhId":1,"DepartamentoId":1,"NumCartao":81306,"NumPw":9201530,"Nome":"DIOGO MIGUEL ROSARIO ALMEIDA","FuncaoId":6,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-06-03T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":149,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"DIOGO PIRES","FuncaoId":3,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":150,"UhId":1,"DepartamentoId":1,"NumCartao":77361,"NumPw":9201324,"Nome":"DIONISIO SERGIO DE MATOS VALENTE GONÇALVES","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2019-07-18T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":151,"UhId":1,"DepartamentoId":1,"NumCartao":75318,"NumPw":9201197,"Nome":"DORA MARISA RIBEIRO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-04-01T00:00:00","DataFim":"2019-04-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":152,"UhId":1,"DepartamentoId":1,"NumCartao":80742,"NumPw":9201467,"Nome":"DULCE MARIA FIALHO DA SILVA SILVA","FuncaoId":7,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-20T00:00:00","DataFim":"2020-04-19T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":153,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"ELISIO MIGUEL SEMEDO SOARES","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":154,"UhId":1,"DepartamentoId":1,"NumCartao":75700,"NumPw":9201230,"Nome":"EMERSON JORGE LOPES DO ROSÁRIO SEQUEIRA","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-05-01T00:00:00","DataFim":"2019-05-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":155,"UhId":1,"DepartamentoId":1,"NumCartao":79395,"NumPw":9201422,"Nome":"EUGENIO HENRIQUES AGOSTINHO LOPES RIBEIRO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-22T00:00:00","DataFim":"2020-04-21T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":156,"UhId":1,"DepartamentoId":1,"NumCartao":59727,"NumPw":9201693,"Nome":"Fábio Emanuel Flores Resende Amaral","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-09-13T00:00:00","DataFim":"2020-09-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":157,"UhId":1,"DepartamentoId":1,"NumCartao":53532,"NumPw":9201250,"Nome":"FABIO JORGE SILVA SANTOS","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":158,"UhId":1,"DepartamentoId":1,"NumCartao":80429,"NumPw":9201496,"Nome":"FÁBIO MIGUEL BERRONES CARDOSO","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-14T00:00:00","DataFim":"2020-05-13T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":159,"UhId":1,"DepartamentoId":1,"NumCartao":46443,"NumPw":9201465,"Nome":"FERDINANDO DIAMANTINO RODRIGUES DE MATOS","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-20T00:00:00","DataFim":"2020-04-19T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":160,"UhId":1,"DepartamentoId":1,"NumCartao":48592,"NumPw":9200967,"Nome":"FILIPE ANDRÉ PEREIRA PINTO DA PALMA CORDEIRO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-10-01T00:00:00","DataFim":"2020-09-30T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":161,"UhId":1,"DepartamentoId":1,"NumCartao":80477,"NumPw":9201497,"Nome":"FLÁVIA SANTOS TAMBELINI","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":162,"UhId":1,"DepartamentoId":1,"NumCartao":58414,"NumPw":9201522,"Nome":"FRANCISCO MANUEL ABREU PEREIRA","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2020-05-31T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":163,"UhId":1,"DepartamentoId":1,"NumCartao":80745,"NumPw":9201487,"Nome":"FREDERICO EMANUEL RIBEIRO CARVALHINHO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-02T00:00:00","DataFim":"2020-05-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":164,"UhId":1,"DepartamentoId":1,"NumCartao":77362,"NumPw":9201326,"Nome":"FREDERICO MIGUEL DUARTE ROSA","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2019-07-18T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":165,"UhId":1,"DepartamentoId":1,"NumCartao":81314,"NumPw":9201521,"Nome":"GONÇALO CARLOS DE BRITO BRAVO GUIMARAES CABANELAS","FuncaoId":6,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2020-05-31T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":166,"UhId":1,"DepartamentoId":1,"NumCartao":74417,"NumPw":9201175,"Nome":"GONÇALO MADEIRA CARDOSO BRITO","FuncaoId":6,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2017-02-01T00:00:00","DataFim":"2019-02-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":167,"UhId":1,"DepartamentoId":1,"NumCartao":57800,"NumPw":9201277,"Nome":"GONÇALO SILVA SANTA BARBARA","FuncaoId":4,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-12T00:00:00","DataFim":"2019-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":168,"UhId":1,"DepartamentoId":1,"NumCartao":81315,"NumPw":9201525,"Nome":"HELIBERTO EDUARDO QUARESMA CASTRO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-30T00:00:00","DataFim":"2020-05-29T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":169,"UhId":1,"DepartamentoId":1,"NumCartao":76418,"NumPw":9201327,"Nome":"HELTON ANDRADE D´SANTANA","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-09-01T00:00:00","DataFim":"2020-08-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":170,"UhId":1,"DepartamentoId":1,"NumCartao":77365,"NumPw":9201322,"Nome":"HUGO ALEXANDRE FERREIRA LOPES","FuncaoId":8,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2018-11-17T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":171,"UhId":1,"DepartamentoId":1,"NumCartao":77413,"NumPw":9201321,"Nome":"Isabel Maria Nobre Batata","FuncaoId":4,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2018-11-17T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":172,"UhId":1,"DepartamentoId":1,"NumCartao":80748,"NumPw":9201498,"Nome":"IVAN EMANUEL ARRULO PEDROSO DA SILVA","FuncaoId":6,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-05-14T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":173,"UhId":1,"DepartamentoId":1,"NumCartao":72254,"NumPw":9201171,"Nome":"IVO RAFAEL HENRINQUES RAMOS","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-12-23T00:00:00","DataFim":"2018-12-23T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":174,"UhId":1,"DepartamentoId":1,"NumCartao":77372,"NumPw":9201328,"Nome":"JESSICA ANDREIA CALADO COSTA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2018-11-17T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":175,"UhId":1,"DepartamentoId":1,"NumCartao":81068,"NumPw":9201499,"Nome":"JESSICA FILIPA PEREIRA RODRIGUES","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":176,"UhId":1,"DepartamentoId":1,"NumCartao":76719,"NumPw":9201298,"Nome":"JESSICA SOUSA SANTOS","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-01T00:00:00","DataFim":"2019-07-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":177,"UhId":1,"DepartamentoId":1,"NumCartao":80430,"NumPw":9201500,"Nome":"JOÃO ALEXANDRE REIS FIGUEIRAL","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2020-05-11T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":178,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"JOÃO CARLOS MADUREIRA GOMES","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":179,"UhId":1,"DepartamentoId":1,"NumCartao":81169,"NumPw":9201535,"Nome":"JOÃO DANIEL COUTO CAMPOS SILVA","FuncaoId":7,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-30T00:00:00","DataFim":"2020-05-29T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":180,"UhId":1,"DepartamentoId":1,"NumCartao":57743,"NumPw":9201208,"Nome":"JOÃO DE DEUS PEREIRA VIERA LAGINHAS","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-05-01T00:00:00","DataFim":"2019-05-01T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":181,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"JOAO FERNANDO LAGUGAS MORAIS","FuncaoId":7,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":182,"UhId":1,"DepartamentoId":1,"NumCartao":76721,"NumPw":9201305,"Nome":"JOAO PAULO CARDOSO RODRIGUES","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-01T00:00:00","DataFim":"2019-07-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":183,"UhId":1,"DepartamentoId":1,"NumCartao":76732,"NumPw":9201274,"Nome":"JOAO PAULO POÇAS DE CARVALHO E OLIVEIRA","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-10T00:00:00","DataFim":"2018-11-09T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":184,"UhId":1,"DepartamentoId":1,"NumCartao":81174,"NumPw":9201501,"Nome":"JOJO ANTHONY SABERON MONTANO","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2020-05-11T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":185,"UhId":1,"DepartamentoId":1,"NumCartao":83339,"NumPw":9201670,"Nome":"JULIANA MORENO ESPOSITO","FuncaoId":6,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-09-01T00:00:00","DataFim":"2020-08-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":186,"UhId":1,"DepartamentoId":1,"NumCartao":81926,"NumPw":9201544,"Nome":"JULIO CESAR RODRIGUES RIBEIRO","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2020-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":187,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"Karen Andreina Jardin Rojas","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":188,"UhId":1,"DepartamentoId":1,"NumCartao":77472,"NumPw":9201329,"Nome":"LARYSSA DE RESENDE LEMOS","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2019-07-18T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":189,"UhId":1,"DepartamentoId":1,"NumCartao":55772,"NumPw":9201692,"Nome":"LEANDRA SOFIA MORAR NUNES","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-09-14T00:00:00","DataFim":"2020-09-13T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":190,"UhId":1,"DepartamentoId":1,"NumCartao":74420,"NumPw":9200118,"Nome":"LEE NATHAN SERENO","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-02-22T00:00:00","DataFim":"2019-02-22T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":191,"UhId":1,"DepartamentoId":1,"NumCartao":51650,"NumPw":9201176,"Nome":"LEONARDO SANTOS GOMES","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-02-01T00:00:00","DataFim":"2019-02-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":192,"UhId":1,"DepartamentoId":1,"NumCartao":80785,"NumPw":9201502,"Nome":"LUIS MIGUEL GUEIFÃO GODINHO","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":193,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"LUIS MIGUEL MARTINS LOPES","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":194,"UhId":1,"DepartamentoId":1,"NumCartao":75933,"NumPw":9201503,"Nome":"LUIS MIGUEL SEGURA DA SILVA","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":195,"UhId":1,"DepartamentoId":1,"NumCartao":81073,"NumPw":9201532,"Nome":"LUISA FORTUNATO FERREIRA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":197,"UhId":1,"DepartamentoId":1,"NumCartao":81322,"NumPw":9201523,"Nome":"MARIA DE LURDES OLIVEIRA RIBEIRO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-30T00:00:00","DataFim":"2020-05-29T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":198,"UhId":1,"DepartamentoId":1,"NumCartao":74432,"NumPw":9201177,"Nome":"Maria Helena Prazeres Vanez Paula","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-01-21T00:00:00","DataFim":"2018-11-26T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":199,"UhId":1,"DepartamentoId":1,"NumCartao":81929,"NumPw":9201543,"Nome":"MARIA TERESA CALADO AMADO MARTINS CORREIA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2020-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":200,"UhId":1,"DepartamentoId":1,"NumCartao":76701,"NumPw":9201273,"Nome":"MARIA USURELU","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-08T00:00:00","DataFim":"2019-06-08T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":201,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"MARIANA CAETANO FERNANDES","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":202,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"MARTA ALEXANDRA MALVEIRO DA SILVA","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":203,"UhId":1,"DepartamentoId":1,"NumCartao":80474,"NumPw":9201475,"Nome":"MARTA INES RIBEIRO DA SILVA","FuncaoId":6,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-04-22T00:00:00","DataFim":"2020-04-21T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":204,"UhId":1,"DepartamentoId":1,"NumCartao":74430,"NumPw":9201185,"Nome":"MAURO ANDRÉ CRUZ DIAS","FuncaoId":4,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-02-22T00:00:00","DataFim":"2019-02-22T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":205,"UhId":1,"DepartamentoId":1,"NumCartao":76570,"NumPw":9201281,"Nome":"MIGUEL ALEXANDRE TEIXEIRA COUTINHO","FuncaoId":4,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-08T00:00:00","DataFim":"2018-11-07T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":206,"UhId":1,"DepartamentoId":1,"NumCartao":71840,"NumPw":9201104,"Nome":"MIGUEL CONSOLADO OLIVEIRA","FuncaoId":4,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-12-18T00:00:00","DataFim":"2018-12-18T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":207,"UhId":1,"DepartamentoId":1,"NumCartao":80759,"NumPw":9201504,"Nome":"MIGUEL LOURENÇO GERALDES FREIRE DE CARVALHO","FuncaoId":7,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2020-05-11T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":208,"UhId":1,"DepartamentoId":1,"NumCartao":76680,"NumPw":9201267,"Nome":"MONICA SOFIA SANTOS FERREIRA TRINDADE","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-08T00:00:00","DataFim":"2019-06-08T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":209,"UhId":1,"DepartamentoId":1,"NumCartao":58451,"NumPw":9201028,"Nome":"NANCY SANTOS BALCÃO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-22T00:00:00","DataFim":"2020-04-21T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":210,"UhId":1,"DepartamentoId":1,"NumCartao":81325,"NumPw":9201524,"Nome":"NELSON BONITO PITA","FuncaoId":7,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-30T00:00:00","DataFim":"2020-05-29T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":211,"UhId":1,"DepartamentoId":1,"NumCartao":81931,"NumPw":9201551,"Nome":"NELSON FILIPE CONCEIÇAO CARVALHO","FuncaoId":6,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2020-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":212,"UhId":1,"DepartamentoId":1,"NumCartao":81933,"NumPw":9201542,"Nome":"NILTON ALEXANDRE BRITO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-15T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":213,"UhId":1,"DepartamentoId":1,"NumCartao":73830,"NumPw":9201184,"Nome":"NUNO ANDRÉ CORDEIRO DE SOUSA","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-03-01T00:00:00","DataFim":"2019-03-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":214,"UhId":1,"DepartamentoId":1,"NumCartao":75311,"NumPw":9201242,"Nome":"NUNO FILIPE DINIZ RAIMUNDO","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-05-01T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":215,"UhId":1,"DepartamentoId":1,"NumCartao":81987,"NumPw":9201545,"Nome":"NUNO FILIPE VIEIRA CUSTODIO","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-15T00:00:00","DataFim":"2020-06-14T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":216,"UhId":1,"DepartamentoId":1,"NumCartao":31157,"NumPw":9201009,"Nome":"NUNO MIGUEL BUGADA PINTO","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-09-01T00:00:00","DataFim":"2020-08-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":217,"UhId":1,"DepartamentoId":1,"NumCartao":81326,"NumPw":9201531,"Nome":"NUNO MIGUEL MORAIS DE ALMEIDA","FuncaoId":6,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-05-30T00:00:00","DataFim":"2020-05-29T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":218,"UhId":1,"DepartamentoId":1,"NumCartao":80440,"NumPw":9201466,"Nome":"PATRICIA ALEXANDRA DE JESUS COELHO","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-20T00:00:00","DataFim":"2020-04-19T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":219,"UhId":1,"DepartamentoId":1,"NumCartao":75317,"NumPw":9201229,"Nome":"PAULO JOSÉ MIGUEL RIBEIRO","FuncaoId":8,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-05-01T00:00:00","DataFim":"2019-05-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":220,"UhId":1,"DepartamentoId":1,"NumCartao":35849,"NumPw":9201415,"Nome":"PEDRO ALEXANDRE MARTINS NETO RIBEIRO","FuncaoId":8,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-11-01T00:00:00","DataFim":"2019-11-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":221,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"PEDRO CELESTINO SOARES DE OLIVEIRA PINTO","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":222,"UhId":1,"DepartamentoId":1,"NumCartao":81327,"NumPw":9201626,"Nome":"PEDRO DUARTE DOS SANTOS BARQUINHA","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-07-21T00:00:00","DataFim":"2020-07-20T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":223,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"PEDRO RICARDO ROCHA FERRO PIRES","FuncaoId":7,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":224,"UhId":1,"DepartamentoId":1,"NumCartao":51651,"NumPw":9201168,"Nome":"PEDRO TELMO FERNANDES COSTA","FuncaoId":7,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-12-18T00:00:00","DataFim":"2018-12-18T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":225,"UhId":1,"DepartamentoId":1,"NumCartao":72737,"NumPw":9201264,"Nome":"RAFAEL MARQUES ESTANQUE","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-10T00:00:00","DataFim":"2019-06-10T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":226,"UhId":1,"DepartamentoId":1,"NumCartao":75300,"NumPw":9201200,"Nome":"RAQUEL ALEXANDRA SILVA","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-04-01T00:00:00","DataFim":"2019-04-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":227,"UhId":1,"DepartamentoId":1,"NumCartao":75682,"NumPw":9201249,"Nome":"RUI FILIPE FERNANDES PAULINO","FuncaoId":7,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-05-01T00:00:00","DataFim":"2019-05-01T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":228,"UhId":1,"DepartamentoId":1,"NumCartao":80441,"NumPw":9201505,"Nome":"RUI MANUEL SOUSA PINTO","FuncaoId":7,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":229,"UhId":1,"DepartamentoId":1,"NumCartao":77414,"NumPw":9201356,"Nome":"Rui Miguel A. C. Afonso Madeira","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-08-13T00:00:00","DataFim":"2018-11-12T00:00:00","ContratoId":4,"StatusId":2,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":230,"UhId":1,"DepartamentoId":1,"NumCartao":81139,"NumPw":9201533,"Nome":"RUI MIGUEL REMIGIO DA CRUZ BENTO","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-30T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":231,"UhId":1,"DepartamentoId":1,"NumCartao":71941,"NumPw":9201084,"Nome":"Rui Ricardo dos Santos Pereira Dias  ","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2016-12-16T00:00:00","DataFim":"2018-12-16T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":232,"UhId":1,"DepartamentoId":1,"NumCartao":78331,"NumPw":9201385,"Nome":"Rute Maria Dinis Costa","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-09-06T00:00:00","DataFim":"2019-09-06T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":233,"UhId":1,"DepartamentoId":1,"NumCartao":76564,"NumPw":9201279,"Nome":"SANDRA PATRICIA DE ALMEIDA LOPES FERREIRA","FuncaoId":4,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-10T00:00:00","DataFim":"2019-06-10T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":234,"UhId":1,"DepartamentoId":1,"NumCartao":80442,"NumPw":9201506,"Nome":"SARA CATARINA DOS SANTOS AREDE","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-12T00:00:00","DataFim":"2020-05-11T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":235,"UhId":1,"DepartamentoId":1,"NumCartao":76575,"NumPw":9201266,"Nome":"SARA DIAS AFONSO","FuncaoId":4,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-10T00:00:00","DataFim":"2019-06-10T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":236,"UhId":1,"DepartamentoId":1,"NumCartao":81329,"NumPw":9201519,"Nome":"SARA RAQUEL MARTINHO FERNANDES","FuncaoId":5,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-30T00:00:00","DataFim":"2020-05-29T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":237,"UhId":1,"DepartamentoId":1,"NumCartao":81953,"NumPw":9201546,"Nome":"SERGIO BRUNO VELHO VANDER KELLEN","FuncaoId":7,"EquipaId":3,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-15T00:00:00","DataFim":"2020-06-14T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":238,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"SÉRGIO EDUARDO MOUTINHO DA SILVA CASTANHO CANDEIAS","FuncaoId":3,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":239,"UhId":1,"DepartamentoId":1,"NumCartao":82011,"NumPw":9201541,"Nome":"SERGIO MIGUEL SILVA HENRIQUES","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2020-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":240,"UhId":1,"DepartamentoId":1,"NumCartao":77806,"NumPw":9201357,"Nome":"Susana Trindade M. Raimundo Silva","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-08-13T00:00:00","DataFim":"2019-08-13T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":241,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"TIAGO FERNANDO MORAIS DA CUNHA FIGUEIRA","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":242,"UhId":1,"DepartamentoId":1,"NumCartao":76565,"NumPw":9201276,"Nome":"TIAGO FERREIRA MANGAS DUARTE JORGE","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-06-10T00:00:00","DataFim":"2019-06-10T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":243,"UhId":1,"DepartamentoId":1,"NumCartao":81330,"NumPw":9201529,"Nome":"TIAGO FERREIRA RAIMUNDO","FuncaoId":5,"EquipaId":4,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-05-30T00:00:00","DataFim":"2020-05-29T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":244,"UhId":1,"DepartamentoId":1,"NumCartao":76569,"NumPw":9201278,"Nome":"TIAGO FILIPE DA SILVA GUERREIRO","FuncaoId":6,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2017-06-12T00:00:00","DataFim":"2019-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":245,"UhId":1,"DepartamentoId":1,"NumCartao":77377,"NumPw":9201331,"Nome":"TIAGO MIGUEL SOUSA ALVES","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2017-07-18T00:00:00","DataFim":"2019-07-18T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":246,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"VANESSA CRISTINA DA PONTE PAJUEL NUNES","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":4,"HorarioContratadoId":4,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":247,"UhId":1,"DepartamentoId":1,"NumCartao":81148,"NumPw":9201463,"Nome":"VASCO RAFAEL CORDEIRO MARTINS TAPADAS","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-20T00:00:00","DataFim":"2020-04-19T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":248,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"VASCO RAFAEL SIMÃO DA SILVA RAMOS","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":249,"UhId":1,"DepartamentoId":1,"NumCartao":99,"NumPw":99,"Nome":"VERA LUCIA CARDOSO MARTINS DA SILVA","FuncaoId":5,"EquipaId":1,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-11-01T00:00:00","DataFim":"2020-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":250,"UhId":1,"DepartamentoId":1,"NumCartao":73352,"NumPw":9201540,"Nome":"VITOR HUGO RAMOS SOARES","FuncaoId":5,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-06-13T00:00:00","DataFim":"2020-06-12T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""},{"ColaboradorID":251,"UhId":1,"DepartamentoId":1,"NumCartao":81072,"NumPw":9201473,"Nome":"MARCELO MANUEL MELO RODRIGUES","FuncaoId":7,"EquipaId":2,"CategoriaId":1,"HorarioPraticadoId":1,"HorarioContratadoId":1,"DataAdmissão":"2018-04-20T00:00:00","DataFim":"2018-10-31T00:00:00","ContratoId":4,"StatusId":1,"CreatedAt":"2018-11-25T00:00:00","CreatedBy":"rui.santos@portway.pt","LastUpdatedBy":""}]</value>
+    <comment>Seed de colaboradores</comment>
+  </data>
+  <data name="ContratosJson" xml:space="preserve">
+    <value>[{"ContratoId":1,"ContratoTipo":"PERMANENTE","CreatedAt":"2018-10-25T11:23:36.6371940","CreatedBy":"SISTEMA"},{"ContratoId":2,"ContratoTipo":"TERMO CERTO","CreatedAt":"2018-10-25T11:23:36.7121040","CreatedBy":"SISTEMA"},{"ContratoId":3,"ContratoTipo":"TERMO INCERTO","CreatedAt":"2018-10-25T11:23:36.7943570","CreatedBy":"SISTEMA"},{"ContratoId":4,"ContratoTipo":"MULTITEMPO","CreatedAt":"2018-10-25T11:23:36.8929403","CreatedBy":"SISTEMA"}]</value>
+    <comment>Seed de tipos de contrato</comment>
+  </data>
+  <data name="DepartamentosJson" xml:space="preserve">
+    <value>[{"DepartamentoId":1,"DepartamentoNumero":71680,"DepartamentoNome":"Lisboa - PMRs","CreatedAt":"2018-10-25T11:23:37.0064466","CreatedBy":"SISTEMA"}]</value>
+    <comment>Seed de departamentos</comment>
+  </data>
+  <data name="EquipasJson" xml:space="preserve">
+    <value>[{"EquipaId":1,"EquipaNome":"N\/A","CreatedAt":"2018-10-25T11:23:37.1371391","CreatedBy":"SISTEMA"},{"EquipaId":2,"EquipaNome":"A","CreatedAt":"2018-10-25T11:23:37.2570725","CreatedBy":"SISTEMA"},{"EquipaId":3,"EquipaNome":"B","CreatedAt":"2018-10-25T11:23:37.3874794","CreatedBy":"SISTEMA"},{"EquipaId":4,"EquipaNome":"C","CreatedAt":"2018-10-25T11:23:37.5237759","CreatedBy":"SISTEMA"}]</value>
+    <comment>Seed de equipas de trabalho</comment>
+  </data>
+  <data name="FuncoesJson" xml:space="preserve">
+    <value>[{"FuncaoId":1,"FuncaoNome":"COORDENADOR","CreatedAt":"2018-10-25T11:23:37.6824260","CreatedBy":"SISTEMA"},{"FuncaoId":2,"FuncaoNome":"ASSISTENTE ADMINISTRATIVA","CreatedAt":"2018-10-25T11:23:37.8470417","CreatedBy":"SISTEMA"},{"FuncaoId":3,"FuncaoNome":"SUPERVISOR","CreatedAt":"2018-10-25T11:23:38.0134061","CreatedBy":"SISTEMA"},{"FuncaoId":4,"FuncaoNome":"ALOCADOR","CreatedAt":"2018-10-25T11:23:38.1885485","CreatedBy":"SISTEMA"},{"FuncaoId":5,"FuncaoNome":"ASSISTENTE PMR","CreatedAt":"2018-10-25T11:23:38.3772507","CreatedBy":"SISTEMA"},{"FuncaoId":6,"FuncaoNome":"ASSISTENTE PMR PART-TIME","CreatedAt":"2018-10-25T11:23:38.5727291","CreatedBy":"SISTEMA"},{"FuncaoId":7,"FuncaoNome":"MOTORISTA","CreatedAt":"2018-10-25T11:23:38.7808562","CreatedBy":"SISTEMA"},{"FuncaoId":8,"FuncaoNome":"MOTORISTA AMBULIFT","CreatedAt":"2018-10-25T11:23:38.9975488","CreatedBy":"SISTEMA"},{"FuncaoId":9,"FuncaoNome":"PLANEAMENTO","CreatedAt":"2018-10-25T11:23:39.2226702","CreatedBy":"SISTEMA"},{"FuncaoId":10,"FuncaoNome":"QUALIDADE","CreatedAt":"2018-10-25T11:23:39.4616495","CreatedBy":"SISTEMA"}]</value>
+    <comment>Seed de funções</comment>
+  </data>
+  <data name="HorariosJson" xml:space="preserve">
+    <value>[{"HorarioId":1,"HorarioHora":40,"CreatedAt":"2018-10-25T11:23:39.7196886","CreatedBy":"SISTEMA"},{"HorarioId":2,"HorarioHora":38,"CreatedAt":"2018-10-25T11:23:39.9779922","CreatedBy":"SISTEMA"},{"HorarioId":3,"HorarioHora":36,"CreatedAt":"2018-10-25T11:23:40.2417707","CreatedBy":"SISTEMA"},{"HorarioId":4,"HorarioHora":25,"CreatedAt":"2018-10-25T11:23:40.5183892","CreatedBy":"SISTEMA"},{"HorarioId":5,"HorarioHora":20,"CreatedAt":"2018-10-25T11:23:40.8003868","CreatedBy":"SISTEMA"},{"HorarioId":6,"HorarioHora":18,"CreatedAt":"2018-10-25T11:23:41.0987970","CreatedBy":"SISTEMA"},{"HorarioId":7,"HorarioHora":12,"CreatedAt":"2018-10-25T11:23:41.4138488","CreatedBy":"SISTEMA"}]</value>
+    <comment>Seed de horarios de trabalho</comment>
+  </data>
+  <data name="PlataformasJson" xml:space="preserve">
+    <value>[{"PlataformaId":1,"PlataformaN":"Plataformas10a14","CreatedAt": "2018-10-25T11:23:39.7196886","CreatedBy": "SISTEMA"},{"PlataformaId":2,"PlataformaN":"Plataformas20","CreatedAt": "2018-10-25T11:23:39.7196886","CreatedBy": "SISTEMA"},{"PlataformaId":3,"PlataformaN":"Plataformas22","CreatedAt": "2018-10-25T11:23:39.7196886","CreatedBy": "SISTEMA"},{"PlataformaId":4,"PlataformaN":"Plataformas30a40","CreatedAt": "2018-10-25T11:23:39.7196886","CreatedBy": "SISTEMA"},{"PlataformaId":5,"PlataformaN":"Plataformas41a60","CreatedAt": "2018-10-25T11:23:39.7196886","CreatedBy": "SISTEMA"},{"PlataformaId":6,"PlataformaN":"Plataformas70a80","CreatedAt": "2018-10-25T11:23:39.7196886","CreatedBy": "SISTEMA"}]</value>
+    <comment>Seed de Plataformas</comment>
+  </data>
+  <data name="StandsJson" xml:space="preserve">
+    <value>[
+    {
+        "StandId": 1,
+        "StandN": "104",
+        "Remoto": true,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 2,
+        "StandN": "105",
+        "Remoto": true,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 3,
+        "StandN": "106",
+        "Remoto": true,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 4,
+        "StandN": "107",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 5,
+        "StandN": "108",
+        "Remoto": true,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 7,
+        "StandN": "114",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 8,
+        "StandN": "115",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 9,
+        "StandN": "116",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 10,
+        "StandN": "117",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 11,
+        "StandN": "122",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 12,
+        "StandN": "123",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 13,
+        "StandN": "124",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 14,
+        "StandN": "125",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 15,
+        "StandN": "126",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 16,
+        "StandN": "141",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 17,
+        "StandN": "142",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 18,
+        "StandN": "143",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 19,
+        "StandN": "144",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 20,
+        "StandN": "145",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 21,
+        "StandN": "146",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 22,
+        "StandN": "147",
+        "Remoto": false,
+        "PlataformaId": 1,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 23,
+        "StandN": "200",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 24,
+        "StandN": "201",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 25,
+        "StandN": "202",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 26,
+        "StandN": "203",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 27,
+        "StandN": "204",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 28,
+        "StandN": "205",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 29,
+        "StandN": "206",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 30,
+        "StandN": "207",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 31,
+        "StandN": "208",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 32,
+        "StandN": "209",
+        "Remoto": true,
+        "PlataformaId": 2,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 33,
+        "StandN": "221",
+        "Remoto": true,
+        "PlataformaId": 3,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 34,
+        "StandN": "222",
+        "Remoto": true,
+        "PlataformaId": 3,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 35,
+        "StandN": "223",
+        "Remoto": true,
+        "PlataformaId": 3,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 36,
+        "StandN": "224",
+        "Remoto": true,
+        "PlataformaId": 3,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 37,
+        "StandN": "225",
+        "Remoto": true,
+        "PlataformaId": 3,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 38,
+        "StandN": "301",
+        "Remoto": true,
+        "PlataformaId": 4,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 39,
+        "StandN": "302",
+        "Remoto": true,
+        "PlataformaId": 4,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 40,
+        "StandN": "401",
+        "Remoto": true,
+        "PlataformaId": 4,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 41,
+        "StandN": "402",
+        "Remoto": true,
+        "PlataformaId": 4,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 42,
+        "StandN": "403",
+        "Remoto": true,
+        "PlataformaId": 4,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 43,
+        "StandN": "404",
+        "Remoto": true,
+        "PlataformaId": 4,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 44,
+        "StandN": "405",
+        "Remoto": true,
+        "PlataformaId": 4,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 45,
+        "StandN": "411",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 47,
+        "StandN": "412",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 48,
+        "StandN": "413",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 49,
+        "StandN": "414",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 50,
+        "StandN": "415",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 51,
+        "StandN": "416",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 52,
+        "StandN": "421",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 53,
+        "StandN": "422",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 54,
+        "StandN": "423",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 55,
+        "StandN": "424",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 56,
+        "StandN": "425",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 57,
+        "StandN": "426",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 58,
+        "StandN": "501",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 59,
+        "StandN": "502",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 60,
+        "StandN": "503",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 61,
+        "StandN": "504",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 62,
+        "StandN": "505",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 64,
+        "StandN": "506",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 65,
+        "StandN": "601",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 66,
+        "StandN": "602",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 67,
+        "StandN": "603",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 68,
+        "StandN": "604",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 69,
+        "StandN": "605",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 70,
+        "StandN": "606",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 71,
+        "StandN": "607",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 72,
+        "StandN": "608",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 73,
+        "StandN": "609",
+        "Remoto": true,
+        "PlataformaId": 5,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 74,
+        "StandN": "701",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 75,
+        "StandN": "702",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 76,
+        "StandN": "703",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 77,
+        "StandN": "704",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 78,
+        "StandN": "705",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 79,
+        "StandN": "706",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 80,
+        "StandN": "801",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 81,
+        "StandN": "802",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 82,
+        "StandN": "803",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 83,
+        "StandN": "804",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 84,
+        "StandN": "805",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    },
+    {
+        "StandId": 85,
+        "StandN": "806",
+        "Remoto": true,
+        "PlataformaId": 6,
+        "CreatedAt": "2018-10-25T11:23:39.7196886",
+        "CreatedBy": "SISTEMA"
+    }
+]</value>
+    <comment>Seed de stands</comment>
+  </data>
+  <data name="UhsJson" xml:space="preserve">
+    <value>[{"UhId":1,"IATA":"LIS","UhNome":"LISBOA","CreatedAt":"2018-10-25T11:23:42.4371089","CreatedBy":"SISTEMA"},{"UhId":2,"IATA":"OPO","UhNome":"PORTO","CreatedAt":"2018-10-25T11:23:42.7844907","CreatedBy":"SISTEMA"},{"UhId":3,"IATA":"FAO","UhNome":"FARO","CreatedAt":"2018-10-25T11:23:43.1448285","CreatedBy":"SISTEMA"},{"UhId":4,"IATA":"FNC","UhNome":"FUNCHAL","CreatedAt":"2018-10-25T11:23:43.5376776","CreatedBy":"SISTEMA"}]</value>
+    <comment>Seed de unidades de handling</comment>
+  </data>
 </root>

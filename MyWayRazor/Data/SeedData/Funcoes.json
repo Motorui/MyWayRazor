@@ -1,0 +1,62 @@
+[
+  {
+    "FuncaoId": 1,
+    "FuncaoNome": "COORDENADOR",
+    "CreatedAt": "2018-10-25T11:23:37.6824260",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 2,
+    "FuncaoNome": "ASSISTENTE ADMINISTRATIVA",
+    "CreatedAt": "2018-10-25T11:23:37.8470417",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 3,
+    "FuncaoNome": "SUPERVISOR",
+    "CreatedAt": "2018-10-25T11:23:38.0134061",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 4,
+    "FuncaoNome": "ALOCADOR",
+    "CreatedAt": "2018-10-25T11:23:38.1885485",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 5,
+    "FuncaoNome": "ASSISTENTE PMR",
+    "CreatedAt": "2018-10-25T11:23:38.3772507",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 6,
+    "FuncaoNome": "ASSISTENTE PMR PART-TIME",
+    "CreatedAt": "2018-10-25T11:23:38.5727291",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 7,
+    "FuncaoNome": "MOTORISTA",
+    "CreatedAt": "2018-10-25T11:23:38.7808562",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 8,
+    "FuncaoNome": "MOTORISTA AMBULIFT",
+    "CreatedAt": "2018-10-25T11:23:38.9975488",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 9,
+    "FuncaoNome": "PLANEAMENTO",
+    "CreatedAt": "2018-10-25T11:23:39.2226702",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FuncaoId": 10,
+    "FuncaoNome": "QUALIDADE",
+    "CreatedAt": "2018-10-25T11:23:39.4616495",
+    "CreatedBy": "SISTEMA"
+  }
+]

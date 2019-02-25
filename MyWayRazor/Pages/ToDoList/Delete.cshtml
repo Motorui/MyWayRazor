@@ -1,0 +1,65 @@
+﻿@page
+@model MyWayRazor.Pages.ToDoList.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ToDo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDo.ToDoTittle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToDo.ToDoTittle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDo.ToDoText)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToDo.ToDoText)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDo.Done)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToDo.Done)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDo.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToDo.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDo.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToDo.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDo.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToDo.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDo.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToDo.LastUpdatedBy)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="ToDo.ToDoId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

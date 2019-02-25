@@ -1,0 +1,113 @@
+﻿@page
+@model MyWayRazor.Pages.tempFolder.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AssistenciasPRM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Aeroporto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Aeroporto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Msg)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Msg)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Notif)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Notif)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Data)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Voo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Voo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Mov)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Mov)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.OrigDest)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.OrigDest)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Pax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Pax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.SSR)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.SSR)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.AC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.AC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Stand)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Stand)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Exit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Exit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.CkIn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.CkIn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Gate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Gate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssistenciasPRM.Transferencia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssistenciasPRM.Transferencia)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="AssistenciasPRM.ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

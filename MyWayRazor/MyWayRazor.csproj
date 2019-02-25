@@ -3,7 +3,38 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>aspnet-MyWayRazor-442BA401-A17A-4AC5-A408-B794706C3A3A</UserSecretsId>
+    <ApplicationIcon></ApplicationIcon>
+    <Win32Resource></Win32Resource>
+    <AssemblyName>MyWayRazor</AssemblyName>
+    <StartupObject></StartupObject>
+    <NeutralLanguage>pt-PT</NeutralLanguage>
+    <AssemblyVersion>1.1.1.35</AssemblyVersion>
+    <FileVersion>1.1.1.35</FileVersion>
+    <SignAssembly>true</SignAssembly>
+    <Version>1.0.10</Version>
+    <AssemblyOriginatorKeyFile>RaPereiraKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20190201223820_SeedInitialData.cs" />
+    <Compile Remove="Data\Migrations\20190201223820_SeedInitialData.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190205103918_ToDoList.cs" />
+    <Compile Remove="Data\Migrations\20190205103918_ToDoList.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190217194936_Staging.cs" />
+    <Compile Remove="Data\Migrations\20190217194936_Staging.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190217200007_Staging.cs" />
+    <Compile Remove="Data\Migrations\20190217200007_Staging.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190217201357_Staging.cs" />
+    <Compile Remove="Data\Migrations\20190217201357_Staging.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190217202406_DelRef.cs" />
+    <Compile Remove="Data\Migrations\20190217202406_DelRef.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190217203027_Staging.cs" />
+    <Compile Remove="Data\Migrations\20190217203027_Staging.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190217204713_Staging.cs" />
+    <Compile Remove="Data\Migrations\20190217204713_Staging.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190219104245_FixTables.cs" />
+    <Compile Remove="Data\Migrations\20190219104245_FixTables.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\css\Sketchy.css" />
@@ -11,12 +42,33 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Data\SeedData\Categorias.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ExcelDataReader" Version="3.4.2" />
     <PackageReference Include="ExcelDataReader.DataSet" Version="3.4.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

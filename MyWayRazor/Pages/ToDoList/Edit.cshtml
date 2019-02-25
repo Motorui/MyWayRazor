@@ -1,0 +1,82 @@
+﻿@page
+@model MyWayRazor.Pages.ToDoList.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Editar tarefa</h3>
+                </div>
+                <form class="form-horizontal" method="post">
+                    <div class="box-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="ToDo.ToDoTittle" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="ToDo.ToDoTittle" class="form-control" />
+                            </div>
+                            <span asp-validation-for="ToDo.ToDoTittle" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ToDo.ToDoText" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <textarea asp-for="ToDo.ToDoText" class="form-control" rows="10"></textarea>
+                            </div>
+                            <span asp-validation-for="ToDo.ToDoText" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="visibility: hidden; display: none;">
+                            <div class="checkbox col-sm-10">
+                                <label>
+                                    <input asp-for="ToDo.Done" /> @Html.DisplayNameFor(model => model.ToDo.Done))
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="visibility: hidden; display: none;">
+                            <label asp-for="ToDo.CreatedAt" class="control-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="ToDo.CreatedAt" class="form-control" />
+                            </div>
+                            <span asp-validation-for="ToDo.CreatedAt" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="visibility: hidden; display: none;">
+                            <label asp-for="ToDo.CreatedBy" class="control-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="ToDo.CreatedBy" class="form-control" />
+                            </div>
+                            <span asp-validation-for="ToDo.CreatedBy" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="visibility: hidden; display: none;">
+                            <label asp-for="ToDo.LastUpdatedAt" class="control-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="ToDo.LastUpdatedAt" class="form-control" />
+                            </div>
+                            <span asp-validation-for="ToDo.LastUpdatedAt" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="visibility: hidden; display: none;">
+                            <label asp-for="ToDo.LastUpdatedBy" class="control-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="ToDo.LastUpdatedBy" class="form-control" />
+                            </div>
+                            <span asp-validation-for="ToDo.LastUpdatedBy" class="text-danger"></span>
+                        </div>
+                        <div class="box-footer">
+                            <div class="form-group">
+                                <a asp-page="./Index" class="btn btn-default">Voltar</a>
+                                <input type="submit" value="Create" class="btn btn-success pull-right" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

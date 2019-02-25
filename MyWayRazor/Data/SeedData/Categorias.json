@@ -1,0 +1,26 @@
+[
+  {
+    "CategoriaId": 1,
+    "CategoriaNome": "ASSISTENTE A PASSAGEIROS DE MOBILIDADE REDUZIDA",
+    "CreatedAt": "2018-10-25T11:23:36.4136761",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "CategoriaId": 2,
+    "CategoriaNome": "TECNICO TRAFEGO ASSISTENCIA ESCALA",
+    "CreatedAt": "2018-10-25T11:23:36.4758668",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "CategoriaId": 3,
+    "CategoriaNome": "OPERADOR ASSISTENCIA ESCALA",
+    "CreatedAt": "2018-10-25T11:23:36.5156390",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "CategoriaId": 4,
+    "CategoriaNome": "TECNICO",
+    "CreatedAt": "2018-10-25T11:23:36.5656321",
+    "CreatedBy": "SISTEMA"
+  }
+]
