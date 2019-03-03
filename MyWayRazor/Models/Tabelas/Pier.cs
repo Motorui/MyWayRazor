@@ -1,26 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyWayRazor.Models.Tabelas
 {
-    public class Stand : IBaseEntity
+    public class Pier : IBaseEntity
     {
         [Key]
-        public int StandId { get; set; }
+        public int PierID { get; set; }
 
         [Required]
-        [Range(Int32.MaxValue, 999)]
-        [Display(Name = "Stand")]
-        public int StandN { get; set; }
-        public bool Remoto { get; set; }
-
-        [Display(Name = "Plataforma:")]
-        public int PlataformaId { get; set; }
-        public Plataforma Plataforma { get; set; }
-
         [Display(Name = "Pier")]
-        public int PierID { get; set; }
-        public Pier Pier { get; set; }
+        public string PierNome { get; set; }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }
@@ -30,5 +21,8 @@ namespace MyWayRazor.Models.Tabelas
         public DateTime? LastUpdatedAt { get; set; }
         [Display(Name = "Registo atualizado por:", ShortName = "Atualizado por:")]
         public string LastUpdatedBy { get; set; }
+
+        public ICollection<Stand> Stands { get; set; }
+        public ICollection<Porta> Portas { get; set; }
     }
 }

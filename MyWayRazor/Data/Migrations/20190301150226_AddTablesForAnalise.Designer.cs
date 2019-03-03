@@ -10,8 +10,8 @@ using MyWayRazor.Data;
 namespace MyWayRazor.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190219104353_FixTables")]
-    partial class FixTables
+    [Migration("20190301150226_AddTablesForAnalise")]
+    partial class AddTablesForAnalise
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -200,11 +200,23 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<string>("CkIn");
 
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
                     b.Property<DateTime>("Data");
+
+                    b.Property<DateTime>("EstimaApresentacao");
 
                     b.Property<string>("Exit");
 
                     b.Property<string>("Gate");
+
+                    b.Property<DateTime>("HoraEmbarque");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
 
                     b.Property<string>("Mov");
 
@@ -214,15 +226,19 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<string>("OrigDest");
 
-                    b.Property<string>("Pax");
+                    b.Property<string>("Pax")
+                        .IsRequired();
 
                     b.Property<string>("SSR");
+
+                    b.Property<DateTime>("SaidaStaging");
 
                     b.Property<string>("Stand");
 
                     b.Property<string>("Transferencia");
 
-                    b.Property<string>("Voo");
+                    b.Property<string>("Voo")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
@@ -288,6 +304,8 @@ namespace MyWayRazor.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Ativo");
+
                     b.Property<int>("CategoriaId");
 
                     b.Property<int>("ContratoId");
@@ -296,7 +314,7 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<string>("CreatedBy");
 
-                    b.Property<DateTime>("DataAdmissão");
+                    b.Property<DateTime>("DataAdmissao");
 
                     b.Property<DateTime>("DataFim");
 
@@ -348,11 +366,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 1,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2021, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -368,11 +387,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 2,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -388,11 +408,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 3,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -408,11 +429,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 4,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 7, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -428,11 +450,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 5,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2014, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -448,11 +471,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 6,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -460,7 +484,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "ANT�NIO JOS� SANTOS ALVES",
+                            Nome = "ANTÓNIO JOSÉ SANTOS ALVES",
                             NumCartao = 50544,
                             NumPw = 6627,
                             UhId = 1
@@ -468,11 +492,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 7,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2011, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2015, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -488,11 +513,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 8,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -500,7 +526,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 7,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "ANT�NIO MIGUEL RODRIGUES SILVA",
+                            Nome = "ANTÓNIO MIGUEL RODRIGUES SILVA",
                             NumCartao = 31271,
                             NumPw = 6070,
                             UhId = 1
@@ -508,11 +534,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 9,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -528,11 +555,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 10,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 9, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -548,11 +576,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 11,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -568,11 +597,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 12,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 11, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -588,11 +618,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 13,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -600,7 +631,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "F�BIO FILIPE PINTO BRANCO",
+                            Nome = "FÁBIO FILIPE PINTO BRANCO",
                             NumCartao = 52204,
                             NumPw = 7028,
                             UhId = 1
@@ -608,11 +639,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 14,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -620,7 +652,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 7,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "F�BIO MIGUEL FERREIRA MOTA",
+                            Nome = "FÁBIO MIGUEL FERREIRA MOTA",
                             NumCartao = 48518,
                             NumPw = 5858,
                             UhId = 1
@@ -628,11 +660,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 15,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -648,11 +681,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 16,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -668,11 +702,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 17,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -688,11 +723,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 18,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2011, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2015, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -708,11 +744,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 19,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -720,7 +757,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 4,
                             LastUpdatedBy = "",
-                            Nome = "GON�ALO SANTOS NUNES DE VASCONCELOS E MENESES",
+                            Nome = "GONÇALO SANTOS NUNES DE VASCONCELOS E MENESES",
                             NumCartao = 22501,
                             NumPw = 6628,
                             UhId = 1
@@ -728,11 +765,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 20,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -740,7 +778,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 7,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "HENRIQUE MANUEL DA ENCARNA�AO RAMIRES DOS SANTOS",
+                            Nome = "HENRIQUE MANUEL DA ENCARNAÇAO RAMIRES DOS SANTOS",
                             NumCartao = 28358,
                             NumPw = 4513,
                             UhId = 1
@@ -748,11 +786,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 21,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2013, 6, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2017, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -768,11 +807,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 22,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -788,11 +828,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 23,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -800,7 +841,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "JO�O CARLOS VIEIRA CORREIA",
+                            Nome = "JOÃO CARLOS VIEIRA CORREIA",
                             NumCartao = 32660,
                             NumPw = 6625,
                             UhId = 1
@@ -808,11 +849,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 24,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2013, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2017, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -828,11 +870,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 25,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -840,7 +883,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "JO�O PEDRO QUINTELA ALVES SILVA",
+                            Nome = "JOÃO PEDRO QUINTELA ALVES SILVA",
                             NumCartao = 56158,
                             NumPw = 7600,
                             UhId = 1
@@ -848,11 +891,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 26,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2013, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2017, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -868,11 +912,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 27,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -880,7 +925,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 7,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "LU�S EDUARDO BARRETO GON�ALVES",
+                            Nome = "LUÍS EDUARDO BARRETO GONÇALVES",
                             NumCartao = 37315,
                             NumPw = 6077,
                             UhId = 1
@@ -888,11 +933,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 28,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -900,7 +946,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "LU�S FERNANDO MARTINS DIAS",
+                            Nome = "LUÍS FERNANDO MARTINS DIAS",
                             NumCartao = 16048,
                             NumPw = 6621,
                             UhId = 1
@@ -908,11 +954,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 29,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -920,7 +967,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "LU�S FILIPE OLIVEIRA DE SOUSA",
+                            Nome = "LUÍS FILIPE OLIVEIRA DE SOUSA",
                             NumCartao = 52174,
                             NumPw = 6766,
                             UhId = 1
@@ -928,11 +975,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 30,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -940,7 +988,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "M�RCIA DOS SANTOS MENDES",
+                            Nome = "MÁRCIA DOS SANTOS MENDES",
                             NumCartao = 38881,
                             NumPw = 7599,
                             UhId = 1
@@ -948,11 +996,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 31,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -968,11 +1017,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 32,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2014, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -988,11 +1038,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 33,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2011, 9, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2015, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1008,11 +1059,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 34,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1028,11 +1080,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 35,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2021, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1040,7 +1093,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "NUNO GON�ALO VENTURA ROCHA",
+                            Nome = "NUNO GONÇALO VENTURA ROCHA",
                             NumCartao = 57624,
                             NumPw = 7871,
                             UhId = 1
@@ -1048,11 +1101,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 36,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2021, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1068,11 +1122,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 37,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2013, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2017, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1080,7 +1135,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 7,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "NUNO MIGUEL GON�ALVES FRANCO",
+                            Nome = "NUNO MIGUEL GONÇALVES FRANCO",
                             NumCartao = 46696,
                             NumPw = 5757,
                             UhId = 1
@@ -1088,11 +1143,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 38,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1108,11 +1164,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 39,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2021, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1128,11 +1185,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 40,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1148,11 +1206,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 41,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1168,11 +1227,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 42,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1188,11 +1248,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 43,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1208,11 +1269,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 44,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1228,11 +1290,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 45,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1248,11 +1311,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 46,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2013, 10, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2017, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1268,11 +1332,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 47,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1288,11 +1353,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 48,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1308,11 +1374,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 49,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1328,11 +1395,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 50,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1348,11 +1416,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 51,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1368,11 +1437,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 52,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1388,11 +1458,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 53,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2013, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2017, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1408,11 +1479,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 54,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1428,11 +1500,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 55,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1440,7 +1513,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 5,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "S�RGIO FILIPE GOMES RODRIGUES",
+                            Nome = "SÉRGIO FILIPE GOMES RODRIGUES",
                             NumCartao = 53549,
                             NumPw = 6812,
                             UhId = 1
@@ -1448,11 +1521,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 56,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1460,7 +1534,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "S�RGIO LU�S BRITO FARINHA",
+                            Nome = "SÉRGIO LUÍS BRITO FARINHA",
                             NumCartao = 51721,
                             NumPw = 6600,
                             UhId = 1
@@ -1468,11 +1542,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 57,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1488,11 +1563,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 58,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1500,7 +1576,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "S�RGIO MIGUEL MARIA PEREIRA",
+                            Nome = "SÉRGIO MIGUEL MARIA PEREIRA",
                             NumCartao = 52177,
                             NumPw = 6764,
                             UhId = 1
@@ -1508,11 +1584,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 59,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1528,11 +1605,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 60,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2013, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2017, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1540,7 +1618,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 7,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "TIAGO LUIS FERR�O DA SILVA",
+                            Nome = "TIAGO LUIS FERRÃO DA SILVA",
                             NumCartao = 43825,
                             NumPw = 5419,
                             UhId = 1
@@ -1548,11 +1626,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 61,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2014, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1560,7 +1639,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 7,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "TIAGO PIMENTA CORTEGA�A",
+                            Nome = "TIAGO PIMENTA CORTEGAÇA",
                             NumCartao = 48887,
                             NumPw = 6065,
                             UhId = 1
@@ -1568,11 +1647,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 62,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1580,7 +1660,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "VASCO ANDR� FIGUEIREDO DA SILVA",
+                            Nome = "VASCO ANDRÉ FIGUEIREDO DA SILVA",
                             NumCartao = 46137,
                             NumPw = 6624,
                             UhId = 1
@@ -1588,11 +1668,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 63,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2016, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1608,11 +1689,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 64,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 3,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1628,11 +1710,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 65,
+                            Ativo = true,
                             CategoriaId = 4,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -1648,11 +1731,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 66,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1660,7 +1744,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "ANDR� DE SOUSA FARIA COSTA",
+                            Nome = "ANDRÉ DE SOUSA FARIA COSTA",
                             NumCartao = 71821,
                             NumPw = 8324,
                             UhId = 1
@@ -1668,11 +1752,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 67,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1680,7 +1765,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "DENISE ALEXANDRA MADUE�O FERNANDES",
+                            Nome = "DENISE ALEXANDRA MADUENO FERNANDES",
                             NumCartao = 58443,
                             NumPw = 8222,
                             UhId = 1
@@ -1688,11 +1773,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 68,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1708,11 +1794,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 69,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1720,7 +1807,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "GON�ALO LOPES FONSECA",
+                            Nome = "GONÇALO LOPES FONSECA",
                             NumCartao = 71824,
                             NumPw = 8295,
                             UhId = 1
@@ -1728,11 +1815,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 70,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1740,7 +1828,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "H�LIO MIGUEL MAGALHAES BARBOSA",
+                            Nome = "HÉLIO MIGUEL MAGALHAES BARBOSA",
                             NumCartao = 49732,
                             NumPw = 8338,
                             UhId = 1
@@ -1748,11 +1836,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 71,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1768,11 +1857,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 72,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1780,7 +1870,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "JO�O JOS� HORTA NOBRE",
+                            Nome = "JOÃO JOSÉ HORTA NOBRE",
                             NumCartao = 58439,
                             NumPw = 6811,
                             UhId = 1
@@ -1788,11 +1878,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 73,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1808,11 +1899,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 74,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1828,11 +1920,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 75,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1840,7 +1933,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "M�RCIO IVO FERNANDES DOS SANTOS",
+                            Nome = "MÁRCIO IVO FERNANDES DOS SANTOS",
                             NumCartao = 58450,
                             NumPw = 8223,
                             UhId = 1
@@ -1848,11 +1941,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 76,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1868,11 +1962,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 77,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1888,11 +1983,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 78,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1908,11 +2004,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 79,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1928,11 +2025,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 80,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -1948,11 +2046,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 81,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -1968,11 +2067,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 82,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -1988,11 +2088,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 83,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2000,7 +2101,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "S�LVIA CARLA MIRANDA DE SOUSA",
+                            Nome = "SÍLVIA CARLA MIRANDA DE SOUSA",
                             NumCartao = 55249,
                             NumPw = 8294,
                             UhId = 1
@@ -2008,11 +2109,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 84,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2020,7 +2122,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "VERA M�NICA MOREIRA MARTINS",
+                            Nome = "VERA MÓNICA MOREIRA MARTINS",
                             NumCartao = 71106,
                             NumPw = 8227,
                             UhId = 1
@@ -2028,11 +2130,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 85,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 2,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2040,7 +2143,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "V�TOR MANUEL DOS SANTOS LAMEIRAS",
+                            Nome = "VÍTOR MANUEL DOS SANTOS LAMEIRAS",
                             NumCartao = 54236,
                             NumPw = 8317,
                             UhId = 1
@@ -2048,11 +2151,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 86,
+                            Ativo = true,
                             CategoriaId = 2,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2012, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2068,11 +2172,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 87,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2080,7 +2185,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "ANGELO CARLOS SIXPENCE CAZAN�A",
+                            Nome = "ANGELO CARLOS SIXPENCE CAZANÇA",
                             NumCartao = 37126,
                             NumPw = 4979,
                             UhId = 1
@@ -2088,11 +2193,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 88,
+                            Ativo = true,
                             CategoriaId = 3,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(1990, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2100,7 +2206,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 3,
                             HorarioPraticadoId = 2,
                             LastUpdatedBy = "",
-                            Nome = "ANT�NIO FERNANDO LOPES FIDALGO",
+                            Nome = "ANTÓNIO FERNANDO LOPES FIDALGO",
                             NumCartao = 1143,
                             NumPw = 2013,
                             UhId = 1
@@ -2108,11 +2214,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 89,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2128,11 +2235,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 90,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2148,11 +2256,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 91,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2168,11 +2277,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 92,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2188,11 +2298,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 93,
+                            Ativo = true,
                             CategoriaId = 3,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2001, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2208,11 +2319,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 94,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2220,7 +2332,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "IVAN DANIEL LOUREN�O GARCIA CORREIA",
+                            Nome = "IVAN DANIEL LOURENÇO GARCIA CORREIA",
                             NumCartao = 37062,
                             NumPw = 4999,
                             UhId = 1
@@ -2228,11 +2340,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 95,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2011, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2248,11 +2361,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 96,
+                            Ativo = true,
                             CategoriaId = 3,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2001, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2260,7 +2374,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 3,
                             HorarioPraticadoId = 2,
                             LastUpdatedBy = "",
-                            Nome = "JO�O DANIEL AL�PIO GUERREIRO TEOT�NIO",
+                            Nome = "JOÃO DANIEL ALÍPIO GUERREIRO TEOTÓNIO",
                             NumCartao = 13122,
                             NumPw = 3258,
                             UhId = 1
@@ -2268,11 +2382,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 97,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(1995, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2280,7 +2395,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 3,
                             HorarioPraticadoId = 2,
                             LastUpdatedBy = "",
-                            Nome = "JO�O MANUEL SIM�O CARRILHO",
+                            Nome = "JOÃO MANUEL SIMÃO CARRILHO",
                             NumCartao = 1171,
                             NumPw = 2045,
                             UhId = 1
@@ -2288,11 +2403,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 98,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(1984, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2300,7 +2416,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 3,
                             HorarioPraticadoId = 2,
                             LastUpdatedBy = "",
-                            Nome = "JOS� ANT�NIO DIAS CRUZ",
+                            Nome = "JOSÉ ANTÓNIO DIAS CRUZ",
                             NumCartao = 629,
                             NumPw = 2055,
                             UhId = 1
@@ -2308,11 +2424,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 99,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(1985, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2320,7 +2437,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 3,
                             HorarioPraticadoId = 2,
                             LastUpdatedBy = "",
-                            Nome = "JOS� MANUEL CARDOSO DA COSTA LEONARDO",
+                            Nome = "JOSÉ MANUEL CARDOSO DA COSTA LEONARDO",
                             NumCartao = 3902,
                             NumPw = 2062,
                             UhId = 1
@@ -2328,11 +2445,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 100,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2348,11 +2466,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 101,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2000, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2360,7 +2479,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 3,
                             HorarioPraticadoId = 2,
                             LastUpdatedBy = "",
-                            Nome = "MANUEL FRANCISCO CORREIA MATA LAN�A",
+                            Nome = "MANUEL FRANCISCO CORREIA MATA LANÇA",
                             NumCartao = 633,
                             NumPw = 3010,
                             UhId = 1
@@ -2368,11 +2487,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 102,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2388,11 +2508,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 103,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2009, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2408,11 +2529,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 104,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 10, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -2420,7 +2542,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "MARIA DA CONCEI��O SANTOS PEREIRA RODRIGUES",
+                            Nome = "MARIA DA CONCEIÇÃO SANTOS PEREIRA RODRIGUES",
                             NumCartao = 99,
                             NumPw = 5064,
                             UhId = 1
@@ -2428,11 +2550,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 105,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2448,11 +2571,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 106,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2468,11 +2592,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 107,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2015, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -2488,11 +2613,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 108,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2013, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2508,11 +2634,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 109,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2528,11 +2655,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 110,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2007, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2540,7 +2668,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 6,
                             HorarioPraticadoId = 2,
                             LastUpdatedBy = "",
-                            Nome = "RICARDO JOS� RIBEIRO DOS SANTOS",
+                            Nome = "RICARDO JOSÉ RIBEIRO DOS SANTOS",
                             NumCartao = 28030,
                             NumPw = 4500,
                             UhId = 1
@@ -2548,11 +2676,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 111,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2005, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -2568,11 +2697,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 112,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2580,7 +2710,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "RUI SAMUEL VENANCIO LEIT�O",
+                            Nome = "RUI SAMUEL VENANCIO LEITÃO",
                             NumCartao = 36922,
                             NumPw = 5013,
                             UhId = 1
@@ -2588,11 +2718,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 113,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2608,11 +2739,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 114,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 1,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2010, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2099, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2628,11 +2760,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 115,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2648,11 +2781,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 116,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2668,11 +2802,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 117,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -2688,11 +2823,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 118,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2708,11 +2844,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 119,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2728,11 +2865,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 120,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2748,11 +2886,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 121,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2768,11 +2907,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 122,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2780,7 +2920,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "ANABELA FERNANDES CONCEI��O",
+                            Nome = "ANABELA FERNANDES CONCEIÇÃO",
                             NumCartao = 80415,
                             NumPw = 9201464,
                             UhId = 1
@@ -2788,11 +2928,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 123,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2808,11 +2949,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 124,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2828,11 +2970,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 125,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2848,11 +2991,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 126,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -2868,11 +3012,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 127,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2888,11 +3033,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 128,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2900,7 +3046,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "ANT�NIO JOS� RIBEIRO MARQUES",
+                            Nome = "ANTÓNIO JOSÉ RIBEIRO MARQUES",
                             NumCartao = 53548,
                             NumPw = 9200965,
                             UhId = 1
@@ -2908,11 +3054,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 129,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -2920,7 +3067,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "ANT�NIO MIGUEL DE MATOS PINTO",
+                            Nome = "ANTÓNIO MIGUEL DE MATOS PINTO",
                             NumCartao = 75812,
                             NumPw = 9201231,
                             UhId = 1
@@ -2928,11 +3075,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 130,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -2940,7 +3088,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "ANT�NIO TOVAR DE CARVALHO PATRICIO",
+                            Nome = "ANTÓNIO TOVAR DE CARVALHO PATRICIO",
                             NumCartao = 80831,
                             NumPw = 9201494,
                             UhId = 1
@@ -2948,11 +3096,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 131,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -2968,11 +3117,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 132,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -2988,11 +3138,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 133,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3000,7 +3151,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 4,
                             HorarioPraticadoId = 4,
                             LastUpdatedBy = "",
-                            Nome = "BRUNA ANDREIA DA CONCEI��O HENRIQUES",
+                            Nome = "BRUNA ANDREIA DA CONCEIÇÃO HENRIQUES",
                             NumCartao = 80781,
                             NumPw = 9201507,
                             UhId = 1
@@ -3008,11 +3159,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 134,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3028,11 +3180,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 135,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3048,11 +3201,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 136,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3068,11 +3222,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 137,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3088,11 +3243,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 138,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3108,11 +3264,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 139,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -3128,11 +3285,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 140,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3148,11 +3306,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 141,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3168,11 +3327,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 142,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3180,7 +3340,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "DALILA MARIA FERREIRA MARC�O",
+                            Nome = "DALILA MARIA FERREIRA MARCÃO",
                             NumCartao = 81304,
                             NumPw = 9201625,
                             UhId = 1
@@ -3188,11 +3348,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 143,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3208,11 +3369,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 144,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3228,11 +3390,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 145,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3240,7 +3403,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "DAVID LU�S ALVES NOBRE",
+                            Nome = "DAVID LUÍS ALVES NOBRE",
                             NumCartao = 76718,
                             NumPw = 9201282,
                             UhId = 1
@@ -3248,11 +3411,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 146,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3268,11 +3432,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 147,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3288,11 +3453,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 148,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3308,11 +3474,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 149,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3328,11 +3495,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 150,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3340,7 +3508,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "DIONISIO SERGIO DE MATOS VALENTE GON�ALVES",
+                            Nome = "DIONISIO SERGIO DE MATOS VALENTE GONÇALVES",
                             NumCartao = 77361,
                             NumPw = 9201324,
                             UhId = 1
@@ -3348,11 +3516,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 151,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3368,11 +3537,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 152,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3388,11 +3558,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 153,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -3408,11 +3579,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 154,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3420,7 +3592,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "EMERSON JORGE LOPES DO ROS�RIO SEQUEIRA",
+                            Nome = "EMERSON JORGE LOPES DO ROSÁRIO SEQUEIRA",
                             NumCartao = 75700,
                             NumPw = 9201230,
                             UhId = 1
@@ -3428,11 +3600,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 155,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3448,11 +3621,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 156,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 9, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3460,7 +3634,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "F�bio Emanuel Flores Resende Amaral",
+                            Nome = "FÁBIO EMANUEL FLORES RESENDE AMARAL",
                             NumCartao = 59727,
                             NumPw = 9201693,
                             UhId = 1
@@ -3468,11 +3642,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 157,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3488,11 +3663,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 158,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3500,7 +3676,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "F�BIO MIGUEL BERRONES CARDOSO",
+                            Nome = "FÁBIO MIGUEL BERRONES CARDOSO",
                             NumCartao = 80429,
                             NumPw = 9201496,
                             UhId = 1
@@ -3508,11 +3684,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 159,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3528,11 +3705,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 160,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3540,7 +3718,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "FILIPE ANDR� PEREIRA PINTO DA PALMA CORDEIRO",
+                            Nome = "FILIPE ANDRÉ PEREIRA PINTO DA PALMA CORDEIRO",
                             NumCartao = 48592,
                             NumPw = 9200967,
                             UhId = 1
@@ -3548,11 +3726,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 161,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3560,7 +3739,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "FL�VIA SANTOS TAMBELINI",
+                            Nome = "FLÁVIA SANTOS TAMBELINI",
                             NumCartao = 80477,
                             NumPw = 9201497,
                             UhId = 1
@@ -3568,11 +3747,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 162,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3588,11 +3768,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 163,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3608,11 +3789,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 164,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3628,11 +3810,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 165,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3640,7 +3823,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 4,
                             HorarioPraticadoId = 4,
                             LastUpdatedBy = "",
-                            Nome = "GON�ALO CARLOS DE BRITO BRAVO GUIMARAES CABANELAS",
+                            Nome = "GONÇALO CARLOS DE BRITO BRAVO GUIMARAES CABANELAS",
                             NumCartao = 81314,
                             NumPw = 9201521,
                             UhId = 1
@@ -3648,11 +3831,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 166,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3660,7 +3844,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 4,
                             HorarioPraticadoId = 4,
                             LastUpdatedBy = "",
-                            Nome = "GON�ALO MADEIRA CARDOSO BRITO",
+                            Nome = "GONÇALO MADEIRA CARDOSO BRITO",
                             NumCartao = 74417,
                             NumPw = 9201175,
                             UhId = 1
@@ -3668,11 +3852,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 167,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3680,7 +3865,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "GON�ALO SILVA SANTA BARBARA",
+                            Nome = "GONÇALO SILVA SANTA BARBARA",
                             NumCartao = 57800,
                             NumPw = 9201277,
                             UhId = 1
@@ -3688,11 +3873,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 168,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3708,11 +3894,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 169,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3720,7 +3907,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "HELTON ANDRADE D�SANTANA",
+                            Nome = "HELTON ANDRADE D'SANTANA",
                             NumCartao = 76418,
                             NumPw = 9201327,
                             UhId = 1
@@ -3728,11 +3915,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 170,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3748,11 +3936,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 171,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3768,11 +3957,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 172,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3788,11 +3978,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 173,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3808,11 +3999,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 174,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3828,11 +4020,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 175,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3848,11 +4041,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 176,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3868,11 +4062,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 177,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3880,7 +4075,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "JO�O ALEXANDRE REIS FIGUEIRAL",
+                            Nome = "JOÃO ALEXANDRE REIS FIGUEIRAL",
                             NumCartao = 80430,
                             NumPw = 9201500,
                             UhId = 1
@@ -3888,11 +4083,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 178,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -3900,7 +4096,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "JO�O CARLOS MADUREIRA GOMES",
+                            Nome = "JOÃO CARLOS MADUREIRA GOMES",
                             NumCartao = 99,
                             NumPw = 99,
                             UhId = 1
@@ -3908,11 +4104,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 179,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -3920,7 +4117,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "JO�O DANIEL COUTO CAMPOS SILVA",
+                            Nome = "JOÃO DANIEL COUTO CAMPOS SILVA",
                             NumCartao = 81169,
                             NumPw = 9201535,
                             UhId = 1
@@ -3928,11 +4125,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 180,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -3940,7 +4138,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "JO�O DE DEUS PEREIRA VIERA LAGINHAS",
+                            Nome = "JOÃO DE DEUS PEREIRA VIERA LAGINHAS",
                             NumCartao = 57743,
                             NumPw = 9201208,
                             UhId = 1
@@ -3948,11 +4146,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 181,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -3968,11 +4167,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 182,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -3988,11 +4188,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 183,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4000,7 +4201,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "JOAO PAULO PO�AS DE CARVALHO E OLIVEIRA",
+                            Nome = "JOAO PAULO POÇAS DE CARVALHO E OLIVEIRA",
                             NumCartao = 76732,
                             NumPw = 9201274,
                             UhId = 1
@@ -4008,11 +4209,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 184,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4028,11 +4230,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 185,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4048,11 +4251,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 186,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4068,11 +4272,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 187,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -4088,11 +4293,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 188,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4108,11 +4314,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 189,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 9, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -4128,11 +4335,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 190,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4148,11 +4356,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 191,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4168,11 +4377,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 192,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4180,7 +4390,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "LUIS MIGUEL GUEIF�O GODINHO",
+                            Nome = "LUIS MIGUEL GUEIFÃO GODINHO",
                             NumCartao = 80785,
                             NumPw = 9201502,
                             UhId = 1
@@ -4188,11 +4398,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 193,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -4208,11 +4419,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 194,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4228,11 +4440,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 195,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4248,11 +4461,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 197,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4268,11 +4482,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 198,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4288,11 +4503,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 199,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4308,11 +4524,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 200,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -4328,11 +4545,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 201,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -4348,11 +4566,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 202,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -4368,11 +4587,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 203,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4388,11 +4608,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 204,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4400,7 +4621,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "MAURO ANDR� CRUZ DIAS",
+                            Nome = "MAURO ANDRÉ CRUZ DIAS",
                             NumCartao = 74430,
                             NumPw = 9201185,
                             UhId = 1
@@ -4408,11 +4629,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 205,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4428,11 +4650,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 206,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4448,11 +4671,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 207,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4460,7 +4684,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "MIGUEL LOUREN�O GERALDES FREIRE DE CARVALHO",
+                            Nome = "MIGUEL LOURENÇO GERALDES FREIRE DE CARVALHO",
                             NumCartao = 80759,
                             NumPw = 9201504,
                             UhId = 1
@@ -4468,11 +4692,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 208,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -4488,11 +4713,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 209,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4500,7 +4726,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "NANCY SANTOS BALC�O",
+                            Nome = "NANCY SANTOS BALCÃO",
                             NumCartao = 58451,
                             NumPw = 9201028,
                             UhId = 1
@@ -4508,11 +4734,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 210,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4528,11 +4755,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 211,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4540,7 +4768,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 4,
                             HorarioPraticadoId = 4,
                             LastUpdatedBy = "",
-                            Nome = "NELSON FILIPE CONCEI�AO CARVALHO",
+                            Nome = "NELSON FILIPE CONCEIÇÃO CARVALHO",
                             NumCartao = 81931,
                             NumPw = 9201551,
                             UhId = 1
@@ -4548,11 +4776,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 212,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4568,11 +4797,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 213,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -4580,7 +4810,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "NUNO ANDR� CORDEIRO DE SOUSA",
+                            Nome = "NUNO ANDRÉ CORDEIRO DE SOUSA",
                             NumCartao = 73830,
                             NumPw = 9201184,
                             UhId = 1
@@ -4588,11 +4818,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 214,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4608,11 +4839,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 215,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4628,11 +4860,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 216,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4648,11 +4881,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 217,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4668,11 +4902,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 218,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -4688,11 +4923,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 219,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4700,7 +4936,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "PAULO JOS� MIGUEL RIBEIRO",
+                            Nome = "PAULO JOSÉ MIGUEL RIBEIRO",
                             NumCartao = 75317,
                             NumPw = 9201229,
                             UhId = 1
@@ -4708,11 +4944,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 220,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -4728,11 +4965,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 221,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -4748,11 +4986,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 222,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -4768,11 +5007,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 223,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -4788,11 +5028,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 224,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4808,11 +5049,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 225,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4828,11 +5070,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 226,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4848,11 +5091,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 227,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4868,11 +5112,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 228,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4888,11 +5133,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 229,
+                            Ativo = false,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 8, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4908,11 +5154,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 230,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4928,11 +5175,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 231,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2016, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -4948,11 +5196,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 232,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -4968,11 +5217,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 233,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -4988,11 +5238,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 234,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -5008,11 +5259,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 235,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -5028,11 +5280,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 236,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -5048,11 +5301,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 237,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 3,
@@ -5068,11 +5322,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 238,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -5080,7 +5335,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "S�RGIO EDUARDO MOUTINHO DA SILVA CASTANHO CANDEIAS",
+                            Nome = "SÉRGIO EDUARDO MOUTINHO DA SILVA CASTANHO CANDEIAS",
                             NumCartao = 99,
                             NumPw = 99,
                             UhId = 1
@@ -5088,11 +5343,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 239,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -5108,11 +5364,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 240,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 8, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 8, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -5128,11 +5385,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 241,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -5148,11 +5406,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 242,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -5168,11 +5427,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 243,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 4,
@@ -5188,11 +5448,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 244,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -5208,11 +5469,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 245,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2017, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -5228,11 +5490,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 246,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -5248,11 +5511,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 247,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -5268,11 +5532,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 248,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -5280,7 +5545,7 @@ namespace MyWayRazor.Data.Migrations
                             HorarioContratadoId = 1,
                             HorarioPraticadoId = 1,
                             LastUpdatedBy = "",
-                            Nome = "VASCO RAFAEL SIM�O DA SILVA RAMOS",
+                            Nome = "VASCO RAFAEL SIMÃO DA SILVA RAMOS",
                             NumCartao = 99,
                             NumPw = 99,
                             UhId = 1
@@ -5288,11 +5553,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 249,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 1,
@@ -5308,11 +5574,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 250,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2020, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -5328,11 +5595,12 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             ColaboradorID = 251,
+                            Ativo = true,
                             CategoriaId = 1,
                             ContratoId = 4,
                             CreatedAt = new DateTime(2018, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedBy = "rui.santos@portway.pt",
-                            DataAdmissão = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataAdmissao = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DataFim = new DateTime(2018, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartamentoId = 1,
                             EquipaId = 2,
@@ -5665,8 +5933,6 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<bool>("Alerta");
 
-                    b.Property<DateTime>("Antecipar");
-
                     b.Property<string>("CheckIn");
 
                     b.Property<DateTime?>("CreatedAt");
@@ -5681,7 +5947,7 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<string>("Gate");
 
-                    b.Property<DateTime>("Horario");
+                    b.Property<DateTime>("HoraEmbarque");
 
                     b.Property<DateTime?>("LastUpdatedAt");
 
@@ -5697,9 +5963,12 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<string>("OrigemDestino");
 
-                    b.Property<string>("Pax");
+                    b.Property<string>("Pax")
+                        .IsRequired();
 
                     b.Property<string>("Remark");
+
+                    b.Property<DateTime>("SaidaStaging");
 
                     b.Property<string>("Ssr");
 
@@ -5707,13 +5976,119 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<int>("StatusId");
 
-                    b.Property<string>("Voo");
+                    b.Property<string>("Voo")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
                     b.HasIndex("StatusId");
 
                     b.ToTable("Stagings");
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Parametro", b =>
+                {
+                    b.Property<string>("ParamID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<string>("ParamDesc")
+                        .IsRequired();
+
+                    b.Property<string>("ParamNome")
+                        .IsRequired();
+
+                    b.Property<int>("ParamValue");
+
+                    b.HasKey("ParamID");
+
+                    b.ToTable("Parametros");
+
+                    b.HasData(
+                        new
+                        {
+                            ParamID = "1",
+                            CreatedAt = new DateTime(2019, 2, 26, 15, 35, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "SISTEMA",
+                            ParamDesc = "Chegada PAX Schengen ao aeroporto",
+                            ParamNome = "CPS",
+                            ParamValue = 0
+                        },
+                        new
+                        {
+                            ParamID = "2",
+                            CreatedAt = new DateTime(2019, 2, 26, 15, 35, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "SISTEMA",
+                            ParamDesc = "Chegada PAX Não Schengen ao aeroporto",
+                            ParamNome = "CPN",
+                            ParamValue = 0
+                        });
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Pier", b =>
+                {
+                    b.Property<int>("PierID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<string>("PierNome")
+                        .IsRequired();
+
+                    b.HasKey("PierID");
+
+                    b.ToTable("Piers");
+
+                    b.HasData(
+                        new
+                        {
+                            PierID = 1,
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
+                            CreatedBy = "SISTEMA",
+                            PierNome = "Pier Sul"
+                        },
+                        new
+                        {
+                            PierID = 2,
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
+                            CreatedBy = "SISTEMA",
+                            PierNome = "Pier Norte"
+                        },
+                        new
+                        {
+                            PierID = 3,
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
+                            CreatedBy = "SISTEMA",
+                            PierNome = "Pier 14"
+                        },
+                        new
+                        {
+                            PierID = 4,
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
+                            CreatedBy = "SISTEMA",
+                            PierNome = "Terminal 2"
+                        },
+                        new
+                        {
+                            PierID = 5,
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
+                            CreatedBy = "SISTEMA",
+                            PierNome = "Remoto"
+                        });
                 });
 
             modelBuilder.Entity("MyWayRazor.Models.Tabelas.Plataforma", b =>
@@ -5796,14 +6171,22 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<string>("LastUpdatedBy");
 
+                    b.Property<int>("PierID");
+
                     b.Property<string>("PortaNum")
                         .IsRequired();
 
                     b.Property<int>("PortaTempo");
 
+                    b.Property<bool>("Remoto");
+
                     b.Property<bool>("Schengen");
 
+                    b.Property<bool>("Terminal");
+
                     b.HasKey("PortaID");
+
+                    b.HasIndex("PierID");
 
                     b.ToTable("Portas");
 
@@ -5811,317 +6194,622 @@ namespace MyWayRazor.Data.Migrations
                         new
                         {
                             PortaID = 1,
-                            PortaNum = "7",
+                            PierID = 1,
+                            PortaNum = "07",
                             PortaTempo = 12,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 2,
-                            PortaNum = "8",
+                            PierID = 1,
+                            PortaNum = "08",
                             PortaTempo = 12,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 3,
+                            PierID = 1,
                             PortaNum = "8B",
                             PortaTempo = 12,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 4,
-                            PortaNum = "9",
+                            PierID = 1,
+                            PortaNum = "09",
                             PortaTempo = 11,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 5,
+                            PierID = 1,
                             PortaNum = "10",
                             PortaTempo = 11,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 6,
+                            PierID = 1,
                             PortaNum = "11",
                             PortaTempo = 10,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 7,
+                            PierID = 1,
                             PortaNum = "12",
                             PortaTempo = 10,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 8,
+                            PierID = 1,
                             PortaNum = "13",
                             PortaTempo = 9,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 9,
+                            PierID = 2,
                             PortaNum = "14",
                             PortaTempo = 9,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 10,
+                            PierID = 2,
                             PortaNum = "15",
                             PortaTempo = 8,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 11,
+                            PierID = 2,
                             PortaNum = "15A",
                             PortaTempo = 8,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 12,
+                            PierID = 2,
                             PortaNum = "16",
                             PortaTempo = 8,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 13,
+                            PierID = 2,
                             PortaNum = "16A",
                             PortaTempo = 8,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 14,
+                            PierID = 2,
                             PortaNum = "17",
                             PortaTempo = 7,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 15,
+                            PierID = 2,
                             PortaNum = "17A",
                             PortaTempo = 7,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 16,
+                            PierID = 2,
                             PortaNum = "18",
                             PortaTempo = 7,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 17,
+                            PierID = 2,
                             PortaNum = "18A",
                             PortaTempo = 7,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 18,
+                            PierID = 2,
                             PortaNum = "18B",
                             PortaTempo = 7,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 19,
+                            PierID = 2,
                             PortaNum = "19",
                             PortaTempo = 8,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 20,
+                            PierID = 2,
                             PortaNum = "20",
                             PortaTempo = 8,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 21,
+                            PierID = 2,
                             PortaNum = "21",
                             PortaTempo = 6,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 22,
+                            PierID = 2,
                             PortaNum = "22",
                             PortaTempo = 5,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 23,
+                            PierID = 2,
                             PortaNum = "22A",
                             PortaTempo = 5,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 24,
+                            PierID = 2,
                             PortaNum = "23",
                             PortaTempo = 5,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 25,
+                            PierID = 2,
                             PortaNum = "23A",
                             PortaTempo = 5,
-                            Schengen = false
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 26,
+                            PierID = 2,
                             PortaNum = "24",
                             PortaTempo = 7,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 27,
+                            PierID = 2,
                             PortaNum = "25",
                             PortaTempo = 7,
-                            Schengen = false
+                            Remoto = false,
+                            Schengen = true,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 28,
+                            PierID = 2,
                             PortaNum = "26",
                             PortaTempo = 12,
-                            Schengen = true
+                            Remoto = false,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 29,
+                            PierID = 2,
                             PortaNum = "27",
                             PortaTempo = 12,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 30,
+                            PierID = 3,
                             PortaNum = "41",
                             PortaTempo = 13,
-                            Schengen = true
+                            Remoto = false,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 31,
+                            PierID = 3,
                             PortaNum = "41A",
                             PortaTempo = 13,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 32,
+                            PierID = 3,
                             PortaNum = "42",
                             PortaTempo = 13,
-                            Schengen = true
+                            Remoto = false,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 33,
+                            PierID = 3,
                             PortaNum = "42A",
                             PortaTempo = 13,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 34,
+                            PierID = 3,
                             PortaNum = "43",
                             PortaTempo = 14,
-                            Schengen = true
+                            Remoto = false,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 35,
+                            PierID = 3,
                             PortaNum = "43A",
                             PortaTempo = 14,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 36,
+                            PierID = 3,
                             PortaNum = "43B",
                             PortaTempo = 14,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 37,
+                            PierID = 3,
                             PortaNum = "44",
                             PortaTempo = 15,
-                            Schengen = true
+                            Remoto = false,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 38,
+                            PierID = 3,
                             PortaNum = "44A",
                             PortaTempo = 15,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 39,
+                            PierID = 3,
                             PortaNum = "44B",
                             PortaTempo = 15,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 40,
+                            PierID = 3,
                             PortaNum = "45",
                             PortaTempo = 16,
-                            Schengen = true
+                            Remoto = false,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 41,
+                            PierID = 3,
                             PortaNum = "45A",
                             PortaTempo = 16,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 42,
+                            PierID = 3,
                             PortaNum = "46",
                             PortaTempo = 17,
-                            Schengen = true
+                            Remoto = false,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 43,
+                            PierID = 3,
                             PortaNum = "46A",
                             PortaTempo = 17,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 44,
+                            PierID = 3,
                             PortaNum = "47",
                             PortaTempo = 16,
-                            Schengen = true
+                            Remoto = false,
+                            Schengen = false,
+                            Terminal = true
                         },
                         new
                         {
                             PortaID = 45,
+                            PierID = 3,
                             PortaNum = "47A",
                             PortaTempo = 16,
-                            Schengen = true
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = true
+                        },
+                        new
+                        {
+                            PortaID = 46,
+                            PierID = 4,
+                            PortaNum = "201",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 47,
+                            PierID = 4,
+                            PortaNum = "202",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 48,
+                            PierID = 4,
+                            PortaNum = "203",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 49,
+                            PierID = 4,
+                            PortaNum = "204",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 50,
+                            PierID = 4,
+                            PortaNum = "205",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 51,
+                            PierID = 4,
+                            PortaNum = "206",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 52,
+                            PierID = 4,
+                            PortaNum = "207",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 53,
+                            PierID = 4,
+                            PortaNum = "208",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 54,
+                            PierID = 4,
+                            PortaNum = "209",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 55,
+                            PierID = 4,
+                            PortaNum = "209A",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = true,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 56,
+                            PierID = 4,
+                            PortaNum = "210",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 57,
+                            PierID = 4,
+                            PortaNum = "211",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 58,
+                            PierID = 4,
+                            PortaNum = "211A",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 59,
+                            PierID = 4,
+                            PortaNum = "212",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 60,
+                            PierID = 4,
+                            PortaNum = "212A",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 61,
+                            PierID = 4,
+                            PortaNum = "214",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = false
+                        },
+                        new
+                        {
+                            PortaID = 62,
+                            PierID = 4,
+                            PortaNum = "214A",
+                            PortaTempo = 10,
+                            Remoto = true,
+                            Schengen = false,
+                            Terminal = false
                         });
                 });
 
@@ -6139,6 +6827,8 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<string>("LastUpdatedBy");
 
+                    b.Property<int>("PierID");
+
                     b.Property<int>("PlataformaId");
 
                     b.Property<bool>("Remoto");
@@ -6146,6 +6836,8 @@ namespace MyWayRazor.Data.Migrations
                     b.Property<int>("StandN");
 
                     b.HasKey("StandId");
+
+                    b.HasIndex("PierID");
 
                     b.HasIndex("PlataformaId");
 
@@ -6160,6 +6852,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 1,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 1,
                             PlataformaId = 1,
                             Remoto = true,
                             StandN = 104
@@ -6169,6 +6862,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 2,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 1,
                             PlataformaId = 1,
                             Remoto = true,
                             StandN = 105
@@ -6178,6 +6872,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 3,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 1,
                             PlataformaId = 1,
                             Remoto = true,
                             StandN = 106
@@ -6187,6 +6882,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 4,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 1,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 107
@@ -6196,6 +6892,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 5,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 1,
                             PlataformaId = 1,
                             Remoto = true,
                             StandN = 108
@@ -6205,6 +6902,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 7,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 114
@@ -6214,6 +6912,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 8,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 115
@@ -6223,6 +6922,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 9,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 116
@@ -6232,6 +6932,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 10,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 117
@@ -6241,6 +6942,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 11,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 122
@@ -6250,6 +6952,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 12,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 123
@@ -6259,6 +6962,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 13,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 124
@@ -6268,6 +6972,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 14,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 125
@@ -6277,6 +6982,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 15,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 2,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 126
@@ -6286,6 +6992,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 16,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 3,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 141
@@ -6295,6 +7002,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 17,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 3,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 142
@@ -6304,6 +7012,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 18,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 3,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 143
@@ -6313,6 +7022,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 19,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 3,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 144
@@ -6322,6 +7032,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 20,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 3,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 145
@@ -6331,6 +7042,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 21,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 3,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 146
@@ -6340,6 +7052,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 22,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 3,
                             PlataformaId = 1,
                             Remoto = false,
                             StandN = 147
@@ -6349,6 +7062,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 23,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 200
@@ -6358,6 +7072,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 24,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 201
@@ -6367,6 +7082,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 25,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 202
@@ -6376,6 +7092,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 26,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 203
@@ -6385,6 +7102,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 27,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 204
@@ -6394,6 +7112,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 28,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 205
@@ -6403,6 +7122,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 29,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 206
@@ -6412,6 +7132,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 30,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 207
@@ -6421,6 +7142,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 31,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 208
@@ -6430,6 +7152,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 32,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 4,
                             PlataformaId = 2,
                             Remoto = true,
                             StandN = 209
@@ -6439,6 +7162,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 33,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 3,
                             Remoto = true,
                             StandN = 221
@@ -6448,6 +7172,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 34,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 3,
                             Remoto = true,
                             StandN = 222
@@ -6457,6 +7182,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 35,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 3,
                             Remoto = true,
                             StandN = 223
@@ -6466,6 +7192,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 36,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 3,
                             Remoto = true,
                             StandN = 224
@@ -6475,6 +7202,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 37,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 3,
                             Remoto = true,
                             StandN = 225
@@ -6484,6 +7212,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 38,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 4,
                             Remoto = true,
                             StandN = 301
@@ -6493,6 +7222,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 39,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 4,
                             Remoto = true,
                             StandN = 302
@@ -6502,6 +7232,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 40,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 4,
                             Remoto = true,
                             StandN = 401
@@ -6511,6 +7242,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 41,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 4,
                             Remoto = true,
                             StandN = 402
@@ -6520,6 +7252,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 42,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 4,
                             Remoto = true,
                             StandN = 403
@@ -6529,6 +7262,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 43,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 4,
                             Remoto = true,
                             StandN = 404
@@ -6538,6 +7272,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 44,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 4,
                             Remoto = true,
                             StandN = 405
@@ -6547,6 +7282,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 45,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 411
@@ -6556,6 +7292,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 47,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 412
@@ -6565,6 +7302,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 48,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 413
@@ -6574,6 +7312,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 49,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 414
@@ -6583,6 +7322,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 50,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 415
@@ -6592,6 +7332,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 51,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 416
@@ -6601,6 +7342,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 52,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 421
@@ -6610,6 +7352,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 53,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 422
@@ -6619,6 +7362,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 54,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 423
@@ -6628,6 +7372,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 55,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 424
@@ -6637,6 +7382,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 56,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 425
@@ -6646,6 +7392,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 57,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 426
@@ -6655,6 +7402,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 58,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 501
@@ -6664,6 +7412,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 59,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 502
@@ -6673,6 +7422,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 60,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 503
@@ -6682,6 +7432,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 61,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 504
@@ -6691,6 +7442,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 62,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 505
@@ -6700,6 +7452,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 64,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 506
@@ -6709,6 +7462,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 65,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 601
@@ -6718,6 +7472,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 66,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 602
@@ -6727,6 +7482,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 67,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 603
@@ -6736,6 +7492,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 68,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 604
@@ -6745,6 +7502,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 69,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 605
@@ -6754,6 +7512,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 70,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 606
@@ -6763,6 +7522,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 71,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 607
@@ -6772,6 +7532,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 72,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 608
@@ -6781,6 +7542,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 73,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 5,
                             Remoto = true,
                             StandN = 609
@@ -6790,6 +7552,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 74,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 701
@@ -6799,6 +7562,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 75,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 702
@@ -6808,6 +7572,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 76,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 703
@@ -6817,6 +7582,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 77,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 704
@@ -6826,6 +7592,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 78,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 705
@@ -6835,6 +7602,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 79,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 706
@@ -6844,6 +7612,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 80,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 801
@@ -6853,6 +7622,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 81,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 802
@@ -6862,6 +7632,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 82,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 803
@@ -6871,6 +7642,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 83,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 804
@@ -6880,6 +7652,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 84,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 805
@@ -6889,6 +7662,7 @@ namespace MyWayRazor.Data.Migrations
                             StandId = 85,
                             CreatedAt = new DateTime(2018, 10, 25, 11, 23, 39, 719, DateTimeKind.Unspecified).AddTicks(6886),
                             CreatedBy = "SISTEMA",
+                            PierID = 5,
                             PlataformaId = 6,
                             Remoto = true,
                             StandN = 806
@@ -6966,9 +7740,11 @@ namespace MyWayRazor.Data.Migrations
 
                     b.Property<string>("LastUpdatedBy");
 
-                    b.Property<string>("ToDoText");
+                    b.Property<string>("ToDoText")
+                        .IsRequired();
 
-                    b.Property<string>("ToDoTittle");
+                    b.Property<string>("ToDoTittle")
+                        .IsRequired();
 
                     b.HasKey("ToDoId");
 
@@ -7130,8 +7906,21 @@ namespace MyWayRazor.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Porta", b =>
+                {
+                    b.HasOne("MyWayRazor.Models.Tabelas.Pier", "Pier")
+                        .WithMany("Portas")
+                        .HasForeignKey("PierID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("MyWayRazor.Models.Tabelas.Stand", b =>
                 {
+                    b.HasOne("MyWayRazor.Models.Tabelas.Pier", "Pier")
+                        .WithMany("Stands")
+                        .HasForeignKey("PierID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("MyWayRazor.Models.Tabelas.Plataforma", "Plataforma")
                         .WithMany("Stands")
                         .HasForeignKey("PlataformaId")

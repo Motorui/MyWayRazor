@@ -6,7 +6,6 @@
     <title>@ViewData["Title"] - MyWay3</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
     <environment include="Development">
         <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- Font Awesome -->
@@ -24,7 +23,6 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </environment>
-
     <environment exclude="Development">
         <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- Font Awesome -->
@@ -42,7 +40,7 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </environment>
-
+    @RenderSection("styles", false)
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
@@ -53,6 +51,8 @@
         <div class="content-wrapper">
             <!-- Main content -->
             <section class="content container-fluid">
+                <partial name="_StatusMessages" />
+                <!-- ^^^^ -->
                 @RenderBody()
             </section>
             <!-- /.content -->
@@ -62,10 +62,10 @@
         <footer class="main-footer">
             <!-- To the right -->
             <div class="pull-right hidden-xs">
-                Anything you want
+                Handling your every need!!!
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2018 <a href="#">Rui Pereira</a>.</strong> Todos os direitos reservados.
+            <strong>Copyright &copy; @DateTime.UtcNow.Year <a href="#">Rui Pereira</a>.</strong> Todos os direitos reservados.
         </footer>
         <partial name="_ControlSidebar" />
     </div>

@@ -51,13 +51,15 @@ namespace MyWayRazor.Models
         public virtual Horario HorarioContratado { get; set; }
 
         [DataType(DataType.Date), Display(Name = "Data de Admissão:")]
-        public DateTime DataAdmissão { get; set; }
+        public DateTime DataAdmissao { get; set; }
         [DataType(DataType.Date), Display(Name = "Fim de contrato:")]
         public DateTime DataFim { get; set; }
         //link com a tabela contratos
         [Display(Name = "Contrato:")]
         public int ContratoId { get; set; }
         public Contrato Contrato { get; set; }
+        [Display(Name = "Ativo?:")]
+        public bool Ativo { get; set; }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }

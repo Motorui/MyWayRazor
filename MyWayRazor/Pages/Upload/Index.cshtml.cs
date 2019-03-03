@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyWayRazor.Data;
+using MyWayRazor.Extensions.Alerts;
 using MyWayRazor.Helpers;
 using MyWayRazor.Models.Analise;
+using MyWayRazor.Models.Tabelas;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,6 +39,8 @@ namespace MyWayRazor.Pages.Upload
             //TruncateTable();
         }
 
+        [TempData]
+        public string FormResult { get; set; }
         [BindProperty, Required(ErrorMessage = "Por favor selecione um ficheiro!"), Attachment]
         public IFormFile Upload { get; set; }
         public async Task<IActionResult> OnPostAsync()
@@ -107,32 +113,38 @@ namespace MyWayRazor.Pages.Upload
                     "Necessita de selecionar um ficheiro");
             }
 
-            //return RedirectToPage("/Upload/Index");
-            return RedirectToPage("/Analise/Index");
-
+            return RedirectToPage("/Analise/Index").WithSuccess("Well done!", "Ficheiro importado com sucesso!"); ;
+            //return Page();
         }
+
+        public IList<Parametro> Parametro { get; set; }
+        public IList<Porta> Porta { get; set; }
 
         private void AddExcelToDB(IExcelDataReader excelReader)
         {
-            var excelTable = excelReader.AsDataSet().Tables[0];
 
-            for (var i = 1; i < excelTable.Rows.Count; i++)
+            DataTable excelTable = excelReader.AsDataSet().Tables[0];
+
+            for (int i = 1; i < excelTable.Rows.Count; i++)
             {
-                var aeroporto = (string)excelTable.Rows[i].ItemArray[0];
-                var msg = (string)excelTable.Rows[i].ItemArray[1];
-                var notif = (string)excelTable.Rows[i].ItemArray[2];
-                var data = (DateTime)excelTable.Rows[i].ItemArray[3];
-                var voo = (string)excelTable.Rows[i].ItemArray[4];
-                var mov = (string)excelTable.Rows[i].ItemArray[5];
-                var origDest = (string)excelTable.Rows[i].ItemArray[6];
-                var pax = (string)excelTable.Rows[i].ItemArray[7];
-                var ssr = (string)excelTable.Rows[i].ItemArray[8];
-                var ac = (string)excelTable.Rows[i].ItemArray[9];
-                var stand = (string)excelTable.Rows[i].ItemArray[10];
-                var exit = (string)excelTable.Rows[i].ItemArray[11];
-                var ckin = (string)excelTable.Rows[i].ItemArray[12];
-                var gate = (string)excelTable.Rows[i].ItemArray[13];
-                var transferencia = (string)excelTable.Rows[i].ItemArray[14];
+                string aeroporto = (string)excelTable.Rows[i].ItemArray[0];
+                string msg = (string)excelTable.Rows[i].ItemArray[1];
+                string notif = (string)excelTable.Rows[i].ItemArray[2];
+                DateTime data = (DateTime)excelTable.Rows[i].ItemArray[3];
+                string voo = (string)excelTable.Rows[i].ItemArray[4];
+                string mov = (string)excelTable.Rows[i].ItemArray[5];
+                string origDest = (string)excelTable.Rows[i].ItemArray[6];
+                string pax = (string)excelTable.Rows[i].ItemArray[7];
+                string ssr = (string)excelTable.Rows[i].ItemArray[8];
+                string ac = (string)excelTable.Rows[i].ItemArray[9];
+                string stand = (string)excelTable.Rows[i].ItemArray[10];
+                string exit = (string)excelTable.Rows[i].ItemArray[11];
+                string ckin = (string)excelTable.Rows[i].ItemArray[12];
+                string gate = (string)excelTable.Rows[i].ItemArray[13];
+                string transferencia = (string)excelTable.Rows[i].ItemArray[14];
+                DateTime horaEmbarque = data.AddMinutes(-BrdTime(gate));
+                DateTime saidaStaging = data.AddMinutes(-StagingTime(gate));
+                DateTime estimaApresentacao = data.AddMinutes(-EstimaTime(gate));
 
                 AssistenciasPRM currentExcel = new AssistenciasPRM
                 {
@@ -150,9 +162,17 @@ namespace MyWayRazor.Pages.Upload
                     Exit = exit,
                     CkIn = ckin,
                     Gate = gate,
-                    Transferencia = transferencia
+                    Transferencia = transferencia,
+                    HoraEmbarque = horaEmbarque,
+                    SaidaStaging = saidaStaging,
+                    EstimaApresentacao = estimaApresentacao
                 };
-                var current = db.AssistenciasPRMS.Find(currentExcel.Data, currentExcel.Voo, currentExcel.Pax);
+
+                AssistenciasPRM current = db.AssistenciasPRMS.FirstOrDefault(
+                    c => c.Data.Date == currentExcel.Data.Date
+                    && c.Voo == currentExcel.Voo
+                    && c.Pax == currentExcel.Pax
+                    );
                 if (current == null)
                 {
                     db.AssistenciasPRMS.Add(currentExcel);
@@ -165,6 +185,66 @@ namespace MyWayRazor.Pages.Upload
             }
 
             db.SaveChanges();
+
+        }
+
+        private int BrdTime(string gate)
+        {
+            bool gateExist = db.Portas.Any(g => g.PortaNum.Equals(gate));
+
+            if (gateExist)
+            {
+                Porta queryP = db.Portas.FirstOrDefault(g => g.PortaNum.Equals(gate));
+
+                bool schengen = queryP.Schengen;
+                int tempoTotal = (schengen == true) ? 40 : 60 ;
+                return tempoTotal;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private int StagingTime(string gate)
+        {
+            bool gateExist = db.Portas.Any(g => g.PortaNum.Equals(gate));
+
+            if (gateExist)
+            {
+                Porta queryP = db.Portas.FirstOrDefault(g => g.PortaNum.Equals(gate));
+
+                int portaTempo = queryP.PortaTempo;
+
+                bool schengen = queryP.Schengen;
+                int tempoTotal = (schengen == true) ? 40 + portaTempo : 60 + portaTempo;
+                return tempoTotal;
+            }
+            else
+            {
+                return 0;
+            }            
+        }
+
+        private int EstimaTime(string gate)
+        {
+            bool gateExist = db.Portas.Any(g => g.PortaNum.Equals(gate));
+
+            if (gateExist)
+            {
+                Porta queryPorta = db.Portas.FirstOrDefault(g => g.PortaNum.Equals(gate));
+
+                bool schengen = queryPorta.Schengen;
+                string paramNome = (schengen == true) ? "CPS" : "CPN";
+
+                Parametro queryParam = db.Parametros.FirstOrDefault(p => p.ParamNome.Equals(paramNome));
+                int tempoTotal = (int)queryParam.ParamValue;
+                return tempoTotal;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         private void DelDir(string fn)

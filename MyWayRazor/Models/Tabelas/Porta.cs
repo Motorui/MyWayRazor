@@ -12,12 +12,28 @@ namespace MyWayRazor.Models.Tabelas
         [Display(Name = "Porta")]
         public string PortaNum { get; set; }
 
+        [Required]
         [Display(Name = "Deslocação")]
         public int PortaTempo { get; set; }
 
-        //bool Schengen 0 NãoSchengen 1
+        //bool Schengen True NãoSchengen False
+        [Required]
         [Display(Name = "Schengen?")]
         public bool Schengen { get; set; }
+
+        //bool Terminal1 True Terminal2 False
+        [Required]
+        [Display(Name = "Terminal1?")]
+        public bool Terminal { get; set; }
+
+        //bool Remoto True Remoto False
+        [Required]
+        [Display(Name = "Remoto?")]
+        public bool Remoto { get; set; }
+
+        [Display(Name = "Pier")]
+        public int PierID { get; set; }
+        public Pier Pier { get; set; }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }

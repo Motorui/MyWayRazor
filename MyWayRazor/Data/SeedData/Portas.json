@@ -3,270 +3,558 @@
     "PortaID": 1,
     "PortaNum": "07",
     "PortaTempo": "12",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 1
   },
   {
     "PortaID": 2,
     "PortaNum": "08",
     "PortaTempo": "12",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 1
   },
   {
     "PortaID": 3,
     "PortaNum": "8B",
     "PortaTempo": "12",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 1
   },
   {
     "PortaID": 4,
     "PortaNum": "09",
     "PortaTempo": "11",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 1
   },
   {
     "PortaID": 5,
     "PortaNum": "10",
     "PortaTempo": "11",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 1
   },
   {
     "PortaID": 6,
     "PortaNum": "11",
     "PortaTempo": "10",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 1
   },
   {
     "PortaID": 7,
     "PortaNum": "12",
     "PortaTempo": "10",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 1
   },
   {
     "PortaID": 8,
     "PortaNum": "13",
     "PortaTempo": "9",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 1
   },
   {
     "PortaID": 9,
     "PortaNum": "14",
     "PortaTempo": "9",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 10,
     "PortaNum": "15",
     "PortaTempo": "8",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 11,
     "PortaNum": "15A",
     "PortaTempo": "8",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 12,
     "PortaNum": "16",
     "PortaTempo": "8",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 13,
     "PortaNum": "16A",
     "PortaTempo": "8",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 14,
     "PortaNum": "17",
     "PortaTempo": "7",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 15,
     "PortaNum": "17A",
     "PortaTempo": "7",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 16,
     "PortaNum": "18",
     "PortaTempo": "7",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 17,
     "PortaNum": "18A",
     "PortaTempo": "7",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 18,
     "PortaNum": "18B",
     "PortaTempo": "7",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 19,
     "PortaNum": "19",
     "PortaTempo": "8",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 20,
     "PortaNum": "20",
     "PortaTempo": "8",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 21,
     "PortaNum": "21",
     "PortaTempo": "6",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 22,
     "PortaNum": "22",
     "PortaTempo": "5",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 23,
     "PortaNum": "22A",
     "PortaTempo": "5",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 24,
     "PortaNum": "23",
     "PortaTempo": "5",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 25,
     "PortaNum": "23A",
     "PortaTempo": "5",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 26,
     "PortaNum": "24",
     "PortaTempo": "7",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 27,
     "PortaNum": "25",
     "PortaTempo": "7",
-    "Schengen": 1
+    "Schengen": true,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 28,
     "PortaNum": "26",
     "PortaTempo": "12",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 2
   },
   {
     "PortaID": 29,
     "PortaNum": "27",
     "PortaTempo": "12",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 2
   },
   {
     "PortaID": 30,
     "PortaNum": "41",
     "PortaTempo": "13",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 3
   },
   {
     "PortaID": 31,
     "PortaNum": "41A",
     "PortaTempo": "13",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
   },
   {
     "PortaID": 32,
     "PortaNum": "42",
     "PortaTempo": "13",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 3
   },
   {
     "PortaID": 33,
     "PortaNum": "42A",
     "PortaTempo": "13",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
   },
   {
     "PortaID": 34,
     "PortaNum": "43",
     "PortaTempo": "14",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 3
   },
   {
     "PortaID": 35,
     "PortaNum": "43A",
     "PortaTempo": "14",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
   },
   {
     "PortaID": 36,
     "PortaNum": "43B",
     "PortaTempo": "14",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
   },
   {
     "PortaID": 37,
     "PortaNum": "44",
     "PortaTempo": "15",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 3
   },
   {
     "PortaID": 38,
     "PortaNum": "44A",
     "PortaTempo": "15",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
   },
   {
     "PortaID": 39,
     "PortaNum": "44B",
     "PortaTempo": "15",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
   },
   {
     "PortaID": 40,
     "PortaNum": "45",
     "PortaTempo": "16",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 3
   },
   {
     "PortaID": 41,
     "PortaNum": "45A",
     "PortaTempo": "16",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
   },
   {
     "PortaID": 42,
     "PortaNum": "46",
     "PortaTempo": "17",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 3
   },
   {
     "PortaID": 43,
     "PortaNum": "46A",
     "PortaTempo": "17",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
   },
   {
     "PortaID": 44,
     "PortaNum": "47",
     "PortaTempo": "16",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": false,
+    "PierID": 3
   },
   {
     "PortaID": 45,
     "PortaNum": "47A",
     "PortaTempo": "16",
-    "Schengen": 0
+    "Schengen": false,
+    "Terminal": true,
+    "Remoto": true,
+    "PierID": 3
+  },
+  {
+    "PortaID": 46,
+    "PortaNum": "201",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 47,
+    "PortaNum": "202",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 48,
+    "PortaNum": "203",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 49,
+    "PortaNum": "204",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 50,
+    "PortaNum": "205",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 51,
+    "PortaNum": "206",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 52,
+    "PortaNum": "207",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 53,
+    "PortaNum": "208",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 54,
+    "PortaNum": "209",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 55,
+    "PortaNum": "209A",
+    "PortaTempo": "10",
+    "Schengen": true,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 56,
+    "PortaNum": "210",
+    "PortaTempo": "10",
+    "Schengen": false,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 57,
+    "PortaNum": "211",
+    "PortaTempo": "10",
+    "Schengen": false,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 58,
+    "PortaNum": "211A",
+    "PortaTempo": "10",
+    "Schengen": false,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 59,
+    "PortaNum": "212",
+    "PortaTempo": "10",
+    "Schengen": false,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 60,
+    "PortaNum": "212A",
+    "PortaTempo": "10",
+    "Schengen": false,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 61,
+    "PortaNum": "214",
+    "PortaTempo": "10",
+    "Schengen": false,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
+  },
+  {
+    "PortaID": 62,
+    "PortaNum": "214A",
+    "PortaTempo": "10",
+    "Schengen": false,
+    "Terminal": false,
+    "Remoto": true,
+    "PierID": 4
   }
 ]

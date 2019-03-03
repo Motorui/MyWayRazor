@@ -11,10 +11,9 @@ namespace MyWayRazor.Helpers
         protected override ValidationResult IsValid(object value,
           ValidationContext validationContext)
         {
-            IFormFile file = value as IFormFile;
 
             // The file is required.
-            if (file == null)
+            if (!(value is IFormFile file))
             {
                 return new ValidationResult("Por favor selecione um ficheiro!");
             }

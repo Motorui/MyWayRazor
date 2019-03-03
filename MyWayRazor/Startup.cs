@@ -1,14 +1,14 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyWayRazor.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyWayRazor.Areas.Identity.Models;
+using MyWayRazor.Data;
+using System;
 
 namespace MyWayRazor
 {
@@ -108,10 +108,9 @@ namespace MyWayRazor
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseMvc();
-
+            app.UseCookiePolicy();
         }
     }
 }

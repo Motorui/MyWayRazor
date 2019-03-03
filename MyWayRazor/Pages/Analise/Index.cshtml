@@ -3,159 +3,97 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
-
-    var Agora = DateTime.UtcNow;
-    var AgoraMaisUmaHora = DateTime.UtcNow.AddHours(1);
 }
-<div class="content">
+<section class="content">
     <div class="row">
-        <div class="col-md-6">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Chegadas compreendidas entre as @Agora e as @AgoraMaisUmaHora.ToShortTimeString():</h3>
-                </div>
-                <!-- /.box-header -->
+        <div class="callout callout-success">
+            <h2 class="text-center text-bold">Daily Planning Tool</h2>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="box box-solid">
                 <div class="box-body">
-                    @foreach (var groupStand in Model.AssistenciasPRM
-                        .OrderBy(d => d.Data)
-                        .Where(d => d.Mov == "A" && (d.Data >= Agora && d.Data < AgoraMaisUmaHora))
-                        .GroupBy(d => d.Stand)
-                        )
-                    {
-                        <div class="box">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Stand @groupStand.Key</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                @foreach (var groupVoo in groupStand.OrderBy(t => t.Data).GroupBy(v => v.Voo))
-                                {
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">
-                                            VOO: @groupVoo.Key
-                                        </h3>
-                                    </div>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>STA:</th>
-                                                <th>EXIT:</th>
-                                                <th>SSR:</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    @groupVoo.Select(x => x.Data).FirstOrDefault().ToShortTimeString()
-                                                </td>
-                                                <td>
-                                                    @groupVoo.Select(x => x.Exit).FirstOrDefault()
-                                                </td>
-                                                <td>
-                                                    @foreach (var line in groupVoo.GroupBy(s => s.SSR)
-                                                   .Select(s => new
-                                                   {
-                                                       Tssr = s.Key,
-                                                       Count = s.Count(),
-                                                       data = s.Select(x => x.Data).FirstOrDefault(),
-                                                       gate = s.Select(x => x.Gate).FirstOrDefault()
-                                                   })
-                                                   .OrderBy(x => x.Tssr))
-                                                    {
-                                                        <ul class="list-unstyled">
-                                                            <li>
-                                                                <p class="@(@line.Tssr.Contains("WCHC") || @line.Tssr.Contains("WCHS") ? "text text-red text-bold" : "")">
-                                                                    @line.Count - @line.Tssr
-                                                                </p>
-                                                            </li>
-                                                        </ul>
-                                                    }
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                }
+                    <h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                        TERMINAL
+                    </h4>
+                    <div class="media">
+                        <div class="col-sm-3 col-md-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>PMR</h3>
+
+                                    <p>Total Horário</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-fw fa-wheelchair"></i>
+                                </div>
+                                <a asp-page="/Analise/PmrTerminal" class="small-box-footer">
+                                    Ver <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
                         </div>
-                    }
+                        <div class="col-sm-3 col-md-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>Voos</h3>
+
+                                    <p>Total Horário</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-fw fa-plane"></i>
+                                </div>
+                                <a asp-page="/Analise/VooTerminal" class="small-box-footer">
+                                    Ver <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Partidas compreendidas entre as @Agora.ToShortTimeString() e as @AgoraMaisUmaHora.ToShortTimeString():</h3>
-                </div>
-                <!-- /.box-header -->
+        <div class="col-sm-12 col-md-6">
+            <div class="box box-solid">
                 <div class="box-body">
-                    @foreach (var groupStand in Model.AssistenciasPRM
-                       .OrderBy(d => d.Data)
-                       .Where(d => d.Mov == "D" && (d.Data >= Agora && d.Data < AgoraMaisUmaHora))
-                       .GroupBy(d => d.Stand)
-                       )
-                    {
-                        <div class="box">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Stand @groupStand.Key</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                @foreach (var groupVoo in groupStand.OrderBy(t => t.Data).GroupBy(v => v.Voo))
-                                {
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">
-                                            VOO: @groupVoo.Key
-                                        </h3>
-                                    </div>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>STD:</th>
-                                                <th>BRD:</th>
-                                                <th>GATE:</th>
-                                                <th>SSR:</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    @groupVoo.Select(x => x.Data).FirstOrDefault().ToShortTimeString()
-                                                </td>
-                                                <td>
-                                                    @groupVoo.Select(x => x.Data).FirstOrDefault().AddMinutes(-40).ToShortTimeString()
-                                                </td>
-                                                <td>
-                                                    @groupVoo.Select(x => x.Gate).FirstOrDefault()
-                                                </td>
-                                                <td>
-                                                    @foreach (var line in groupVoo.GroupBy(s => s.SSR)
-                                                 .Select(s => new
-                                                 {
-                                                     Tssr = s.Key,
-                                                     Count = s.Count(),
-                                                     data = s.Select(x => x.Data).FirstOrDefault(),
-                                                     gate = s.Select(x => x.Gate).FirstOrDefault()
-                                                 })
-                                                 .OrderBy(x => x.Tssr))
-                                                    {
-                                                        <ul class="list-unstyled">
-                                                            <li>
-                                                                <p class="@(@line.Tssr.Contains("WCHC") || @line.Tssr.Contains("WCHS") ? "text text-red text-bold" : "")">
-                                                                    @line.Count - @line.Tssr
-                                                                </p>
-                                                            </li>
-                                                        </ul>
-                                                    }
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                }
+                    <h4 style="background-color:#f7f7f7; font-size: 18px; text-align: center; padding: 7px 10px; margin-top: 0;">
+                        LADO AR
+                    </h4>
+                    <div class="media">
+                        <div class="col-sm-3 col-md-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>PMR</h3>
+
+                                    <p>Total Horário</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-fw fa-wheelchair"></i>
+                                </div>
+                                <a asp-page="/Analise/PmrRemoto" class="small-box-footer">
+                                    Ver <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
                         </div>
-                    }
+                        <div class="col-sm-3 col-md-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>Voos</h3>
+
+                                    <p>Total Horário</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-fw fa-plane"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Ver <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>

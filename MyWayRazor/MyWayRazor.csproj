@@ -16,6 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20181023175222_FirstData.cs" />
+    <Compile Remove="Data\Migrations\20181023175222_FirstData.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190201211649_AddTablesPlataformaStand.cs" />
+    <Compile Remove="Data\Migrations\20190201211649_AddTablesPlataformaStand.Designer.cs" />
     <Compile Remove="Data\Migrations\20190201223820_SeedInitialData.cs" />
     <Compile Remove="Data\Migrations\20190201223820_SeedInitialData.Designer.cs" />
     <Compile Remove="Data\Migrations\20190205103918_ToDoList.cs" />
@@ -34,6 +38,24 @@
     <Compile Remove="Data\Migrations\20190217204713_Staging.Designer.cs" />
     <Compile Remove="Data\Migrations\20190219104245_FixTables.cs" />
     <Compile Remove="Data\Migrations\20190219104245_FixTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190219104353_FixTables.cs" />
+    <Compile Remove="Data\Migrations\20190219104353_FixTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190226153844_ParamTable.cs" />
+    <Compile Remove="Data\Migrations\20190226153844_ParamTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190228103937_AddTablesForAnalise.cs" />
+    <Compile Remove="Data\Migrations\20190228103937_AddTablesForAnalise.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190228200126_AddTablesForAnalise.cs" />
+    <Compile Remove="Data\Migrations\20190228200126_AddTablesForAnalise.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190228211053_AddTablesForAnalise.cs" />
+    <Compile Remove="Data\Migrations\20190228211053_AddTablesForAnalise.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190228214926_AddTablesForAnalise.cs" />
+    <Compile Remove="Data\Migrations\20190228214926_AddTablesForAnalise.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190228215257_AddTablesForAnalise.cs" />
+    <Compile Remove="Data\Migrations\20190228215257_AddTablesForAnalise.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190301124408_AddTablesForAnalise.cs" />
+    <Compile Remove="Data\Migrations\20190301124408_AddTablesForAnalise.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190301131702_AddTablesForAnalise.cs" />
+    <Compile Remove="Data\Migrations\20190301131702_AddTablesForAnalise.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

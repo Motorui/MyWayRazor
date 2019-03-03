@@ -1,0 +1,161 @@
+﻿@page
+@model MyWayRazor.Pages.Analise.HoraModel
+@{
+    ViewData["Title"] = "Hora";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    var Agora = DateTime.UtcNow;
+    var AgoraMaisUmaHora = DateTime.UtcNow.AddHours(1);
+}
+<div class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chegadas compreendidas entre as @Agora e as @AgoraMaisUmaHora.ToShortTimeString():</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @foreach (var groupStand in Model.AssistenciasPRM
+                       .OrderBy(d => d.Data)
+                       .Where(d => d.Mov == "A" && (d.Data >= Agora && d.Data < AgoraMaisUmaHora))
+                       .GroupBy(d => d.Stand)
+                       )
+                    {
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Stand @groupStand.Key</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                @foreach (var groupVoo in groupStand.OrderBy(t => t.Data).GroupBy(v => v.Voo))
+                                {
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">
+                                            VOO: @groupVoo.Key
+                                        </h3>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>STA:</th>
+                                                <th>EXIT:</th>
+                                                <th>SSR:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @groupVoo.Select(x => x.Data).FirstOrDefault().ToShortTimeString()
+                                                </td>
+                                                <td>
+                                                    @groupVoo.Select(x => x.Exit).FirstOrDefault()
+                                                </td>
+                                                <td>
+                                                    @foreach (var line in groupVoo.GroupBy(s => s.SSR)
+                                                  .Select(s => new
+                                                  {
+                                                      Tssr = s.Key,
+                                                      Count = s.Count(),
+                                                      data = s.Select(x => x.Data).FirstOrDefault(),
+                                                      gate = s.Select(x => x.Gate).FirstOrDefault()
+                                                  })
+                                                  .OrderBy(x => x.Tssr))
+                                                    {
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <p class="@(@line.Tssr.Contains("WCHC") || @line.Tssr.Contains("WCHS") ? "text text-red text-bold" : "")">
+                                                                    @line.Count - @line.Tssr
+                                                                </p>
+                                                            </li>
+                                                        </ul>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Partidas compreendidas entre as @Agora.ToShortTimeString() e as @AgoraMaisUmaHora.ToShortTimeString():</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @foreach (var groupStand in Model.AssistenciasPRM
+                      .OrderBy(d => d.Data)
+                      .Where(d => d.Mov == "D" && (d.Data >= Agora && d.Data < AgoraMaisUmaHora))
+                      .GroupBy(d => d.Stand)
+                      )
+                    {
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Stand @groupStand.Key</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                @foreach (var groupVoo in groupStand.OrderBy(t => t.Data).GroupBy(v => v.Voo))
+                                {
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">
+                                            VOO: @groupVoo.Key
+                                        </h3>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>STD:</th>
+                                                <th>BRD:</th>
+                                                <th>GATE:</th>
+                                                <th>SSR:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @groupVoo.Select(x => x.Data).FirstOrDefault().ToShortTimeString()
+                                                </td>
+                                                <td>
+                                                    @groupVoo.Select(x => x.Data).FirstOrDefault().AddMinutes(-40).ToShortTimeString()
+                                                </td>
+                                                <td>
+                                                    @groupVoo.Select(x => x.Gate).FirstOrDefault()
+                                                </td>
+                                                <td>
+                                                    @foreach (var line in groupVoo.GroupBy(s => s.SSR)
+                                                .Select(s => new
+                                                {
+                                                    Tssr = s.Key,
+                                                    Count = s.Count(),
+                                                    data = s.Select(x => x.Data).FirstOrDefault(),
+                                                    gate = s.Select(x => x.Gate).FirstOrDefault()
+                                                })
+                                                .OrderBy(x => x.Tssr))
+                                                    {
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <p class="@(@line.Tssr.Contains("WCHC") || @line.Tssr.Contains("WCHS") ? "text text-red text-bold" : "")">
+                                                                    @line.Count - @line.Tssr
+                                                                </p>
+                                                            </li>
+                                                        </ul>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

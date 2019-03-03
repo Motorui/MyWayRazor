@@ -1,26 +1,20 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWayRazor.Models.Tabelas
 {
-    public class Stand : IBaseEntity
+    public class Parametro : IBaseEntity
     {
         [Key]
-        public int StandId { get; set; }
-
+        public string ParamID { get; set; }
+        [Required, Display(Name = "Nome:")]
+        public string ParamNome { get; set; }
+        [Required, Display(Name = "Descrição:")]
+        public string ParamDesc { get; set; }
         [Required]
-        [Range(Int32.MaxValue, 999)]
-        [Display(Name = "Stand")]
-        public int StandN { get; set; }
-        public bool Remoto { get; set; }
-
-        [Display(Name = "Plataforma:")]
-        public int PlataformaId { get; set; }
-        public Plataforma Plataforma { get; set; }
-
-        [Display(Name = "Pier")]
-        public int PierID { get; set; }
-        public Pier Pier { get; set; }
+        [Display(Name = "Parametro:")]
+        public int ParamValue { get; set; }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }

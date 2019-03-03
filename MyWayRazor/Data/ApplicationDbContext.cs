@@ -58,9 +58,11 @@ namespace MyWayRazor.Data
         public DbSet<AssistenciasPRM> AssistenciasPRMS { get; set; }
         public DbSet<Plataforma> Plataformas { get; set; }
         public DbSet<Stand> Stands { get; set; }
+        public DbSet<Pier> Piers { get; set; }
         public DbSet<ToDo> ToDos { get; set; }
         public DbSet<Porta> Portas { get; set; }
         public DbSet<Staging> Stagings { get; set; }
+        public DbSet<Parametro> Parametros { get; set; }
 
         #endregion
 
@@ -94,13 +96,6 @@ namespace MyWayRazor.Data
             var CategoriasReader = new StreamReader(CategoriasStream);
             var categorias = JsonConvert.DeserializeObject<List<Categoria>>(CategoriasReader.ReadToEnd());
             builder.Entity<Categoria>().HasData(categorias);
-
-            // Seed Portas de Embarque
-            var PortasFile = Path.Combine(env.ContentRootPath, folderName, "Portas.json");
-            var PortasStream = File.Open(PortasFile, FileMode.Open, FileAccess.Read);
-            var PortasReader = new StreamReader(PortasStream);
-            var portas = JsonConvert.DeserializeObject<List<Porta>>(PortasReader.ReadToEnd());
-            builder.Entity<Porta>().HasData(portas);
 
             // Seed Statuses
             var StatusesFile = Path.Combine(env.ContentRootPath, folderName, "Statuses.json");
@@ -158,6 +153,20 @@ namespace MyWayRazor.Data
             var plataformas = JsonConvert.DeserializeObject<List<Plataforma>>(PlataformasReader.ReadToEnd());
             builder.Entity<Plataforma>().HasData(plataformas);
 
+            // Seed Portas de Embarque
+            var PortasFile = Path.Combine(env.ContentRootPath, folderName, "Portas.json");
+            var PortasStream = File.Open(PortasFile, FileMode.Open, FileAccess.Read);
+            var PortasReader = new StreamReader(PortasStream);
+            var portas = JsonConvert.DeserializeObject<List<Porta>>(PortasReader.ReadToEnd());
+            builder.Entity<Porta>().HasData(portas);
+
+            //Seed Piers
+            var PiersFile = Path.Combine(env.ContentRootPath, folderName, "Piers.json");
+            var PiersStream = File.Open(PiersFile, FileMode.Open, FileAccess.Read);
+            var PiersReader = new StreamReader(PiersStream);
+            var piers = JsonConvert.DeserializeObject<List<Pier>>(PiersReader.ReadToEnd());
+            builder.Entity<Pier>().HasData(piers);
+
             // Seed Unidades de handling
             var UhsFile = Path.Combine(env.ContentRootPath, folderName, "Uhs.json");
             var UhsStream = File.Open(UhsFile, FileMode.Open, FileAccess.Read);
@@ -171,6 +180,13 @@ namespace MyWayRazor.Data
             var StandsReader = new StreamReader(StandsStream);
             var stands = JsonConvert.DeserializeObject<List<Stand>>(StandsReader.ReadToEnd());
             builder.Entity<Stand>().HasData(stands);
+
+            // Seed Params
+            var ParamFile = Path.Combine(env.ContentRootPath, folderName, "Parametros.json");
+            var ParamStream = File.Open(ParamFile, FileMode.Open, FileAccess.Read);
+            var ParamReader = new StreamReader(ParamStream);
+            var parametros = JsonConvert.DeserializeObject<List<Parametro>>(ParamReader.ReadToEnd());
+            builder.Entity<Parametro>().HasData(parametros);
 
             #endregion
         }

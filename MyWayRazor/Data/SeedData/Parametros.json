@@ -1,0 +1,33 @@
+[
+  {
+    "ParamID": "1",
+    "ParamNome": "CPS",
+    "ParamDesc": "Chegada PAX Schengen ao aeroporto",
+    "ParamValue": 120,
+    "CreatedAt": "2019-02-26T15:35:00",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "ParamID": "2",
+    "ParamNome": "CPN",
+    "ParamDesc": "Chegada PAX Não Schengen ao aeroporto",
+    "ParamValue": 180,
+    "CreatedAt": "2019-02-26T15:35:00",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "ParamID": "3",
+    "ParamNome": "NAmbulift",
+    "ParamDesc": "Quantidade de ambulift's necessários vs num PAP",
+    "ParamValue": 4,
+    "CreatedAt": "2019-02-26T15:35:00",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "ParamID": "4",
+    "ParamNome": "NVta",
+    "ParamDesc": "Quantidade de VTA's necessárias vs pmr no voo",
+    "ParamValue": 5,
+    "CreatedAt": "2019-02-26T15:35:00"
+  }
+]

@@ -7,9 +7,9 @@ namespace MyWayRazor.Models.ToDoList
     {
         [Key]
         public int ToDoId { get; set; }
-        [Display(Name = "Titulo:")]
+        [Required, Display(Name = "Titulo:")]
         public string ToDoTittle { get; set; }
-        [Display(Name = "Texto:")]
+        [Required, Display(Name = "Texto:")]
         public string ToDoText { get; set; }
         [Display(Name = "Feito?:")]
         public bool Done { get; set; }

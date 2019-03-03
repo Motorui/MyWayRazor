@@ -4,6 +4,7 @@
     "StandN": "104",
     "Remoto": true,
     "PlataformaId": 1,
+    "PierID": 1,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -12,6 +13,7 @@
     "StandN": "105",
     "Remoto": true,
     "PlataformaId": 1,
+    "PierID": 1,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -20,6 +22,7 @@
     "StandN": "106",
     "Remoto": true,
     "PlataformaId": 1,
+    "PierID": 1,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -28,6 +31,7 @@
     "StandN": "107",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 1,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -36,6 +40,7 @@
     "StandN": "108",
     "Remoto": true,
     "PlataformaId": 1,
+    "PierID": 1,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -44,6 +49,7 @@
     "StandN": "114",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -52,6 +58,7 @@
     "StandN": "115",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -60,6 +67,7 @@
     "StandN": "116",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -68,6 +76,7 @@
     "StandN": "117",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -76,6 +85,7 @@
     "StandN": "122",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -84,6 +94,7 @@
     "StandN": "123",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -92,6 +103,7 @@
     "StandN": "124",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -100,6 +112,7 @@
     "StandN": "125",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -108,6 +121,7 @@
     "StandN": "126",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 2,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -116,6 +130,7 @@
     "StandN": "141",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 3,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -124,6 +139,7 @@
     "StandN": "142",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 3,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -132,6 +148,7 @@
     "StandN": "143",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 3,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -140,6 +157,7 @@
     "StandN": "144",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 3,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -148,6 +166,7 @@
     "StandN": "145",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 3,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -156,6 +175,7 @@
     "StandN": "146",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 3,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -164,6 +184,7 @@
     "StandN": "147",
     "Remoto": false,
     "PlataformaId": 1,
+    "PierID": 3,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -172,6 +193,7 @@
     "StandN": "200",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -180,6 +202,7 @@
     "StandN": "201",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -188,6 +211,7 @@
     "StandN": "202",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -196,6 +220,7 @@
     "StandN": "203",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -204,6 +229,7 @@
     "StandN": "204",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -212,6 +238,7 @@
     "StandN": "205",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -220,6 +247,7 @@
     "StandN": "206",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -228,6 +256,7 @@
     "StandN": "207",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -236,6 +265,7 @@
     "StandN": "208",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -244,6 +274,7 @@
     "StandN": "209",
     "Remoto": true,
     "PlataformaId": 2,
+    "PierID": 4,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -252,6 +283,7 @@
     "StandN": "221",
     "Remoto": true,
     "PlataformaId": 3,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -260,6 +292,7 @@
     "StandN": "222",
     "Remoto": true,
     "PlataformaId": 3,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -268,6 +301,7 @@
     "StandN": "223",
     "Remoto": true,
     "PlataformaId": 3,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -276,6 +310,7 @@
     "StandN": "224",
     "Remoto": true,
     "PlataformaId": 3,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -284,6 +319,7 @@
     "StandN": "225",
     "Remoto": true,
     "PlataformaId": 3,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -292,6 +328,7 @@
     "StandN": "301",
     "Remoto": true,
     "PlataformaId": 4,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -300,6 +337,7 @@
     "StandN": "302",
     "Remoto": true,
     "PlataformaId": 4,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -308,6 +346,7 @@
     "StandN": "401",
     "Remoto": true,
     "PlataformaId": 4,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -316,6 +355,7 @@
     "StandN": "402",
     "Remoto": true,
     "PlataformaId": 4,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -324,6 +364,7 @@
     "StandN": "403",
     "Remoto": true,
     "PlataformaId": 4,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -332,6 +373,7 @@
     "StandN": "404",
     "Remoto": true,
     "PlataformaId": 4,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -340,6 +382,7 @@
     "StandN": "405",
     "Remoto": true,
     "PlataformaId": 4,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -348,6 +391,7 @@
     "StandN": "411",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -356,6 +400,7 @@
     "StandN": "412",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -364,6 +409,7 @@
     "StandN": "413",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -372,6 +418,7 @@
     "StandN": "414",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -380,6 +427,7 @@
     "StandN": "415",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -388,6 +436,7 @@
     "StandN": "416",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -396,6 +445,7 @@
     "StandN": "421",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -404,6 +454,7 @@
     "StandN": "422",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -412,6 +463,7 @@
     "StandN": "423",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -420,6 +472,7 @@
     "StandN": "424",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -428,6 +481,7 @@
     "StandN": "425",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -436,6 +490,7 @@
     "StandN": "426",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -444,6 +499,7 @@
     "StandN": "501",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -452,6 +508,7 @@
     "StandN": "502",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -460,6 +517,7 @@
     "StandN": "503",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -468,6 +526,7 @@
     "StandN": "504",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -476,6 +535,7 @@
     "StandN": "505",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -484,6 +544,7 @@
     "StandN": "506",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -492,6 +553,7 @@
     "StandN": "601",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -500,6 +562,7 @@
     "StandN": "602",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -508,6 +571,7 @@
     "StandN": "603",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -516,6 +580,7 @@
     "StandN": "604",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -524,6 +589,7 @@
     "StandN": "605",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -532,6 +598,7 @@
     "StandN": "606",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -540,6 +607,7 @@
     "StandN": "607",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -548,6 +616,7 @@
     "StandN": "608",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -556,6 +625,7 @@
     "StandN": "609",
     "Remoto": true,
     "PlataformaId": 5,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -564,6 +634,7 @@
     "StandN": "701",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -572,6 +643,7 @@
     "StandN": "702",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -580,6 +652,7 @@
     "StandN": "703",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -588,6 +661,7 @@
     "StandN": "704",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -596,6 +670,7 @@
     "StandN": "705",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -604,6 +679,7 @@
     "StandN": "706",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -612,6 +688,7 @@
     "StandN": "801",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -620,6 +697,7 @@
     "StandN": "802",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -628,6 +706,7 @@
     "StandN": "803",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -636,6 +715,7 @@
     "StandN": "804",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -644,6 +724,7 @@
     "StandN": "805",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   },
@@ -652,6 +733,7 @@
     "StandN": "806",
     "Remoto": true,
     "PlataformaId": 6,
+    "PierID": 5,
     "CreatedAt": "2018-10-25T11:23:39.7196886",
     "CreatedBy": "SISTEMA"
   }

@@ -1,0 +1,484 @@
+﻿@page
+@model MyWayRazor.Pages.Analise.PmrTerminalModel
+
+@{
+    ViewData["Title"] = "PmrTerminal";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    #region variables
+
+    var totalAss = Model.AssistenciasPRMs.Count(
+        d => d.Data.Date == DateTime.UtcNow.Date
+        );
+
+    var totalDep = Model.AssistenciasPRMs.Count(
+        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "D"
+        );
+
+    var totalArr = Model.AssistenciasPRMs.Count(
+        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
+        );
+
+    var PierSul = Model.Stands.Where(
+        g => g.PierID.Equals(1) && g.Remoto == false
+        )
+        .Select(v => v.StandN);
+
+    var PierNorte = Model.Stands.Where(
+        g => g.PierID.Equals(2) && g.Remoto == false
+        )
+        .Select(v => v.StandN);
+
+    var Pier14 = Model.Stands.Where(
+        g => g.PierID.Equals(3) && g.Remoto == false
+        )
+        .Select(v => v.StandN);
+
+    var Remotos = Model.Stands.Where(
+        g => g.Remoto == true
+        )
+        .Select(v => v.StandN);
+
+    var gateS = Model.Portas.Where(
+        g => g.Schengen == true && g.Terminal == true
+        )
+        .Select(v => v.PortaNum);
+
+    var gateN = Model.Portas.Where(
+        g => g.Schengen == false && g.Terminal == true
+        )
+        .Select(v => v.PortaNum);
+
+    var gateT2 = Model.Portas.Where(
+        g => g.Terminal == false
+        )
+        .Select(v => v.PortaNum);
+
+    var totalDepS = Model.AssistenciasPRMs.Count(
+        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "D"
+        && gateS.Contains(d.Gate)
+        );
+
+    var totalDepN = Model.AssistenciasPRMs.Count(
+        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "D"
+        && gateN.Contains(d.Gate)
+        );
+
+    var totalDepT2 = Model.AssistenciasPRMs.Count(
+        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "D"
+        && gateT2.Contains(d.Gate)
+        );
+
+    var totalAPierSul = Model.AssistenciasPRMs.Count(
+        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
+        && PierSul.Contains(Int32.Parse(d.Stand))
+        );
+
+    var totalAPierNorte = Model.AssistenciasPRMs.Count(
+    d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
+    && PierNorte.Contains(Int32.Parse(d.Stand))
+    );
+
+    var totalAPier14 = Model.AssistenciasPRMs.Count(
+    d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
+    && Pier14.Contains(Int32.Parse(d.Stand))
+    );
+
+    var totalARemoto = Model.AssistenciasPRMs.Count(
+   d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
+   && Remotos.Contains(Int32.Parse(d.Stand))
+   );
+
+    #endregion
+
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-sm-2 col-md-4">
+            <div class="box ">
+                <div class="box-header">
+                    <h3 class="box-title">Total de PMR por STD/STA:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="TotalPmrStdStaTbl" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Hora:</th>
+                                <th>Partidas:</th>
+                                <th>Chegadas:</th>
+                                <th>Total:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.AssistenciasPRMs
+                     .OrderBy(d => d.Data.Hour)
+                     .Where(d => d.Data.Day == DateTime.UtcNow.Day)
+                     .GroupBy(x => x.Data.Hour)
+                     .Select(x => new
+                     {
+                         Hora = x.Key,
+                         Total = x.Count(),
+                         Arr = x.Count(a => a.Mov == "A"),
+                         Dep = x.Count(d => d.Mov == "D")
+                     }).ToList()
+                                       )
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Hora):00
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Dep)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Arr)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Total)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Totais: </th>
+                                <th>@totalDep</th>
+                                <th>@totalArr</th>
+                                <th>@totalAss</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-2 col-md-4">
+            <div class="box ">
+                <div class="box-header">
+                    <h3 class="box-title">Partidas por estimativa de chegada dos PAP:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="PartidasEstimativaTbl" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Hora:</th>
+                                <th>Schengen:</th>
+                                <th>Não schengen:</th>
+                                <th>Terminal 2:</th>
+                                <th>Totais:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var items in Model.AssistenciasPRMs
+                                .OrderBy(d => d.EstimaApresentacao.Hour)
+                                .Where(d => d.Data.Day == DateTime.UtcNow.Day)
+                                .GroupBy(x => x.EstimaApresentacao.Hour)
+                            )
+                            {
+                                <tr>
+                                    @foreach (var horas in items
+                                        .GroupBy(x => x.EstimaApresentacao.Hour)
+                                        .Select(x => new
+                                        {
+                                        Hora = x.Key
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => horas.Hora):00
+                                        </td>
+                                    }
+                                    @foreach (var DepS in items
+                                        .GroupBy(x => x.EstimaApresentacao.Hour)
+                                        .Select(x => new
+                                        {
+                                        Dep = x.Count(
+                                        d => d.Mov == "D"
+                                        && gateS.Contains(d.Gate)
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => DepS.Dep)
+                                        </td>
+                                    }
+                                    @foreach (var DepN in items
+                                        .GroupBy(x => x.EstimaApresentacao.Hour)
+                                        .Select(x => new
+                                        {
+                                        Dep = x.Count(
+                                        d => d.Mov == "D"
+                                        && gateN.Contains(d.Gate)
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => DepN.Dep)
+                                        </td>
+                                    }
+                                    @foreach (var DepT2 in items
+                                        .GroupBy(x => x.EstimaApresentacao.Hour)
+                                        .Select(x => new
+                                        {
+                                        Dep = x.Count(
+                                        d => d.Mov == "D"
+                                        && gateT2.Contains(d.Gate)
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => DepT2.Dep)
+                                        </td>
+                                    }
+                                    @foreach (var DepTotal in items
+                                        .GroupBy(x => x.EstimaApresentacao.Hour)
+                                        .Select(x => new
+                                        {
+                                        Dep = x.Count(
+                                        d => d.Mov == "D"
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => DepTotal.Dep)
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Totais: </th>
+                                <th>@totalDepS</th>
+                                <th>@totalDepN</th>
+                                <th>@totalDepT2</th>
+                                <th>@totalDep</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-2 col-md-4">
+            <div class="box ">
+                <div class="box-header">
+                    <h3 class="box-title">PMR - Chegadas STA:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="PmrChegadasTbl" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Hora:</th>
+                                <th>Pier Sul:</th>
+                                <th>Pier Norte:</th>
+                                <th>Pier 14:</th>
+                                <th>Remoto:</th>
+                                <th>Totais:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var items in Model.AssistenciasPRMs
+                                .OrderBy(d => d.Data.Hour)
+                                .Where(d => d.Data.Day == DateTime.UtcNow.Day)
+                                .GroupBy(x => x.Data.Hour)
+                                )
+                            {
+                                <tr>
+                                    @foreach (var horas in items
+                                        .GroupBy(x => x.Data.Hour)
+                                        .Select(x => new
+                                        {
+                                        Hora = x.Key
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => horas.Hora):00
+                                        </td>
+                                    }
+                                    @foreach (var APierSul in items
+                                        .GroupBy(x => x.Data.Hour)
+                                        .Select(x => new
+                                        {
+                                        Arr = x.Count(
+                                        d => d.Mov == "A"
+                                        && PierSul.Contains(Int32.Parse(d.Stand))
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => APierSul.Arr)
+                                        </td>
+                                    }
+                                    @foreach (var APierNorte in items
+                                        .GroupBy(x => x.Data.Hour)
+                                        .Select(x => new
+                                        {
+                                        Arr = x.Count(
+                                        d => d.Mov == "A"
+                                        && PierNorte.Contains(Int32.Parse(d.Stand))
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => APierNorte.Arr)
+                                        </td>
+                                    }
+                                    @foreach (var APier14 in items
+                                        .GroupBy(x => x.Data.Hour)
+                                        .Select(x => new
+                                        {
+                                        Arr = x.Count(
+                                        d => d.Mov == "A"
+                                        && Pier14.Contains(Int32.Parse(d.Stand))
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => APier14.Arr)
+                                        </td>
+                                    }
+                                    @foreach (var ArrRemoto in items
+                                        .GroupBy(x => x.Data.Hour)
+                                        .Select(x => new
+                                        {
+                                        Arr = x.Count(
+                                        d => d.Mov == "A"
+                                        && Remotos.Contains(Int32.Parse(d.Stand))
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => ArrRemoto.Arr)
+                                        </td>
+                                    }
+                                    @foreach (var ArrTotal in items
+                                        .GroupBy(x => x.Data.Hour)
+                                        .Select(x => new
+                                        {
+                                        Arr = x.Count(
+                                        d => d.Mov == "A"
+                                        )
+                                        }).ToList())
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => ArrTotal.Arr)
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Totais: </th>
+                                <th>@totalAPierSul</th>
+                                <th>@totalAPierNorte</th>
+                                <th>@totalAPier14</th>
+                                <th>@totalARemoto</th>
+                                <th>@totalArr</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Tabela</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</section>
+@section Scripts
+    {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script type="text/javascript">
+        var labelArray = [];
+        var dataChegadas = [];
+        var dataPartidas = [];
+        var dataTotal = [];
+
+    @foreach (var item in Model.AssistenciasPRMs
+            .OrderBy(d => d.Data.Hour)
+            .Where(d => d.Data.Day == DateTime.UtcNow.Day)
+            .GroupBy(x => x.Data.Hour)
+            .Select(x => new
+            {
+                Hora = x.Key,
+                Total = x.Count(),
+                Arr = x.Count(a => a.Mov == "A"),
+                Dep = x.Count(d => d.Mov == "D")
+            }).ToList()
+            )
+        {
+            @:labelArray.push("@Html.DisplayFor(modelItem => item.Hora):00");
+            @:dataChegadas.push("@Html.DisplayFor(modelItem => item.Arr)");
+            @:dataPartidas.push("@Html.DisplayFor(modelItem => item.Dep)");
+            @:dataTotal.push("@Html.DisplayFor(modelItem => item.Total)");
+        }
+    </script>
+
+    <script type="text/javascript">
+        var chartData = {
+            labels: labelArray,
+            datasets: [
+                {
+                    type: 'line',
+                    label: 'Total',
+                    borderColor: 'rgb(54, 162, 235)',
+                    borderWidth: 2,
+                    fill: false,
+                    data: dataTotal
+                }, {
+                    type: 'bar',
+                    label: 'Partidas',
+                    backgroundColor: 'rgb(75, 192, 192)',
+                    data: dataPartidas
+                }, {
+                    type: 'bar',
+                    label: 'Chegadas',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    data: dataChegadas
+                }
+            ]
+
+        };
+        window.onload = function () {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            window.myMixedChart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Total de PMR por STD/STA:'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
+                    }
+                }
+            });
+        };
+    </script>
+}

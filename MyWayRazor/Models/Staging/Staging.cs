@@ -8,23 +8,41 @@ namespace MyWayRazor.Models.Staging
     {
         [Key]
         public int ID { get; set; }
-
+        [Display(Name = "Mensagem:")]
         public string Msg { get; set; }
+        [Display(Name = "Notificação:")]
         public string Notif { get; set; }
+        [Required]
+        [Display(Name = "Data:")]
         public DateTime Data { get; set; }
+        [Required]
+        [Display(Name = "Voo:")]
         public string Voo { get; set; }
+        [Display(Name = "Movimento:")]
         public string Mov { get; set; }
+        [Display(Name = "Origem/Destino:")]
         public string OrigemDestino { get; set; }
+        [Required]
+        [Display(Name = "Passageiro:")]
         public string Pax { get; set; }
+        [Display(Name = "Serviçe Request:")]
         public string Ssr { get; set; }
+        [Display(Name = "Aeronave:")]
         public string AirCraft { get; set; }
+        [Display(Name = "Stand:")]
         public string Stand { get; set; }
+        [Display(Name = "Check-in:")]
         public string CheckIn { get; set; }
+        [Display(Name = "Porta:")]
         public string Gate { get; set; }
+        [Display(Name = "Observações:")]
         public string Remark { get; set; }
+        [Display(Name = "Estimated Time Departure:")]
         public DateTime Etd { get; set; }
-        public DateTime Antecipar { get; set; }
-        public DateTime Horario { get; set; }
+        [Display(Name = "Hora de embarque:")]
+        public DateTime HoraEmbarque { get; set; }
+        [Display(Name = "Saída da Staging Area:")]
+        public DateTime SaidaStaging { get; set; }
 
         public int StatusId { get; set; }
         public Status Status { get; set; }
