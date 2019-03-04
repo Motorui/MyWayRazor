@@ -6,8 +6,6 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 
     #region variables
-    int Ambulift = 0;
-    int Vta = 0;
 
     var totalAss = Model.AssistenciasPRMs.Count(
         d => d.Data.Date == DateTime.UtcNow.Date
@@ -105,14 +103,14 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     @foreach (var groupHoras in Model.AssistenciasPRMs
-                .OrderBy(d => d.Data.Hour)
-                .Where(
-                   d => d.Data.Day == DateTime.UtcNow.Day
-                   && Model.Remotos.Contains(Int32.Parse(d.Stand))
-                   && d.Mov == "D"
-                   )
-                .GroupBy(x => x.Data.Hour)
+            .OrderBy(d => d.Data.Hour)
+            .Where(
+               d => d.Data.Day == DateTime.UtcNow.Day
+               && Model.Remotos.Contains(Int32.Parse(d.Stand))
+               && d.Mov == "D"
                )
+            .GroupBy(x => x.Data.Hour)
+           )
                     {
                         <table id="Tbl" class="table table-bordered table-striped">
                             <thead>
@@ -128,25 +126,25 @@
                             @foreach (var groupStand in groupHoras.OrderBy(t => t.Data).GroupBy(v => v.Stand))
                             {
                                 <tr>
-                                    <td>
+                                    <td valign="middle">
                                         @Html.DisplayFor(modelItem => groupHoras.Key):00
                                     </td>
-                                    <td>
+                                    <td valign="middle">
                                         @groupStand.Key
                                     </td>
                                     @foreach (var groupVoo in groupStand.OrderBy(t => t.Data).GroupBy(v => v.Voo))
                                     {
-                                        <td>
+                                        <td valign="middle">
                                             @groupVoo.Key
                                         </td>
-                                        <td>
+                                        <td valign="middle">
                                             @foreach (var line in groupVoo.GroupBy(s => s.SSR)
-                                            .Select(s => new
-                                            {
-                                                Tssr = s.Key,
-                                                Count = s.Count()
-                                            })
-                                            .OrderBy(x => x.Tssr))
+                                        .Select(s => new
+                                        {
+                                            Tssr = s.Key,
+                                            Count = s.Count()
+                                        })
+                                        .OrderBy(x => x.Tssr))
                                             {
                                                 <ul class="list-unstyled">
                                                     <li>
@@ -157,75 +155,65 @@
                                                 </ul>
                                             }
                                         </td>
-                                        <td>
-                                            @foreach (var line in groupVoo.GroupBy(s => s.SSR)
-                                              .Select(s => new
-                                              {
-                                                  Tssr = s.Key,
-                                                  Count = s.Count(),
-                                                  WCHC = s.Where(x => x.SSR.Contains("WCHC")).Count(),
-                                                  WCHS = s.Where(x => x.SSR.Contains("WCHS")).Count()
-                                              })
-                                              .OrderBy(x => x.Tssr))
-                                            {
-                                                <ul class="list-unstyled">
-                                                    <li>
-                                                        <p class="text text-red text-bold">
-                                                            @if (@Enumerable.Range(0, (line.WCHC + line.WCHS)).GroupBy(
-                                                            x => x / Int32.Parse(Model.Parametros
-                                                            .Where(p => p.ParamNome == "NAmbulift")
-                                                            .Select(p => p.ParamValue).Distinct()
-                                                            .FirstOrDefault().ToString()
-                                                        )
-                                                       ).Count() > 0)
-                                                            {
-                                                                @Enumerable.Range(0, (line.WCHC + line.WCHS)).GroupBy(
-                                                                    x => x / Int32.Parse(Model.Parametros
-                                                                    .Where(p => p.ParamNome == "NAmbulift")
-                                                                    .Select(p => p.ParamValue).Distinct()
-                                                                    .FirstOrDefault().ToString()
-                                                               )
-                                                              ).Count()
-                                                            }
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                            }
+                                        <td valign="middle">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <p class="text text-red text-bold">
+                                                        @if (@Enumerable.Range(
+                                                           0, (groupVoo.Where(
+                                                               x => x.SSR.Contains("WCHC")
+                                                               ).Count() + groupVoo.Where(
+                                                               x => x.SSR.Contains("WCHS")
+                                                               ).Count())
+                                                           ).GroupBy(
+                                                              x => x / Int32.Parse(Model.Parametros
+                                                              .Where(p => p.ParamNome == "NAmbulift")
+                                                              .Select(p => p.ParamValue)
+                                                              .FirstOrDefault().ToString()
+                                                          )
+                                                         ).Count() > 0)
+                                                        {
+                                                            @Enumerable.Range(
+                                                             0, (groupVoo.Where(
+                                                                x => x.SSR.Contains("WCHC")
+                                                                ).Count() + groupVoo.Where(
+                                                                x => x.SSR.Contains("WCHS")
+                                                                ).Count())
+                                                             ).GroupBy(
+                                                                x => x / Int32.Parse(Model.Parametros
+                                                                .Where(p => p.ParamNome == "NAmbulift")
+                                                                .Select(p => p.ParamValue)
+                                                                .FirstOrDefault().ToString()
+                                                            )
+                                                           ).Count()
+                                                        }
+                                                    </p>
+                                                </li>
+                                            </ul>
                                         </td>
-                                        <td>
-                                            @foreach (var line in groupVoo.GroupBy(s => s.SSR)
-                                             .Select(s => new
-                                             {
-                                                 Tssr = s.Key,
-                                                 Count = s.Count(),
-                                                 WCHC = s.Where(x => x.SSR.Contains("WCHC")).Count(),
-                                                 WCHS = s.Where(x => x.SSR.Contains("WCHS")).Count()
-                                             })
-                                             .OrderBy(x => x.Tssr))
-                                            {
-                                                <ul class="list-unstyled">
-                                                    <li>
-                                                        <p>
-                                                            @if (@Enumerable.Range(0, line.Count).GroupBy(
-                                                         x => x / Int32.Parse(Model.Parametros
-                                                         .Where(p => p.ParamNome == "NVta")
-                                                         .Select(p => p.ParamValue).Distinct()
-                                                         .FirstOrDefault().ToString()
-                                                     )
-                                                    ).Count() > 0)
-                                                            {
-                                                                @Enumerable.Range(0, line.Count).GroupBy(
-                                                                    x => x / Int32.Parse(Model.Parametros
-                                                                    .Where(p => p.ParamNome == "NVta")
-                                                                    .Select(p => p.ParamValue).Distinct()
-                                                                    .FirstOrDefault().ToString()
-                                                               )
-                                                              ).Distinct().Count()
-                                                            }
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                            }
+                                        <td valign="middle">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <p>
+                                                        @if (@Enumerable.Range(0, groupVoo.Count()).GroupBy(
+                                                           x => x / Int32.Parse(Model.Parametros
+                                                           .Where(p => p.ParamNome == "NVta")
+                                                           .Select(p => p.ParamValue).Distinct()
+                                                           .FirstOrDefault().ToString()
+                                                       )
+                                                      ).Count() > 0)
+                                                        {
+                                                            @Enumerable.Range(0, groupVoo.Count()).GroupBy(
+                                                          x => x / Int32.Parse(Model.Parametros
+                                                          .Where(p => p.ParamNome == "NVta")
+                                                          .Select(p => p.ParamValue).Distinct()
+                                                          .FirstOrDefault().ToString()
+                                                                 )
+                                                         ).Count()
+                                                        }
+                                                    </p>
+                                                </li>
+                                            </ul>
                                         </td>
                                     }
                                 </tr>
@@ -244,14 +232,14 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     @foreach (var groupHoras in Model.AssistenciasPRMs
-               .OrderBy(d => d.Data.Hour)
-               .Where(
-                  d => d.Data.Day == DateTime.UtcNow.Day
-                  && Model.Remotos.Contains(Int32.Parse(d.Stand))
-                  && d.Mov == "A"
-                  )
-               .GroupBy(x => x.Data.Hour)
+           .OrderBy(d => d.Data.Hour)
+           .Where(
+              d => d.Data.Day == DateTime.UtcNow.Day
+              && Model.Remotos.Contains(Int32.Parse(d.Stand))
+              && d.Mov == "A"
               )
+           .GroupBy(x => x.Data.Hour)
+          )
                     {
                         <table id="Tbl" class="table table-bordered table-striped">
                             <thead>
@@ -267,25 +255,25 @@
                             @foreach (var groupStand in groupHoras.OrderBy(t => t.Data).GroupBy(v => v.Stand))
                             {
                                 <tr>
-                                    <td>
+                                    <td valign="middle">
                                         @Html.DisplayFor(modelItem => groupHoras.Key):00
                                     </td>
-                                    <td>
+                                    <td valign="middle">
                                         @groupStand.Key
                                     </td>
                                     @foreach (var groupVoo in groupStand.OrderBy(t => t.Data).GroupBy(v => v.Voo))
                                     {
-                                        <td>
+                                        <td valign="middle">
                                             @groupVoo.Key
                                         </td>
-                                        <td>
+                                        <td valign="middle">
                                             @foreach (var line in groupVoo.GroupBy(s => s.SSR)
-                                           .Select(s => new
-                                           {
-                                               Tssr = s.Key,
-                                               Count = s.Count()
-                                           })
-                                           .OrderBy(x => x.Tssr))
+                                       .Select(s => new
+                                       {
+                                           Tssr = s.Key,
+                                           Count = s.Count()
+                                       })
+                                       .OrderBy(x => x.Tssr))
                                             {
                                                 <ul class="list-unstyled">
                                                     <li>
@@ -296,75 +284,65 @@
                                                 </ul>
                                             }
                                         </td>
-                                        <td>
-                                            @foreach (var line in groupVoo.GroupBy(s => s.SSR)
-                                             .Select(s => new
-                                             {
-                                                 Tssr = s.Key,
-                                                 Count = s.Count(),
-                                                 WCHC = s.Where(x => x.SSR.Contains("WCHC")).Count(),
-                                                 WCHS = s.Where(x => x.SSR.Contains("WCHS")).Count()
-                                             })
-                                             .OrderBy(x => x.Tssr))
-                                            {
-                                                <ul class="list-unstyled">
-                                                    <li>
-                                                        <p class="text text-red text-bold">
-                                                            @if (@Enumerable.Range(0, (line.WCHC + line.WCHS)).GroupBy(
-                                                           x => x / Int32.Parse(Model.Parametros
-                                                           .Where(p => p.ParamNome == "NAmbulift")
-                                                           .Select(p => p.ParamValue)
-                                                           .FirstOrDefault().ToString()
-                                                       )
-                                                      ).Count() > 0)
-                                                            {
-                                                                @Enumerable.Range(0, (line.WCHC + line.WCHS)).GroupBy(
-                                                                    x => x / Int32.Parse(Model.Parametros
-                                                                    .Where(p => p.ParamNome == "NAmbulift")
-                                                                    .Select(p => p.ParamValue)
-                                                                    .FirstOrDefault().ToString()
-                                                               )
-                                                              ).Count()
-                                                            }
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                            }
+                                        <td valign="middle">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <p class="text text-red text-bold">
+                                                        @if (@Enumerable.Range(
+                                                            0, (groupVoo.Where(
+                                                                x => x.SSR.Contains("WCHC")
+                                                                ).Count() + groupVoo.Where(
+                                                                x => x.SSR.Contains("WCHS")
+                                                                ).Count())
+                                                            ).GroupBy(
+                                                               x => x / Int32.Parse(Model.Parametros
+                                                               .Where(p => p.ParamNome == "NAmbulift")
+                                                               .Select(p => p.ParamValue)
+                                                               .FirstOrDefault().ToString()
+                                                           )
+                                                          ).Count() > 0)
+                                                        {
+                                                            @Enumerable.Range(
+                                                             0, (groupVoo.Where(
+                                                                x => x.SSR.Contains("WCHC")
+                                                                ).Count() + groupVoo.Where(
+                                                                x => x.SSR.Contains("WCHS")
+                                                                ).Count())
+                                                             ).GroupBy(
+                                                                x => x / Int32.Parse(Model.Parametros
+                                                                .Where(p => p.ParamNome == "NAmbulift")
+                                                                .Select(p => p.ParamValue)
+                                                                .FirstOrDefault().ToString()
+                                                            )
+                                                           ).Count()
+                                                        }
+                                                    </p>
+                                                </li>
+                                            </ul>
                                         </td>
-                                        <td>
-                                            @foreach (var line in groupVoo.GroupBy(s => s.SSR)
-                                            .Select(s => new
-                                            {
-                                                Tssr = s.Key,
-                                                Count = s.Count(),
-                                                WCHC = s.Where(x => x.SSR.Contains("WCHC")).Count(),
-                                                WCHS = s.Where(x => x.SSR.Contains("WCHS")).Count()
-                                            })
-                                            .OrderBy(x => x.Tssr))
-                                            {
-                                                <ul class="list-unstyled">
-                                                    <li>
-                                                        <p>
-                                                            @if (@Enumerable.Range(0, line.Count).GroupBy(
-                                                        x => x / Int32.Parse(Model.Parametros
-                                                        .Where(p => p.ParamNome == "NVta")
-                                                        .Select(p => p.ParamValue).Distinct()
-                                                        .FirstOrDefault().ToString()
-                                                    )
-                                                   ).Count() > 0)
-                                                            {
-                                                                @Enumerable.Range(0, line.Count).GroupBy(
-                                                                    x => x / Int32.Parse(Model.Parametros
-                                                                    .Where(p => p.ParamNome == "NVta")
-                                                                    .Select(p => p.ParamValue).Distinct()
-                                                                    .FirstOrDefault().ToString()
-                                                               )
-                                                              ).Distinct().Count()
-                                                            }
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                            }
+                                        <td valign="middle">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <p>
+                                                        @if (@Enumerable.Range(0, groupVoo.Count()).GroupBy(
+                                                            x => x / Int32.Parse(Model.Parametros
+                                                            .Where(p => p.ParamNome == "NVta")
+                                                            .Select(p => p.ParamValue).Distinct()
+                                                            .FirstOrDefault().ToString()
+                                                        )
+                                                       ).Count() > 0)
+                                                        {
+                                                            @Enumerable.Range(0, groupVoo.Count()).GroupBy(
+                                                          x => x / Int32.Parse(Model.Parametros
+                                                          .Where(p => p.ParamNome == "NVta")
+                                                          .Select(p => p.ParamValue).Distinct()
+                                                          .FirstOrDefault().ToString()
+                                                                 )
+                                                         ).Count()
+                                                        }
+                                                    </p>
+                                                </li>
+                                            </ul>
                                         </td>
                                     }
                                 </tr>
