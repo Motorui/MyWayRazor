@@ -6,53 +6,25 @@
 
     #region variables
 
-    var exitSchengen = new List<string>() { "E", "S" };
+    var Today = DateTime.UtcNow.Day;
 
+    int[] dataHour = Model.AssistenciasPRMs.Select(h => h.Data.Hour).Distinct().ToArray();
+    int[] estimaHour = Model.AssistenciasPRMs.Select(h => h.EstimaApresentacao.Hour).Distinct().ToArray();
+    int[] embarqueHour = Model.AssistenciasPRMs.Select(h => h.HoraEmbarque.Hour).Distinct().ToArray();
+    int[] tempHours = dataHour.Union(estimaHour).ToArray();
+    int[] Hours = tempHours.Union(embarqueHour).ToArray();
 
-    var totalDepS = Model.AssistenciasPRMs.Where(
-        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "D"
-        && Model.GateSchengen.Contains(d.Gate)
-        ).Select(v => v.Voo).Distinct().Count();
-
-    var totalDepN = Model.AssistenciasPRMs.Where(
-        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "D"
-        && Model.GateNSchengen.Contains(d.Gate)
-        ).Select(v => v.Voo).Distinct().Count();
-
-    var totalDepT2 = Model.AssistenciasPRMs.Where(
-        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "D"
-        && Model.GateT2.Contains(d.Gate)
-        ).Select(v => v.Voo).Distinct().Count();
-
-    var totalArrSchengen = Model.AssistenciasPRMs.Where(
-        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
-        && exitSchengen.Contains(d.Exit))
-        .Select(v => v.Voo).Distinct().Count();
-
-    var totalArrNSchengen = Model.AssistenciasPRMs.Where(
-        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
-        && d.Exit == "N")
-        .Select(v => v.Voo).Distinct().Count();
-
-    var totalTranSchengen = Model.AssistenciasPRMs.Where(
-        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
-        && d.Exit == "S" && d.Transferencia == "T")
-        .Select(v => v.Voo).Distinct().Count();
-
-    var totalTranNSchengen = Model.AssistenciasPRMs.Where(
-        d => d.Data.Date == DateTime.UtcNow.Date && d.Mov == "A"
-        && d.Exit == "N" && d.Transferencia == "T")
-        .Select(v => v.Voo).Distinct().Count();
+    Array.Sort(Hours);
 
     #endregion
 }
 
 <section class="content">
     <div class="row">
-        <div class="col-sm-3 col-md-6">
+        <div class="col-sm-2 col-md-4">
             <div class="box ">
                 <div class="box-header">
-                    <h3 class="box-title">Total de Voos por STD/STA:</h3>
+                    <h3 class="box-title">Total de Voos por BRD/STA:</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -66,31 +38,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model.AssistenciasPRMs
-                          .OrderBy(d => d.Data.Hour)
-                          .Where(d => d.Data.Day == DateTime.UtcNow.Day)
-                          .GroupBy(x => x.Data.Hour)
-                          .Select(x => new
-                          {
-                              Hora = x.Key,
-                              Total = x.Select(v => v.Voo).Distinct().Count(),
-                              Arr = x.Where(a => a.Mov == "A").Select(v => v.Voo).Distinct().Count(),
-                              Dep = x.Where(d => d.Mov == "D").Select(v => v.Voo).Distinct().Count()
-                          }).ToList()
-                                    )
+                            @foreach (var items in Hours
+                               .Select(h => new
+                               {
+                                   Hora = h,
+                                   Dep = Model.AssistenciasPRMs
+                                       .Where(d => d.Mov == "D")
+                                       .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
+                                       .Count(m => m.HoraEmbarque.Hour == h),
+                                   Arr = Model.AssistenciasPRMs
+                                       .Where(d => d.Mov == "A")
+                                       .Select(v => new { v.Voo, v.Data }).Distinct()
+                                       .Count(m => m.Data.Hour == h),
+                                   Total = Model.AssistenciasPRMs
+                                       .Select(v => new { v.Voo, v.Data }).Distinct()
+                                       .Count(m => m.Data.Hour == h)
+                               }
+                           )
+                           .OrderBy(h => h.Hora)
+                           )
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Hora):00
+                                        @Html.DisplayFor(modelItem => items.Hora):00
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Dep)
+                                        @Html.DisplayFor(modelItem => items.Dep)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Arr)
+                                        @Html.DisplayFor(modelItem => items.Arr)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Total)
+                                        @Html.DisplayFor(modelItem => items.Total)
                                     </td>
                                 </tr>
                             }
@@ -98,8 +77,8 @@
                         <tfoot>
                             <tr>
                                 <th>Totais: </th>
-                                <th>@Model.TotalVoosDep</th>
-                                <th>@Model.TotalVoosArr</th>
+                                <th>@Model.TotalDep</th>
+                                <th>@Model.TotalArr</th>
                                 <th>@Model.TotalVoos</th>
                             </tr>
                         </tfoot>
@@ -108,7 +87,7 @@
             </div>
         </div>
 
-        <div class="col-sm-3 col-md-6">
+        <div class="col-sm-2 col-md-4">
             <div class="box ">
                 <div class="box-header">
                     <h3 class="box-title">Voos a partir por Hora de embarque:</h3>
@@ -126,101 +105,68 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var items in Model.AssistenciasPRMs
-                             .OrderBy(d => d.Data.Hour)
-                             .Where(d => d.Data.Day == DateTime.UtcNow.Day)
-                             .GroupBy(x => x.HoraEmbarque.Hour)
-                          )
+                            @foreach (var items in Hours
+                         .Select(h => new
+                         {
+                             Hora = h,
+                             DepS = Model.AssistenciasPRMs
+                                 .Where(d => d.Mov == "D"
+                                      && Model.GateSchengen.Contains(d.Gate))
+                                 .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
+                                 .Count(m => m.HoraEmbarque.Hour == h),
+                             DepN = Model.AssistenciasPRMs
+                                 .Where(d => d.Mov == "D"
+                                      && Model.GateNSchengen.Contains(d.Gate))
+                                 .Select(v => new { v.Voo, v.Data }).Distinct()
+                                 .Count(m => m.Data.Hour == h),
+                             DepT2 = Model.AssistenciasPRMs
+                                 .Where(d => d.Mov == "D"
+                                       && Model.GateT2.Contains(d.Gate))
+                                 .Select(v => new { v.Voo, v.Data }).Distinct()
+                                 .Count(m => m.Data.Hour == h),
+                             Total = Model.AssistenciasPRMs
+                                   .Where(d => d.Mov == "D")
+                                 .Select(v => new { v.Voo, v.Data }).Distinct()
+                                 .Count(m => m.Data.Hour == h)
+                         }
+                             )
+                             .OrderBy(h => h.Hora)
+                             )
                             {
                                 <tr>
-                                    @foreach (var horas in items
-                                     .GroupBy(x => x.HoraEmbarque.Hour)
-                                     .Select(x => new
-                                     {
-                                         Hora = x.Key
-                                     }).ToList())
-                                    {
-                                        <td>
-                                            @Html.DisplayFor(modelItem => horas.Hora):00
-                                        </td>
-                                    }
-
-                                    @foreach (var DepS in items
-                                      .GroupBy(x => x.HoraEmbarque.Hour)
-                                      .Select(x => new
-                                      {
-                                          Dep = x.Where(
-                                              d => d.Mov == "D"
-                                              && Model.GateSchengen.Contains(d.Gate)
-                                              ).Select(v => v.Voo).Distinct().Count()
-                                      }).ToList())
-                                    {
-                                        <td>
-                                            @Html.DisplayFor(modelItem => DepS.Dep)
-                                        </td>
-                                    }
-
-                                    @foreach (var DepN in items
-                                      .GroupBy(x => x.HoraEmbarque.Hour)
-                                      .Select(x => new
-                                      {
-                                          Dep = x.Where(
-                                              d => d.Mov == "D"
-                                              && Model.GateNSchengen.Contains(d.Gate)
-                                              ).Select(v => v.Voo).Distinct().Count()
-                                      }).ToList())
-                                    {
-                                        <td>
-                                            @Html.DisplayFor(modelItem => DepN.Dep)
-                                        </td>
-                                    }
-                                    @foreach (var DepT2 in items
-                                     .GroupBy(x => x.HoraEmbarque.Hour)
-                                     .Select(x => new
-                                     {
-                                         Dep = x.Where(
-                                              d => d.Mov == "D"
-                                              && Model.GateT2.Contains(d.Gate)
-                                              ).Select(v => v.Voo).Distinct().Count()
-                                     }).ToList())
-                                    {
-                                        <td>
-                                            @Html.DisplayFor(modelItem => DepT2.Dep)
-                                        </td>
-                                    }
-
-                                    @foreach (var DepTotal in items
-                                     .GroupBy(x => x.HoraEmbarque.Hour)
-                                     .Select(x => new
-                                     {
-                                         Dep = x.Where(
-                                              d => d.Mov == "D"
-                                              ).Select(v => v.Voo).Distinct().Count()
-                                     }).ToList())
-                                    {
-                                        <td>
-                                            @Html.DisplayFor(modelItem => DepTotal.Dep)
-                                        </td>
-                                    }
+                                    <td>
+                                        @Html.DisplayFor(modelItem => items.Hora):00
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => items.DepS)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => items.DepN)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => items.DepT2)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => items.Total)
+                                    </td>
                                 </tr>
                             }
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>Totais: </th>
-                                <th>@totalDepS</th>
-                                <th>@totalDepN</th>
-                                <th>@totalDepT2</th>
-                                <th>@Model.TotalVoosDep</th>
+                                <th>@Model.TotalDepS</th>
+                                <th>@Model.TotalDepN</th>
+                                <th>@Model.TotalDepT2</th>
+                                <th>@Model.TotalDep</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-12">
+
+        <div class="col-sm-2 col-md-4">
             <div class="box ">
                 <div class="box-header">
                     <h3 class="box-title">PMR - Chegadas STA:</h3>
@@ -233,122 +179,77 @@
                                 <th>Hora:</th>
                                 <th>Schengen:</th>
                                 <th>NSchengen:</th>
-                                <th>Trnf. Schengen:</th>
-                                <th>Trnf. NSchengen:</th>
+                                <th>Trnf. S:</th>
+                                <th>Trnf. N:</th>
                                 <th>Total:</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var items in Model.AssistenciasPRMs
-                              .OrderBy(d => d.Data.Hour)
-                              .Where(d => d.Data.Day == DateTime.UtcNow.Day)
-                              .GroupBy(x => x.Data.Hour)
-                              )
+                            @foreach (var items in Hours
+                           .Select(h => new
+                           {
+                               Hora = h,
+                               ArrSchengen = Model.AssistenciasPRMs
+                                   .Where(d => d.Mov == "A"
+                                        && Model.SaidaSchengen.Contains(d.Exit))
+                                   .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
+                                   .Count(m => m.HoraEmbarque.Hour == h),
+                               ArrNSchengen = Model.AssistenciasPRMs
+                                   .Where(d => d.Mov == "A"
+                                        && d.Exit == "N")
+                                   .Select(v => new { v.Voo, v.Data }).Distinct()
+                                   .Count(m => m.Data.Hour == h),
+                               ArrTransferSchengen = Model.AssistenciasPRMs
+                                   .Where(d => d.Mov == "A"
+                                        && d.Exit == "S"
+                                        && d.Transferencia == "T")
+                                   .Select(v => new { v.Voo, v.Data }).Distinct()
+                                   .Count(m => m.Data.Hour == h),
+                               ArrTransferNSchengen = Model.AssistenciasPRMs
+                                     .Where(d => d.Mov == "A"
+                                        && d.Exit == "N"
+                                        && d.Transferencia == "T")
+                                   .Select(v => new { v.Voo, v.Data }).Distinct()
+                                   .Count(m => m.Data.Hour == h),
+                               ArrTotal = Model.AssistenciasPRMs
+                                     .Where(d => d.Mov == "A")
+                                   .Select(v => new { v.Voo, v.Data }).Distinct()
+                                   .Count(m => m.Data.Hour == h)
+                           }
+                           )
+                           .OrderBy(h => h.Hora)
+                           )
                             {
-                            <tr>
-                                @foreach (var horas in items
-                                 .GroupBy(x => x.Data.Hour)
-                                 .Select(x => new
-                                 {
-                                     Hora = x.Key
-                                 }).ToList())
-                                {
+                                <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => horas.Hora):00
+                                        @Html.DisplayFor(modelItem => items.Hora):00
                                     </td>
-                                }
-
-                                @foreach (var ArrSchengen in items
-                                 .GroupBy(x => x.Data.Hour)
-                                 .Select(x => new
-                                 {
-                                     Arr = x.Where(
-                                          d => d.Mov == "A"
-                                          && exitSchengen.Contains(d.Exit)
-                                          ).Select(v => v.Voo).Distinct().Count()
-                                 }).ToList()
-                                 )
-                                {
                                     <td>
-                                        @Html.DisplayFor(modelItem => ArrSchengen.Arr)
+                                        @Html.DisplayFor(modelItem => items.ArrSchengen)
                                     </td>
-                                }
-
-                                @foreach (var ArrNSchengen in items
-                                 .GroupBy(x => x.Data.Hour)
-                                 .Select(x => new
-                                 {
-                                     Arr = x.Where(
-                                          d => d.Mov == "A"
-                                          && d.Exit == "N"
-                                          ).Select(v => v.Voo).Distinct().Count()
-                                 }).ToList()
-                                 )
-                                {
                                     <td>
-                                        @Html.DisplayFor(modelItem => ArrNSchengen.Arr)
+                                        @Html.DisplayFor(modelItem => items.ArrNSchengen)
                                     </td>
-                                }
-
-                                @foreach (var ArrTransferSchengen in items
-                                .GroupBy(x => x.Data.Hour)
-                                .Select(x => new
-                                {
-                                    Arr = x.Where(
-                                         d => d.Mov == "A"
-                                          && d.Exit == "S"
-                                         && d.Transferencia == "T"
-                                         ).Select(v => v.Voo).Distinct().Count()
-                                }).ToList()
-                                )
-                                {
                                     <td>
-                                        @Html.DisplayFor(modelItem => ArrTransferSchengen.Arr)
+                                        @Html.DisplayFor(modelItem => items.ArrTransferSchengen)
                                     </td>
-                                }
-
-                                @foreach (var ArrTransferNSchengen in items
-                                .GroupBy(x => x.Data.Hour)
-                                .Select(x => new
-                                {
-                                    Arr = x.Where(
-                                         d => d.Mov == "A"
-                                          && d.Exit == "N"
-                                         && d.Transferencia == "T"
-                                         ).Select(v => v.Voo).Distinct().Count()
-                                }).ToList()
-                                )
-                                {
                                     <td>
-                                        @Html.DisplayFor(modelItem => ArrTransferNSchengen.Arr)
+                                        @Html.DisplayFor(modelItem => items.ArrTransferNSchengen)
                                     </td>
-                                }
-
-                                @foreach (var ArrTotal in items
-                                .GroupBy(x => x.Data.Hour)
-                                .Select(x => new
-                                {
-                                    Arr = x.Where(
-                                        d => d.Mov == "A"
-                                        ).Select(v => v.Voo).Distinct().Count()
-                                }).ToList()
-                               )
-                                {
                                     <td>
-                                        @Html.DisplayFor(modelItem => ArrTotal.Arr)
+                                        @Html.DisplayFor(modelItem => items.ArrTotal)
                                     </td>
-                                }
-                            </tr>
+                                </tr>
                             }
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>Totais: </th>
-                                <th>@totalArrSchengen</th>
-                                <th>@totalArrNSchengen</th>
-                                <th>@totalTranSchengen</th>
-                                <th>@totalTranNSchengen</th>
-                                <th>@Model.TotalVoosArr</th>
+                                <th>@Model.TotalArrSchengen</th>
+                                <th>@Model.TotalArrNSchengen</th>
+                                <th>@Model.TotalTranSchengen</th>
+                                <th>@Model.TotalTranNSchengen</th>
+                                <th>@Model.TotalArr</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -356,10 +257,112 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Tabela</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 @section Scripts
     {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
+    var labelArray = [];
+    var dataChegadas = [];
+    var dataPartidas = [];
+    var dataTotal = [];
+
+    @foreach (var items in Hours
+       .Select(h => new
+       {
+           hora = h,
+           Arr = Model.AssistenciasPRMs
+                    .Where(d => d.Mov == "A")
+                    .Select(v => new { v.Voo, v.Data }).Distinct()
+                .Count(m => m.Data.Hour == h),
+           Dep = Model.AssistenciasPRMs
+                    .Where(d => d.Mov == "D")
+                    .Select(v => new { v.Voo, v.Data }).Distinct()
+                .Count(m => m.Data.Hour == h),
+           Total = Model.AssistenciasPRMs
+                    .Select(v => new { v.Voo, v.Data }).Distinct()
+                .Count(m => m.Data.Hour == h)
+       }
+       ).OrderBy(h => h.hora))
+    {
+        @: labelArray.push("@Html.DisplayFor(modelItem => items.hora):00");
+        @: dataChegadas.push("@Html.DisplayFor(modelItem => items.Arr)");
+        @: dataPartidas.push("@Html.DisplayFor(modelItem => items.Dep)");
+        @: dataTotal.push("@Html.DisplayFor(modelItem => items.Total)");
+    }
+    </script>
+
+    <script type="text/javascript">
+        var chartData = {
+            labels: labelArray,
+            datasets: [
+                {
+                    type: 'line',
+                    label: 'Total',
+                    borderColor: 'rgb(54, 162, 235)',
+                    borderWidth: 2,
+                    fill: false,
+                    data: dataTotal
+                }, {
+                    type: 'bar',
+                    label: 'Partidas',
+                    backgroundColor: 'rgb(75, 192, 192)',
+                    data: dataPartidas
+                }, {
+                    type: 'bar',
+                    label: 'Chegadas',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    data: dataChegadas
+                }
+            ]
+
+        };
+        window.onload = function () {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            window.myMixedChart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Total de VOOS por BRD/STA:'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
+                    }
+                }
+            });
+        };
+
+        $('#datepicker').datepicker({
+            isRTL: false,
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            language: 'Pt'
+        });
 
     </script>
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DNTBreadCrumb.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +24,15 @@ namespace MyWayRazor.Pages
         [BindProperty]
         public ToDo ToDo { get; set; }
         public IList<ToDo> ToDoList { get; set; }
-
         public async Task OnGetAsync()
         {
+            this.AddBreadCrumb(new BreadCrumb
+            {
+                Title = "Início",
+                Url = "Index",
+                Order = 1
+            });
+
             ToDoList = await _context.ToDos.ToListAsync();
         }
 

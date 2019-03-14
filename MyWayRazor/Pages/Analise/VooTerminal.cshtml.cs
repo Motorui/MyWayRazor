@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using DNTBreadCrumb.Core;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using MyWayRazor.Models.Analise;
@@ -20,10 +21,14 @@ namespace MyWayRazor.Pages.Analise
         }
 
         public DateTime Hoje = DateTime.UtcNow.Date;
+        private List<string> ExitSchengen = new List<string>() { "E", "S" };
+        public List<string> SaidaSchengen { get; private set; }
+
         public IList<AssistenciasPRM> AssistenciasPRMs { get; set; }
         public IList<Porta> Portas { get; set; }
         public IList<Stand> Stands { get; set; }
         public IList<Parametro> Parametros { get; set; }
+
         public List<int> PierSul { get; private set; }
         public List<int> PierNorte { get; private set; }
         public List<int> Pier14 { get; private set; }
@@ -31,13 +36,38 @@ namespace MyWayRazor.Pages.Analise
         public List<string> GateSchengen { get; private set; }
         public List<string> GateNSchengen { get; private set; }
         public List<string> GateT2 { get; private set; }
+
         public int TotalVoos { get; private set; }
-        public int TotalVoosDep { get; private set; }
-        public int TotalVoosArr { get; private set; }
+        public int TotalDep { get; private set; }
+        public int TotalArr { get; private set; }
+
+        public int TotalDepS { get; private set; }
+        public int TotalDepN { get; private set; }
+        public int TotalDepT2 { get; private set; }
+
+        public int TotalArrSchengen { get; private set; }
+        public int TotalArrNSchengen { get; private set; }
+
+        public int TotalTranSchengen { get; private set; }
+        public int TotalTranNSchengen { get; private set; }
 
         public async Task OnGetAsync()
         {
-            AssistenciasPRMs = await db.AssistenciasPRMS.ToListAsync();
+            this.AddBreadCrumb(new BreadCrumb
+            {
+                Title = "Análise",
+                Url = "/Analise",
+                Order = 1
+            });
+            this.AddBreadCrumb(new BreadCrumb
+            {
+                Title = "VOOS Terminal",
+                Url = "/Analise/VooTerminal",
+                Order = 2
+            });
+
+            AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
+            SaidaSchengen = ExitSchengen.ToList();
             Portas = await db.Portas.ToListAsync();
             Stands = await db.Stands.ToListAsync();
             Parametros = await db.Parametros.ToListAsync();
@@ -46,12 +76,24 @@ namespace MyWayRazor.Pages.Analise
             PierNorte = StandList(2, false).Select(v => v.StandN).ToList();
             Pier14 = StandList(3, false).Select(v => v.StandN).ToList();
             Remotos = StandList(0, true).Select(v => v.StandN).ToList();
+
             GateSchengen = GateList(true, true, false).Select(v => v.PortaNum).ToList();
             GateNSchengen = GateList(false, true, false).Select(v => v.PortaNum).ToList();
             GateT2 = GateList(false, false, true).Select(v => v.PortaNum).ToList();
+
             TotalVoos = TotaisVoos(true, "");
-            TotalVoosDep = TotaisVoos(false, "D");
-            TotalVoosArr = TotaisVoos(false, "A");
+            TotalDep = TotaisVoos(false, "D");
+            TotalArr = TotaisVoos(false, "A");
+
+            TotalDepS = TotalVoosDep(GateSchengen);
+            TotalDepN = TotalVoosDep(GateNSchengen);
+            TotalDepT2 = TotalVoosDep(GateT2);
+
+            TotalArrSchengen = TotalVoosArr(true);
+            TotalArrNSchengen = TotalVoosArr(false);
+
+            TotalTranSchengen = TotalVoosTrans("S");
+            TotalTranNSchengen = TotalVoosTrans("N");
         }
 
         public List<Stand> StandList(int pier, bool remoto)
@@ -116,35 +158,52 @@ namespace MyWayRazor.Pages.Analise
             }
         }
 
-        public int TotalVoosGates(bool schengen, bool terminal, bool t2, string mov)
+        public int TotalVoosDep(List<string> lista)
         {
-            if (t2 == true)
+            int VoosCount = db.AssistenciasPRMS.Where(
+                d => d.Data.Date == Hoje
+                && d.Mov == "D"
+                && lista.Contains(d.Gate)
+                ).Select(v => v.Voo).Distinct().Count();
+
+            return VoosCount;
+        }
+
+        public int TotalVoosArr(bool Schengen)
+        {
+            if (Schengen)
             {
-                List<string> gates = db.Portas.Where(
-                    g => g.Terminal == terminal
-                    ).Select(v => v.PortaNum).ToList();
+                int VoosCount = db.AssistenciasPRMS.Where(
+                    d => d.Data.Date == Hoje
+                    && d.Mov == "A"
+                    && ExitSchengen.Contains(d.Exit)
+                    ).Select(v => v.Voo).Distinct().Count();
 
-                int total = db.AssistenciasPRMS.Count(
-                d => d.Data.Date == Hoje && d.Mov == mov
-                && gates.Contains(d.Gate)
-                );
-
-                return total;
+                return VoosCount;
             }
             else
             {
-                List<string> gates = db.Portas.Where(
-                    g => g.Schengen == schengen && g.Terminal == terminal
-                    ).Select(v => v.PortaNum).ToList();
+                int VoosCount = db.AssistenciasPRMS.Where(
+                    d => d.Data.Date == Hoje
+                    && d.Mov == "A"
+                    && d.Exit == "N"
+                    ).Select(v => v.Voo).Distinct().Count();
 
-                int total = db.AssistenciasPRMS.Count(
-                d => d.Data.Date == Hoje && d.Mov == mov
-                && gates.Contains(d.Gate)
-                );
-
-                return total;
-
+                return VoosCount;
             }
+
+        }
+
+        public int TotalVoosTrans(string exit)
+        {
+            int VoosCount = db.AssistenciasPRMS.Where(
+                d => d.Data.Date == Hoje
+                && d.Mov == "A"
+                && d.Exit == exit
+                && d.Transferencia == "T"
+                ).Select(v => v.Voo).Distinct().Count();
+
+            return VoosCount;
         }
 
     }

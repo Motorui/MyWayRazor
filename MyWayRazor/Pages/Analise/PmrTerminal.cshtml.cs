@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using DNTBreadCrumb.Core;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using MyWayRazor.Models.Analise;
@@ -34,9 +35,29 @@ namespace MyWayRazor.Pages.Analise
         public int TotalPMR { get; private set; }
         public int TotalPMRDep { get; private set; }
         public int TotalPMRArr { get; private set; }
+        public int TotalAPierSul { get; private set; }
+        public int TotalAPierNorte { get; private set; }
+        public int TotalAPier14 { get; private set; }
+        public int TotalARemoto { get; private set; }
+        public int TotalDepS { get; private set; }
+        public int TotalDepN { get; private set; }
+        public int TotalDepT2 { get; private set; }
 
         public async Task OnGetAsync()
         {
+            this.AddBreadCrumb(new BreadCrumb
+            {
+                Title = "Análise",
+                Url = "/Analise",
+                Order = 1
+            });
+            this.AddBreadCrumb(new BreadCrumb
+            {
+                Title = "PMR Terminal",
+                Url = "/Analise/PmrTerminal",
+                Order = 2
+            });
+
             AssistenciasPRMs = await db.AssistenciasPRMS.ToListAsync();
             Portas = await db.Portas.ToListAsync();
             Stands = await db.Stands.ToListAsync();
@@ -46,12 +67,24 @@ namespace MyWayRazor.Pages.Analise
             PierNorte = StandList(2, false).Select(v => v.StandN).ToList();
             Pier14 = StandList(3, false).Select(v => v.StandN).ToList();
             Remotos = StandList(0, true).Select(v => v.StandN).ToList();
+
             GateSchengen = GateList(true, true, false).Select(v => v.PortaNum).ToList();
             GateNSchengen = GateList(false, true, false).Select(v => v.PortaNum).ToList();
             GateT2 = GateList(false, false, true).Select(v => v.PortaNum).ToList();
+
             TotalPMR = TotaisPmr(true, "");
             TotalPMRDep = TotaisPmr(false, "D");
             TotalPMRArr = TotaisPmr(false, "A");
+
+            TotalAPierSul = TotalArr(PierSul);
+            TotalAPierNorte = TotalArr(PierNorte);
+            TotalAPier14 = TotalArr(Pier14);
+            TotalARemoto = TotalArr(Remotos);
+
+            TotalDepS = TotalDep(GateSchengen);
+            TotalDepN = TotalDep(GateNSchengen);
+            TotalDepT2 = TotalDep(GateT2);
+
         }
 
         public List<Stand> StandList(int pier, bool remoto)
@@ -95,6 +128,28 @@ namespace MyWayRazor.Pages.Analise
 
         }
 
+        public int TotalDep(List<string> lista)
+        {
+                int PmrCount = db.AssistenciasPRMS.Where(
+                    d => d.Data.Date == Hoje
+                    && d.Mov == "D"
+                    && lista.Contains(d.Gate)
+                    ).Select(v => v.ID).Count();
+
+                return PmrCount;
+        }
+
+        public int TotalArr(List<int> lista)
+        {
+            int PmrCount = db.AssistenciasPRMS.Where(
+                d => d.Data.Date == Hoje
+                && d.Mov == "A"
+                && lista.Contains(int.Parse(d.Stand))
+                ).Select(v => v.ID).Count();
+
+            return PmrCount;
+        }
+
         public int TotaisPmr(bool total, string mov)
         {
             if (total == true)
@@ -116,35 +171,5 @@ namespace MyWayRazor.Pages.Analise
             }
         }
 
-        public int TotalVoosGates(bool schengen, bool terminal, bool t2, string mov)
-        {
-            if (t2 == true)
-            {
-                List<string> gates = db.Portas.Where(
-                    g => g.Terminal == terminal
-                    ).Select(v => v.PortaNum).ToList();
-
-                int total = db.AssistenciasPRMS.Count(
-                d => d.Data.Date == Hoje && d.Mov == mov
-                && gates.Contains(d.Gate)
-                );
-
-                return total;
-            }
-            else
-            {
-                List<string> gates = db.Portas.Where(
-                    g => g.Schengen == schengen && g.Terminal == terminal
-                    ).Select(v => v.PortaNum).ToList();
-
-                int total = db.AssistenciasPRMS.Count(
-                d => d.Data.Date == Hoje && d.Mov == mov
-                && gates.Contains(d.Gate)
-                );
-
-                return total;
-
-            }
-        }
     }
 }
