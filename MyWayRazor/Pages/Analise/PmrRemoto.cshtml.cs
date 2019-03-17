@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using DNTBreadCrumb.Core;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using MyWayRazor.Models.Analise;
@@ -20,10 +21,14 @@ namespace MyWayRazor.Pages.Analise
         }
 
         public DateTime Hoje = DateTime.UtcNow.Date;
+        private List<string> ExitSchengen = new List<string>() { "E", "S" };
+        public List<string> SaidaSchengen { get; private set; }
+
         public IList<AssistenciasPRM> AssistenciasPRMs { get; set; }
         public IList<Porta> Portas { get; set; }
         public IList<Stand> Stands { get; set; }
         public IList<Parametro> Parametros { get; set; }
+
         public List<int> PierSul { get; private set; }
         public List<int> PierNorte { get; private set; }
         public List<int> Pier14 { get; private set; }
@@ -31,21 +36,38 @@ namespace MyWayRazor.Pages.Analise
         public List<string> GateSchengen { get; private set; }
         public List<string> GateNSchengen { get; private set; }
         public List<string> GateT2 { get; private set; }
-        public int TotalPMR { get; private set; }
-        public int TotalPMRDep { get; private set; }
-        public int TotalPMRArr { get; private set; }
-        public int TotalAPierSul { get; private set; }
-        public int TotalAPierNorte { get; private set; }
-        public int TotalAPier14 { get; private set; }
-        public int TotalARemoto { get; private set; }
+
+        public int TotalPmr { get; private set; }
+        public int TotalDep { get; private set; }
+        public int TotalArr { get; private set; }
+
         public int TotalDepS { get; private set; }
         public int TotalDepN { get; private set; }
         public int TotalDepT2 { get; private set; }
-        public int TotalARemoto4 { get; private set; }
+
+        public int TotalArrSchengen { get; private set; }
+        public int TotalArrNSchengen { get; private set; }
+
+        public int TotalTranSchengen { get; private set; }
+        public int TotalTranNSchengen { get; private set; }
 
         public async Task OnGetAsync()
         {
-            AssistenciasPRMs = await db.AssistenciasPRMS.ToListAsync();
+            this.AddBreadCrumb(new BreadCrumb
+            {
+                Title = "Análise",
+                Url = "/Analise",
+                Order = 1
+            });
+            this.AddBreadCrumb(new BreadCrumb
+            {
+                Title = "PMR Remotos",
+                Url = "/Analise/PmrRemoto",
+                Order = 2
+            });
+
+            AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
+            SaidaSchengen = ExitSchengen.ToList();
             Portas = await db.Portas.ToListAsync();
             Stands = await db.Stands.ToListAsync();
             Parametros = await db.Parametros.ToListAsync();
@@ -59,19 +81,19 @@ namespace MyWayRazor.Pages.Analise
             GateNSchengen = GateList(false, true, false).Select(v => v.PortaNum).ToList();
             GateT2 = GateList(false, false, true).Select(v => v.PortaNum).ToList();
 
-            TotalPMR = TotaisPmr(true, "");
-            TotalPMRDep = TotaisPmr(false, "D");
-            TotalPMRArr = TotaisPmr(false, "A");
+            TotalPmr = TotaisPmr(true, "");
+            TotalDep = TotaisPmr(false, "D");
+            TotalArr = TotaisPmr(false, "A");
 
-            TotalAPierSul = TotalArr("A", PierSul);
-            TotalAPierNorte = TotalArr("A", PierNorte);
-            TotalAPier14 = TotalArr("A", Pier14);
-            TotalARemoto = TotalArr("A", Remotos);
+            TotalDepS = TotalPmrDep(GateSchengen);
+            TotalDepN = TotalPmrDep(GateNSchengen);
+            TotalDepT2 = TotalPmrDep(GateT2);
 
-            TotalDepS = TotalDep("D", GateSchengen);
-            TotalDepN = TotalDep("D", GateNSchengen);
-            TotalDepT2 = TotalDep("D", GateT2);
+            TotalArrSchengen = TotalPmrArr(true);
+            TotalArrNSchengen = TotalPmrArr(false);
 
+            TotalTranSchengen = TotalPmrTrans("S");
+            TotalTranNSchengen = TotalPmrTrans("N");
         }
 
         public List<Stand> StandList(int pier, bool remoto)
@@ -115,28 +137,6 @@ namespace MyWayRazor.Pages.Analise
 
         }
 
-        public int TotalDep(string mov, List<string> lista)
-        {
-            int PmrCount = db.AssistenciasPRMS.Where(
-                d => d.Data.Date == Hoje
-                && d.Mov == mov
-                && lista.Contains(d.Gate)
-                ).Select(v => v.ID).Count();
-
-            return PmrCount;
-        }
-
-        public int TotalArr(string mov, List<int> lista)
-        {
-            int PmrCount = db.AssistenciasPRMS.Where(
-                d => d.Data.Date == Hoje
-                && d.Mov == mov
-                && lista.Contains(int.Parse(d.Stand))
-                ).Select(v => v.ID).Count();
-
-            return PmrCount;
-        }
-
         public int TotaisPmr(bool total, string mov)
         {
             if (total == true)
@@ -158,35 +158,53 @@ namespace MyWayRazor.Pages.Analise
             }
         }
 
-        public int TotalVoosGates(bool schengen, bool terminal, bool t2, string mov)
+        public int TotalPmrDep(List<string> lista)
         {
-            if (t2 == true)
+            int PmrCount = db.AssistenciasPRMS.Where(
+                d => d.Data.Date == Hoje
+                && d.Mov == "D"
+                && lista.Contains(d.Gate)
+                ).Select(v => v.ID).Count();
+
+            return PmrCount;
+        }
+
+        public int TotalPmrArr(bool Schengen)
+        {
+            if (Schengen)
             {
-                List<string> gates = db.Portas.Where(
-                    g => g.Terminal == terminal
-                    ).Select(v => v.PortaNum).ToList();
+                int PmrCount = db.AssistenciasPRMS.Where(
+                    d => d.Data.Date == Hoje
+                    && d.Mov == "A"
+                    && ExitSchengen.Contains(d.Exit)
+                    ).Select(v => v.ID).Count();
 
-                int total = db.AssistenciasPRMS.Count(
-                d => d.Data.Date == Hoje && d.Mov == mov
-                && gates.Contains(d.Gate)
-                );
-
-                return total;
+                return PmrCount;
             }
             else
             {
-                List<string> gates = db.Portas.Where(
-                    g => g.Schengen == schengen && g.Terminal == terminal
-                    ).Select(v => v.PortaNum).ToList();
+                int PmrCount = db.AssistenciasPRMS.Where(
+                    d => d.Data.Date == Hoje
+                    && d.Mov == "A"
+                    && d.Exit == "N"
+                    ).Select(v => v.ID).Count();
 
-                int total = db.AssistenciasPRMS.Count(
-                d => d.Data.Date == Hoje && d.Mov == mov
-                && gates.Contains(d.Gate)
-                );
-
-                return total;
-
+                return PmrCount;
             }
+
         }
+
+        public int TotalPmrTrans(string exit)
+        {
+            int PmrCount = db.AssistenciasPRMS.Where(
+                d => d.Data.Date == Hoje
+                && d.Mov == "A"
+                && d.Exit == exit
+                && d.Transferencia == "T"
+                ).Select(v => v.ID).Count();
+
+            return PmrCount;
+        }
+
     }
 }

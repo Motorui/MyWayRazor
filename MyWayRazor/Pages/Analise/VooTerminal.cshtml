@@ -117,17 +117,17 @@
                              DepN = Model.AssistenciasPRMs
                                  .Where(d => d.Mov == "D"
                                       && Model.GateNSchengen.Contains(d.Gate))
-                                 .Select(v => new { v.Voo, v.Data }).Distinct()
-                                 .Count(m => m.Data.Hour == h),
+                                 .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
+                                 .Count(m => m.HoraEmbarque.Hour == h),
                              DepT2 = Model.AssistenciasPRMs
                                  .Where(d => d.Mov == "D"
                                        && Model.GateT2.Contains(d.Gate))
-                                 .Select(v => new { v.Voo, v.Data }).Distinct()
-                                 .Count(m => m.Data.Hour == h),
+                                 .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
+                                 .Count(m => m.HoraEmbarque.Hour == h),
                              Total = Model.AssistenciasPRMs
                                    .Where(d => d.Mov == "D")
-                                 .Select(v => new { v.Voo, v.Data }).Distinct()
-                                 .Count(m => m.Data.Hour == h)
+                                 .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
+                                 .Count(m => m.HoraEmbarque.Hour == h)
                          }
                              )
                              .OrderBy(h => h.Hora)
@@ -192,8 +192,8 @@
                                ArrSchengen = Model.AssistenciasPRMs
                                    .Where(d => d.Mov == "A"
                                         && Model.SaidaSchengen.Contains(d.Exit))
-                                   .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
-                                   .Count(m => m.HoraEmbarque.Hour == h),
+                                   .Select(v => new { v.Voo, v.Data }).Distinct()
+                                   .Count(m => m.Data.Hour == h),
                                ArrNSchengen = Model.AssistenciasPRMs
                                    .Where(d => d.Mov == "A"
                                         && d.Exit == "N")
