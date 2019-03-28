@@ -56,6 +56,8 @@
     <Compile Remove="Data\Migrations\20190301124408_AddTablesForAnalise.Designer.cs" />
     <Compile Remove="Data\Migrations\20190301131702_AddTablesForAnalise.cs" />
     <Compile Remove="Data\Migrations\20190301131702_AddTablesForAnalise.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190318182647_fixStandNull.cs" />
+    <Compile Remove="Data\Migrations\20190318182647_fixStandNull.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

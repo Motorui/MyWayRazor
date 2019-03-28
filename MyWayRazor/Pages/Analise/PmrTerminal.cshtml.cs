@@ -58,7 +58,7 @@ namespace MyWayRazor.Pages.Analise
                 Order = 2
             });
 
-            AssistenciasPRMs = await db.AssistenciasPRMS.ToListAsync();
+            AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
             Portas = await db.Portas.ToListAsync();
             Stands = await db.Stands.ToListAsync();
             Parametros = await db.Parametros.ToListAsync();

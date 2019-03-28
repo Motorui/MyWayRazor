@@ -2,16 +2,14 @@
 @model MyWayRazor.Pages.Analise.PmrTerminalModel
 
 @{
-    ViewData["Title"] = "PmrTerminal";
+    ViewData["Title"] = "PMR Terminal";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 
     #region variables
 
-    var Today = DateTime.UtcNow.Day;
-
-    int[] dataHour = Model.AssistenciasPRMs.Where(d => d.Data.Day == Today).Select(h => h.Data.Hour).Distinct().ToArray();
-    int[] estimaHour = Model.AssistenciasPRMs.Where(d => d.Data.Day == Today).Select(h => h.EstimaApresentacao.Hour).Distinct().ToArray();
-    int[] embarqueHour = Model.AssistenciasPRMs.Where(d => d.Data.Day == Today).Select(h => h.HoraEmbarque.Hour).Distinct().ToArray();
+    int[] dataHour = Model.AssistenciasPRMs.Select(h => h.Data.Hour).Distinct().ToArray();
+    int[] estimaHour = Model.AssistenciasPRMs.Select(h => h.EstimaApresentacao.Hour).Distinct().ToArray();
+    int[] embarqueHour = Model.AssistenciasPRMs.Select(h => h.HoraEmbarque.Hour).Distinct().ToArray();
     int[] tempArr = dataHour.Union(estimaHour).ToArray();
     int[] Hours = tempArr.Union(embarqueHour).ToArray();
 
@@ -19,7 +17,7 @@
 
     #endregion
 
-    }
+}
 <section class="content">
     @*<div class="row">
             <div class="form-group col-sm-1 col-md-2">
@@ -51,21 +49,30 @@
                         </thead>
                         <tbody>
                             @foreach (var items in Hours
-                          .Select(h => new
-                          {
-                              hora = h,
-                              Dep = Model.AssistenciasPRMs
-                                  .Where(d => d.Mov == "D" && d.Data.Day == Today)
-                                  .Count(m => m.HoraEmbarque.Hour == h),
-                              Arr = Model.AssistenciasPRMs
-                                  .Where(d => d.Mov == "A" && d.Data.Day == Today)
-                                  .Count(m => m.Data.Hour == h),
-                              Total = Model.AssistenciasPRMs
-                                  .Where(d => d.Data.Day == Today)
-                                  .Count(m => m.Data.Hour == h)
-                          }
-                     ).OrderBy(h => h.hora)
-                    )
+                       .Select(h => new
+                       {
+                           hora = h,
+                           Dep = Model.AssistenciasPRMs
+                               .Where(
+                                 d => d.Mov == "D"
+                                 )
+                               .Count(
+                                 m => m.HoraEmbarque.Hour == h
+                                 ),
+                           Arr = Model.AssistenciasPRMs
+                               .Where(
+                                 d => d.Mov == "A"
+                               )
+                               .Count(
+                                 m => m.Data.Hour == h
+                                 ),
+                           Total = Model.AssistenciasPRMs
+                               .Count(
+                                 m => m.Data.Hour == h
+                               )
+                       }
+                  ).OrderBy(h => h.hora)
+                 )
                             {
                                 <tr>
                                     <td>
@@ -115,30 +122,43 @@
                         </thead>
                         <tbody>
                             @foreach (var items in Hours
-                               .Select(h => new
-                               {
-                                   hora = h,
-                                   DepS = Model.AssistenciasPRMs
-                                       .Where(d => d.Mov == "D"
-                                           && Model.GateSchengen.Contains(d.Gate)
-                                           && d.Data.Day == Today)
-                                       .Count(m => m.EstimaApresentacao.Hour == h),
-                                   DepN = Model.AssistenciasPRMs
-                                       .Where(d => d.Mov == "D"
-                                           && Model.GateNSchengen.Contains(d.Gate)
-                                           && d.Data.Day == Today)
-                                       .Count(m => m.EstimaApresentacao.Hour == h),
-                                   DepT2 = Model.AssistenciasPRMs
-                                           .Where(d => d.Mov == "D"
-                                           && Model.GateT2.Contains(d.Gate)
-                                           && d.Data.Day == Today)
-                                       .Count(m => m.EstimaApresentacao.Hour == h),
-                                   DepTotal = Model.AssistenciasPRMs
-                                       .Where(d => d.Mov == "D" && d.Data.Day == Today)
-                                       .Count(m => m.EstimaApresentacao.Hour == h)
-                               }
-                              ).OrderBy(h => h.hora)
-                             )
+                           .Select(h => new
+                           {
+                               hora = h,
+                               DepS = Model.AssistenciasPRMs
+                                   .Where(
+                                    d => d.Mov == "D"
+                                    && Model.GateSchengen.Contains(d.Gate)
+                                        )
+                                   .Count(
+                                    m => m.EstimaApresentacao.Hour == h
+                                    ),
+                               DepN = Model.AssistenciasPRMs
+                                   .Where(
+                                    d => d.Mov == "D"
+                                    && Model.GateNSchengen.Contains(d.Gate)
+                                       )
+                                   .Count(
+                                    m => m.EstimaApresentacao.Hour == h
+                                    ),
+                               DepT2 = Model.AssistenciasPRMs
+                                       .Where(
+                                        d => d.Mov == "D"
+                                        && Model.GateT2.Contains(d.Gate)
+                                            )
+                                        .Count(
+                                           m => m.EstimaApresentacao.Hour == h
+                                           ),
+                               DepTotal = Model.AssistenciasPRMs
+                                   .Where(
+                                     d => d.Mov == "D"
+                                     )
+                                   .Count(
+                                     m => m.EstimaApresentacao.Hour == h
+                                     )
+                           }
+                          ).OrderBy(h => h.hora)
+                         )
                             {
                                 <tr>
                                     <td>
@@ -193,36 +213,51 @@
                         </thead>
                         <tbody>
                             @foreach (var items in Hours
-                               .Select(h => new
-                               {
-                                   hora = h,
-                                   APierSul = Model.AssistenciasPRMs
-                                           .Where(d => d.Mov == "A"
-                                           && Model.PierSul.Contains(Int32.Parse(d.Stand))
-                                           && d.Data.Day == Today)
-                                       .Count(m => m.Data.Hour == h),
-                                   APierNorte = Model.AssistenciasPRMs
-                                           .Where(d => d.Mov == "A"
-                                           && Model.PierNorte.Contains(Int32.Parse(d.Stand))
-                                           && d.Data.Day == Today)
-                                       .Count(m => m.Data.Hour == h),
-                                   APier14 = Model.AssistenciasPRMs
-                                           .Where(d => d.Mov == "A"
-                                           && Model.Pier14.Contains(Int32.Parse(d.Stand))
-                                           && d.Data.Day == Today)
-                                       .Count(m => m.Data.Hour == h),
-                                   ArrRemoto = Model.AssistenciasPRMs
-                                           .Where(d => d.Mov == "A"
-                                           && Model.Remotos.Contains(Int32.Parse(d.Stand))
-                                           && d.Data.Day == Today)
-                                       .Count(m => m.Data.Hour == h),
-                                   ArrTotal = Model.AssistenciasPRMs
-                                           .Where(d => d.Mov == "A"
-                                           && d.Data.Day == Today)
-                                       .Count(m => m.Data.Hour == h)
-                               }
-                                ).OrderBy(h => h.hora)
-                               )
+                            .Select(h => new
+                            {
+                                hora = h,
+                                APierSul = Model.AssistenciasPRMs
+                                        .Where(
+                                          d => d.Mov == "A"
+                                          && Model.PierSul.Contains(Int32.Parse(d.Stand))
+                                        )
+                                    .Count(
+                                      m => m.Data.Hour == h
+                                    ),
+                                APierNorte = Model.AssistenciasPRMs
+                                        .Where(
+                                          d => d.Mov == "A"
+                                          && Model.PierNorte.Contains(Int32.Parse(d.Stand))
+                                        )
+                                    .Count(
+                                      m => m.Data.Hour == h
+                                          ),
+                                APier14 = Model.AssistenciasPRMs
+                                        .Where(
+                                          d => d.Mov == "A"
+                                          && Model.Pier14.Contains(Int32.Parse(d.Stand))
+                                        )
+                                    .Count(
+                                      m => m.Data.Hour == h
+                                      ),
+                                ArrRemoto = Model.AssistenciasPRMs
+                                        .Where(
+                                          d => d.Mov == "A"
+                                          && Model.Remotos.Contains(Int32.Parse(d.Stand))
+                                        )
+                                    .Count(
+                                      m => m.Data.Hour == h
+                                      ),
+                                ArrTotal = Model.AssistenciasPRMs
+                                        .Where(
+                                          d => d.Mov == "A"
+                                          )
+                                    .Count(
+                                      m => m.Data.Hour == h
+                                    )
+                            }
+                             ).OrderBy(h => h.hora)
+                            )
                             {
 
                                 <tr>
@@ -282,12 +317,12 @@
         </div>
     </div>
 </section>
-    @section Scripts
-        {
+@section Scripts
+    {
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
-        <script src="~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script type="text/javascript">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
     var labelArray = [];
     var dataChegadas = [];
     var dataPartidas = [];
@@ -298,16 +333,21 @@
        {
            hora = h,
            Arr = Model.AssistenciasPRMs
-                    .Where(d => d.Mov == "A"
-                    && d.Data.Day == Today)
-                .Count(m => m.Data.Hour == h),
+                    .Where(
+                        d => d.Mov == "A"
+                    )
+                .Count(
+                    m => m.Data.Hour == h
+                ),
            Dep = Model.AssistenciasPRMs
-                    .Where(d => d.Mov == "D"
-                    && d.Data.Day == Today)
+                    .Where(
+                        d => d.Mov == "D"
+                    )
                 .Count(m => m.Data.Hour == h),
            Total = Model.AssistenciasPRMs
-                    .Where(d => d.Data.Day == Today)
-                .Count(m => m.Data.Hour == h)
+                .Count(
+                    m => m.Data.Hour == h
+                    )
        }
        ).OrderBy(h => h.hora))
     {
@@ -316,58 +356,58 @@
         @: dataPartidas.push("@Html.DisplayFor(modelItem => items.Dep)");
         @: dataTotal.push("@Html.DisplayFor(modelItem => items.Total)");
     }
-        </script>
+    </script>
 
-        <script type="text/javascript">
-            var chartData = {
-                labels: labelArray,
-                datasets: [
-                    {
-                        type: 'line',
-                        label: 'Total',
-                        borderColor: 'rgb(54, 162, 235)',
-                        borderWidth: 2,
-                        fill: false,
-                        data: dataTotal
-                    }, {
-                        type: 'bar',
-                        label: 'Partidas',
-                        backgroundColor: 'rgb(75, 192, 192)',
-                        data: dataPartidas
-                    }, {
-                        type: 'bar',
-                        label: 'Chegadas',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        data: dataChegadas
-                    }
-                ]
-
-            };
-            window.onload = function () {
-                var ctx = document.getElementById('canvas').getContext('2d');
-                window.myMixedChart = new Chart(ctx, {
+    <script type="text/javascript">
+        var chartData = {
+            labels: labelArray,
+            datasets: [
+                {
+                    type: 'line',
+                    label: 'Total',
+                    borderColor: 'rgb(54, 162, 235)',
+                    borderWidth: 2,
+                    fill: false,
+                    data: dataTotal
+                }, {
                     type: 'bar',
-                    data: chartData,
-                    options: {
-                        responsive: true,
-                        title: {
-                            display: true,
-                            text: 'Total de PMR por BRD/STA:'
-                        },
-                        tooltips: {
-                            mode: 'index',
-                            intersect: true
-                        }
+                    label: 'Partidas',
+                    backgroundColor: 'rgb(75, 192, 192)',
+                    data: dataPartidas
+                }, {
+                    type: 'bar',
+                    label: 'Chegadas',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    data: dataChegadas
+                }
+            ]
+
+        };
+        window.onload = function () {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            window.myMixedChart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Total de PMR por BRD/STA:'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
                     }
-                });
-            };
-
-            $('#datepicker').datepicker({
-                isRTL: false,
-                format: 'dd-mm-yyyy',
-                autoclose: true,
-                language: 'Pt'
+                }
             });
+        };
 
-        </script>
-    }
+        $('#datepicker').datepicker({
+            isRTL: false,
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            language: 'Pt'
+        });
+
+    </script>
+}

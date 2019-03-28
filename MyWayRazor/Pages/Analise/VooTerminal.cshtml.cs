@@ -61,7 +61,7 @@ namespace MyWayRazor.Pages.Analise
             });
             this.AddBreadCrumb(new BreadCrumb
             {
-                Title = "VOOS Terminal",
+                Title = "Voos Terminal",
                 Url = "/Analise/VooTerminal",
                 Order = 2
             });

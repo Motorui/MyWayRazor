@@ -61,7 +61,7 @@ namespace MyWayRazor.Pages.Analise
             });
             this.AddBreadCrumb(new BreadCrumb
             {
-                Title = "PMR Remotos",
+                Title = "PMR Remoto",
                 Url = "/Analise/PmrRemoto",
                 Order = 2
             });

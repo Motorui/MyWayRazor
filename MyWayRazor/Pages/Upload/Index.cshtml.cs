@@ -135,7 +135,6 @@ namespace MyWayRazor.Pages.Upload
 
         private void AddExcelToDB(IExcelDataReader excelReader)
         {
-
             DataTable excelTable = excelReader.AsDataSet().Tables[0];
 
             for (int i = 1; i < excelTable.Rows.Count; i++)
@@ -151,6 +150,12 @@ namespace MyWayRazor.Pages.Upload
                 string ssr = (string)excelTable.Rows[i].ItemArray[8];
                 string ac = (string)excelTable.Rows[i].ItemArray[9];
                 string stand = (string)excelTable.Rows[i].ItemArray[10];
+
+                if (string.IsNullOrEmpty(stand))
+                {
+                    stand = "000";
+                }
+                
                 string exit = (string)excelTable.Rows[i].ItemArray[11];
                 string ckin = (string)excelTable.Rows[i].ItemArray[12];
                 string gate = (string)excelTable.Rows[i].ItemArray[13];
@@ -181,18 +186,15 @@ namespace MyWayRazor.Pages.Upload
                     EstimaApresentacao = estimaApresentacao
                 };
 
-                AssistenciasPRM current = db.AssistenciasPRMS.FirstOrDefault(
-                    c => c.Data.Date == currentExcel.Data.Date
-                    && c.Voo == currentExcel.Voo
-                    && c.Pax == currentExcel.Pax
-                    );
+                var current = db.AssistenciasPRMS.Where(d => d.Data.Date == data.Date);
                 if (current == null)
                 {
                     db.AssistenciasPRMS.Add(currentExcel);
                 }
                 else
                 {
-                    db.Entry(current).CurrentValues.SetValues(currentExcel);
+                    db.AssistenciasPRMS.RemoveRange(db.AssistenciasPRMS.Where(d => d.Data.Date == data.Date));
+                    db.AssistenciasPRMS.Add(currentExcel);
                 }
 
             }

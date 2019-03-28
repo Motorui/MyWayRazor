@@ -60,7 +60,7 @@ namespace MyWayRazor.Pages.Analise
             });
             this.AddBreadCrumb(new BreadCrumb
             {
-                Title = "VOOS Remotos",
+                Title = "Voos Remoto",
                 Url = "/Analise/VooRemoto",
                 Order = 2
             });

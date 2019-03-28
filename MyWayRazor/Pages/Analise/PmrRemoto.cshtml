@@ -2,12 +2,10 @@
 @model MyWayRazor.Pages.Analise.PmrRemotoModel
 
 @{
-    ViewData["Title"] = "PMR Remotos";
+    ViewData["Title"] = "PMR Remoto";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 
     #region variables
-
-    var Today = DateTime.UtcNow.Day;
 
     int[] dataHour = Model.AssistenciasPRMs.Select(h => h.Data.Hour).Distinct().ToArray();
     int[] estimaHour = Model.AssistenciasPRMs.Select(h => h.EstimaApresentacao.Hour).Distinct().ToArray();
@@ -47,7 +45,8 @@
                            DepS = Model.AssistenciasPRMs
                            .Where(d => d.Mov == "D"
                                 && Model.Remotos.Contains(Int32.Parse(d.Stand))
-                                && Model.GateSchengen.Contains(d.Gate))
+                                && Model.GateSchengen.Contains(d.Gate)
+                                )
                            .Count(m => m.HoraEmbarque.Hour == h),
                            DepN = Model.AssistenciasPRMs
                            .Where(d => d.Mov == "D"

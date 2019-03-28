@@ -1,12 +1,10 @@
 ﻿@page
 @model MyWayRazor.Pages.Analise.VooTerminalModel
 @{
-    ViewData["Title"] = "VooTerminal";
+    ViewData["Title"] = "Voos Terminal";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 
     #region variables
-
-    var Today = DateTime.UtcNow.Day;
 
     int[] dataHour = Model.AssistenciasPRMs.Select(h => h.Data.Hour).Distinct().ToArray();
     int[] estimaHour = Model.AssistenciasPRMs.Select(h => h.EstimaApresentacao.Hour).Distinct().ToArray();

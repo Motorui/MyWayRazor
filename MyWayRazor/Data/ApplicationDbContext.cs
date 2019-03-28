@@ -89,6 +89,14 @@ namespace MyWayRazor.Data
                 .HasIndex(s => s.StandN)
                 .IsUnique();
 
+            builder.Entity<AssistenciasPRM>()
+                .Property(s => s.Stand)
+                .HasDefaultValue(000);
+
+            //builder.Entity<AssistenciasPRM>()
+            //.Property(s => s.Gate)
+            //.HasDefaultValue("000");
+
             #region Seed Data
             // Seed Categorias
             var CategoriasFile = Path.Combine(env.ContentRootPath, folderName, "Categorias.json");

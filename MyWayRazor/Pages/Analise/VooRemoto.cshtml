@@ -1,12 +1,10 @@
 ﻿@page
 @model MyWayRazor.Pages.Analise.VooRemotoModel
 @{
-    ViewData["Title"] = "Voos Remotos";
+    ViewData["Title"] = "Voos Remoto";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 
     #region variables
-
-    var Today = DateTime.UtcNow.Day;
 
     int[] dataHour = Model.AssistenciasPRMs.Select(h => h.Data.Hour).Distinct().ToArray();
     int[] estimaHour = Model.AssistenciasPRMs.Select(h => h.EstimaApresentacao.Hour).Distinct().ToArray();
