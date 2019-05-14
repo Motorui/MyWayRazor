@@ -1,5 +1,4 @@
-﻿using DNTBreadCrumb.Core;
-using ExcelDataReader;
+﻿using ExcelDataReader;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -36,18 +35,6 @@ namespace MyWayRazor.Pages.Upload
 
         public void OnGet()
         {
-            this.AddBreadCrumb(new BreadCrumb
-            {
-                Title = "Análise",
-                Url = "/Analise",
-                Order = 1
-            });
-            this.AddBreadCrumb(new BreadCrumb
-            {
-                Title = "Upload",
-                Url = "/Upload/Index",
-                Order = 2
-            });
             //DelDir(folderName);
             //TruncateTable();
         }

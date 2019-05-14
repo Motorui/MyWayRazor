@@ -47,9 +47,6 @@
                                    Arr = Model.AssistenciasPRMs
                                        .Where(d => d.Mov == "A")
                                        .Select(v => new { v.Voo, v.Data }).Distinct()
-                                       .Count(m => m.Data.Hour == h),
-                                   Total = Model.AssistenciasPRMs
-                                       .Select(v => new { v.Voo, v.Data }).Distinct()
                                        .Count(m => m.Data.Hour == h)
                                }
                            )
@@ -67,7 +64,7 @@
                                         @Html.DisplayFor(modelItem => items.Arr)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => items.Total)
+                                        @(items.Dep + items.Arr)
                                     </td>
                                 </tr>
                             }
@@ -121,10 +118,6 @@
                                  .Where(d => d.Mov == "D"
                                        && Model.GateT2.Contains(d.Gate))
                                  .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
-                                 .Count(m => m.HoraEmbarque.Hour == h),
-                             Total = Model.AssistenciasPRMs
-                                   .Where(d => d.Mov == "D")
-                                 .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
                                  .Count(m => m.HoraEmbarque.Hour == h)
                          }
                              )
@@ -145,7 +138,7 @@
                                         @Html.DisplayFor(modelItem => items.DepT2)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => items.Total)
+                                        @(items.DepS + items.DepN + items.DepT2)
                                     </td>
                                 </tr>
                             }
@@ -208,10 +201,6 @@
                                         && d.Exit == "N"
                                         && d.Transferencia == "T")
                                    .Select(v => new { v.Voo, v.Data }).Distinct()
-                                   .Count(m => m.Data.Hour == h),
-                               ArrTotal = Model.AssistenciasPRMs
-                                     .Where(d => d.Mov == "A")
-                                   .Select(v => new { v.Voo, v.Data }).Distinct()
                                    .Count(m => m.Data.Hour == h)
                            }
                            )
@@ -235,7 +224,7 @@
                                         @Html.DisplayFor(modelItem => items.ArrTransferNSchengen)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => items.ArrTotal)
+                                        @(items.ArrSchengen + items.ArrNSchengen)
                                     </td>
                                 </tr>
                             }
@@ -297,9 +286,6 @@
            Dep = Model.AssistenciasPRMs
                     .Where(d => d.Mov == "D")
                     .Select(v => new { v.Voo, v.Data }).Distinct()
-                .Count(m => m.Data.Hour == h),
-           Total = Model.AssistenciasPRMs
-                    .Select(v => new { v.Voo, v.Data }).Distinct()
                 .Count(m => m.Data.Hour == h)
        }
        ).OrderBy(h => h.hora))
@@ -307,7 +293,7 @@
         @: labelArray.push("@Html.DisplayFor(modelItem => items.hora):00");
         @: dataChegadas.push("@Html.DisplayFor(modelItem => items.Arr)");
         @: dataPartidas.push("@Html.DisplayFor(modelItem => items.Dep)");
-        @: dataTotal.push("@Html.DisplayFor(modelItem => items.Total)");
+        @: dataTotal.push("@(items.Arr + items.Dep)");
     }
     </script>
 

@@ -11,6 +11,8 @@
     int[] embarqueHour = Model.AssistenciasPRMs.Select(h => h.HoraEmbarque.Hour).Distinct().ToArray();
     int[] tempHours = dataHour.Union(estimaHour).ToArray();
     int[] Hours = tempHours.Union(embarqueHour).ToArray();
+    int? CountAmb = 0;
+    int? CountVta = 0;
 
     Array.Sort(Hours);
 
@@ -30,9 +32,11 @@
                             <tr>
                                 <th>Detalhe:</th>
                                 <th>Hora:</th>
-                                <th>Schengen:</th>
-                                <th>NSchengen:</th>
-                                <th>Terminal2:</th>
+                                <th>S:</th>
+                                <th>N:</th>
+                                <th>T2:</th>
+                                <th>Amb</th>
+                                <th>VTA</th>
                                 <th>Total:</th>
                             </tr>
                         </thead>
@@ -58,45 +62,102 @@
                                   && Model.Remotos.Contains(Int32.Parse(d.Stand))
                                   && Model.GateT2.Contains(d.Gate))
                             .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
-                            .Count(m => m.HoraEmbarque.Hour == h),
-                            Total = Model.AssistenciasPRMs
-                            .Where(d => d.Mov == "D"
-                                  && Model.Remotos.Contains(Int32.Parse(d.Stand)))
-                            .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
                             .Count(m => m.HoraEmbarque.Hour == h)
                         }
                             )
                             .OrderBy(h => h.Hora)
                             )
                             {
-                                <tr>
-                                    <td align="center" style="width: 10%">
-                                        @if (partida.Total > 0)
+                            <tr>
+                                <td align="center" style="width: 10%">
+                                    @if ((partida.DepS + partida.DepN + partida.DepT2) > 0)
+                                    {
+                                        <a role="button" data-toggle="collapse" href="#@(partida.Hora)p" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="fa fa-chevron-right pull-right"></i>
+                                            <i class="fa fa-chevron-down pull-right"></i>
+                                        </a>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => partida.Hora):00
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => partida.DepS)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => partida.DepN)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => partida.DepT2)
+                                </td>
+                                <td>
+                                    @foreach (var groupAssistencia in Model.AssistenciasPRMs
+                                  .OrderBy(d => d.HoraEmbarque.Hour)
+                                  .Where(
+                                  d => d.HoraEmbarque.Hour == partida.Hora
+                                  && Model.Remotos.Contains(Int32.Parse(d.Stand))
+                                  && d.Mov == "D"
+                                  )
+                                  .GroupBy(x => x.HoraEmbarque.Hour)
+                                  )
+                                    {
+                                        foreach (var amb in groupAssistencia.GroupBy(v => v.Voo))
                                         {
-                                            <a role="button" data-toggle="collapse" href="#@(partida.Hora)p" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fa fa-chevron-right pull-right"></i>
-                                                <i class="fa fa-chevron-down pull-right"></i>
-                                            </a>
+                                            CountAmb = CountAmb + Enumerable.Range(
+                                                                                0, (amb.Where(
+                                                                                    x => x.SSR.Contains("WCHC")
+                                                                                    ).Count() + amb.Where(
+                                                                                    x => x.SSR.Contains("WCHS")
+                                                                                    ).Count())
+                                                                                ).GroupBy(
+                                                                                    x => x / Int32.Parse(Model.Parametros
+                                                                                    .Where(p => p.ParamNome == "NAmbulift")
+                                                                                    .Select(p => p.ParamValue)
+                                                                                    .FirstOrDefault().ToString()
+                                                                                )
+                                                                                ).Count();
                                         }
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => partida.Hora):00
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => partida.DepS)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => partida.DepN)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => partida.DepT2)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => partida.Total)
-                                    </td>
-                                </tr>
+                                    }
+                                    @CountAmb
+                                    @if (CountAmb > 0)
+                                    {
+                                        CountAmb = 0;
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var groupAssistencia in Model.AssistenciasPRMs
+                                .OrderBy(d => d.HoraEmbarque.Hour)
+                                .Where(
+                                d => d.HoraEmbarque.Hour == partida.Hora
+                                && Model.Remotos.Contains(Int32.Parse(d.Stand))
+                                && d.Mov == "D"
+                                )
+                                .GroupBy(x => x.HoraEmbarque.Hour)
+                                )
+                                    {
+                                        foreach (var vta in groupAssistencia.GroupBy(v => v.Voo))
+                                        {
+                                            CountVta = CountVta + Enumerable.Range(0, vta.Count()).GroupBy(
+                                                                          x => x / Int32.Parse(Model.Parametros
+                                                                          .Where(p => p.ParamNome == "NVta")
+                                                                          .Select(p => p.ParamValue).Distinct()
+                                                                          .FirstOrDefault().ToString()
+                                                                                 )
+                                                                         ).Count();
+                                        }
+                                    }
+                                    @CountVta
+                                    @if (CountVta > 0)
+                                    {
+                                        CountVta = 0;
+                                    }
+                                </td>
+                                <td>
+                                    @(partida.DepS + partida.DepN + partida.DepT2)
+                                </td>
+                            </tr>
                                 <tr class="collapse" id="@(partida.Hora)p">
-                                    <td colspan="6">
+                                    <td colspan="8">
                                         @foreach (var groupHoras in Model.AssistenciasPRMs
                                         .OrderBy(d => d.HoraEmbarque.Hour)
                                         .Where(
@@ -231,10 +292,12 @@
                             <tr>
                                 <th>Detalhe:</th>
                                 <th>Hora:</th>
-                                <th>Schengen:</th>
-                                <th>NSchengen:</th>
+                                <th>S:</th>
+                                <th>N:</th>
                                 <th>Trnf. S:</th>
                                 <th>Trnf. N:</th>
+                                <th>Amb</th>
+                                <th>VTA</th>
                                 <th>Total:</th>
                             </tr>
                         </thead>
@@ -268,48 +331,105 @@
                                      && d.Exit == "N"
                                      && d.Transferencia == "T")
                                 .Select(v => new { v.Voo, v.Data }).Distinct()
-                                .Count(m => m.Data.Hour == h),
-                          ArrTotal = Model.AssistenciasPRMs
-                                  .Where(d => d.Mov == "A"
-                                  && Model.Remotos.Contains(Int32.Parse(d.Stand)))
-                                .Select(v => new { v.Voo, v.Data }).Distinct()
                                 .Count(m => m.Data.Hour == h)
                       }
                           )
                           .OrderBy(h => h.Hora)
                           )
                             {
-                                <tr>
-                                    <td align="center" style="width: 10%">
-                                        @if (chegada.ArrTotal > 0)
+                            <tr>
+                                <td align="center" style="width: 10%">
+                                    @if ((chegada.ArrSchengen + chegada.ArrNSchengen) > 0)
+                                    {
+                                        <a role="button" data-toggle="collapse" href="#@(chegada.Hora)c" aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="fa fa-chevron-right pull-right"></i>
+                                            <i class="fa fa-chevron-down pull-right"></i>
+                                        </a>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => chegada.Hora):00
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => chegada.ArrSchengen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => chegada.ArrNSchengen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => chegada.ArrTransferSchengen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => chegada.ArrTransferNSchengen)
+                                </td>
+                                <td>
+                                    @foreach (var groupAssistencia in Model.AssistenciasPRMs
+                                  .OrderBy(d => d.HoraEmbarque.Hour)
+                                  .Where(
+                                  d => d.HoraEmbarque.Hour == chegada.Hora
+                                  && Model.Remotos.Contains(Int32.Parse(d.Stand))
+                                  && d.Mov == "A"
+                                  )
+                                  .GroupBy(x => x.HoraEmbarque.Hour)
+                                  )
+                                    {
+                                        foreach (var amb in groupAssistencia.GroupBy(v => v.Voo))
                                         {
-                                            <a role="button" data-toggle="collapse" href="#@(chegada.Hora)c" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fa fa-chevron-right pull-right"></i>
-                                                <i class="fa fa-chevron-down pull-right"></i>
-                                            </a>
+                                            CountAmb = CountAmb + Enumerable.Range(
+                                                                                0, (amb.Where(
+                                                                                    x => x.SSR.Contains("WCHC")
+                                                                                    ).Count() + amb.Where(
+                                                                                    x => x.SSR.Contains("WCHS")
+                                                                                    ).Count())
+                                                                                ).GroupBy(
+                                                                                    x => x / Int32.Parse(Model.Parametros
+                                                                                    .Where(p => p.ParamNome == "NAmbulift")
+                                                                                    .Select(p => p.ParamValue)
+                                                                                    .FirstOrDefault().ToString()
+                                                                                )
+                                                                                ).Count();
                                         }
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => chegada.Hora):00
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => chegada.ArrSchengen)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => chegada.ArrNSchengen)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => chegada.ArrTransferSchengen)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => chegada.ArrTransferNSchengen)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => chegada.ArrTotal)
-                                    </td>
-                                </tr>
+                                    }
+                                    @CountAmb
+                                    @if (CountAmb > 0)
+                                    {
+                                        CountAmb = 0;
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var groupAssistencia in Model.AssistenciasPRMs
+                                .OrderBy(d => d.HoraEmbarque.Hour)
+                                .Where(
+                                d => d.HoraEmbarque.Hour == chegada.Hora
+                                && Model.Remotos.Contains(Int32.Parse(d.Stand))
+                                && d.Mov == "A"
+                                )
+                                .GroupBy(x => x.HoraEmbarque.Hour)
+                                )
+                                    {
+                                        foreach (var vta in groupAssistencia.GroupBy(v => v.Voo))
+                                        {
+                                            CountVta = CountVta + Enumerable.Range(0, vta.Count()).GroupBy(
+                                                                          x => x / Int32.Parse(Model.Parametros
+                                                                          .Where(p => p.ParamNome == "NVta")
+                                                                          .Select(p => p.ParamValue).Distinct()
+                                                                          .FirstOrDefault().ToString()
+                                                                                 )
+                                                                         ).Count();
+                                        }
+                                    }
+                                    @CountVta
+                                    @if (CountVta > 0)
+                                    {
+                                        CountVta = 0;
+                                    }
+                                </td>
+                                <td>
+                                    @(chegada.ArrSchengen + chegada.ArrNSchengen)
+                                </td>
+                            </tr>
                                 <tr class="collapse" id="@(chegada.Hora)c">
-                                    <td colspan="7">
+                                    <td colspan="9">
                                         @foreach (var groupHoras in Model.AssistenciasPRMs
                                            .OrderBy(d => d.Data.Hour)
                                            .Where(
@@ -507,18 +627,14 @@
                     .Where(d => d.Mov == "D"
                     && Model.Remotos.Contains(Int32.Parse(d.Stand)))
                     .Select(v => new { v.Voo, v.HoraEmbarque }).Distinct()
-                .Count(m => m.HoraEmbarque.Hour == h),
-           Total = Model.AssistenciasPRMs
-           .Where(d => Model.Remotos.Contains(Int32.Parse(d.Stand)))
-                    .Select(v => new { v.Voo, v.Data }).Distinct()
-                .Count(m => m.Data.Hour == h)
+                .Count(m => m.HoraEmbarque.Hour == h)
        }
        ).OrderBy(h => h.hora))
     {
         @: labelArray.push("@Html.DisplayFor(modelItem => items.hora):00");
         @: dataChegadas.push("@Html.DisplayFor(modelItem => items.Arr)");
         @: dataPartidas.push("@Html.DisplayFor(modelItem => items.Dep)");
-        @: dataTotal.push("@Html.DisplayFor(modelItem => items.Total)");
+        @: dataTotal.push("@(items.Arr + items.Dep)");
     }
     </script>
 

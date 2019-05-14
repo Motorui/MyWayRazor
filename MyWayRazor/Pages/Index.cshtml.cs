@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DNTBreadCrumb.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
+using MyWayRazor.Models.Analise;
 using MyWayRazor.Models.ToDoList;
+using SmartBreadcrumbs.Attributes;
 
 namespace MyWayRazor.Pages
 {
+
+    [DefaultBreadcrumb("Início")]
     public class IndexModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -21,22 +24,19 @@ namespace MyWayRazor.Pages
             _context = context;
         }
 
+        public DateTime Hoje = DateTime.UtcNow.Date;
+        public IList<AssistenciasPRM> AssistenciasPRMs { get; set; }
+
         [BindProperty]
         public ToDo ToDo { get; set; }
         public IList<ToDo> ToDoList { get; set; }
         public async Task OnGetAsync()
         {
-            this.AddBreadCrumb(new BreadCrumb
-            {
-                Title = "Início",
-                Url = "Index",
-                Order = 1
-            });
-
             ToDoList = await _context.ToDos.ToListAsync();
+            AssistenciasPRMs = await _context.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
         }
 
-        public async Task<IActionResult> MarkDone(int id)
+        public async Task<IActionResult> OnPostMarkDone(int id)
         {
             if (id == 0)
             {
@@ -49,7 +49,7 @@ namespace MyWayRazor.Pages
                 return BadRequest("Could not mark item as done.");
             }
 
-            return Page();
+            return RedirectToPage("./Index");
         }
 
         public async Task<bool> MarkDoneAsync(int id)
@@ -66,39 +66,9 @@ namespace MyWayRazor.Pages
             return saveResult == 1; // One entity should have been updated
         }
 
-    //    public async Task<IActionResult> OnPostAsync()
-    //    {
-    //        if (!ModelState.IsValid)
-    //        {
-    //            return Page();
-    //        }
-
-    //        ToDo.LastUpdatedAt = DateTime.UtcNow.Date;
-    //        ToDo.LastUpdatedBy = User.Identity.Name.ToString();
-    //        _context.Attach(ToDo).State = EntityState.Modified;
-
-    //        try
-    //        {
-    //            await _context.SaveChangesAsync();
-    //        }
-    //        catch (DbUpdateConcurrencyException)
-    //        {
-    //            if (!ToDoExists(ToDo.ToDoId))
-    //            {
-    //                return NotFound();
-    //            }
-    //            else
-    //            {
-    //                throw;
-    //            }
-    //        }
-
-    //        return Page();
-    //    }
-
-    //    private bool ToDoExists(int id)
-    //    {
-    //        return _context.ToDos.Any(e => e.ToDoId == id);
-    //    }
+        private bool ToDoExists(int id)
+        {
+            return _context.ToDos.Any(e => e.ToDoId == id);
+        }
     }
 }

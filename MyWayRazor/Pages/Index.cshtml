@@ -2,6 +2,18 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
+
+    #region variables
+
+    int[] dataHour = Model.AssistenciasPRMs.Select(h => h.Data.Hour).Distinct().ToArray();
+    int[] estimaHour = Model.AssistenciasPRMs.Select(h => h.EstimaApresentacao.Hour).Distinct().ToArray();
+    int[] embarqueHour = Model.AssistenciasPRMs.Select(h => h.HoraEmbarque.Hour).Distinct().ToArray();
+    int[] tempArr = dataHour.Union(estimaHour).ToArray();
+    int[] Hours = tempArr.Union(embarqueHour).ToArray();
+
+    Array.Sort(Hours);
+
+    #endregion
 }
 
 <section class="content">
@@ -25,67 +37,67 @@
                 <tbody>
                     @foreach (var item in Model.ToDoList.OrderBy(d => d.CreatedAt).Where(f => f.Done == false))
                     {
-                    <tr>
-                        <td>
-                            <p class="box-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="@("#collapse"+item.ToDoId)" aria-expanded="true" class="">
-                                    @Html.DisplayFor(modelItem => item.ToDoTittle)
-                                </a>
-                            </p>
-                            <div id="@("collapse"+item.ToDoId)" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                <div class="box-body">
-                                    @Html.DisplayFor(modelItem => item.ToDoText)
-                                    <p>
-                                        Tarefa criada por:
-                                        <a href="mailto:@Html.DisplayFor(modelItem => item.CreatedBy)">
-                                            @Html.DisplayFor(modelItem => item.CreatedBy)
-                                        </a>
-                                        em @Html.DisplayFor(modelItem => item.CreatedAt)
-                                    </p>
+                        <tr>
+                            <td>
+                                <p class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="@("#collapse" + item.ToDoId)" aria-expanded="true" class="">
+                                        @Html.DisplayFor(modelItem => item.ToDoTittle)
+                                    </a>
+                                </p>
+                                <div id="@("collapse" + item.ToDoId)" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                    <div class="box-body">
+                                        @Html.DisplayFor(modelItem => item.ToDoText)
+                                        <p>
+                                            Tarefa criada por:
+                                            <a href="mailto:@Html.DisplayFor(modelItem => item.CreatedBy)">
+                                                @Html.DisplayFor(modelItem => item.CreatedBy)
+                                            </a>
+                                            em @Html.DisplayFor(modelItem => item.CreatedAt)
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            @if (item.CreatedAt != null)
-                            {
-                                @item.CreatedAt.Value.ToLocalTime()
-                            }
-                        </td>
-                        <td>
-                            @if (item.CreatedAt != null)
-                            {
-                                var horas = Math.Round((DateTime.UtcNow.ToLocalTime() - item.CreatedAt.Value.ToLocalTime()).TotalHours);
-                                var minutos = (DateTime.UtcNow.ToLocalTime() - item.CreatedAt.Value.ToLocalTime()).Minutes;
-                                @(horas + "h" + minutos)
-                            }
-                        </td>
-                        <td>
-                            <div class="progress progress-xs">
+                            </td>
+                            <td>
                                 @if (item.CreatedAt != null)
                                 {
-                                    var dateNow = TimeSpan.FromTicks(DateTime.UtcNow.Ticks);
-                                    var dateStart = TimeSpan.FromTicks(item.CreatedAt.Value.Ticks);
-                                    var dateEnd = TimeSpan.FromTicks(item.CreatedAt.Value.AddDays(1).Ticks);
-                                    var percentage = (Math.Round(((dateNow - dateStart) / (dateEnd - dateStart)) * 100));
-                                    var percentageFormated = (percentage.ToString() + "%");
-                                    var format = ((percentage > 75) ? "progress-bar progress-bar-danger" :
-                                        ((percentage > 50) ? "progress-bar progress-bar-warning" : "progress-bar progress-bar-success"));
-                                    <div class="@(format)" style="width: @(percentageFormated)"></div>
+                                    @item.CreatedAt.Value.ToLocalTime()
                                 }
-                            </div>
-                        </td>
-                        <td>
-                            <span class="@(item.Done == true ? "label label-success" : "label label-danger")">
-                                @(item.Done == true ? "Arquivado" : "Pendente")
-                            </span>
-                        </td>
-                        <td>
-                            <form asp-action="MarkDone" method="POST">
-                                <input type="checkbox" class="done-checkbox">
-                                <input type="hidden" name="id" value="@item.ToDoId">
-                            </form>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>
+                                @if (item.CreatedAt != null)
+                                {
+                                    var horas = Math.Round((DateTime.UtcNow.ToLocalTime() - item.CreatedAt.Value.ToLocalTime()).TotalHours);
+                                    var minutos = (DateTime.UtcNow.ToLocalTime() - item.CreatedAt.Value.ToLocalTime()).Minutes;
+                                    @(horas + "h" + minutos)
+                                }
+                            </td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    @if (item.CreatedAt != null)
+                                    {
+                                        var dateNow = TimeSpan.FromTicks(DateTime.UtcNow.Ticks);
+                                        var dateStart = TimeSpan.FromTicks(item.CreatedAt.Value.Ticks);
+                                        var dateEnd = TimeSpan.FromTicks(item.CreatedAt.Value.AddDays(1).Ticks);
+                                        var percentage = (Math.Round(((dateNow - dateStart) / (dateEnd - dateStart)) * 100));
+                                        var percentageFormated = (percentage.ToString() + "%");
+                                        var format = ((percentage > 75) ? "progress-bar progress-bar-danger" :
+                                            ((percentage > 50) ? "progress-bar progress-bar-warning" : "progress-bar progress-bar-success"));
+                                        <div class="@(format)" style="width: @(percentageFormated)"></div>
+                                    }
+                                </div>
+                            </td>
+                            <td>
+                                <span class="@(item.Done == true ? "label label-success" : "label label-danger")">
+                                    @(item.Done == true ? "Arquivado" : "Pendente")
+                                </span>
+                            </td>
+                            <td>
+                                <form asp-page-handler="MarkDone" asp-route-id="@item.ToDoId" method="post"
+                                      onclick="return confirm('Deseja marcar a tarefa como concluída?')">
+                                    <input type="submit" value="Feito" class="btn btn-default" />
+                                </form>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -97,10 +109,134 @@
             </a>
         </div>
     </div>
+    <div class="row">
+        @if (Model.AssistenciasPRMs.Count < 1)
+        {
+            <div class="callout callout-danger">
+                <h2 class="text-center text-bold">Ainda não foi carregado o ficheiro de assistências</h2>
+            </div>
+        }
+        else
+        {
+            <div class="box">
+                @*<ul>
+                    @foreach (var item in Model.AssistenciasPRMs.GroupBy(v => v.Voo).Take(5))
+                    {
+                        <li>
+
+                        </li>
+                    }</ul>*@
+</div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tabela</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="chart">
+                            <canvas id="canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
 </section>
 @section Scripts
     {
-    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+    var labelArray = [];
+    var dataChegadas = [];
+    var dataPartidas = [];
+    var dataTotal = [];
+
+    @foreach (var items in Hours
+       .Select(h => new
+       {
+           hora = h,
+           Arr = Model.AssistenciasPRMs
+                    .Where(
+                        d => d.Mov == "A"
+                    )
+                .Count(
+                    m => m.Data.Hour == h
+                ),
+           Dep = Model.AssistenciasPRMs
+                    .Where(
+                        d => d.Mov == "D"
+                    )
+                .Count(m => m.Data.Hour == h)
+       }
+       ).OrderBy(h => h.hora))
+    {
+        @: labelArray.push("@Html.DisplayFor(modelItem => items.hora):00");
+        @: dataChegadas.push("@Html.DisplayFor(modelItem => items.Arr)");
+        @: dataPartidas.push("@Html.DisplayFor(modelItem => items.Dep)");
+        @: dataTotal.push("@(items.Arr + items.Dep)");
+    }
+    </script>
+
+    <script type="text/javascript">
+        var chartData = {
+            labels: labelArray,
+            datasets: [
+                {
+                    type: 'line',
+                    label: 'Total',
+                    borderColor: 'rgb(54, 162, 235)',
+                    borderWidth: 2,
+                    fill: false,
+                    data: dataTotal
+                }, {
+                    type: 'bar',
+                    label: 'Partidas',
+                    backgroundColor: 'rgb(75, 192, 192)',
+                    data: dataPartidas
+                }, {
+                    type: 'bar',
+                    label: 'Chegadas',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    data: dataChegadas
+                }
+            ]
+
+        };
+        window.onload = function () {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            window.myMixedChart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Total de PMR por BRD/STA:'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
+                    }
+                }
+            });
+        };
+
+        $('#datepicker').datepicker({
+            isRTL: false,
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            language: 'Pt'
+        });
+
+    </script>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
 
 }
 <div id="confirmDialog" title="Remove Assignment" hidden>

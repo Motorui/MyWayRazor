@@ -1,9 +1,9 @@
-﻿using DNTBreadCrumb.Core;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using MyWayRazor.Models.Analise;
 using MyWayRazor.Models.Tabelas;
+using SmartBreadcrumbs.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Analise
 {
+    [Breadcrumb("PMR Terminal", FromPage = typeof(IndexModel))]
     public class PmrTerminalModel : PageModel
     {
         private readonly ApplicationDbContext db;
@@ -45,18 +46,6 @@ namespace MyWayRazor.Pages.Analise
 
         public async Task OnGetAsync()
         {
-            this.AddBreadCrumb(new BreadCrumb
-            {
-                Title = "Análise",
-                Url = "/Analise",
-                Order = 1
-            });
-            this.AddBreadCrumb(new BreadCrumb
-            {
-                Title = "PMR Terminal",
-                Url = "/Analise/PmrTerminal",
-                Order = 2
-            });
 
             AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
             Portas = await db.Portas.ToListAsync();

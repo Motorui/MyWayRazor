@@ -1,41 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using DNTBreadCrumb.Core;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using MyWayRazor.Models.Analise;
+using SmartBreadcrumbs.Attributes;
 
 namespace MyWayRazor.Pages.Analise
 {
+    [Breadcrumb("Análise")]
     public class IndexModel : PageModel
     {
 
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext db;
 
         public IndexModel(ApplicationDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
-        public IList<AssistenciasPRM> AssistenciasPRM { get; set; }
+        public DateTime Hoje = DateTime.UtcNow.Date;
+        public IList<AssistenciasPRM> AssistenciasPRMs { get; set; }
 
         public async Task OnGetAsync()
         {
-            this.AddBreadCrumb(new BreadCrumb
-            {
-                Title = "Início",
-                Url = "~/Index",
-                Order = 1
-            });
-            this.AddBreadCrumb(new BreadCrumb
-            {
-                Title = "Análise",
-                Url = "/Analise",
-                Order = 2
-            });
-
-            AssistenciasPRM = await _context.AssistenciasPRMS.ToListAsync();
+            AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
         }
     }
 }

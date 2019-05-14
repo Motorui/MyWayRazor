@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyWayRazor.Areas.Identity.Models;
 using MyWayRazor.Data;
+using SmartBreadcrumbs.Extensions;
 using System;
 
 namespace MyWayRazor
@@ -89,6 +90,8 @@ namespace MyWayRazor
                 options.ForwardClientCertificate = false;
                 options.AutomaticAuthentication = false;
             });
+
+            services.AddBreadcrumbs(GetType().Assembly);
 
         }
 

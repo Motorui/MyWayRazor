@@ -65,11 +65,7 @@
                                )
                                .Count(
                                  m => m.Data.Hour == h
-                                 ),
-                           Total = Model.AssistenciasPRMs
-                               .Count(
-                                 m => m.Data.Hour == h
-                               )
+                                 )
                        }
                   ).OrderBy(h => h.hora)
                  )
@@ -85,7 +81,7 @@
                                         @Html.DisplayFor(modelItem => items.Arr)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => items.Total)
+                                        @(items.Dep + items.Arr)
                                     </td>
                                 </tr>
                             }
@@ -148,14 +144,7 @@
                                             )
                                         .Count(
                                            m => m.EstimaApresentacao.Hour == h
-                                           ),
-                               DepTotal = Model.AssistenciasPRMs
-                                   .Where(
-                                     d => d.Mov == "D"
-                                     )
-                                   .Count(
-                                     m => m.EstimaApresentacao.Hour == h
-                                     )
+                                           )
                            }
                           ).OrderBy(h => h.hora)
                          )
@@ -174,7 +163,7 @@
                                         @Html.DisplayFor(modelItem => items.DepT2)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => items.DepTotal)
+                                        @(items.DepS + items.DepN + items.DepT2)
                                     </td>
                                 </tr>
                             }
@@ -247,14 +236,7 @@
                                         )
                                     .Count(
                                       m => m.Data.Hour == h
-                                      ),
-                                ArrTotal = Model.AssistenciasPRMs
-                                        .Where(
-                                          d => d.Mov == "A"
-                                          )
-                                    .Count(
-                                      m => m.Data.Hour == h
-                                    )
+                                      )
                             }
                              ).OrderBy(h => h.hora)
                             )
@@ -277,7 +259,7 @@
                                         @Html.DisplayFor(modelItem => items.ArrRemoto)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => items.ArrTotal)
+                                        @(items.APierSul + items.APierNorte + items.APier14 + items.ArrRemoto)
                                     </td>
                                 </tr>
                             }
@@ -343,18 +325,14 @@
                     .Where(
                         d => d.Mov == "D"
                     )
-                .Count(m => m.Data.Hour == h),
-           Total = Model.AssistenciasPRMs
-                .Count(
-                    m => m.Data.Hour == h
-                    )
+                .Count(m => m.Data.Hour == h)
        }
        ).OrderBy(h => h.hora))
     {
         @: labelArray.push("@Html.DisplayFor(modelItem => items.hora):00");
         @: dataChegadas.push("@Html.DisplayFor(modelItem => items.Arr)");
         @: dataPartidas.push("@Html.DisplayFor(modelItem => items.Dep)");
-        @: dataTotal.push("@Html.DisplayFor(modelItem => items.Total)");
+        @: dataTotal.push("@(items.Arr + items.Dep)");
     }
     </script>
 
