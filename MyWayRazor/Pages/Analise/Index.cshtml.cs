@@ -26,7 +26,7 @@ namespace MyWayRazor.Pages.Analise
 
         public async Task OnGetAsync()
         {
-            AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
+            AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje && d.OrigDest != "").ToListAsync();
         }
     }
 }

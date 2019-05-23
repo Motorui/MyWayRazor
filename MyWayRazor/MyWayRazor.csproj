@@ -6,13 +6,21 @@
     <ApplicationIcon></ApplicationIcon>
     <Win32Resource></Win32Resource>
     <AssemblyName>MyWayRazor</AssemblyName>
-    <StartupObject></StartupObject>
+    <StartupObject>MyWayRazor.Program</StartupObject>
     <NeutralLanguage>pt-PT</NeutralLanguage>
-    <AssemblyVersion>1.1.1.35</AssemblyVersion>
-    <FileVersion>1.1.1.35</FileVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
     <SignAssembly>true</SignAssembly>
-    <Version>1.0.10</Version>
+    <Version>2.0.0</Version>
     <AssemblyOriginatorKeyFile>RaPereiraKey.pfx</AssemblyOriginatorKeyFile>
+    <Authors>Rui Pereira</Authors>
+    <Copyright>Rui Pereira</Copyright>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
@@ -58,9 +66,15 @@
     <Compile Remove="Data\Migrations\20190301131702_AddTablesForAnalise.Designer.cs" />
     <Compile Remove="Data\Migrations\20190318182647_fixStandNull.cs" />
     <Compile Remove="Data\Migrations\20190318182647_fixStandNull.Designer.cs" />
+    <Compile Remove="Pages\Analises\AnaliseAmanha\Diario.cshtml.cs" />
+    <Compile Remove="Pages\Analises\AnaliseAmanha\Hora.cshtml.cs" />
+    <Compile Remove="Pages\Analises\AnaliseAmanha\Index.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Analises\AnaliseAmanha\Diario.cshtml" />
+    <Content Remove="Pages\Analises\AnaliseAmanha\Hora.cshtml" />
+    <Content Remove="Pages\Analises\AnaliseAmanha\Index.cshtml" />
     <Content Remove="wwwroot\css\Sketchy.css" />
     <Content Remove="wwwroot\css\Sketchy.min.css" />
   </ItemGroup>
@@ -95,5 +109,25 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Temp\" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
 
 </Project>

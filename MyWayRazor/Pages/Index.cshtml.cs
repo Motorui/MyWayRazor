@@ -25,7 +25,9 @@ namespace MyWayRazor.Pages
         }
 
         public DateTime Hoje = DateTime.UtcNow.Date;
-        public IList<AssistenciasPRM> AssistenciasPRMs { get; set; }
+        public DateTime Amanha = DateTime.UtcNow.Date.AddDays(1);
+        public IList<AssistenciasPRM> AssistenciasHoje { get; set; }
+        public IList<AssistenciasPRM> AssistenciasAmanha { get; set; }
 
         [BindProperty]
         public ToDo ToDo { get; set; }
@@ -33,7 +35,8 @@ namespace MyWayRazor.Pages
         public async Task OnGetAsync()
         {
             ToDoList = await _context.ToDos.ToListAsync();
-            AssistenciasPRMs = await _context.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
+            AssistenciasHoje = await _context.AssistenciasPRMS.Where(d => d.Data.Date == Hoje && d.OrigDest != "").ToListAsync();
+            AssistenciasAmanha = await _context.AssistenciasPRMS.Where(d => d.Data.Date == Amanha && d.OrigDest != "").ToListAsync();
         }
 
         public async Task<IActionResult> OnPostMarkDone(int id)

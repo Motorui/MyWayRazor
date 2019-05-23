@@ -55,7 +55,7 @@ namespace MyWayRazor.Pages.Analise
         public async Task OnGetAsync()
         {
 
-            AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje).ToListAsync();
+            AssistenciasPRMs = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje && d.OrigDest != "").ToListAsync();
             SaidaSchengen = ExitSchengen.ToList();
             Portas = await db.Portas.ToListAsync();
             Stands = await db.Stands.ToListAsync();
@@ -132,6 +132,7 @@ namespace MyWayRazor.Pages.Analise
             {
                 int PmrCount = db.AssistenciasPRMS.Where(
                     d => d.Data.Date == Hoje
+                    && d.OrigDest != ""
                     ).Select(v => v.ID).Count();
 
                 return PmrCount;
@@ -140,6 +141,7 @@ namespace MyWayRazor.Pages.Analise
             {
                 int PmrCount = db.AssistenciasPRMS.Where(
                     d => d.Data.Date == Hoje
+                    && d.OrigDest != ""
                     && d.Mov == mov
                     ).Select(v => v.ID).Count();
 
@@ -151,6 +153,7 @@ namespace MyWayRazor.Pages.Analise
         {
             int PmrCount = db.AssistenciasPRMS.Where(
                 d => d.Data.Date == Hoje
+                && d.OrigDest != ""
                 && d.Mov == "D"
                 && lista.Contains(d.Gate)
                 ).Select(v => v.ID).Count();
@@ -164,6 +167,7 @@ namespace MyWayRazor.Pages.Analise
             {
                 int PmrCount = db.AssistenciasPRMS.Where(
                     d => d.Data.Date == Hoje
+                    && d.OrigDest != ""
                     && d.Mov == "A"
                     && ExitSchengen.Contains(d.Exit)
                     ).Select(v => v.ID).Count();
@@ -174,6 +178,7 @@ namespace MyWayRazor.Pages.Analise
             {
                 int PmrCount = db.AssistenciasPRMS.Where(
                     d => d.Data.Date == Hoje
+                    && d.OrigDest != ""
                     && d.Mov == "A"
                     && d.Exit == "N"
                     ).Select(v => v.ID).Count();
@@ -187,6 +192,7 @@ namespace MyWayRazor.Pages.Analise
         {
             int PmrCount = db.AssistenciasPRMS.Where(
                 d => d.Data.Date == Hoje
+                && d.OrigDest != ""
                 && d.Mov == "A"
                 && d.Exit == exit
                 && d.Transferencia == "T"

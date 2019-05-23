@@ -17,47 +17,49 @@
         <!-- /.search form -->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">Recursos Humanos</li>
-            <li class="treeview ">
-                <a href="#">
-                    <i class="fa fa-link"></i> <span>Colaboradores</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a asp-page="/Colaboradores/Index">Listagem</a></li>
-                    <li><a asp-page="/Colaboradores/Create">Criar Colaborador</a></li>
-                </ul>
-            </li>
-            <li class="header">Análises</li>
-            <li class="treeview ">
-                <a href="#">
-                    <i class="fa fa-link"></i> <span>Análise</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a asp-page="/Upload/Index">Upload Excel</a></li>
-                    <li><a asp-page="/Analise/Index">Análise</a></li>
-                    @*<li><a asp-page="/Analise/Diario">Análise Diária</a></li>*@
-                </ul>
-            </li>
-            <li class="header">To-Do List</li>
-            <li class="treeview ">
-                <a href="#">
-                    <i class="fa fa-link"></i> <span>To-Do</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a asp-page="/ToDoList/Index">Listagem</a></li>
-                    <li><a asp-page="/ToDoList/Create">Criar Tarefa</a></li>
-                </ul>
-            </li>
-            @*<li class="header">Gestão de Recursos</li>
+            @if (User.IsInRole("Administrador"))
+            {
+                <li class="header">Recursos Humanos</li>
+                <li class="treeview ">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>Colaboradores</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a asp-page="/Colaboradores/Index">Listagem</a></li>
+                        <li><a asp-page="/Colaboradores/Create">Criar Colaborador</a></li>
+                    </ul>
+                </li>
+            }
+                <li class="header">Análise</li>
+                <li class="treeview ">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>Análise</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a asp-page="/Upload/Index">Upload Excel</a></li>
+                        <li><a asp-page="/Analise/Index">Análise</a></li>
+                    </ul>
+                </li>
+                <li class="header">To-Do List</li>
+                <li class="treeview ">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>To-Do</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a asp-page="/ToDoList/Index">Listagem</a></li>
+                        <li><a asp-page="/ToDoList/Create">Criar Tarefa</a></li>
+                    </ul>
+                </li>
+                @*<li class="header">Gestão de Recursos</li>
             <li class="treeview ">
                 <a href="#">
                     <i class="fa fa-link"></i> <span>Staging</span>
@@ -70,7 +72,7 @@
                     <li><a asp-page="/StagingArea/Create">Gerir</a></li>
                 </ul>
             </li>*@
-        </ul>
+            </ul>
             <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

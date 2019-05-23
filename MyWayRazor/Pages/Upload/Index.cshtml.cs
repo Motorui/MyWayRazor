@@ -10,16 +10,19 @@ using MyWayRazor.Extensions.Alerts;
 using MyWayRazor.Helpers;
 using MyWayRazor.Models.Analise;
 using MyWayRazor.Models.Tabelas;
+using SmartBreadcrumbs.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Upload
 {
+    [Breadcrumb("Upload")]
     public class IndexModel : PageModel
     {
         private readonly ApplicationDbContext db;
@@ -39,6 +42,7 @@ namespace MyWayRazor.Pages.Upload
             //TruncateTable();
         }
 
+        public IList<AssistenciasPRM> Assistencias { get; set; }
         [TempData]
         public string FormResult { get; set; }
         [BindProperty, Required(ErrorMessage = "Por favor selecione um ficheiro!"), Attachment]
@@ -52,7 +56,7 @@ namespace MyWayRazor.Pages.Upload
 
             if (Upload != null && Upload.Length > 0)
             {
-                TruncateTable();
+                db.AssistenciasPRMS.RemoveRange(db.AssistenciasPRMS.Where(d => d.Data <= DateTime.UtcNow.AddDays(-1)));
 
                 var myFile = Path.Combine(env.ContentRootPath, folderName, Upload.FileName);
                 var fileExt = Path.GetExtension(Upload.FileName).Substring(1);
@@ -173,14 +177,14 @@ namespace MyWayRazor.Pages.Upload
                     EstimaApresentacao = estimaApresentacao
                 };
 
-                var current = db.AssistenciasPRMS.Where(d => d.Data.Date == data.Date);
-                if (current == null)
+                int current = db.AssistenciasPRMS.Where(d => d.Data.Date.Day == data.Date.Day).Count();
+                if (current > 0)
                 {
+                    db.AssistenciasPRMS.RemoveRange(db.AssistenciasPRMS.Where(d => d.Data.Date == data.Date));
                     db.AssistenciasPRMS.Add(currentExcel);
                 }
                 else
                 {
-                    db.AssistenciasPRMS.RemoveRange(db.AssistenciasPRMS.Where(d => d.Data.Date == data.Date));
                     db.AssistenciasPRMS.Add(currentExcel);
                 }
 
@@ -286,6 +290,18 @@ namespace MyWayRazor.Pages.Upload
             {
                 throw;
             }
+        }
+
+        private void DeleteAssistencias(DateTime dia)
+        {
+            var assistencias = db.AssistenciasPRMS
+                .Where(d => d.Data == dia);
+
+                        foreach (var assistencia in assistencias)
+                        {
+                            db.AssistenciasPRMS.Remove(assistencia);
+                        }
+                        db.SaveChanges();
         }
 
     }
