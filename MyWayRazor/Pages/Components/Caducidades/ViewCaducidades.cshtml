@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MyWayRazor.Models.Formacoes.FormacaoColaborador>
+<!-- Notifications Menu -->
+<li class="dropdown notifications-menu">
+    <!-- Menu toggle button -->
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bell-o"></i>
+        <span class="label label-warning">@Model.Count()</span>
+    </a>
+    <ul class="dropdown-menu">
+        @foreach (var caducidade in Model.GroupBy(f => f.Formacao))
+        {
+            <li class="header">@caducidade.Key.FormacaoNome</li>
+            <li>
+                <!-- Inner Menu: contains the notifications -->
+                <ul class="menu">
+
+                            <li>
+                                <!-- start notification -->
+                                <a href="#">
+                                    <i class="fa fa-users text-aqua"></i>@caducidade.Count() @(caducidade.Count() > 1 ? "formandos caducados": "formando caducado") 
+                                </a>
+                            </li>
+                            <!-- end notification -->
+                        
+        </ul>
+            </li>
+            <li class="footer"><a href="#">Ver Formação @caducidade.Key.FormacaoId</a></li>
+        }
+    </ul>
+</li>

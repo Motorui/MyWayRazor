@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -11,10 +6,17 @@ using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Areas.Identity.Models;
 using MyWayRazor.Models;
 using MyWayRazor.Models.Analise;
+using MyWayRazor.Models.Colaboradores;
+using MyWayRazor.Models.Formacoes;
 using MyWayRazor.Models.Staging;
 using MyWayRazor.Models.Tabelas;
 using MyWayRazor.Models.ToDoList;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MyWayRazor.Data
 {
@@ -45,8 +47,8 @@ namespace MyWayRazor.Data
         public DbSet<Departamento> Departamentos { get; set; }
         //public DbSet<Email> Emails { get; set; }
         public DbSet<Equipa> Equipas { get; set; }
-        //public DbSet<Formacao> Formacoes { get; set; }
-        //public DbSet<FormacaoColaborador> FormacoesColaboradores { get; set; }
+        public DbSet<Formacao> Formacoes { get; set; }
+        public DbSet<FormacaoColaborador> FormacoesColaboradores { get; set; }
         public DbSet<Funcao> Funcoes { get; set; }
         public DbSet<Horario> Horarios { get; set; }
         //public DbSet<Observacao> Observacoes { get; set; }
@@ -63,6 +65,9 @@ namespace MyWayRazor.Data
         public DbSet<Porta> Portas { get; set; }
         public DbSet<Staging> Stagings { get; set; }
         public DbSet<Parametro> Parametros { get; set; }
+        public DbSet<Escala> Escalas { get; set; }
+        public DbSet<DadosAeroporto> DadosAeroportos { get; set; }
+        public DbSet<HistoricoAssistencia> HistoricoAssistencias { get; set; }
 
         #endregion
 
@@ -96,6 +101,96 @@ namespace MyWayRazor.Data
             //builder.Entity<AssistenciasPRM>()
             //.Property(s => s.Gate)
             //.HasDefaultValue("000");
+
+            #region Colaborador
+
+            builder.Entity<Colaborador>()
+            .HasIndex(c => c.Nome)
+            .HasName("AlternateKey_Nome")
+            .IsUnique();
+
+            #endregion
+
+            #region Formacao
+
+            builder.Entity<Formacao>()
+            .HasIndex(c => c.FormacaoNome)
+            .HasName("AlternateKey_Nome")
+            .IsUnique();
+
+            builder.Entity<Formacao>()
+            .HasIndex(c => c.FormacaoCod)
+            .HasName("AlternateKey_Cod")
+            .IsUnique();
+
+            builder.Entity<Formacao>().HasData(new[]{
+                   new Formacao {
+                    FormacaoId = Guid.NewGuid(),
+                    FormacaoNome = "BÁSICO DE PMR",
+                    FormacaoCod = "BPMR",
+                    FormacaoValidade = 1,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedBy = "SISTEMA"
+                   },
+                    new Formacao {
+                    FormacaoId = Guid.NewGuid(),
+                    FormacaoNome = "RAMP SAFETY",
+                    FormacaoCod = "RS",
+                    FormacaoValidade = 3,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedBy = "SISTEMA"
+                   },
+                     new Formacao {
+                    FormacaoId = Guid.NewGuid(),
+                    FormacaoNome = "SEGURANÇA NÍVEL 13",
+                    FormacaoCod = "SEC.13",
+                    FormacaoValidade = 3,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedBy = "SISTEMA"
+                   },
+                      new Formacao {
+                    FormacaoId = Guid.NewGuid(),
+                    FormacaoNome = "DANGEROUS GOODS CAT.9",
+                    FormacaoCod = "DGR CAT.9",
+                    FormacaoValidade = 2,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedBy = "SISTEMA"
+                   },
+                       new Formacao {
+                    FormacaoId = Guid.NewGuid(),
+                    FormacaoNome = "HUMAN FACTOR",
+                    FormacaoCod = "HF",
+                    FormacaoValidade = 3,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedBy = "SISTEMA"
+                   },
+                        new Formacao {
+                    FormacaoId = Guid.NewGuid(),
+                    FormacaoNome = "SAÚDE E SEGURANÇA NO TRABALHO",
+                    FormacaoCod = "SST",
+                    FormacaoValidade = 3,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedBy = "SISTEMA"
+                   },
+                         new Formacao {
+                    FormacaoId = Guid.NewGuid(),
+                    FormacaoNome = "ESCOLA NACIONAL DE BOMBEIROS",
+                    FormacaoCod = "ENB",
+                    FormacaoValidade = 2,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedBy = "SISTEMA"
+                   },
+                          new Formacao {
+                    FormacaoId = Guid.NewGuid(),
+                    FormacaoNome = "GSE AMBULIFTS",
+                    FormacaoCod = "GSE",
+                    FormacaoValidade = 3,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedBy = "SISTEMA"
+                   }
+                });
+
+            #endregion
 
             #region Seed Data
             // Seed Categorias
@@ -195,6 +290,13 @@ namespace MyWayRazor.Data
             var ParamReader = new StreamReader(ParamStream);
             var parametros = JsonConvert.DeserializeObject<List<Parametro>>(ParamReader.ReadToEnd());
             builder.Entity<Parametro>().HasData(parametros);
+
+            // Seed Formações
+            //var FormacaoFile = Path.Combine(env.ContentRootPath, folderName, "Formacoes.json");
+            //var FormacaoStream = File.Open(FormacaoFile, FileMode.Open, FileAccess.Read);
+            //var FormacaoReader = new StreamReader(FormacaoStream);
+            //var formacoes = JsonConvert.DeserializeObject<List<Formacao>>(FormacaoReader.ReadToEnd());
+            //builder.Entity<Formacao>().HasData(parametros);
 
             #endregion
         }

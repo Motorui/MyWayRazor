@@ -162,6 +162,75 @@
     <value>[{"EquipaId":1,"EquipaNome":"N\/A","CreatedAt":"2018-10-25T11:23:37.1371391","CreatedBy":"SISTEMA"},{"EquipaId":2,"EquipaNome":"A","CreatedAt":"2018-10-25T11:23:37.2570725","CreatedBy":"SISTEMA"},{"EquipaId":3,"EquipaNome":"B","CreatedAt":"2018-10-25T11:23:37.3874794","CreatedBy":"SISTEMA"},{"EquipaId":4,"EquipaNome":"C","CreatedAt":"2018-10-25T11:23:37.5237759","CreatedBy":"SISTEMA"}]</value>
     <comment>Seed de equipas de trabalho</comment>
   </data>
+  <data name="FormacoesJson" xml:space="preserve">
+    <value>[
+  {
+    "FormacaoId": "51f022bc-f595-4f81-a005-8ce65916a068",
+    "FormacaoNome": "BÁSICO DE PMR",
+    "FormacaoCod": "BPMR",
+    "FormacaoValidade": 1,
+    "CreatedAt": "2019-07-05T12:00:00.0000000",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FormacaoId": "3e269389-d5d0-46bc-9bfa-95827c0410f2",
+    "FormacaoNome": "RAMP SAFETY",
+    "FormacaoCod": "RS",
+    "FormacaoValidade": 3,
+    "CreatedAt": "2019-07-05T12:00:00.0000000",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FormacaoId": "72149b91-fcf4-4a3a-9a72-608b42e4ded4",
+    "FormacaoNome": "SEGURANÇA NÍVEL 13",
+    "FormacaoCod": "SEC.13",
+    "FormacaoValidade": 3,
+    "CreatedAt": "2019-07-05T12:00:00.0000000",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FormacaoId": "7cd49953-3053-43cf-969f-31d3a3f9b1b6",
+    "FormacaoNome": "DANGEROUS GOODS CAT.9",
+    "FormacaoCod": "DGR CAT.9",
+    "FormacaoValidade": 2,
+    "CreatedAt": "2019-07-05T12:00:00.0000000",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FormacaoId": "cddcf934-b3fe-4530-b96a-59f1adbe97a6",
+    "FormacaoNome": "HUMAN FACTOR",
+    "FormacaoCod": "HF",
+    "FormacaoValidade": 3,
+    "CreatedAt": "2019-07-05T12:00:00.0000000",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FormacaoId": "edb02b54-a0ae-40cc-bde0-594b57bb2042",
+    "FormacaoNome": "SAÚDE E SEGURANÇA NO TRABALHO",
+    "FormacaoCod": "SST",
+    "FormacaoValidade": 3,
+    "CreatedAt": "2019-07-05T12:00:00.0000000",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FormacaoId": "1b76d69b-5e74-4f28-9036-037c2b4c659c",
+    "FormacaoNome": "ESCOLA NACIONAL DE BOMBEIROS",
+    "FormacaoCod": "ENB",
+    "FormacaoValidade": 2,
+    "CreatedAt": "2019-07-05T12:00:00.0000000",
+    "CreatedBy": "SISTEMA"
+  },
+  {
+    "FormacaoId": "22ad9a48-1e95-4702-a46e-bf52794aec58",
+    "FormacaoNome": "GSE AMBULIFTS",
+    "FormacaoCod": "GSE",
+    "FormacaoValidade": 3,
+    "CreatedAt": "2019-07-05T12:00:00.0000000",
+    "CreatedBy": "SISTEMA"
+  }
+]</value>
+    <comment>Seed de Formações</comment>
+  </data>
   <data name="FuncoesJson" xml:space="preserve">
     <value>[{"FuncaoId":1,"FuncaoNome":"COORDENADOR","CreatedAt":"2018-10-25T11:23:37.6824260","CreatedBy":"SISTEMA"},{"FuncaoId":2,"FuncaoNome":"ASSISTENTE ADMINISTRATIVA","CreatedAt":"2018-10-25T11:23:37.8470417","CreatedBy":"SISTEMA"},{"FuncaoId":3,"FuncaoNome":"SUPERVISOR","CreatedAt":"2018-10-25T11:23:38.0134061","CreatedBy":"SISTEMA"},{"FuncaoId":4,"FuncaoNome":"ALOCADOR","CreatedAt":"2018-10-25T11:23:38.1885485","CreatedBy":"SISTEMA"},{"FuncaoId":5,"FuncaoNome":"ASSISTENTE PMR","CreatedAt":"2018-10-25T11:23:38.3772507","CreatedBy":"SISTEMA"},{"FuncaoId":6,"FuncaoNome":"ASSISTENTE PMR PART-TIME","CreatedAt":"2018-10-25T11:23:38.5727291","CreatedBy":"SISTEMA"},{"FuncaoId":7,"FuncaoNome":"MOTORISTA","CreatedAt":"2018-10-25T11:23:38.7808562","CreatedBy":"SISTEMA"},{"FuncaoId":8,"FuncaoNome":"MOTORISTA AMBULIFT","CreatedAt":"2018-10-25T11:23:38.9975488","CreatedBy":"SISTEMA"},{"FuncaoId":9,"FuncaoNome":"PLANEAMENTO","CreatedAt":"2018-10-25T11:23:39.2226702","CreatedBy":"SISTEMA"},{"FuncaoId":10,"FuncaoNome":"QUALIDADE","CreatedAt":"2018-10-25T11:23:39.4616495","CreatedBy":"SISTEMA"}]</value>
     <comment>Seed de funções</comment>

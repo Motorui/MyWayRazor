@@ -1,0 +1,61 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Formacoes.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Formacao</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Formacao.FormacaoId" />
+            <div class="form-group">
+                <label asp-for="Formacao.FormacaoNome" class="control-label"></label>
+                <input asp-for="Formacao.FormacaoNome" class="form-control" />
+                <span asp-validation-for="Formacao.FormacaoNome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Formacao.FormacaoValidade" class="control-label"></label>
+                <input asp-for="Formacao.FormacaoValidade" class="form-control" />
+                <span asp-validation-for="Formacao.FormacaoValidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Formacao.CreatedAt" class="control-label"></label>
+                <input asp-for="Formacao.CreatedAt" class="form-control" />
+                <span asp-validation-for="Formacao.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Formacao.CreatedBy" class="control-label"></label>
+                <input asp-for="Formacao.CreatedBy" class="form-control" />
+                <span asp-validation-for="Formacao.CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Formacao.LastUpdatedAt" class="control-label"></label>
+                <input asp-for="Formacao.LastUpdatedAt" class="form-control" />
+                <span asp-validation-for="Formacao.LastUpdatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Formacao.LastUpdatedBy" class="control-label"></label>
+                <input asp-for="Formacao.LastUpdatedBy" class="form-control" />
+                <span asp-validation-for="Formacao.LastUpdatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

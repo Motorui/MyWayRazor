@@ -15,7 +15,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -117,7 +116,7 @@ namespace MyWayRazor.Pages.Upload
                     "Necessita de selecionar um ficheiro");
             }
 
-            return RedirectToPage("/Analise/Index").WithSuccess("Well done!", "Ficheiro importado com sucesso!"); ;
+            return RedirectToPage("/Analise/Index").WithSuccess("Well done!", "Ficheiro importado com sucesso!");
             //return Page();
         }
 

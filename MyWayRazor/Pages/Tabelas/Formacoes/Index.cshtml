@@ -1,0 +1,67 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Formacoes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Formacao[0].FormacaoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formacao[0].FormacaoValidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formacao[0].CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formacao[0].CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formacao[0].LastUpdatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formacao[0].LastUpdatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Formacao) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormacaoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormacaoValidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.FormacaoId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.FormacaoId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.FormacaoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

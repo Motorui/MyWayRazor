@@ -123,6 +123,33 @@ namespace MyWayRazor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;FormacaoId&quot;: &quot;51f022bc-f595-4f81-a005-8ce65916a068&quot;,
+        ///    &quot;FormacaoNome&quot;: &quot;BÁSICO DE PMR&quot;,
+        ///    &quot;FormacaoCod&quot;: &quot;BPMR&quot;,
+        ///    &quot;FormacaoValidade&quot;: 1,
+        ///    &quot;CreatedAt&quot;: &quot;2019-07-05T12:00:00.0000000&quot;,
+        ///    &quot;CreatedBy&quot;: &quot;SISTEMA&quot;
+        ///  },
+        ///  {
+        ///    &quot;FormacaoId&quot;: &quot;3e269389-d5d0-46bc-9bfa-95827c0410f2&quot;,
+        ///    &quot;FormacaoNome&quot;: &quot;RAMP SAFETY&quot;,
+        ///    &quot;FormacaoCod&quot;: &quot;RS&quot;,
+        ///    &quot;FormacaoValidade&quot;: 3,
+        ///    &quot;CreatedAt&quot;: &quot;2019-07-05T12:00:00.0000000&quot;,
+        ///    &quot;CreatedBy&quot;: &quot;SISTEMA&quot;
+        ///  },
+        ///  {
+        ///    &quot;FormacaoId&quot;: &quot;72149b9 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string FormacoesJson {
+            get {
+                return ResourceManager.GetString("FormacoesJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [{&quot;FuncaoId&quot;:1,&quot;FuncaoNome&quot;:&quot;COORDENADOR&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.6824260&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;FuncaoId&quot;:2,&quot;FuncaoNome&quot;:&quot;ASSISTENTE ADMINISTRATIVA&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:37.8470417&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;FuncaoId&quot;:3,&quot;FuncaoNome&quot;:&quot;SUPERVISOR&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:38.0134061&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;FuncaoId&quot;:4,&quot;FuncaoNome&quot;:&quot;ALOCADOR&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:38.1885485&quot;,&quot;CreatedBy&quot;:&quot;SISTEMA&quot;},{&quot;FuncaoId&quot;:5,&quot;FuncaoNome&quot;:&quot;ASSISTENTE PMR&quot;,&quot;CreatedAt&quot;:&quot;2018-10-25T11:23:38. [rest of string was truncated]&quot;;.
         /// </summary>
         public static string FuncoesJson {

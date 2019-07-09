@@ -5,117 +5,145 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Colaborador</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.Uh)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.Uh.IATA)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.Departamento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.Departamento.DepartamentoNome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.NumCartao)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.NumCartao)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.NumPw)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.NumPw)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.Nome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.Nome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.Funcao)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.Funcao.FuncaoNome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.Equipa)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.Equipa.EquipaNome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.Categoria)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.Categoria.CategoriaNome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.HorarioPraticado)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.HorarioPraticado.HorarioId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.HorarioContratado)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.HorarioContratado.HorarioId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.DataAdmissao)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.DataAdmissao)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.DataFim)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.DataFim)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.Contrato)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.Contrato.ContratoTipo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.CreatedAt)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.CreatedAt)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.CreatedBy)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.CreatedBy)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.LastUpdatedAt)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.LastUpdatedAt)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Colaborador.LastUpdatedBy)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Colaborador.LastUpdatedBy)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Colaborador.ColaboradorID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+<div class="content">
+    <div class="row col-md-8 col-md-offset-2">
+        <!-- Widget: user widget style 1 -->
+        <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-green-active">
+                <div class="widget-user-image">
+                    <img class="img-circle" src="~/AdminLTE/dist/img/avatar.png" alt="User Avatar" />
+                </div>
+                <!-- /.widget-user-image -->
+                <h3 class="widget-user-username">
+                    @Html.DisplayFor(model => model.Colaborador.Nome)
+                </h3>
+                <h5 class="widget-user-desc">
+                    @Html.DisplayFor(model => model.Colaborador.Funcao.FuncaoNome)
+                </h5>
+            </div>
+            <div class="box-footer no-padding">
+                <div class="row col-md-8 col-md-offset-2">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.Uh) :
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.Uh.IATA)
+                                </td>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.Departamento)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.Departamento.DepartamentoNome)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.NumCartao)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.NumCartao)
+                                </td>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.NumPw)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.NumPw)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.Equipa)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.Equipa.EquipaNome)
+                                </td>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.Categoria)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.Categoria.CategoriaNome)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.HorarioPraticado)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.HorarioPraticado.HorarioHora) horas
+                                </td>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.HorarioContratado)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.HorarioContratado.HorarioHora) horas
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.DataAdmissao)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.DataAdmissao)
+                                </td>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.DataFim)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.DataFim)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.Contrato)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.Contrato.ContratoTipo)
+                                </td>
+                                <td>
+                                    <strong>
+                                        @Html.DisplayNameFor(model => model.Colaborador.Funcao)
+                                    </strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Colaborador.Funcao.FuncaoNome)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <a asp-page="./Edit" asp-route-id="@Model.Colaborador.ColaboradorID">Editar</a> |
+                        <a asp-page="./ColaboradorFormacao" asp-route-id="@Model.Colaborador.ColaboradorID">Formações</a> |
+                        <a asp-page="./Index">Voltar</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.widget-user -->
+    </div>
 </div>

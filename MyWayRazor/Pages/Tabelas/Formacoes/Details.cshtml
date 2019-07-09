@@ -1,0 +1,56 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Formacoes.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Formacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.FormacaoNome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.FormacaoNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.FormacaoValidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.FormacaoValidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.LastUpdatedBy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Formacao.FormacaoId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

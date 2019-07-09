@@ -1,16 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MyWayRazor.Models;
+using MyWayRazor.Models.Tabelas;
+using System;
+using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Tabelas.Contratos
 {
     public class CreateModel : PageModel
     {
-        private readonly MyWayRazor.Data.ApplicationDbContext _context;
+        private readonly Data.ApplicationDbContext _context;
 
-        public CreateModel(MyWayRazor.Data.ApplicationDbContext context)
+        public CreateModel(Data.ApplicationDbContext context)
         {
             _context = context;
         }

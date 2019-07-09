@@ -1,18 +1,18 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using MyWayRazor.Models;
+using MyWayRazor.Models.Tabelas;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Tabelas.Departamentos
 {
     public class EditModel : PageModel
     {
-        private readonly MyWayRazor.Data.ApplicationDbContext _context;
+        private readonly Data.ApplicationDbContext _context;
 
-        public EditModel(MyWayRazor.Data.ApplicationDbContext context)
+        public EditModel(Data.ApplicationDbContext context)
         {
             _context = context;
         }

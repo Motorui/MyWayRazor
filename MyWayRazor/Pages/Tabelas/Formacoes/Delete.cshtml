@@ -1,0 +1,59 @@
+﻿@page
+@model MyWayRazor.Pages.Tabelas.Formacoes.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Formacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.FormacaoNome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.FormacaoNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.FormacaoValidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.FormacaoValidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.LastUpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.LastUpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formacao.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formacao.LastUpdatedBy)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Formacao.FormacaoId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

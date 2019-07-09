@@ -15,7 +15,7 @@ namespace MyWayRazor.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -245,60 +245,145 @@ namespace MyWayRazor.Data.Migrations
                     b.ToTable("AssistenciasPRMS");
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Categoria", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Analise.DadosAeroporto", b =>
                 {
-                    b.Property<int>("CategoriaId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CategoriaNome")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<DateTime?>("ActualTime");
+
+                    b.Property<DateTime?>("ActualTimeUTC");
+
+                    b.Property<DateTime?>("BeginBRD");
+
+                    b.Property<DateTime?>("BeginBRDUTC");
+
+                    b.Property<DateTime?>("BlockTime");
+
+                    b.Property<DateTime?>("BlockTimeUTC");
 
                     b.Property<DateTime?>("CreatedAt");
 
                     b.Property<string>("CreatedBy");
 
+                    b.Property<DateTime?>("EndBRD");
+
+                    b.Property<DateTime?>("EndBRDUTC");
+
+                    b.Property<DateTime?>("EstimatedTime");
+
+                    b.Property<DateTime?>("EstimatedTimeUTC");
+
                     b.Property<DateTime?>("LastUpdatedAt");
 
                     b.Property<string>("LastUpdatedBy");
 
-                    b.HasKey("CategoriaId");
+                    b.Property<string>("Mov");
 
-                    b.ToTable("Categoria");
+                    b.Property<string>("Reg");
 
-                    b.HasData(
-                        new
-                        {
-                            CategoriaId = 1,
-                            CategoriaNome = "ASSISTENTE A PASSAGEIROS DE MOBILIDADE REDUZIDA",
-                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 36, 413, DateTimeKind.Unspecified).AddTicks(6761),
-                            CreatedBy = "SISTEMA"
-                        },
-                        new
-                        {
-                            CategoriaId = 2,
-                            CategoriaNome = "TECNICO TRAFEGO ASSISTENCIA ESCALA",
-                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 36, 475, DateTimeKind.Unspecified).AddTicks(8668),
-                            CreatedBy = "SISTEMA"
-                        },
-                        new
-                        {
-                            CategoriaId = 3,
-                            CategoriaNome = "OPERADOR ASSISTENCIA ESCALA",
-                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 36, 515, DateTimeKind.Unspecified).AddTicks(6390),
-                            CreatedBy = "SISTEMA"
-                        },
-                        new
-                        {
-                            CategoriaId = 4,
-                            CategoriaNome = "TECNICO",
-                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 36, 565, DateTimeKind.Unspecified).AddTicks(6321),
-                            CreatedBy = "SISTEMA"
-                        });
+                    b.Property<DateTime?>("ScheduleTime");
+
+                    b.Property<DateTime?>("ScheduleTimeUTC");
+
+                    b.Property<string>("Voo");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("DadosAeroportos");
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Colaborador", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Analise.Escala", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("Dia");
+
+                    b.Property<string>("Equipa");
+
+                    b.Property<string>("Funcao");
+
+                    b.Property<DateTime>("HoraEntrada");
+
+                    b.Property<DateTime>("HoraSaida");
+
+                    b.Property<string>("Horario");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<int>("Numero");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Escalas");
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Analise.HistoricoAssistencia", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AC");
+
+                    b.Property<string>("Aeroporto");
+
+                    b.Property<string>("CkIn");
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("Data");
+
+                    b.Property<DateTime?>("DataContacto");
+
+                    b.Property<DateTime?>("DataFim");
+
+                    b.Property<DateTime?>("DataInicio");
+
+                    b.Property<string>("Exit");
+
+                    b.Property<string>("Gate");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<string>("Mov");
+
+                    b.Property<string>("Msg");
+
+                    b.Property<string>("Notif");
+
+                    b.Property<string>("OrigDest");
+
+                    b.Property<string>("Pax")
+                        .IsRequired();
+
+                    b.Property<string>("SSR");
+
+                    b.Property<string>("Stand");
+
+                    b.Property<string>("Transferencia");
+
+                    b.Property<string>("Voo")
+                        .IsRequired();
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HistoricoAssistencias");
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Colaboradores.Colaborador", b =>
                 {
                     b.Property<int>("ColaboradorID")
                         .ValueGeneratedOnAdd()
@@ -357,6 +442,10 @@ namespace MyWayRazor.Data.Migrations
                     b.HasIndex("HorarioContratadoId");
 
                     b.HasIndex("HorarioPraticadoId");
+
+                    b.HasIndex("Nome")
+                        .IsUnique()
+                        .HasName("AlternateKey_Nome");
 
                     b.HasIndex("UhId");
 
@@ -5615,7 +5704,261 @@ namespace MyWayRazor.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Contrato", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Formacoes.Formacao", b =>
+                {
+                    b.Property<Guid>("FormacaoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("FormacaoCod")
+                        .IsRequired();
+
+                    b.Property<string>("FormacaoNome")
+                        .IsRequired();
+
+                    b.Property<int>("FormacaoValidade");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.HasKey("FormacaoId");
+
+                    b.HasIndex("FormacaoCod")
+                        .IsUnique()
+                        .HasName("AlternateKey_Cod");
+
+                    b.HasIndex("FormacaoNome")
+                        .IsUnique()
+                        .HasName("AlternateKey_Nome");
+
+                    b.ToTable("Formacoes");
+
+                    b.HasData(
+                        new
+                        {
+                            FormacaoId = new Guid("8589e164-206b-4d2e-bb7d-0db86888333a"),
+                            CreatedAt = new DateTime(2019, 7, 5, 14, 2, 47, 717, DateTimeKind.Utc).AddTicks(2319),
+                            CreatedBy = "SISTEMA",
+                            FormacaoCod = "BPMR",
+                            FormacaoNome = "BÁSICO DE PMR",
+                            FormacaoValidade = 1
+                        },
+                        new
+                        {
+                            FormacaoId = new Guid("33f02418-28cf-4c9e-b3a8-026ae7a04a68"),
+                            CreatedAt = new DateTime(2019, 7, 5, 14, 2, 47, 717, DateTimeKind.Utc).AddTicks(3143),
+                            CreatedBy = "SISTEMA",
+                            FormacaoCod = "RS",
+                            FormacaoNome = "RAMP SAFETY",
+                            FormacaoValidade = 3
+                        },
+                        new
+                        {
+                            FormacaoId = new Guid("8733f9f2-62de-421e-8d46-e531621ee866"),
+                            CreatedAt = new DateTime(2019, 7, 5, 14, 2, 47, 717, DateTimeKind.Utc).AddTicks(3151),
+                            CreatedBy = "SISTEMA",
+                            FormacaoCod = "SEC.13",
+                            FormacaoNome = "SEGURANÇA NÍVEL 13",
+                            FormacaoValidade = 3
+                        },
+                        new
+                        {
+                            FormacaoId = new Guid("414963de-a919-4153-b38a-2097d10a4999"),
+                            CreatedAt = new DateTime(2019, 7, 5, 14, 2, 47, 717, DateTimeKind.Utc).AddTicks(3153),
+                            CreatedBy = "SISTEMA",
+                            FormacaoCod = "DGR CAT.9",
+                            FormacaoNome = "DANGEROUS GOODS CAT.9",
+                            FormacaoValidade = 2
+                        },
+                        new
+                        {
+                            FormacaoId = new Guid("8b641059-391b-4c62-aa07-48a8c487f70e"),
+                            CreatedAt = new DateTime(2019, 7, 5, 14, 2, 47, 717, DateTimeKind.Utc).AddTicks(3154),
+                            CreatedBy = "SISTEMA",
+                            FormacaoCod = "HF",
+                            FormacaoNome = "HUMAN FACTOR",
+                            FormacaoValidade = 3
+                        },
+                        new
+                        {
+                            FormacaoId = new Guid("1be07f96-4fe3-44e0-8518-9a0e8118b3b5"),
+                            CreatedAt = new DateTime(2019, 7, 5, 14, 2, 47, 717, DateTimeKind.Utc).AddTicks(3165),
+                            CreatedBy = "SISTEMA",
+                            FormacaoCod = "SST",
+                            FormacaoNome = "SAÚDE E SEGURANÇA NO TRABALHO",
+                            FormacaoValidade = 3
+                        },
+                        new
+                        {
+                            FormacaoId = new Guid("eeb04d48-676a-4a0f-abb7-dddfed6df1f6"),
+                            CreatedAt = new DateTime(2019, 7, 5, 14, 2, 47, 717, DateTimeKind.Utc).AddTicks(3208),
+                            CreatedBy = "SISTEMA",
+                            FormacaoCod = "ENB",
+                            FormacaoNome = "ESCOLA NACIONAL DE BOMBEIROS",
+                            FormacaoValidade = 2
+                        },
+                        new
+                        {
+                            FormacaoId = new Guid("8333494e-fe57-4b48-b26f-8c47314afa9e"),
+                            CreatedAt = new DateTime(2019, 7, 5, 14, 2, 47, 717, DateTimeKind.Utc).AddTicks(3210),
+                            CreatedBy = "SISTEMA",
+                            FormacaoCod = "GSE",
+                            FormacaoNome = "GSE AMBULIFTS",
+                            FormacaoValidade = 3
+                        });
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Formacoes.FormacaoColaborador", b =>
+                {
+                    b.Property<Guid>("FormacaoColaboradorId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ColaboradorId");
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("FormacaoCaducidade");
+
+                    b.Property<DateTime>("FormacaoData");
+
+                    b.Property<Guid>("FormacaoId");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.HasKey("FormacaoColaboradorId");
+
+                    b.HasIndex("ColaboradorId");
+
+                    b.HasIndex("FormacaoId");
+
+                    b.ToTable("FormacoesColaboradores");
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Staging.Staging", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AirCraft");
+
+                    b.Property<bool>("Alerta");
+
+                    b.Property<string>("CheckIn");
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("Data");
+
+                    b.Property<bool>("Destino");
+
+                    b.Property<DateTime>("Etd");
+
+                    b.Property<string>("Gate");
+
+                    b.Property<DateTime>("HoraEmbarque");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<string>("Mov");
+
+                    b.Property<string>("Msg");
+
+                    b.Property<string>("Notif");
+
+                    b.Property<string>("Observacao");
+
+                    b.Property<string>("OrigemDestino");
+
+                    b.Property<string>("Pax")
+                        .IsRequired();
+
+                    b.Property<string>("Remark");
+
+                    b.Property<DateTime>("SaidaStaging");
+
+                    b.Property<string>("Ssr");
+
+                    b.Property<string>("Stand");
+
+                    b.Property<int>("StatusId");
+
+                    b.Property<string>("Voo")
+                        .IsRequired();
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("StatusId");
+
+                    b.ToTable("Stagings");
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Categoria", b =>
+                {
+                    b.Property<int>("CategoriaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoriaNome")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.HasKey("CategoriaId");
+
+                    b.ToTable("Categoria");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoriaId = 1,
+                            CategoriaNome = "ASSISTENTE A PASSAGEIROS DE MOBILIDADE REDUZIDA",
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 36, 413, DateTimeKind.Unspecified).AddTicks(6761),
+                            CreatedBy = "SISTEMA"
+                        },
+                        new
+                        {
+                            CategoriaId = 2,
+                            CategoriaNome = "TECNICO TRAFEGO ASSISTENCIA ESCALA",
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 36, 475, DateTimeKind.Unspecified).AddTicks(8668),
+                            CreatedBy = "SISTEMA"
+                        },
+                        new
+                        {
+                            CategoriaId = 3,
+                            CategoriaNome = "OPERADOR ASSISTENCIA ESCALA",
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 36, 515, DateTimeKind.Unspecified).AddTicks(6390),
+                            CreatedBy = "SISTEMA"
+                        },
+                        new
+                        {
+                            CategoriaId = 4,
+                            CategoriaNome = "TECNICO",
+                            CreatedAt = new DateTime(2018, 10, 25, 11, 23, 36, 565, DateTimeKind.Unspecified).AddTicks(6321),
+                            CreatedBy = "SISTEMA"
+                        });
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Contrato", b =>
                 {
                     b.Property<int>("ContratoId")
                         .ValueGeneratedOnAdd()
@@ -5668,7 +6011,7 @@ namespace MyWayRazor.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Departamento", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Departamento", b =>
                 {
                     b.Property<int>("DepartamentoId")
                         .ValueGeneratedOnAdd()
@@ -5703,7 +6046,7 @@ namespace MyWayRazor.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Equipa", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Equipa", b =>
                 {
                     b.Property<int>("EquipaId")
                         .ValueGeneratedOnAdd()
@@ -5756,7 +6099,7 @@ namespace MyWayRazor.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Funcao", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Funcao", b =>
                 {
                     b.Property<int>("FuncaoId")
                         .ValueGeneratedOnAdd()
@@ -5851,7 +6194,7 @@ namespace MyWayRazor.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Horario", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Horario", b =>
                 {
                     b.Property<int>("HorarioId")
                         .ValueGeneratedOnAdd()
@@ -5921,69 +6264,6 @@ namespace MyWayRazor.Data.Migrations
                             CreatedBy = "SISTEMA",
                             HorarioHora = 12
                         });
-                });
-
-            modelBuilder.Entity("MyWayRazor.Models.Staging.Staging", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AirCraft");
-
-                    b.Property<bool>("Alerta");
-
-                    b.Property<string>("CheckIn");
-
-                    b.Property<DateTime?>("CreatedAt");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime>("Data");
-
-                    b.Property<bool>("Destino");
-
-                    b.Property<DateTime>("Etd");
-
-                    b.Property<string>("Gate");
-
-                    b.Property<DateTime>("HoraEmbarque");
-
-                    b.Property<DateTime?>("LastUpdatedAt");
-
-                    b.Property<string>("LastUpdatedBy");
-
-                    b.Property<string>("Mov");
-
-                    b.Property<string>("Msg");
-
-                    b.Property<string>("Notif");
-
-                    b.Property<string>("Observacao");
-
-                    b.Property<string>("OrigemDestino");
-
-                    b.Property<string>("Pax")
-                        .IsRequired();
-
-                    b.Property<string>("Remark");
-
-                    b.Property<DateTime>("SaidaStaging");
-
-                    b.Property<string>("Ssr");
-
-                    b.Property<string>("Stand");
-
-                    b.Property<int>("StatusId");
-
-                    b.Property<string>("Voo")
-                        .IsRequired();
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("StatusId");
-
-                    b.ToTable("Stagings");
                 });
 
             modelBuilder.Entity("MyWayRazor.Models.Tabelas.Parametro", b =>
@@ -7741,34 +8021,7 @@ namespace MyWayRazor.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.ToDoList.ToDo", b =>
-                {
-                    b.Property<int>("ToDoId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("CreatedAt");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<bool>("Done");
-
-                    b.Property<DateTime?>("LastUpdatedAt");
-
-                    b.Property<string>("LastUpdatedBy");
-
-                    b.Property<string>("ToDoText")
-                        .IsRequired();
-
-                    b.Property<string>("ToDoTittle")
-                        .IsRequired();
-
-                    b.HasKey("ToDoId");
-
-                    b.ToTable("ToDos");
-                });
-
-            modelBuilder.Entity("MyWayRazor.Models.Uh", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Uh", b =>
                 {
                     b.Property<int>("UhId")
                         .ValueGeneratedOnAdd()
@@ -7829,6 +8082,33 @@ namespace MyWayRazor.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MyWayRazor.Models.ToDoList.ToDo", b =>
+                {
+                    b.Property<int>("ToDoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<bool>("Done");
+
+                    b.Property<DateTime?>("LastUpdatedAt");
+
+                    b.Property<string>("LastUpdatedBy");
+
+                    b.Property<string>("ToDoText")
+                        .IsRequired();
+
+                    b.Property<string>("ToDoTittle")
+                        .IsRequired();
+
+                    b.HasKey("ToDoId");
+
+                    b.ToTable("ToDos");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("MyWayRazor.Areas.Identity.Models.ApplicationRole")
@@ -7874,44 +8154,57 @@ namespace MyWayRazor.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Colaborador", b =>
+            modelBuilder.Entity("MyWayRazor.Models.Colaboradores.Colaborador", b =>
                 {
-                    b.HasOne("MyWayRazor.Models.Categoria", "Categoria")
+                    b.HasOne("MyWayRazor.Models.Tabelas.Categoria", "Categoria")
                         .WithMany("Colaboradores")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyWayRazor.Models.Contrato", "Contrato")
+                    b.HasOne("MyWayRazor.Models.Tabelas.Contrato", "Contrato")
                         .WithMany("Colaboradores")
                         .HasForeignKey("ContratoId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyWayRazor.Models.Departamento", "Departamento")
+                    b.HasOne("MyWayRazor.Models.Tabelas.Departamento", "Departamento")
                         .WithMany("Colaboradores")
                         .HasForeignKey("DepartamentoId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyWayRazor.Models.Equipa", "Equipa")
+                    b.HasOne("MyWayRazor.Models.Tabelas.Equipa", "Equipa")
                         .WithMany("Colaboradores")
                         .HasForeignKey("EquipaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyWayRazor.Models.Funcao", "Funcao")
+                    b.HasOne("MyWayRazor.Models.Tabelas.Funcao", "Funcao")
                         .WithMany("Colaboradores")
                         .HasForeignKey("FuncaoId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyWayRazor.Models.Horario", "HorarioContratado")
+                    b.HasOne("MyWayRazor.Models.Tabelas.Horario", "HorarioContratado")
                         .WithMany()
                         .HasForeignKey("HorarioContratadoId");
 
-                    b.HasOne("MyWayRazor.Models.Horario", "HorarioPraticado")
+                    b.HasOne("MyWayRazor.Models.Tabelas.Horario", "HorarioPraticado")
                         .WithMany()
                         .HasForeignKey("HorarioPraticadoId");
 
-                    b.HasOne("MyWayRazor.Models.Uh", "Uh")
+                    b.HasOne("MyWayRazor.Models.Tabelas.Uh", "Uh")
                         .WithMany("Colaboradores")
                         .HasForeignKey("UhId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MyWayRazor.Models.Formacoes.FormacaoColaborador", b =>
+                {
+                    b.HasOne("MyWayRazor.Models.Colaboradores.Colaborador", "Colaborador")
+                        .WithMany()
+                        .HasForeignKey("ColaboradorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MyWayRazor.Models.Formacoes.Formacao", "Formacao")
+                        .WithMany("FormacoesColaborador")
+                        .HasForeignKey("FormacaoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

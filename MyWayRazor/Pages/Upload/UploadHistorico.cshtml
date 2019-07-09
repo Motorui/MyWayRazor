@@ -1,0 +1,39 @@
+﻿@page
+@model MyWayRazor.Pages.Upload.UploadHistorico
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Upload Histórico</h3>
+                </div>
+                <div class="box-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" asp-for="Upload" />
+                            <h4 class="text-danger"><b>@Html.ValidationSummary()</b></h4>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@if (@ViewBag.Message != null)
+{
+<div id="popupdiv" style="border: 1px solid red; display: none;">
+    @ViewBag.Message
+</div>
+}
+@section Scripts
+    {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

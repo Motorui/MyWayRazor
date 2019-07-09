@@ -1,35 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MyWayRazor.Data;
-using MyWayRazor.Models;
+using MyWayRazor.Models.Colaboradores;
+using SmartBreadcrumbs.Attributes;
+using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Colaboradores
 {
+    [Breadcrumb("Novo Colaborador", FromPage = typeof(IndexModel))]
     public class CreateModel : PageModel
     {
-        private readonly MyWayRazor.Data.ApplicationDbContext _context;
+        private readonly Data.ApplicationDbContext _context;
 
-        public CreateModel(MyWayRazor.Data.ApplicationDbContext context)
+        public CreateModel(Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["CategoriaId"] = new SelectList(_context.Categorias, "CategoriaId", "CategoriaNome");
-        ViewData["ContratoId"] = new SelectList(_context.Contratos, "ContratoId", "ContratoTipo");
-        ViewData["DepartamentoId"] = new SelectList(_context.Departamentos, "DepartamentoId", "DepartamentoNome");
-        ViewData["EquipaId"] = new SelectList(_context.Equipas, "EquipaId", "EquipaNome");
-        ViewData["FuncaoId"] = new SelectList(_context.Funcoes, "FuncaoId", "FuncaoNome");
-        ViewData["HorarioContratadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioHora");
-        ViewData["HorarioPraticadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioHora");
-        ViewData["StatusId"] = new SelectList(_context.Statuses, "StatusID", "Statuses");
-        ViewData["UhId"] = new SelectList(_context.Uhs, "UhId", "IATA");
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "CategoriaId", "CategoriaNome", 1);
+            ViewData["ContratoId"] = new SelectList(_context.Contratos, "ContratoId", "ContratoTipo", 4);
+            ViewData["DepartamentoId"] = new SelectList(_context.Departamentos, "DepartamentoId", "DepartamentoNome", 1);
+            ViewData["EquipaId"] = new SelectList(_context.Equipas, "EquipaId", "EquipaNome", 1);
+            ViewData["FuncaoId"] = new SelectList(_context.Funcoes, "FuncaoId", "FuncaoNome", 5);
+            ViewData["HorarioContratadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioHora", 1);
+            ViewData["HorarioPraticadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioHora", 1);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "StatusID", "Statuses", 2);
+            ViewData["UhId"] = new SelectList(_context.Uhs, "UhId", "IATA", 1);
             return Page();
         }
 

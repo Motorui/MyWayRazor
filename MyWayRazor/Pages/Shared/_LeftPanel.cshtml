@@ -22,7 +22,7 @@
                 <li class="header">Recursos Humanos</li>
                 <li class="treeview ">
                     <a href="#">
-                        <i class="fa fa-link"></i> <span>Colaboradores</span>
+                        <i class="fa fa-users"></i> <span>Colaboradores</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -32,47 +32,73 @@
                         <li><a asp-page="/Colaboradores/Create">Criar Colaborador</a></li>
                     </ul>
                 </li>
+                <li class="header">FTE</li>
+                <li class="treeview ">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>FTE</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a asp-page="/Upload/UploadFTE">Upload Excel</a></li>
+                    </ul>
+                </li>
+                <li class="header">Disrupções</li>
+                <li class="treeview ">
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i> <span>Disrupções</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a asp-page="/Upload/UploadDadosAeroporto">Upload Dados Voos</a></li>
+                        <li><a asp-page="/Upload/UploadHistorico">Upload Histórico</a></li>
+                        <li><a asp-page="/Analise/Disrupcoes">Disrupções</a></li>
+                    </ul>
+                </li>
             }
-                <li class="header">Análise</li>
-                <li class="treeview ">
-                    <a href="#">
-                        <i class="fa fa-link"></i> <span>Análise</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a asp-page="/Upload/Index">Upload Excel</a></li>
-                        <li><a asp-page="/Analise/Index">Análise</a></li>
-                    </ul>
-                </li>
-                <li class="header">To-Do List</li>
-                <li class="treeview ">
-                    <a href="#">
-                        <i class="fa fa-link"></i> <span>To-Do</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a asp-page="/ToDoList/Index">Listagem</a></li>
-                        <li><a asp-page="/ToDoList/Create">Criar Tarefa</a></li>
-                    </ul>
-                </li>
-                @*<li class="header">Gestão de Recursos</li>
+            <li class="header">Análise</li>
             <li class="treeview ">
                 <a href="#">
-                    <i class="fa fa-link"></i> <span>Staging</span>
+                    <i class="fa fa-bar-chart"></i> <span>Análise</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a asp-page="/StagingArea/Index">Staging Area</a></li>
-                    <li><a asp-page="/StagingArea/Create">Gerir</a></li>
+                    <li><a asp-page="/Upload/Index">Upload Excel</a></li>
+                    <li><a asp-page="/Analise/Index">Análise</a></li>
                 </ul>
-            </li>*@
+            </li>
+            <li class="header">To-Do List</li>
+            <li class="treeview ">
+                <a href="#">
+                    <i class="fa fa-pencil"></i> <span>To-Do</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a asp-page="/ToDoList/Index">Listagem</a></li>
+                    <li><a asp-page="/ToDoList/Create">Criar Tarefa</a></li>
+                </ul>
+            </li>
+            @*<li class="header">Gestão de Recursos</li>
+        <li class="treeview ">
+            <a href="#">
+                <i class="fa fa-link"></i> <span>Staging</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a asp-page="/StagingArea/Index">Staging Area</a></li>
+                <li><a asp-page="/StagingArea/Create">Gerir</a></li>
             </ul>
+        </li>*@
+        </ul>
             <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

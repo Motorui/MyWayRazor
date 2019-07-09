@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyWayRazor.Data;
-using MyWayRazor.Models;
+using MyWayRazor.Models.Tabelas;
 
 namespace MyWayRazor.Pages.Tabelas.Categorias
 {

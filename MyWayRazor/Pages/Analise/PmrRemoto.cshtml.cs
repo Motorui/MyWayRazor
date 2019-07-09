@@ -6,6 +6,7 @@ using MyWayRazor.Models.Tabelas;
 using SmartBreadcrumbs.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -51,6 +52,8 @@ namespace MyWayRazor.Pages.Analise
 
         public int TotalTranSchengen { get; private set; }
         public int TotalTranNSchengen { get; private set; }
+
+        public CultureInfo Info { get; } = CultureInfo.GetCultureInfo("pt-PT");
 
         public async Task OnGetAsync()
         {

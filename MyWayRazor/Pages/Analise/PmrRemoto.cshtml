@@ -10,8 +10,8 @@
     int[] dataHour = Model.AssistenciasPRMs.Select(h => h.Data.Hour).Distinct().ToArray();
     int[] estimaHour = Model.AssistenciasPRMs.Select(h => h.EstimaApresentacao.Hour).Distinct().ToArray();
     int[] embarqueHour = Model.AssistenciasPRMs.Select(h => h.HoraEmbarque.Hour).Distinct().ToArray();
-    int[] tempHours = dataHour.Union(estimaHour).ToArray();
-    int[] Hours = tempHours.Union(embarqueHour).ToArray();
+    int[] tempArr = dataHour.Union(estimaHour).ToArray();
+    int[] Hours = tempArr.Union(embarqueHour).ToArray();
     int? CountAmb = 0;
     int? CountVta = 0;
 

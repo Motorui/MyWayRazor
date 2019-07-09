@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
-using MyWayRazor.Models;
+using MyWayRazor.Models.Colaboradores;
+using SmartBreadcrumbs.Attributes;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Colaboradores
 {
+    [Breadcrumb("Colaboradores")]
     public class IndexModel : PageModel
     {
         private readonly ApplicationDbContext _context;

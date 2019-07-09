@@ -1,0 +1,138 @@
+﻿@page
+@model MyWayRazor.Pages.Colaboradores.ColaboradorFormacaoModel
+
+@{
+    ViewData["Title"] = "ColaboradorFormacao";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    string agora = DateTime.UtcNow.Date.ToShortDateString();
+    DateTime aviso = DateTime.UtcNow.AddMonths(3);
+}
+
+<div class="content">
+    <div class="row">
+        <div class="row col-md-8 col-md-offset-2">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Adicionar Formações</h3>
+                </div>
+                <form method="post" class="form-horizontal">
+                    <div class="box-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Colaborador.ColaboradorID" />
+
+                        <div class="form-group">
+                            <label asp-for="Colaborador.Nome" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="Colaborador.Nome" class="form-control" />
+                                <span asp-validation-for="Colaborador.Nome" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FormacaoColaborador.FormacaoId" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <select asp-for="FormacaoColaborador.FormacaoId" class="form-control select2" asp-items="ViewBag.FormacaoId" id="FormacaoNome"></select>
+                                <span asp-validation-for="FormacaoColaborador.FormacaoId" class="text-danger"></span>
+                            </div>
+                            <label asp-for="FormacaoColaborador.FormacaoData" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" data-date-format="dd/mm/yyyy" asp-for="FormacaoColaborador.FormacaoData" value="@agora" class="form-control pull-right" id="FormacaoData" />
+                                </div>
+                                <span asp-validation-for="FormacaoColaborador.FormacaoData" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <input type="submit" value="Gravar" class="btn btn-default" />
+                                <a asp-page="Index">Voltar à listagem</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row col-md-8 col-md-offset-2">
+            <div class="box ">
+                <div class="box-header">
+                    <h3 class="box-title">Listagem Formações:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="FormacoesTbl" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Cod.:</th>
+                                <th>Formação:</th>
+                                <th>Data:</th>
+                                <th>Caducidade:</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.FormacoesColaborador.OrderBy(d => d.FormacaoCaducidade))
+                            {
+                            <tr class="@(item.FormacaoCaducidade >= aviso ? "" : "danger")">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Formacao.FormacaoCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Formacao.FormacaoNome)
+                                </td>
+                                <td>
+                                    @Convert.ToDateTime(item.FormacaoData).ToString("dd-MM-yyyy")
+                                </td>
+                                <td>
+                                    @Convert.ToDateTime(item.FormacaoCaducidade).ToString("dd-MM-yyyy")
+                                </td>
+                                <td>
+                                    <a asp-page="./EditFormacaoColaborador" asp-route-id="@item.FormacaoColaboradorId">Editar</a> |
+                                    <a asp-page="./DeleteFormacaoColaborador" asp-route-id="@item.FormacaoColaboradorId">Apagar</a>
+                                </td>
+                            </tr>
+                                }
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <!-- DatePicker -->
+    <script src="~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+    <script>
+        //Date picker FormacaoData
+        $('#FormacaoData').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+    </script>
+
+}
+@section Styles {
+    <!-- DatePicker -->
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+}

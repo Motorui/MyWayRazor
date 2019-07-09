@@ -1,0 +1,217 @@
+﻿@page
+@model MyWayRazor.Pages.Analise.DisrupcoesModel
+@{
+    ViewData["Title"] = "Disrupcoes";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    #region variables
+
+    int[] Hours = Model.ListDadosAeroportos.Select(h => h.ScheduleTimeUTC.Value.Hour).Distinct().ToArray();
+
+    Array.Sort(Hours);
+
+    #endregion
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-sm-3 col-md-6">
+            <div class="box ">
+                <div class="box-header">
+                    <h3 class="box-title">Disrupções:</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="DisrupcoesTbl" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>1:</th>
+                                <th>2:</th>
+                                <th>3:</th>
+                                <th>4:</th>
+                                <th>5:</th>
+                                <th>6:</th>
+                                <th>7:</th>
+                                <th>8:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var dados in Hours
+                                    .Select(h => new
+                                    {
+                                        Hora = h,
+                                        disr = Model.ListDadosAeroportos
+                                        .Where(d => Model.ListHistoricoAssistencias.Select(v=> v.Voo.Trim()).Contains(d.Voo.Trim())
+                                             ).Select(v => new { v.Voo, v.ScheduleTimeUTC, v.ActualTimeUTC, v.Mov }).Distinct().Where(m => m.ScheduleTimeUTC.Value.Hour == h)
+                                        //.Count(m => m.ScheduleTimeUTC.Value.Hour == h)
+                                        .GroupBy(g => g.Voo)
+                            })
+                                  .OrderBy(h => h.Hora)
+                              )
+                                {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => dados.Hora):00
+                                    @dados.disr.Count()
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => dados.disr)*@
+                                    @foreach (var item in dados.disr
+                                  .Select(d => new
+                                  {
+                                      voo = d.Key,
+                                      std = d.Select(h => h.ScheduleTimeUTC.Value.ToShortTimeString()),
+                                      sta = d.Select(h => h.ActualTimeUTC.Value.ToShortTimeString()),
+                                      mov = d.Select(h => h.Mov),
+                                      diff = d.Select(h => (h.ActualTimeUTC.Value - h.ScheduleTimeUTC.Value).TotalMinutes)
+                                  }))
+                                    {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.voo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.std)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.sta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.mov)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.diff)
+                                </td>
+                            </tr>
+                                    }
+
+                                </td>
+                            </tr>
+                                }
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Tabela</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            @section Scripts
+                {
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+                <script src="~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+                <script type="text/javascript">
+    var labelArray = [];
+    var dataChegadas = [];
+    var dataPartidas = [];
+    var dataTotal = [];
+
+    @foreach (var items in Hours
+     .Select(h => new
+     {
+         hora = h,
+         Sta = Model.ListDadosAeroportos
+                  .Where(
+                      d => d.Mov == "A"
+                      && d.ActualTimeUTC != null
+                      && d.ScheduleTimeUTC != null
+                      && (d.ActualTimeUTC.Value.Minute < (d.ScheduleTimeUTC.Value.Minute + 30))
+                  )
+              .Count(
+                  m => m.ActualTimeUTC.Value.Hour == h
+              ),
+         Ata = Model.ListDadosAeroportos
+                  .Where(
+                      d => d.Mov == "D"
+                      && d.ActualTimeUTC != null
+                       && d.ScheduleTimeUTC != null
+                      && (d.ActualTimeUTC.Value.Minute > (d.ScheduleTimeUTC.Value.Minute + 30))
+                  )
+              .Count(m => m.ActualTimeUTC.Value.Hour == h)
+     }
+     ).OrderBy(h => h.hora))
+    {
+        @: labelArray.push("@Html.DisplayFor(modelItem => items.hora):00");
+        @: dataChegadas.push("@Html.DisplayFor(modelItem => items.Sta)");
+        @: dataPartidas.push("@Html.DisplayFor(modelItem => items.Ata)");
+       //@: dataTotal.push("@(items.Arr + items.Dep)");
+    }
+                </script>
+
+                <script type="text/javascript">
+                    var chartData = {
+                        labels: labelArray,
+                        datasets: [
+                            //{
+                            //    type: 'line',
+                            //    label: 'Total',
+                            //    borderColor: 'rgb(54, 162, 235)',
+                            //    borderWidth: 2,
+                            //    fill: false,
+                            //    data: dataTotal
+                            //},
+                            {
+                                type: 'bar',
+                                label: 'STA',
+                                backgroundColor: 'rgb(75, 192, 192)',
+                                borderWidth: 2,
+                                fill: false,
+                                data: dataPartidas
+                            }, {
+                                type: 'bar',
+                                label: 'ATA',
+                                backgroundColor: 'rgb(255, 99, 132)',
+                                borderWidth: 2,
+                                fill: false,
+                                data: dataChegadas
+                            }
+                        ]
+
+                    };
+                    window.onload = function () {
+                        var ctx = document.getElementById('canvas').getContext('2d');
+                        window.myMixedChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: chartData,
+                            options: {
+                                responsive: true,
+                                title: {
+                                    display: true,
+                                    text: 'Disrupções chegadas:'
+                                },
+                                tooltips: {
+                                    mode: 'index',
+                                    intersect: true
+                                }
+                            }
+                        });
+                    };
+
+                    $('#datepicker').datepicker({
+                        isRTL: false,
+                        format: 'dd-mm-yyyy',
+                        autoclose: true,
+                        language: 'Pt'
+                    });
+
+                </script>
+            }
