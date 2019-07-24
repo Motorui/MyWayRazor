@@ -24,7 +24,9 @@
                         
         </ul>
             </li>
-            <li class="footer"><a href="#">Ver Formação @caducidade.Key.FormacaoId</a></li>
+            <li class="footer">
+                <a asp-page="ListagemFormacoes/ListagemPorFormacao/" asp-route-id="@caducidade.Key.FormacaoId">Detalhes</a>
+            </li>
         }
     </ul>
 </li>

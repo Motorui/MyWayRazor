@@ -11,10 +11,17 @@ namespace MyWayRazor.Models.Tabelas
     {
         [Key]
         public int DepartamentoId { get; set; }
+
         [Required, Display(Name = "Número:", ShortName = "Núm:")]
         public int DepartamentoNumero { get; set; }
+
+        string _departamentoNome;
         [Required, MaxLength(150), Display(Name = "Departamento:", ShortName ="Dep:")]
-        public string DepartamentoNome { get; set; }
+        public string DepartamentoNome
+        {
+            get => _departamentoNome;
+            set => _departamentoNome = value.ToUpper();
+        }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }

@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using MyWayRazor.Models.Colaboradores;
+using SmartBreadcrumbs.Attributes;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Colaboradores
 {
+    [Breadcrumb("Editar Formando", FromPage = typeof(IndexModel))]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -48,8 +50,8 @@ namespace MyWayRazor.Pages.Colaboradores
            ViewData["DepartamentoId"] = new SelectList(_context.Departamentos, "DepartamentoId", "DepartamentoNome");
            ViewData["EquipaId"] = new SelectList(_context.Equipas, "EquipaId", "EquipaNome");
            ViewData["FuncaoId"] = new SelectList(_context.Funcoes, "FuncaoId", "FuncaoNome");
-           ViewData["HorarioContratadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioId");
-           ViewData["HorarioPraticadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioId");
+           ViewData["HorarioContratadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioHora");
+           ViewData["HorarioPraticadoId"] = new SelectList(_context.Horarios, "HorarioId", "HorarioHora");
            ViewData["StatusId"] = new SelectList(_context.Statuses, "StatusID", "Statuses");
            ViewData["UhId"] = new SelectList(_context.Uhs, "UhId", "IATA");
             return Page();

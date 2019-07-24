@@ -11,8 +11,14 @@ namespace MyWayRazor.Models.Tabelas
     {
         [Key]
         public int ContratoId { get; set; }
+
+        string _contratoTipo;
         [Required, MaxLength(50), Display(Name = "Contrato:", ShortName = "C:")]
-        public string ContratoTipo { get; set; }
+        public string ContratoTipo
+        {
+            get => _contratoTipo;
+            set => _contratoTipo = value.ToUpper();
+        }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
 using MyWayRazor.Models.Formacoes;
 
@@ -12,11 +12,11 @@ namespace MyWayRazor.Pages.Tabelas.Formacoes
 {
     public class CreateModel : PageModel
     {
-        private readonly MyWayRazor.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext db;
 
-        public CreateModel(MyWayRazor.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
         public IActionResult OnGet()
@@ -34,8 +34,8 @@ namespace MyWayRazor.Pages.Tabelas.Formacoes
                 return Page();
             }
 
-            _context.Formacoes.Add(Formacao);
-            await _context.SaveChangesAsync();
+            db.Formacoes.Add(Formacao);
+            await db.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

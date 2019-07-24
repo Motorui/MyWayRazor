@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWayRazor.Data;
 
 namespace MyWayRazor.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190714004230_HistoricoFormacaoColaborador")]
+    partial class HistoricoFormacaoColaborador
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -383,103 +385,6 @@ namespace MyWayRazor.Data.Migrations
                     b.ToTable("HistoricoAssistencias");
                 });
 
-            modelBuilder.Entity("MyWayRazor.Models.Calendario.Calendario", b =>
-                {
-                    b.Property<int>("DateKey");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("date");
-
-                    b.Property<byte>("Day");
-
-                    b.Property<short>("DayOfYear");
-
-                    b.Property<string>("DaySuffix")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .IsUnicode(false);
-
-                    b.Property<byte>("DowinMonth")
-                        .HasColumnName("DOWInMonth");
-
-                    b.Property<DateTime>("FirstDayOfMonth")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("FirstDayOfNextMonth")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("FirstDayOfNextYear")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("FirstDayOfQuarter")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("FirstDayOfYear")
-                        .HasColumnType("date");
-
-                    b.Property<string>("HolidayText")
-                        .HasMaxLength(64)
-                        .IsUnicode(false);
-
-                    b.Property<bool>("IsHoliday");
-
-                    b.Property<bool>("IsWeekend");
-
-                    b.Property<byte>("IsoweekOfYear")
-                        .HasColumnName("ISOWeekOfYear");
-
-                    b.Property<DateTime>("LastDayOfMonth")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("LastDayOfQuarter")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("LastDayOfYear")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Mmyyyy")
-                        .IsRequired()
-                        .HasColumnName("MMYYYY")
-                        .HasMaxLength(6)
-                        .IsUnicode(false);
-
-                    b.Property<byte>("Month");
-
-                    b.Property<string>("MonthName")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .IsUnicode(false);
-
-                    b.Property<string>("MonthYear")
-                        .IsRequired()
-                        .HasMaxLength(7)
-                        .IsUnicode(false);
-
-                    b.Property<byte>("Quarter");
-
-                    b.Property<string>("QuarterName")
-                        .IsRequired()
-                        .HasMaxLength(6)
-                        .IsUnicode(false);
-
-                    b.Property<string>("WeekDayName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .IsUnicode(false);
-
-                    b.Property<byte>("WeekOfMonth");
-
-                    b.Property<byte>("WeekOfYear");
-
-                    b.Property<byte>("Weekday");
-
-                    b.Property<int>("Year");
-
-                    b.HasKey("DateKey");
-
-                    b.ToTable("Calendario");
-                });
-
             modelBuilder.Entity("MyWayRazor.Models.Colaboradores.Colaborador", b =>
                 {
                     b.Property<int>("ColaboradorID")
@@ -585,8 +490,8 @@ namespace MyWayRazor.Data.Migrations
                     b.HasData(
                         new
                         {
-                            FormacaoId = new Guid("35e2e802-59dd-45d1-a19b-6bf7dccc7624"),
-                            CreatedAt = new DateTime(2019, 7, 23, 8, 13, 51, 577, DateTimeKind.Utc).AddTicks(2156),
+                            FormacaoId = new Guid("8e2387c3-7986-41d8-95e5-9fbc1fb79e23"),
+                            CreatedAt = new DateTime(2019, 7, 14, 0, 42, 30, 63, DateTimeKind.Utc).AddTicks(2381),
                             CreatedBy = "SISTEMA",
                             FormacaoCod = "BPMR",
                             FormacaoNome = "BÁSICO DE PMR",
@@ -594,8 +499,8 @@ namespace MyWayRazor.Data.Migrations
                         },
                         new
                         {
-                            FormacaoId = new Guid("350e1ba1-2095-499d-9b4e-7d36e745ced7"),
-                            CreatedAt = new DateTime(2019, 7, 23, 8, 13, 51, 577, DateTimeKind.Utc).AddTicks(4988),
+                            FormacaoId = new Guid("d9455b13-f6ef-44a3-b9ad-c0a1a92170f9"),
+                            CreatedAt = new DateTime(2019, 7, 14, 0, 42, 30, 63, DateTimeKind.Utc).AddTicks(3255),
                             CreatedBy = "SISTEMA",
                             FormacaoCod = "RS",
                             FormacaoNome = "RAMP SAFETY",
@@ -603,8 +508,8 @@ namespace MyWayRazor.Data.Migrations
                         },
                         new
                         {
-                            FormacaoId = new Guid("3d62f0db-ec2f-4ce7-a328-a28736101825"),
-                            CreatedAt = new DateTime(2019, 7, 23, 8, 13, 51, 577, DateTimeKind.Utc).AddTicks(5003),
+                            FormacaoId = new Guid("79aae154-e326-4330-b42b-ba0e38a5b5f0"),
+                            CreatedAt = new DateTime(2019, 7, 14, 0, 42, 30, 63, DateTimeKind.Utc).AddTicks(3270),
                             CreatedBy = "SISTEMA",
                             FormacaoCod = "SEC.13",
                             FormacaoNome = "SEGURANÇA NÍVEL 13",
@@ -612,8 +517,8 @@ namespace MyWayRazor.Data.Migrations
                         },
                         new
                         {
-                            FormacaoId = new Guid("1dd0c2d5-133b-45c1-8ebf-a274d430909d"),
-                            CreatedAt = new DateTime(2019, 7, 23, 8, 13, 51, 577, DateTimeKind.Utc).AddTicks(5005),
+                            FormacaoId = new Guid("df09776b-fc92-45d0-9ba8-301b69c08eed"),
+                            CreatedAt = new DateTime(2019, 7, 14, 0, 42, 30, 63, DateTimeKind.Utc).AddTicks(3272),
                             CreatedBy = "SISTEMA",
                             FormacaoCod = "DGR CAT.9",
                             FormacaoNome = "DANGEROUS GOODS CAT.9",
@@ -621,8 +526,8 @@ namespace MyWayRazor.Data.Migrations
                         },
                         new
                         {
-                            FormacaoId = new Guid("967b87cf-1060-419a-8eb6-aaf131b0c382"),
-                            CreatedAt = new DateTime(2019, 7, 23, 8, 13, 51, 577, DateTimeKind.Utc).AddTicks(5008),
+                            FormacaoId = new Guid("114924de-ac89-4f89-a23d-026c5d511300"),
+                            CreatedAt = new DateTime(2019, 7, 14, 0, 42, 30, 63, DateTimeKind.Utc).AddTicks(3274),
                             CreatedBy = "SISTEMA",
                             FormacaoCod = "HF",
                             FormacaoNome = "HUMAN FACTOR",
@@ -630,8 +535,8 @@ namespace MyWayRazor.Data.Migrations
                         },
                         new
                         {
-                            FormacaoId = new Guid("6e85d878-6ba5-429b-aa9d-5f563545de5c"),
-                            CreatedAt = new DateTime(2019, 7, 23, 8, 13, 51, 577, DateTimeKind.Utc).AddTicks(5021),
+                            FormacaoId = new Guid("daef57a5-1663-471d-9a39-3e6ef6c59764"),
+                            CreatedAt = new DateTime(2019, 7, 14, 0, 42, 30, 63, DateTimeKind.Utc).AddTicks(3288),
                             CreatedBy = "SISTEMA",
                             FormacaoCod = "SST",
                             FormacaoNome = "SAÚDE E SEGURANÇA NO TRABALHO",
@@ -639,8 +544,8 @@ namespace MyWayRazor.Data.Migrations
                         },
                         new
                         {
-                            FormacaoId = new Guid("2d53be62-d56f-46d8-a847-f5477c02b647"),
-                            CreatedAt = new DateTime(2019, 7, 23, 8, 13, 51, 577, DateTimeKind.Utc).AddTicks(5024),
+                            FormacaoId = new Guid("f22a2a45-fc1a-4ee6-926f-63a1627cf769"),
+                            CreatedAt = new DateTime(2019, 7, 14, 0, 42, 30, 63, DateTimeKind.Utc).AddTicks(3291),
                             CreatedBy = "SISTEMA",
                             FormacaoCod = "ENB",
                             FormacaoNome = "ESCOLA NACIONAL DE BOMBEIROS",
@@ -648,8 +553,8 @@ namespace MyWayRazor.Data.Migrations
                         },
                         new
                         {
-                            FormacaoId = new Guid("3a1988dc-1288-4489-b437-16b3e2318b61"),
-                            CreatedAt = new DateTime(2019, 7, 23, 8, 13, 51, 577, DateTimeKind.Utc).AddTicks(5026),
+                            FormacaoId = new Guid("1a654351-1e13-471b-a642-6c28814a77f8"),
+                            CreatedAt = new DateTime(2019, 7, 14, 0, 42, 30, 63, DateTimeKind.Utc).AddTicks(3293),
                             CreatedBy = "SISTEMA",
                             FormacaoCod = "GSE",
                             FormacaoNome = "GSE AMBULIFTS",
@@ -932,32 +837,6 @@ namespace MyWayRazor.Data.Migrations
                             CreatedBy = "SISTEMA",
                             EquipaNome = "C"
                         });
-                });
-
-            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Formador", b =>
-                {
-                    b.Property<Guid>("FormadorID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime?>("CreatedAt");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<Guid>("FormacaoId");
-
-                    b.Property<string>("FormadorNome")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<DateTime?>("LastUpdatedAt");
-
-                    b.Property<string>("LastUpdatedBy");
-
-                    b.HasKey("FormadorID");
-
-                    b.HasIndex("FormacaoId");
-
-                    b.ToTable("Formadores");
                 });
 
             modelBuilder.Entity("MyWayRazor.Models.Tabelas.Funcao", b =>
@@ -1897,30 +1776,6 @@ namespace MyWayRazor.Data.Migrations
                             Schengen = false,
                             Terminal = false
                         });
-                });
-
-            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Sala", b =>
-                {
-                    b.Property<Guid>("SalaID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Capacidade");
-
-                    b.Property<DateTime?>("CreatedAt");
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("LastUpdatedAt");
-
-                    b.Property<string>("LastUpdatedBy");
-
-                    b.Property<string>("SalaNome")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("SalaID");
-
-                    b.ToTable("Salas");
                 });
 
             modelBuilder.Entity("MyWayRazor.Models.Tabelas.Stand", b =>
@@ -3039,14 +2894,6 @@ namespace MyWayRazor.Data.Migrations
                     b.HasOne("MyWayRazor.Models.Tabelas.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MyWayRazor.Models.Tabelas.Formador", b =>
-                {
-                    b.HasOne("MyWayRazor.Models.Formacoes.Formacao", "Formacao")
-                        .WithMany("Formadores")
-                        .HasForeignKey("FormacaoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

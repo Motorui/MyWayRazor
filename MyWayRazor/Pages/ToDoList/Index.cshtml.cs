@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace MyWayRazor.Pages.ToDoList
         {
             DateTime currentTime = DateTime.UtcNow;
 
-            ToDo = await _context.ToDos.ToListAsync();
+            ToDo = await _context.ToDos.Where(d=> d.Done == false).ToListAsync();
             Agora = currentTime.ToShortTimeString();
         }
     }

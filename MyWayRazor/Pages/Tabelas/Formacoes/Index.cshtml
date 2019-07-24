@@ -6,62 +6,88 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Formacao[0].FormacaoNome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Formacao[0].FormacaoValidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Formacao[0].CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Formacao[0].CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Formacao[0].LastUpdatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Formacao[0].LastUpdatedBy)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Formacao) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FormacaoNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FormacaoValidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdatedBy)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.FormacaoId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.FormacaoId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.FormacaoId">Delete</a>
-            </td>
-        </tr>
+<div class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title"><a asp-page="Create" class="right">Criar novo registo</a></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="FormacoesTbl" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Formacao[0].FormacaoNome)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Formacao[0].FormacaoCod)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Formacao[0].FormacaoValidade)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Formacao)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FormacaoNome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FormacaoCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FormacaoValidade)
+                                </td>
+                                <td>
+                                    <a asp-page="./Edit" asp-route-id="@item.FormacaoId">Editar</a> |
+                                    <a asp-page="./Details" asp-route-id="@item.FormacaoId">Detalhes</a> |
+                                    <a asp-page="./Delete" asp-route-id="@item.FormacaoId">Apagar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+    {
+    <script src="~/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#FormacoesTbl').DataTable(
+                {
+                    language: {
+                        processing: "Processando ...",
+                        search: "Pesquisar:&nbsp;",
+                        lengthMenu: "Mostrar &nbsp;_MENU_&nbsp; items",
+                        info: "A exibir _START_ a _END_ de _TOTAL_ entradas",
+                        infoEmpty: "Não existem items a exibir",
+                        infoFiltered: "(Filtro de um total de _MAX_ entradas)",
+                        infoPostFix: "",
+                        loadingRecords: "Carregando ...",
+                        zeroRecords: "Não existem dados",
+                        emptyTable: "Nenhum dado disponível na tabela",
+                        paginate: {
+                            first: "Primeiro",
+                            previous: "Anterior",
+                            next: "Seguinte",
+                            last: "Último"
+                        },
+                        aria: {
+                            sortAscending: ": ordenar a coluna por ordem crescente",
+                            sortDescending: ": ordenar a coluna por ordem decrescente"
+                        }
+                    },
+                    "pageLength": 25
+                }
+            );
+        });
+    </script>
 }
-    </tbody>
-</table>

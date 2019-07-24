@@ -42,48 +42,58 @@
 }
 
 <section class="content">
-    @if (User.IsInRole("Administrador"))
-    {
-        <div class="row">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Existem <strong>@Model.ListaCaducidades.Count()</strong> formações a caducar</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Código:</th>
-                                <th>Formação:</th>
-                                <th>Data:</th>
-                                <th>Status:</th>
-                                <th>Nome:</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var items in Model.ListaCaducidades.OrderBy(d => d.FormacaoCaducidade))
-                            {
+    <div class="row">
+        @if (User.IsInRole("Administrador") && Model.ListaCaducidades.Count() > 0)
+        {
+            <div class="row col-md-8 col-md-offset-2">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Existem <strong>@Model.ListaCaducidades.Count()</strong> formações a caducar</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="CaducidadesTbl" class="table table-hover table-responsive">
+                            <thead>
                                 <tr>
-                                    <td>@items.Formacao.FormacaoCod</td>
-                                    <td>@items.Formacao.FormacaoNome</td>
-                                    <td>@items.FormacaoCaducidade.ToShortDateString()</td>
-                                    <td>
-                                        <span class="@(items.FormacaoCaducidade < agora ? "label label-danger" : "label label-warning")">
-                                            @(items.FormacaoCaducidade < agora ? "Caducada" : "A caducar")
-                                        </span>
-                                    </td>
-                                    <td>@items.Colaborador.Nome</td>
+                                    <th>Código:</th>
+                                    <th>Formação:</th>
+                                    <th>Data:</th>
+                                    <th>Status:</th>
+                                    <th>Nome:</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var items in Model.ListaCaducidades.OrderBy(d => d.FormacaoCaducidade))
+                                {
+                                    <tr>
+                                        <td>
+                                            <a asp-page="ListagemFormacoes/ListagemPorFormacao/" asp-route-id="@items.Formacao.FormacaoId">@items.Formacao.FormacaoCod</a>
+                                        </td>
+                                        <td>
+                                            <a asp-page="ListagemFormacoes/ListagemPorFormacao/" asp-route-id="@items.Formacao.FormacaoId">@items.Formacao.FormacaoNome</a>
+                                        </td>
+                                        <td>@items.FormacaoCaducidade.ToShortDateString()</td>
+                                        <td>
+                                            <span class="@(items.FormacaoCaducidade < agora ? "label label-danger" : "label label-warning" )">
+                                                @(items.FormacaoCaducidade < agora ? "Caducada" : "A caducar")
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a asp-page="Colaboradores/ColaboradorFormacao/" asp-route-id="@items.Colaborador.ColaboradorID"> @items.Colaborador.Nome</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
             </div>
-        </div>
-    }
-        <div class="row">
+        }
+    </div>
+    <div class="row">
+        @if (Model.ToDoList.Count() > 0)
+        {
             <div class="box">
                 <div class="box-body table-responsive">
                     <table class="table table-hover">
@@ -98,16 +108,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model.ToDoList.OrderBy(d => d.CreatedAt).Where(f => f.Done == false))
+                            @foreach (var item in Model.ToDoList.OrderBy(d => d.CreatedAt))
                             {
                                 <tr>
                                     <td>
                                         <p class="box-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="@("#collapse" + item.ToDoId)" aria-expanded="true" class="">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="@(" #collapse" + item.ToDoId)" aria-expanded="true" class="">
                                                 @Html.DisplayFor(modelItem => item.ToDoTittle)
                                             </a>
                                         </p>
-                                        <div id="@("collapse" + item.ToDoId)" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                        <div id="@(" collapse" + item.ToDoId)" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                             <div class="box-body">
                                                 @Html.DisplayFor(modelItem => item.ToDoText)
                                                 <p>
@@ -144,21 +154,19 @@
                                                 var percentage = (Math.Round(((dateNow - dateStart) / (dateEnd - dateStart)) * 100));
                                                 var percentageFormated = (percentage.ToString() + "%");
                                                 var format = ((percentage > 75) ? "progress-bar progress-bar-danger" :
-                                                    ((percentage > 50) ? "progress-bar progress-bar-warning" : "progress-bar progress-bar-success"));
+                                                ((percentage > 50) ? "progress-bar progress-bar-warning" : "progress-bar progress-bar-success"));
                                                 <div class="@(format)" style="width: @(percentageFormated)"></div>
                                             }
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="@(item.Done == true ? "label label-success" : "label label-danger")">
+                                        <span class="@(item.Done == true ? " label label-success" : "label label-danger" )">
                                             @(item.Done == true ? "Arquivado" : "Pendente")
                                         </span>
                                     </td>
                                     <td>
-                                        @*<form asp-page-handler="~/MarkDone" asp-route-id="@item.ToDoId" method="post"
-                                                  onclick="return confirm('Deseja marcar a tarefa como concluída?')">
-                                                <input type="submit" value="Feito" class="btn btn-default" />
-                                            </form>*@
+                                        <a asp-page="./Index" onclick="return confirm('Deseja marcar a tarefa como concluída?')"
+                                           asp-page-handler="MarkDone" asp-route-id="@item.ToDoId">Feito</a>
                                     </td>
                                 </tr>
                             }
@@ -172,209 +180,42 @@
                     </a>
                 </div>
             </div>
-        </div>
+        }
+    </div>
 
-        <div class="row">
-            <div class="nav-tabs-custom">
-                <!-- Tabs within a box -->
-                <ul class="nav nav-tabs ui-sortable-handle">
-                    <li class="active"><a href="#hoje" data-toggle="tab" aria-expanded="true">Hoje</a></li>
-                    <li class=""><a href="#amanha" data-toggle="tab" aria-expanded="false">Amanhã</a></li>
-                    <li class="header"><i class="fa fa-bar-chart-o"></i> Previsão</li>
-                </ul>
-                <div class="tab-content no-padding">
+    <div class="row">
+        <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs ui-sortable-handle">
+                <li class="active"><a href="#hoje" data-toggle="tab" aria-expanded="true">Hoje</a></li>
+                <li class=""><a href="#amanha" data-toggle="tab" aria-expanded="false">Amanhã</a></li>
+                <li class="header"><i class="fa fa-bar-chart-o"></i> Previsão</li>
+            </ul>
+            <div class="tab-content no-padding">
 
-                    <div class="chart tab-pane active" id="hoje">
+                <div class="chart tab-pane active" id="hoje">
 
-                        @if (Model.AssistenciasHoje.Count < 1)
-                        {
-                            <div class="callout callout-danger">
-                                <h4 class="text-bold">Ainda não foi carregado o ficheiro de assistências para hoje</h4>
-                                <p>Para carregar o ficheiro clique <a asp-page="/Upload/Index">aqui</a></p>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="col-md-8">
-                                <div class="box">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Voos Críticos:</h3>
-                                    </div>
-                                    <!-- /.box-header -->
-                                    <div class="box-body">
-                                        <div id="tblVoosCriticosH_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                                            <table id="tblVoosCriticosH" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="tblVoosCriticosH_info">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="tblVoosCriticosH" rowspan="1" colspan="1" aria-label="Voo: activate to sort column descending" aria-sort="ascending">Voo</th>
-                                                        <th>Num PMR</th>
-                                                        <th>Horário</th>
-                                                        <th>Movimento</th>
-                                                        <th>Origem / Destino</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach (var VoosC in Model.AssistenciasHoje.GroupBy(v => v.Voo).Where(c => c.Count() >= 5)
-                                            .Select(v => new
-                                            {
-                                                Horario = Model.AssistenciasHoje.Where(d => d.Voo == v.Key).Select(d => d.Data).FirstOrDefault(),
-                                                Mov = Model.AssistenciasHoje.Where(d => d.Voo == v.Key).Select(d => d.Mov).FirstOrDefault(),
-                                                Od = Model.AssistenciasHoje.Where(d => d.Voo == v.Key).Select(d => d.OrigDest).FirstOrDefault(),
-                                                Num = v.Key,
-                                                Conta = v.Count()
-                                            }
-                                             ).OrderBy(h => h.Horario))
-                                                    {
-                                                        <tr>
-                                                            <td>@VoosC.Num </td>
-                                                            <td>@VoosC.Conta </td>
-                                                            <td>@VoosC.Horario.ToString("HH:mm tt")</td>
-                                                            <td>@VoosC.Mov</td>
-                                                            <td>@VoosC.Od</td>
-                                                        </tr>
-                                                    }
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Voo</th>
-                                                        <th>Num PMR</th>
-                                                        <th>Horário</th>
-                                                        <th>Movimento</th>
-                                                        <th>Origem / Destino</th>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                    @if (Model.AssistenciasHoje.Count < 1)
+                    {
+                        <div class="callout callout-danger">
+                            <h4 class="text-bold">Ainda não foi carregado o ficheiro de assistências para hoje</h4>
+                            <p>Para carregar o ficheiro clique <a asp-page="/Upload/Index">aqui</a></p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-8">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Voos Críticos:</h3>
                                 </div>
-                                <!-- /.box-body -->
-
-                            </div>
-
-                            <div class="row col-md-4">
-
-                                <div class="info-box bg-green">
-                                    <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Total de PMR’s</span>
-                                        <span class="info-box-number">@AssistenciasHoje</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHoje) / 903))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasHoje) / 903))% Do máximo de assistências registado (903)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="info-box bg-blue">
-                                    <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">PMRs Manhã (05H às 15H)</span>
-                                        <span class="info-box-number">@AssistenciasHojeManha</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHojeManha) / AssistenciasHoje))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasHojeManha) / AssistenciasHoje))% Do total de assistências hoje (@AssistenciasHoje)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="info-box bg-orange">
-                                    <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">PMRs Tarde (15H às 00H):</span>
-                                        <span class="info-box-number">@AssistenciasHojeTarde</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHojeTarde) / AssistenciasHoje))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasHojeTarde) / AssistenciasHoje))% Do total de assistências hoje (@AssistenciasHoje)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="info-box bg-maroon">
-                                    <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Quantidade WCHC + WCHS:</span>
-                                        <span class="info-box-number">@AssistenciasHojeCS</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHojeCS) / AssistenciasHoje))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasHojeCS) / AssistenciasHoje))% Do total de assistências hoje (@AssistenciasHoje)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="info-box bg-light-blue">
-                                    <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Restantes assistências:</span>
-                                        <span class="info-box-number">@AssistenciasHojeOutras</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHojeOutras) / AssistenciasHoje))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasHojeOutras) / AssistenciasHoje))% Do total de assistências hoje (@AssistenciasHoje)
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class=" col-md-12">
-                                    <div class="box box-success">
-                                        <div class="box-header with-border">
-                                            <h3 class="box-title">Tabela</h3>
-
-                                            <div class="box-tools pull-right">
-                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="box-body">
-                                            <div class="chart">
-                                                <canvas id="canvasHoje"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        }
-
-                    </div>
-
-                    <div class="chart tab-pane" id="amanha">
-
-                        @if (Model.AssistenciasAmanha.Where(d => d.Data.Hour >= 1).Count() < 1)
-                        {
-                            <div class="callout callout-danger">
-                                <h4 class="text-bold">Ainda não foi carregado o ficheiro de assistências para amanhã</h4>
-                                <p>Para carregar o ficheiro clique <a asp-page="/Upload/Index">aqui</a></p>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="col-md-8">
-                                <div class="box">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Voos Críticos:</h3>
-                                    </div>
-                                    <!-- /.box-header -->
-                                    <div class="box-body">
-
-                                        <table id="tblVoosCriticosA" class="table table-bordered table-hover">
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div id="tblVoosCriticosH_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                        <table id="tblVoosCriticosH" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="tblVoosCriticosH_info">
                                             <thead>
-                                                <tr>
-                                                    <th>Voo</th>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="tblVoosCriticosH" rowspan="1" colspan="1" aria-label="Voo: activate to sort column descending" aria-sort="ascending">Voo</th>
                                                     <th>Num PMR</th>
                                                     <th>Horário</th>
                                                     <th>Movimento</th>
@@ -382,16 +223,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach (var VoosC in Model.AssistenciasAmanha.GroupBy(v => v.Voo).Where(c => c.Count() >= 5)
-                                        .Select(v => new
-                                        {
-                                            Horario = Model.AssistenciasAmanha.Where(d => d.Voo == v.Key).Select(d => d.Data).FirstOrDefault(),
-                                            Mov = Model.AssistenciasAmanha.Where(d => d.Voo == v.Key).Select(d => d.Mov).FirstOrDefault(),
-                                            Od = Model.AssistenciasAmanha.Where(d => d.Voo == v.Key).Select(d => d.OrigDest).FirstOrDefault(),
-                                            Num = v.Key,
-                                            Conta = v.Count()
-                                        }
-).OrderBy(h => h.Horario))
+                                                @foreach (var VoosC in Model.AssistenciasHoje.GroupBy(v => v.Voo).Where(c => c.Count() >= 5)
+                                         .Select(v => new
+                                         {
+                                             Horario = Model.AssistenciasHoje.Where(d => d.Voo == v.Key).Select(d => d.Data).FirstOrDefault(),
+                                             Mov = Model.AssistenciasHoje.Where(d => d.Voo == v.Key).Select(d => d.Mov).FirstOrDefault(),
+                                             Od = Model.AssistenciasHoje.Where(d => d.Voo == v.Key).Select(d => d.OrigDest).FirstOrDefault(),
+                                             Num = v.Key,
+                                             Conta = v.Count()
+                                         }
+                                         ).OrderBy(h => h.Horario))
                                                 {
                                                     <tr>
                                                         <td>@VoosC.Num </td>
@@ -412,117 +253,285 @@
                                                 </tr>
                                             </tfoot>
                                         </table>
-
-                                    </div>
-
-                                </div>
-                                <!-- /.box-body -->
-
-                            </div>
-
-                            <div class="row col-md-4">
-
-                                <div class="info-box bg-green">
-                                    <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Total de PMR’s</span>
-                                        <span class="info-box-number">@AssistenciasAmanha</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanha) / 903))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasAmanha) / 903))% Do máximo de assistências registado (903)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="info-box bg-blue">
-                                    <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">PMRs Manhã (05H às 15H)</span>
-                                        <span class="info-box-number">@AssistenciasAmanhaManha</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanhaManha) / AssistenciasAmanha))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasAmanhaManha) / AssistenciasAmanha))% Do total de assistências hoje (@AssistenciasAmanha)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="info-box bg-orange">
-                                    <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">PMRs Tarde (15H às 00H):</span>
-                                        <span class="info-box-number">@AssistenciasAmanhaTarde</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanhaTarde) / AssistenciasAmanha))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasAmanhaTarde) / AssistenciasAmanha))% Do total de assistências hoje (@AssistenciasAmanha)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="info-box bg-maroon">
-                                    <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Quantidade WCHC + WCHS:</span>
-                                        <span class="info-box-number">@AssistenciasAmanhaCS</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanhaCS) / AssistenciasAmanha))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasAmanhaCS) / AssistenciasAmanha))% Do total de assistências hoje (@AssistenciasAmanha)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="info-box bg-light-blue">
-                                    <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Restantes assistências:</span>
-                                        <span class="info-box-number">@AssistenciasAmanhaOutras</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanhaOutras) / AssistenciasAmanha))%"></div>
-                                        </div>
-                                        <span class="progress-description">
-                                            @((int)Math.Round((double)(100 * AssistenciasAmanhaOutras) / AssistenciasAmanha))% Do total de assistências hoje (@AssistenciasAmanha)
-                                        </span>
                                     </div>
                                 </div>
 
                             </div>
+                            <!-- /.box-body -->
 
-                            <div class="row">
-                                <div class=" col-md-12">
-                                    <div class="box box-success">
-                                        <div class="box-header with-border">
-                                            <h3 class="box-title">Tabela</h3>
+                        </div>
 
-                                            <div class="box-tools pull-right">
-                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                            </div>
+                        <div class="row col-md-4">
+
+                            <div class="info-box bg-green">
+                                <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total de PMR’s</span>
+                                    <span class="info-box-number">@AssistenciasHoje</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHoje) / 903))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasHoje) / 903))% Do máximo de assistências registado (903)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-box bg-blue">
+                                <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">PMRs Manhã (05H às 15H)</span>
+                                    <span class="info-box-number">@AssistenciasHojeManha</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHojeManha) / AssistenciasHoje))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasHojeManha) / AssistenciasHoje))% Do total de assistências hoje (@AssistenciasHoje)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-box bg-orange">
+                                <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">PMRs Tarde (15H às 00H):</span>
+                                    <span class="info-box-number">@AssistenciasHojeTarde</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHojeTarde) / AssistenciasHoje))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasHojeTarde) / AssistenciasHoje))% Do total de assistências hoje (@AssistenciasHoje)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-box bg-maroon">
+                                <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Quantidade WCHC + WCHS:</span>
+                                    <span class="info-box-number">@AssistenciasHojeCS</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHojeCS) / AssistenciasHoje))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasHojeCS) / AssistenciasHoje))% Do total de assistências hoje (@AssistenciasHoje)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-box bg-light-blue">
+                                <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Restantes assistências:</span>
+                                    <span class="info-box-number">@AssistenciasHojeOutras</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasHojeOutras) / AssistenciasHoje))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasHojeOutras) / AssistenciasHoje))% Do total de assistências hoje (@AssistenciasHoje)
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Tabela</h3>
+
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                                         </div>
-                                        <div class="box-body">
-                                            <div class="chart">
-                                                <canvas id="canvasAmanha"></canvas>
-                                            </div>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="chart">
+                                            <canvas id="canvasHoje"></canvas>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                        }
+                    }
 
-                    </div>
+                </div>
+
+                <div class="chart tab-pane" id="amanha">
+
+                    @if (Model.AssistenciasAmanha.Where(d => d.Data.Hour >= 1).Count() < 1)
+                    {
+                        <div class="callout callout-danger">
+                            <h4 class="text-bold">Ainda não foi carregado o ficheiro de assistências para amanhã</h4>
+                            <p>Para carregar o ficheiro clique <a asp-page="/Upload/Index">aqui</a></p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-8">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Voos Críticos:</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+
+                                    <table id="tblVoosCriticosA" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Voo</th>
+                                                <th>Num PMR</th>
+                                                <th>Horário</th>
+                                                <th>Movimento</th>
+                                                <th>Origem / Destino</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var VoosC in Model.AssistenciasAmanha.GroupBy(v => v.Voo).Where(c => c.Count() >= 5)
+                                     .Select(v => new
+                                     {
+                                         Horario = Model.AssistenciasAmanha.Where(d => d.Voo == v.Key).Select(d => d.Data).FirstOrDefault(),
+                                         Mov = Model.AssistenciasAmanha.Where(d => d.Voo == v.Key).Select(d => d.Mov).FirstOrDefault(),
+                                         Od = Model.AssistenciasAmanha.Where(d => d.Voo == v.Key).Select(d => d.OrigDest).FirstOrDefault(),
+                                         Num = v.Key,
+                                         Conta = v.Count()
+                                     }
+                                     ).OrderBy(h => h.Horario))
+                                            {
+                                                <tr>
+                                                    <td>@VoosC.Num </td>
+                                                    <td>@VoosC.Conta </td>
+                                                    <td>@VoosC.Horario.ToString("HH:mm tt")</td>
+                                                    <td>@VoosC.Mov</td>
+                                                    <td>@VoosC.Od</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Voo</th>
+                                                <th>Num PMR</th>
+                                                <th>Horário</th>
+                                                <th>Movimento</th>
+                                                <th>Origem / Destino</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+
+                        </div>
+
+                        <div class="row col-md-4">
+
+                            <div class="info-box bg-green">
+                                <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total de PMR’s</span>
+                                    <span class="info-box-number">@AssistenciasAmanha</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanha) / 903))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasAmanha) / 903))% Do máximo de assistências registado (903)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-box bg-blue">
+                                <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">PMRs Manhã (05H às 15H)</span>
+                                    <span class="info-box-number">@AssistenciasAmanhaManha</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanhaManha) / AssistenciasAmanha))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasAmanhaManha) / AssistenciasAmanha))% Do total de assistências hoje (@AssistenciasAmanha)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-box bg-orange">
+                                <span class="info-box-icon"><i class="fa fa-clock-o"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">PMRs Tarde (15H às 00H):</span>
+                                    <span class="info-box-number">@AssistenciasAmanhaTarde</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanhaTarde) / AssistenciasAmanha))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasAmanhaTarde) / AssistenciasAmanha))% Do total de assistências hoje (@AssistenciasAmanha)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-box bg-maroon">
+                                <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Quantidade WCHC + WCHS:</span>
+                                    <span class="info-box-number">@AssistenciasAmanhaCS</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanhaCS) / AssistenciasAmanha))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasAmanhaCS) / AssistenciasAmanha))% Do total de assistências hoje (@AssistenciasAmanha)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-box bg-light-blue">
+                                <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Restantes assistências:</span>
+                                    <span class="info-box-number">@AssistenciasAmanhaOutras</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: @((int)Math.Round((double)(100 * AssistenciasAmanhaOutras) / AssistenciasAmanha))%"></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        @((int)Math.Round((double)(100 * AssistenciasAmanhaOutras) / AssistenciasAmanha))% Do total de assistências hoje (@AssistenciasAmanha)
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Tabela</h3>
+
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="chart">
+                                            <canvas id="canvasAmanha"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @section Scripts
     {
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -540,39 +549,39 @@
         var fteArHoje = [];
 
     @foreach (var items in HoursH
-    .Select(h => new
+   .Select(h => new
+   {
+       hora = h,
+       Arr = Model.AssistenciasHoje.Where(
+                   d => d.Mov == "A"
+               ).Count(
+                m => m.Data.Hour == h
+           ),
+       Dep = Model.AssistenciasHoje.Where(
+                   d => d.Mov == "D"
+               ).Count(m => m.Data.Hour == h),
+       FteTerminal = Model.FtesHoje.Where(
+            d => d.Funcao.Contains("ASSISTENTE PMR")
+            && d.HoraEntrada != d.HoraSaida
+            && d.HoraEntrada <= new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
+            && d.HoraSaida > new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
+           ).Count(),
+       FteAr = Model.FtesHoje.Where(
+            d => d.Funcao.Contains("MOTORISTA")
+            && d.HoraEntrada != d.HoraSaida
+            && d.HoraEntrada <= new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
+            && d.HoraSaida > new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
+           ).Count()
+   }
+   ).OrderBy(h => h.hora))
     {
-        hora = h,
-        Arr = Model.AssistenciasHoje.Where(
-                    d => d.Mov == "A"
-                ).Count(
-                 m => m.Data.Hour == h
-            ),
-        Dep = Model.AssistenciasHoje.Where(
-                    d => d.Mov == "D"
-                ).Count(m => m.Data.Hour == h),
-        FteTerminal = Model.FtesHoje.Where(
-             d => d.Funcao.Contains("ASSISTENTE PMR")
-             && d.HoraEntrada != d.HoraSaida
-             && d.HoraEntrada <= new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
-             && d.HoraSaida > new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
-            ).Count(),
-        FteAr = Model.FtesHoje.Where(
-             d => d.Funcao.Contains("MOTORISTA")
-             && d.HoraEntrada != d.HoraSaida
-             && d.HoraEntrada <= new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
-             && d.HoraSaida > new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
-            ).Count()
-    }
-    ).OrderBy(h => h.hora))
-    {
-        @: labelArrayHoje.push("@Html.DisplayFor(modelItem => items.hora):00");
-        @: dataChegadasHoje.push("@Html.DisplayFor(modelItem => items.Arr)");
-        @: dataPartidasHoje.push("@Html.DisplayFor(modelItem => items.Dep)");
-        @: dataTotalHoje.push("@(items.Arr + items.Dep)");
-        @: fteTerminalHoje.push("@(items.FteTerminal)");
-        @: fteArHoje.push("@(items.FteAr)");
-    }
+@: labelArrayHoje.push("@Html.DisplayFor(modelItem => items.hora):00");
+@: dataChegadasHoje.push("@Html.DisplayFor(modelItem => items.Arr)");
+@: dataPartidasHoje.push("@Html.DisplayFor(modelItem => items.Dep)");
+@: dataTotalHoje.push("@(items.Arr + items.Dep)");
+@: fteTerminalHoje.push("@(items.FteTerminal)");
+@: fteArHoje.push("@(items.FteAr)");
+}
 
         var chartDataHoje = {
             labels: labelArrayHoje,
@@ -623,40 +632,41 @@
         var fteArAmanha = [];
 
     @foreach (var items in HoursA
-    .Select(h => new
-    {
-        hora = h,
-        Arr = Model.AssistenciasAmanha.Where(
-                    d => d.Mov == "A"
-                ).Count(
-                m => m.Data.Hour == h
-            ),
-        Dep = Model.AssistenciasAmanha.Where(
-                    d => d.Mov == "D"
-                ).Count(m => m.Data.Hour == h),
-        FteTerminal = Model.FtesAmanha.Where(
-             d => d.Funcao.Contains("ASSISTENTE PMR")
-              && d.HoraEntrada != d.HoraSaida
-             && d.HoraEntrada <= new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
-             && d.HoraSaida > new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
-            ).Count(),
-        FteAr = Model.FtesAmanha.Where(
-             d => d.Funcao.Contains("MOTORISTA")
+   .Select(h => new
+   {
+       hora = h,
+       Arr = Model.AssistenciasAmanha.Where(
+                   d => d.Mov == "A"
+               ).Count(
+               m => m.Data.Hour == h
+           ),
+       Dep = Model.AssistenciasAmanha.Where(
+                   d => d.Mov == "D"
+               ).Count(m => m.Data.Hour == h),
+       FteTerminal = Model.FtesAmanha.Where(
+            d => d.Funcao.Contains("ASSISTENTE PMR")
              && d.HoraEntrada != d.HoraSaida
-             && d.HoraEntrada <= new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
-             && d.HoraSaida > new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
-            ).Count()
-    }
-    ).OrderBy(h => h.hora))
+            && d.HoraEntrada <= new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
+            && d.HoraSaida > new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
+           ).Count(),
+       FteAr = Model.FtesAmanha.Where(
+            d => d.Funcao.Contains("MOTORISTA")
+            && d.HoraEntrada != d.HoraSaida
+            && d.HoraEntrada <= new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
+            && d.HoraSaida > new DateTime(d.Dia.Year, d.Dia.Month, d.Dia.Day, h, 0, 0)
+           ).Count()
+   }
+   ).OrderBy(h => h.hora))
     {
-        @: labelArrayAmanha.push("@Html.DisplayFor(modelItem => items.hora):00");
-        @: dataChegadasAmanha.push("@Html.DisplayFor(modelItem => items.Arr)");
-        @: dataPartidasAmanha.push("@Html.DisplayFor(modelItem => items.Dep)");
-        @: dataTotalAmanha.push("@(items.Arr + items.Dep)");
-        @: fteTerminalAmanha.push("@Html.DisplayFor(modelItem => items.FteTerminal)");
-        @: fteArAmanha.push("@Html.DisplayFor(modelItem => items.FteAr)");
-    }
+@: labelArrayAmanha.push("@Html.DisplayFor(modelItem => items.hora):00");
+@: dataChegadasAmanha.push("@Html.DisplayFor(modelItem => items.Arr)");
+@: dataPartidasAmanha.push("@Html.DisplayFor(modelItem => items.Dep)");
+@: dataTotalAmanha.push("@(items.Arr + items.Dep)");
+@: fteTerminalAmanha.push("@Html.DisplayFor(modelItem => items.FteTerminal)");
+@: fteArAmanha.push("@Html.DisplayFor(modelItem => items.FteAr)");
+}
     </script>
+
     <script type="text/javascript">
 
         var chartDataAmanha = {
@@ -759,6 +769,41 @@
                 'autoWidth': true
             })
         })
+    </script>
+
+    <script src="~/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#CaducidadesTbl').DataTable(
+                {
+                    language: {
+                        processing: "Processando ...",
+                        search: "Pesquisar:&nbsp;",
+                        lengthMenu: "Mostrar &nbsp;_MENU_&nbsp; items",
+                        info: "A exibir _START_ a _END_ de _TOTAL_ entradas",
+                        infoEmpty: "Não existem items a exibir",
+                        infoFiltered: "(Filtro de um total de _MAX_ entradas)",
+                        infoPostFix: "",
+                        loadingRecords: "Carregando ...",
+                        zeroRecords: "Não existem dados",
+                        emptyTable: "Nenhum dado disponível na tabela",
+                        paginate: {
+                            first: "Primeiro",
+                            previous: "Anterior",
+                            next: "Seguinte",
+                            last: "Último"
+                        },
+                        aria: {
+                            sortAscending: ": ordenar a coluna por ordem crescente",
+                            sortDescending: ": ordenar a coluna por ordem decrescente"
+                        }
+                    },
+                    "pageLength": 10,
+                    "order": []
+                }
+            );
+        });
     </script>
 }
 <div id="confirmDialog" title="Remove Assignment" hidden>

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,8 @@ using MyWayRazor.Areas.Identity.Models;
 using MyWayRazor.Data;
 using SmartBreadcrumbs.Extensions;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace MyWayRazor
 {
@@ -25,6 +28,13 @@ namespace MyWayRazor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("pt-PT");
+                options.SupportedCultures = new List<CultureInfo> { new CultureInfo("pt-PT") };
+                options.RequestCultureProviders.Clear();
+            });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -74,6 +84,14 @@ namespace MyWayRazor
                 options.SlidingExpiration = true;
             });
 
+            services.Configure<IISOptions>(options =>
+            {
+                options.ForwardClientCertificate = false;
+                options.AutomaticAuthentication = false;
+            });
+
+            services.AddBreadcrumbs(GetType().Assembly);
+
             services.AddMvc()
                 .AddRazorPagesOptions(options =>
                 {
@@ -85,18 +103,19 @@ namespace MyWayRazor
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.Configure<IISOptions>(options =>
-            {
-                options.ForwardClientCertificate = false;
-                options.AutomaticAuthentication = false;
-            });
-
-            services.AddBreadcrumbs(GetType().Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context)
         {
+            var supportedCultures = new[] { new CultureInfo("pt-PT") };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("pt-PT"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

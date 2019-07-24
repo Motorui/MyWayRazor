@@ -84,6 +84,10 @@
     <Compile Remove="Data\Migrations\20190704154303_Formacoes.Designer.cs" />
     <Compile Remove="Data\Migrations\20190704155008_Formacoes.cs" />
     <Compile Remove="Data\Migrations\20190704155008_Formacoes.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190714003440_HistoricoFormacaoColaborador.cs" />
+    <Compile Remove="Data\Migrations\20190714003440_HistoricoFormacaoColaborador.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190714004004_HistoricoFormacaoColaborador.cs" />
+    <Compile Remove="Data\Migrations\20190714004004_HistoricoFormacaoColaborador.Designer.cs" />
     <Compile Remove="Pages\Analises\AnaliseAmanha\Diario.cshtml.cs" />
     <Compile Remove="Pages\Analises\AnaliseAmanha\Hora.cshtml.cs" />
     <Compile Remove="Pages\Analises\AnaliseAmanha\Index.cshtml.cs" />
@@ -129,6 +133,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\CentroFormacao\Calendario\" />
     <Folder Include="Temp\" />
   </ItemGroup>
 

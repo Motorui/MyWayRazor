@@ -1,12 +1,12 @@
-﻿using System;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using MyWayRazor.Data;
+using Microsoft.Extensions.Logging;
 using MyWayRazor.Areas.Identity.Data;
 using MyWayRazor.Areas.Identity.Models;
-using Microsoft.AspNetCore.Identity;
+using MyWayRazor.Data;
+using System;
 using System.IO;
 
 namespace MyWayRazor

@@ -6,6 +6,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 
     string agora = DateTime.UtcNow.Date.ToShortDateString();
+    DateTime agoraStatus = DateTime.UtcNow;
     DateTime aviso = DateTime.UtcNow.AddMonths(3);
 }
 
@@ -62,47 +63,123 @@
     </div>
     <div class="row">
         <div class="row col-md-8 col-md-offset-2">
-            <div class="box ">
-                <div class="box-header">
-                    <h3 class="box-title">Listagem Formações:</h3>
+
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs pull-right">
+                    <li class="active"><a href="#tab_1-1" data-toggle="tab" aria-expanded="true">Em Vigor:</a></li>
+                    <li class=""><a href="#tab_2-2" data-toggle="tab" aria-expanded="false">Histórico:</a></li>
+                    <li class="pull-left header"><i class="fa fa-tag"></i> Listagem Formações:</li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1-1">
+                        <div class="box ">
+                            <div class="box-header">
+                                <!-- colocar titulo se necessário -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <table id="FormacoesTbl" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Cod.:</th>
+                                            <th>Formação:</th>
+                                            <th>Data:</th>
+                                            <th>Caducidade:</th>
+                                            <th>Status:</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.FormacoesColaborador.OrderBy(d => d.FormacaoCaducidade))
+                                        {
+                                            <tr class="@(item.FormacaoCaducidade >= aviso ? "" : "danger")">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Formacao.FormacaoCod)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Formacao.FormacaoNome)
+                                                </td>
+                                                <td>
+                                                    @Convert.ToDateTime(item.FormacaoData).ToString("dd-MM-yyyy")
+                                                </td>
+                                                <td>
+                                                    @Convert.ToDateTime(item.FormacaoCaducidade).ToString("dd-MM-yyyy")
+                                                </td>
+                                                <td>
+                                                    <span class="@(item.FormacaoCaducidade < agoraStatus ? "label label-danger" :
+                                        (item.FormacaoCaducidade < agoraStatus.AddMonths(3) ? "label label-warning" : "label label-success"))">
+                                                        @(item.FormacaoCaducidade < agoraStatus ? "Caducada" :
+                                                        (item.FormacaoCaducidade < agoraStatus.AddMonths(3) ? "A caducar" : "Válida"))
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <a asp-page="./EditFormacaoColaborador" asp-route-id="@item.FormacaoColaboradorId">Editar</a> |
+                                                    <a asp-page="./ColaboradorFormacao" onclick="return confirm('Deseja apagar esta formação?')"
+                                                       asp-page-handler="ApagarFormacao" asp-route-id="@item.FormacaoColaboradorId">Apagar</a> |
+                                                    <a asp-page="./ColaboradorFormacao" onclick="return confirm('Deseja enviar esta formação para histórico?')"
+                                                        asp-page-handler="EnviarHistorico" asp-route-id="@item.FormacaoColaboradorId">Histórico</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_2-2">
+                        <div class="box ">
+                            <div class="box-header">
+                                <!-- colocar titulo se necessário -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <table id="HistoricoFormacoesTbl" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Cod.:</th>
+                                            <th>Formação:</th>
+                                            <th>Data:</th>
+                                            <th>Caducidade:</th>
+                                            <th>Status:</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.HistoricoFormacoesColaborador.OrderBy(d => d.FormacaoCaducidade))
+                                        {
+                                            <tr class="">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Formacao.FormacaoCod)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Formacao.FormacaoNome)
+                                                </td>
+                                                <td>
+                                                    @Convert.ToDateTime(item.FormacaoData).ToString("dd-MM-yyyy")
+                                                </td>
+                                                <td>
+                                                    @Convert.ToDateTime(item.FormacaoCaducidade).ToString("dd-MM-yyyy")
+                                                </td>
+                                                <td>
+                                                    <span class="label label-primary">Arquivada</span>
+                                                </td>
+                                                <td>
+                                                    <a asp-page="./EditFormacaoColaborador" asp-route-id="@item.HistoricoFormacaoColaboradorId">Editar</a> |
+                                                    <a asp-page="./ColaboradorFormacao" onclick="return confirm('Deseja apagar esta formação?')"
+                                                        asp-page-handler="ApagarHistorico" asp-route-id="@item.HistoricoFormacaoColaboradorId">Apagar</a> |
+                                                    <a asp-page="./ColaboradorFormacao" onclick="return confirm('Deseja reativar esta formação?')"
+                                                        asp-page-handler="Reativar" asp-route-id="@item.HistoricoFormacaoColaboradorId">Reativar</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <table id="FormacoesTbl" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Cod.:</th>
-                                <th>Formação:</th>
-                                <th>Data:</th>
-                                <th>Caducidade:</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.FormacoesColaborador.OrderBy(d => d.FormacaoCaducidade))
-                            {
-                            <tr class="@(item.FormacaoCaducidade >= aviso ? "" : "danger")">
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Formacao.FormacaoCod)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Formacao.FormacaoNome)
-                                </td>
-                                <td>
-                                    @Convert.ToDateTime(item.FormacaoData).ToString("dd-MM-yyyy")
-                                </td>
-                                <td>
-                                    @Convert.ToDateTime(item.FormacaoCaducidade).ToString("dd-MM-yyyy")
-                                </td>
-                                <td>
-                                    <a asp-page="./EditFormacaoColaborador" asp-route-id="@item.FormacaoColaboradorId">Editar</a> |
-                                    <a asp-page="./DeleteFormacaoColaborador" asp-route-id="@item.FormacaoColaboradorId">Apagar</a>
-                                </td>
-                            </tr>
-                                }
-                            </tbody>
-                    </table>
-                </div>
+                <!-- /.tab-content -->
             </div>
         </div>
     </div>

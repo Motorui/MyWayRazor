@@ -11,8 +11,14 @@ namespace MyWayRazor.Models.Tabelas
     {
         [Key]
         public int CategoriaId { get; set; }
+
+        string _categoriaNome;
         [Required, MaxLength(50), Display(Name = "Categoria:", ShortName = "Cat:")]
-        public string CategoriaNome { get; set; }
+        public string CategoriaNome
+        {
+            get => _categoriaNome;
+            set => _categoriaNome = value.ToUpper();
+        }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }

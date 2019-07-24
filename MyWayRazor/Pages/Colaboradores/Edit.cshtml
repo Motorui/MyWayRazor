@@ -3,113 +3,152 @@
 
 @{
     ViewData["Title"] = "Edit";
+    
+    string agora = DateTime.UtcNow.Date.ToShortDateString();
+    string fimContrato = DateTime.UtcNow.Date.AddMonths(21).ToShortDateString();
 }
+<div class="content">
+    <div class="row col-md-8 col-md-offset-2">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Editar Colaborador</h3>
+            </div>
+            <form method="post" class="form-horizontal">
+                <div class="box-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Colaborador.ColaboradorID" />
+                    <div class="form-group">
+                        <label asp-for="Colaborador.UhId" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Colaborador.UhId" class="form-control" asp-items="ViewBag.UhId"></select>
+                        </div>
+                        <label asp-for="Colaborador.DepartamentoId" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Colaborador.DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Colaborador.NumCartao" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="Colaborador.NumCartao" class="form-control" />
+                            <span asp-validation-for="Colaborador.NumCartao" class="text-danger"></span>
+                        </div>
+                        <label asp-for="Colaborador.NumPw" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <input asp-for="Colaborador.NumPw" class="form-control" />
+                            <span asp-validation-for="Colaborador.NumPw" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Colaborador.Nome" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="Colaborador.Nome" class="form-control" />
+                            <span asp-validation-for="Colaborador.Nome" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Colaborador.FuncaoId" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Colaborador.FuncaoId" class="form-control" asp-items="ViewBag.FuncaoId"></select>
+                            <span asp-validation-for="Colaborador.FuncaoId" class="text-danger"></span>
+                        </div>
+                        <label asp-for="Colaborador.EquipaId" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Colaborador.EquipaId" class="form-control" asp-items="ViewBag.EquipaId"></select>
+                            <span asp-validation-for="Colaborador.EquipaId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Colaborador.CategoriaId" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Colaborador.CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                            <span asp-validation-for="Colaborador.CategoriaId" class="text-danger"></span>
+                        </div>
+                        <label asp-for="Colaborador.ContratoId" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Colaborador.ContratoId" class="form-control" asp-items="ViewBag.ContratoId"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Colaborador.HorarioPraticadoId" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Colaborador.HorarioPraticadoId" class="form-control" asp-items="ViewBag.HorarioPraticadoId"></select>
+                        </div>
 
-<h2>Edit</h2>
+                        <label asp-for="Colaborador.HorarioContratadoId" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <select asp-for="Colaborador.HorarioContratadoId" class="form-control" asp-items="ViewBag.HorarioContratadoId"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Colaborador.DataAdmissao" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" data-date-format="dd/mm/yyyy" asp-for="Colaborador.DataAdmissao" value="@agora" class="form-control pull-right" id="datepicker" />
+                            </div>
+                            <span asp-validation-for="Colaborador.DataAdmissao" class="text-danger"></span>
+                        </div>
 
-<h4>Colaborador</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Colaborador.ColaboradorID" />
-            <div class="form-group">
-                <label asp-for="Colaborador.UhId" class="control-label"></label>
-                <select asp-for="Colaborador.UhId" class="form-control" asp-items="ViewBag.UhId"></select>
-                <span asp-validation-for="Colaborador.UhId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.DepartamentoId" class="control-label"></label>
-                <select asp-for="Colaborador.DepartamentoId" class="form-control" asp-items="ViewBag.DepartamentoId"></select>
-                <span asp-validation-for="Colaborador.DepartamentoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.NumCartao" class="control-label"></label>
-                <input asp-for="Colaborador.NumCartao" class="form-control" />
-                <span asp-validation-for="Colaborador.NumCartao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.NumPw" class="control-label"></label>
-                <input asp-for="Colaborador.NumPw" class="form-control" />
-                <span asp-validation-for="Colaborador.NumPw" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.Nome" class="control-label"></label>
-                <input asp-for="Colaborador.Nome" class="form-control" />
-                <span asp-validation-for="Colaborador.Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.FuncaoId" class="control-label"></label>
-                <select asp-for="Colaborador.FuncaoId" class="form-control" asp-items="ViewBag.FuncaoId"></select>
-                <span asp-validation-for="Colaborador.FuncaoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.EquipaId" class="control-label"></label>
-                <select asp-for="Colaborador.EquipaId" class="form-control" asp-items="ViewBag.EquipaId"></select>
-                <span asp-validation-for="Colaborador.EquipaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.CategoriaId" class="control-label"></label>
-                <select asp-for="Colaborador.CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
-                <span asp-validation-for="Colaborador.CategoriaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.HorarioPraticadoId" class="control-label"></label>
-                <select asp-for="Colaborador.HorarioPraticadoId" class="form-control" asp-items="ViewBag.HorarioPraticadoId"></select>
-                <span asp-validation-for="Colaborador.HorarioPraticadoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.HorarioContratadoId" class="control-label"></label>
-                <select asp-for="Colaborador.HorarioContratadoId" class="form-control" asp-items="ViewBag.HorarioContratadoId"></select>
-                <span asp-validation-for="Colaborador.HorarioContratadoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.DataAdmissao" class="control-label"></label>
-                <input asp-for="Colaborador.DataAdmissao" class="form-control" />
-                <span asp-validation-for="Colaborador.DataAdmissao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.DataFim" class="control-label"></label>
-                <input asp-for="Colaborador.DataFim" class="form-control" />
-                <span asp-validation-for="Colaborador.DataFim" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.ContratoId" class="control-label"></label>
-                <select asp-for="Colaborador.ContratoId" class="form-control" asp-items="ViewBag.ContratoId"></select>
-                <span asp-validation-for="Colaborador.ContratoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.CreatedAt" class="control-label"></label>
-                <input asp-for="Colaborador.CreatedAt" class="form-control" />
-                <span asp-validation-for="Colaborador.CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.CreatedBy" class="control-label"></label>
-                <input asp-for="Colaborador.CreatedBy" class="form-control" />
-                <span asp-validation-for="Colaborador.CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.LastUpdatedAt" class="control-label"></label>
-                <input asp-for="Colaborador.LastUpdatedAt" class="form-control" />
-                <span asp-validation-for="Colaborador.LastUpdatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colaborador.LastUpdatedBy" class="control-label"></label>
-                <input asp-for="Colaborador.LastUpdatedBy" class="form-control" />
-                <span asp-validation-for="Colaborador.LastUpdatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+                        <label asp-for="Colaborador.DataFim" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" data-date-format="dd/mm/yyyy" asp-for="Colaborador.DataFim" value="@fimContrato" class="form-control pull-right" id="datepicker2" />
+                            </div>
+                            <span asp-validation-for="Colaborador.DataFim" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Colaborador.Ativo" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10 checkbox">
+                            <input asp-for="Colaborador.Ativo" checked />
+                            <span asp-validation-for="Colaborador.Ativo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-2">
+                            <input type="submit" value="Gravar" class="btn btn-default" />
+                        </div>
+                        <div class="col-sm-8">
+                            <a asp-page="Index">Voltar à listagem</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        //Date picker
+        $('#datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true
+        }).on("change", function (e) {
+            var date2 = new Date($('#datepicker').datepicker('getDate'));
+            date2.setMonth(date2.getMonth() + 21);
+            $('#datepicker2').datepicker(
+                'setDate', date2);
+        });
+    </script>
+    <script>
+        //Date picker 2
+        $('#datepicker2').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true
+        })
+    </script>
+}
+@section Styles {
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 }

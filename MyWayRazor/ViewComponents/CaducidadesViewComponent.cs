@@ -21,7 +21,7 @@ namespace MyWayRazor.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            List<FormacaoColaborador> listaCaducidades = await GetItemsAsync();
+            var listaCaducidades = await GetItemsAsync();
 
             return View("ViewCaducidades", listaCaducidades);
         }
@@ -30,7 +30,7 @@ namespace MyWayRazor.ViewComponents
         {
             return db.FormacoesColaboradores
                 .Include(f => f.Formacao)
-                .Include(c => c.Colaborador)
+                .Include(c => c.Colaborador).Where(a=> a.Colaborador.Ativo == true)
                 .Where(d => d.FormacaoCaducidade <= DataTresMeses).ToListAsync();
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Colaboradores
 {
-    [Breadcrumb("Novo Colaborador", FromPage = typeof(IndexModel))]
+    [Breadcrumb("Novo Formando", FromPage = typeof(IndexModel))]
     public class CreateModel : PageModel
     {
         private readonly Data.ApplicationDbContext _context;
@@ -40,6 +40,13 @@ namespace MyWayRazor.Pages.Colaboradores
             {
                 return Page();
             }
+
+            string colaboradorNome = Request.Form["Colaborador.Nome"].ToString().ToUpper();
+
+            Colaborador NovoColaborador = new Colaborador
+            {
+                Nome =  colaboradorNome
+            };
 
             _context.Colaboradores.Add(Colaborador);
             await _context.SaveChangesAsync();

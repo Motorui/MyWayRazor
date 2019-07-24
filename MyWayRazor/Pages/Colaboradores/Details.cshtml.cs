@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Models.Colaboradores;
+using SmartBreadcrumbs.Attributes;
 using System.Threading.Tasks;
 
 namespace MyWayRazor.Pages.Colaboradores
 {
+    [Breadcrumb("Detalhes do Formando", FromPage = typeof(IndexModel))]
     public class DetailsModel : PageModel
     {
         private readonly MyWayRazor.Data.ApplicationDbContext _context;

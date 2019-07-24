@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWayRazor.Models.Tabelas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,10 +13,23 @@ namespace MyWayRazor.Models.Formacoes
         }
 
         public Guid FormacaoId { get; set; }
+
+        string _formacaoNome;
         [Required, Display(Name = "Formação:", ShortName = "Nome.:")]
-        public string FormacaoNome { get; set; }
+        public string FormacaoNome
+        {
+            get => _formacaoNome;
+            set => _formacaoNome = value.ToUpper();
+        }
+
+        string _formacaoCod;
         [Required, Display(Name = "Código:", ShortName = "Cod.:")]
-        public string FormacaoCod { get; set; }
+        public string FormacaoCod
+        {
+            get => _formacaoCod;
+            set => _formacaoCod = value.ToUpper();
+        }
+
         [Required, Display(Name = "Validade:", ShortName = "Val:")]
         public int FormacaoValidade { get; set; }
 
@@ -29,5 +43,6 @@ namespace MyWayRazor.Models.Formacoes
         public string LastUpdatedBy { get; set; }
 
         public ICollection<FormacaoColaborador> FormacoesColaborador { get; set; }
+        public ICollection<Formador> Formadores { get; set; }
     }
 }

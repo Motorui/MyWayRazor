@@ -1,0 +1,64 @@
+﻿@page
+@model MyWayRazor.Pages.ListagemFormacoes.ListagemPorFormacaoModel
+@{
+    ViewData["Title"] = "ListagemPorFormacao";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    DateTime agora = DateTime.UtcNow;
+}
+
+<div class="content">
+    @if (User.IsInRole("Administrador"))
+    {
+        <div class="row col-md-8 col-md-offset-2">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <strong>@Model.ListagemCaducidades.FirstOrDefault().Formacao.FormacaoCod</strong>
+                        - @Model.ListagemCaducidades.FirstOrDefault().Formacao.FormacaoNome
+                    </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @foreach (var groupDepartamento in Model.ListagemCaducidades.GroupBy(g => g.Colaborador.Departamento))
+                    {
+                        <ul class="todo-list">
+                            <li class="" style="">
+                                <!-- todo text -->
+                                <span class="text">
+                                    <strong>
+                                        @groupDepartamento.Key.DepartamentoNome
+                                    </strong>
+                                </span>
+                            </li>
+                        </ul>
+                        <table class="table table-hover table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Status:</th>
+                                    <th>Data:</th>
+                                    <th>Nome:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var items in groupDepartamento.OrderBy(d => d.FormacaoCaducidade))
+                                {
+                                    <tr>
+                                        <td>
+                                            <span class="@(items.FormacaoCaducidade < agora ? "label label-danger" : "label label-warning")">
+                                                @(items.FormacaoCaducidade < agora ? "Caducada" : "A caducar")
+                                            </span>
+                                        </td>
+                                        <td>@items.FormacaoCaducidade.ToShortDateString()</td>
+                                        <td>@items.Colaborador.Nome</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    }
+</div>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Data;
+using MyWayRazor.Extensions.Alerts;
 using MyWayRazor.Models.Analise;
 using MyWayRazor.Models.Formacoes;
 using MyWayRazor.Models.ToDoList;
@@ -39,50 +40,53 @@ namespace MyWayRazor.Pages
         public IList<ToDo> ToDoList { get; set; }
         public async Task OnGetAsync()
         {
-            ToDoList = await db.ToDos.ToListAsync();
+            ToDoList = await db.ToDos.Where(t => t.Done == false).ToListAsync();
             AssistenciasHoje = await db.AssistenciasPRMS.Where(d => d.Data.Date == Hoje && d.OrigDest != "").ToListAsync();
             AssistenciasAmanha = await db.AssistenciasPRMS.Where(d => d.Data.Date == Amanha && d.OrigDest != "").ToListAsync();
             FtesHoje = await db.Escalas.Where(d => d.Dia.Date == Hoje).ToListAsync();
             FtesAmanha = await db.Escalas.Where(d => d.Dia.Date == Amanha).ToListAsync();
             ListaCaducidades = await db.FormacoesColaboradores
                 .Include(f => f.Formacao)
-                .Include(c => c.Colaborador)
+                .Include(c => c.Colaborador).Where(c=> c.Colaborador.Ativo == true)
                 .Where(d => d.FormacaoCaducidade <= DataTresMeses).ToListAsync();
         }
 
-        public async Task<IActionResult> OnPostMarkDone(int id)
+        public async Task<IActionResult> OnGetMarkDoneAsync(int? id)
         {
-            if (id == 0)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var successful = await MarkDoneAsync(id);
-            if (!successful)
+            ToDo todo = db.ToDos.FirstOrDefault(i => i.ToDoId == id);
+            if (todo == null)
+                return NotFound();
+
+            todo.Done = true;
+
+            try
             {
-                return BadRequest("Could not mark item as done.");
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TodoExists(todo.ToDoId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("Index").WithSuccess("Well done!", "Item desativado com sucesso!");
         }
 
-        public async Task<bool> MarkDoneAsync(int id)
-        {
-            var item = await db.ToDos
-                .Where(x => x.ToDoId == id)
-                .SingleOrDefaultAsync();
-
-            if (item == null) return false;
-
-            item.Done = true;
-
-            var saveResult = await db.SaveChangesAsync();
-            return saveResult == 1; // One entity should have been updated
-        }
-
-        private bool ToDoExists(int id)
+        private bool TodoExists(int id)
         {
             return db.ToDos.Any(e => e.ToDoId == id);
         }
+
     }
 }

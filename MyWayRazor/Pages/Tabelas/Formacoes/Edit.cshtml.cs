@@ -46,6 +46,8 @@ namespace MyWayRazor.Pages.Tabelas.Formacoes
                 return Page();
             }
 
+            //string emailAddress = String.ToUpper(Request.Form["Formacao.FormacaoNome"].ToString());
+
             _context.Attach(Formacao).State = EntityState.Modified;
 
             try

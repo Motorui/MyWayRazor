@@ -13,8 +13,14 @@ namespace MyWayRazor.Models.Tabelas
         public int UhId { get; set; }
         [Required, MaxLength(5), Display(Name = "Código IATA:", ShortName = "IATA:")]
         public string IATA { get; set; }
+
+        string _uhNome;
         [Required, MaxLength(25), Display(Name = "Unidade de handling:", ShortName ="UH:")]
-        public string UhNome { get; set; }
+        public string UhNome
+        {
+            get => _uhNome;
+            set => _uhNome = value.ToUpper();
+        }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }

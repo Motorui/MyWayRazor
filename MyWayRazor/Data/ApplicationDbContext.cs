@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using MyWayRazor.Areas.Identity.Models;
 using MyWayRazor.Models;
 using MyWayRazor.Models.Analise;
+using MyWayRazor.Models.Calendario;
 using MyWayRazor.Models.Colaboradores;
 using MyWayRazor.Models.Formacoes;
 using MyWayRazor.Models.Staging;
@@ -49,6 +50,7 @@ namespace MyWayRazor.Data
         public DbSet<Equipa> Equipas { get; set; }
         public DbSet<Formacao> Formacoes { get; set; }
         public DbSet<FormacaoColaborador> FormacoesColaboradores { get; set; }
+        public DbSet<HistoricoFormacaoColaborador> HistoricoFormacoesColaboradores { get; set; }
         public DbSet<Funcao> Funcoes { get; set; }
         public DbSet<Horario> Horarios { get; set; }
         //public DbSet<Observacao> Observacoes { get; set; }
@@ -68,6 +70,9 @@ namespace MyWayRazor.Data
         public DbSet<Escala> Escalas { get; set; }
         public DbSet<DadosAeroporto> DadosAeroportos { get; set; }
         public DbSet<HistoricoAssistencia> HistoricoAssistencias { get; set; }
+        public DbSet<Formador> Formadores { get; set; }
+        public DbSet<Sala> Salas { get; set; }
+        public virtual DbSet<Calendario> Calendarios { get; set; }
 
         #endregion
 
@@ -98,9 +103,71 @@ namespace MyWayRazor.Data
                 .Property(s => s.Stand)
                 .HasDefaultValue(000);
 
-            //builder.Entity<AssistenciasPRM>()
-            //.Property(s => s.Gate)
-            //.HasDefaultValue("000");
+            #region Calendario
+            builder.Entity<Calendario>(entity =>
+            {
+                entity.HasKey(e => e.DateKey);
+
+                entity.Property(e => e.DateKey).ValueGeneratedNever();
+
+                entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.DaySuffix)
+                    .IsRequired()
+                    .HasMaxLength(2)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DowinMonth).HasColumnName("DOWInMonth");
+
+                entity.Property(e => e.FirstDayOfMonth).HasColumnType("date");
+
+                entity.Property(e => e.FirstDayOfNextMonth).HasColumnType("date");
+
+                entity.Property(e => e.FirstDayOfNextYear).HasColumnType("date");
+
+                entity.Property(e => e.FirstDayOfQuarter).HasColumnType("date");
+
+                entity.Property(e => e.FirstDayOfYear).HasColumnType("date");
+
+                entity.Property(e => e.HolidayText)
+                    .HasMaxLength(64)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IsoweekOfYear).HasColumnName("ISOWeekOfYear");
+
+                entity.Property(e => e.LastDayOfMonth).HasColumnType("date");
+
+                entity.Property(e => e.LastDayOfQuarter).HasColumnType("date");
+
+                entity.Property(e => e.LastDayOfYear).HasColumnType("date");
+
+                entity.Property(e => e.Mmyyyy)
+                    .IsRequired()
+                    .HasColumnName("MMYYYY")
+                    .HasMaxLength(6)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MonthName)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MonthYear)
+                    .IsRequired()
+                    .HasMaxLength(7)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.QuarterName)
+                    .IsRequired()
+                    .HasMaxLength(6)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.WeekDayName)
+                    .IsRequired()
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+            });
+            #endregion
 
             #region Colaborador
 
@@ -208,25 +275,25 @@ namespace MyWayRazor.Data
             builder.Entity<Status>().HasData(statuses);
 
             // Seed Colaboradores
-            var ColaboradoresFile = Path.Combine(env.ContentRootPath, folderName, "Colaboradores.json");
-            var ColaboradoresStream = File.Open(ColaboradoresFile, FileMode.Open, FileAccess.Read);
-            var ColaboradoresReader = new StreamReader(ColaboradoresStream);
-            var colaboradores = JsonConvert.DeserializeObject<List<Colaborador>>(ColaboradoresReader.ReadToEnd());
-            builder.Entity<Colaborador>().HasData(colaboradores);
+            //var ColaboradoresFile = Path.Combine(env.ContentRootPath, folderName, "Colaboradores.json");
+            //var ColaboradoresStream = File.Open(ColaboradoresFile, FileMode.Open, FileAccess.Read);
+            //var ColaboradoresReader = new StreamReader(ColaboradoresStream);
+            //var colaboradores = JsonConvert.DeserializeObject<List<Colaborador>>(ColaboradoresReader.ReadToEnd());
+            //builder.Entity<Colaborador>().HasData(colaboradores);
 
             // Seed Contratos
-            var ContratosFile = Path.Combine(env.ContentRootPath, folderName, "Contratos.json");
-            var ContratosStream = File.Open(ContratosFile, FileMode.Open, FileAccess.Read);
-            var ContratosReader = new StreamReader(ContratosStream);
-            var contratos = JsonConvert.DeserializeObject<List<Contrato>>(ContratosReader.ReadToEnd());
-            builder.Entity<Contrato>().HasData(contratos);
+            //var ContratosFile = Path.Combine(env.ContentRootPath, folderName, "Contratos.json");
+            //var ContratosStream = File.Open(ContratosFile, FileMode.Open, FileAccess.Read);
+            //var ContratosReader = new StreamReader(ContratosStream);
+            //var contratos = JsonConvert.DeserializeObject<List<Contrato>>(ContratosReader.ReadToEnd());
+            //builder.Entity<Contrato>().HasData(contratos);
 
             // Seed Departamentos
-            var DepartamentosFile = Path.Combine(env.ContentRootPath, folderName, "Departamentos.json");
-            var DepartamentosStream = File.Open(DepartamentosFile, FileMode.Open, FileAccess.Read);
-            var DepartamentosReader = new StreamReader(DepartamentosStream);
-            var departamentos = JsonConvert.DeserializeObject<List<Departamento>>(DepartamentosReader.ReadToEnd());
-            builder.Entity<Departamento>().HasData(departamentos);
+            //var DepartamentosFile = Path.Combine(env.ContentRootPath, folderName, "Departamentos.json");
+            //var DepartamentosStream = File.Open(DepartamentosFile, FileMode.Open, FileAccess.Read);
+            //var DepartamentosReader = new StreamReader(DepartamentosStream);
+            //var departamentos = JsonConvert.DeserializeObject<List<Departamento>>(DepartamentosReader.ReadToEnd());
+            //builder.Entity<Departamento>().HasData(departamentos);
 
             // Seed Equipas
             var EquipasFile = Path.Combine(env.ContentRootPath, folderName, "Equipas.json");
@@ -236,11 +303,11 @@ namespace MyWayRazor.Data
             builder.Entity<Equipa>().HasData(equipas);
 
             // Seed Funções
-            var FuncoesFile = Path.Combine(env.ContentRootPath, folderName, "Funcoes.json");
-            var FuncoesStream = File.Open(FuncoesFile, FileMode.Open, FileAccess.Read);
-            var FuncoesReader = new StreamReader(FuncoesStream);
-            var funcoes = JsonConvert.DeserializeObject<List<Funcao>>(FuncoesReader.ReadToEnd());
-            builder.Entity<Funcao>().HasData(funcoes);
+            //var FuncoesFile = Path.Combine(env.ContentRootPath, folderName, "Funcoes.json");
+            //var FuncoesStream = File.Open(FuncoesFile, FileMode.Open, FileAccess.Read);
+            //var FuncoesReader = new StreamReader(FuncoesStream);
+            //var funcoes = JsonConvert.DeserializeObject<List<Funcao>>(FuncoesReader.ReadToEnd());
+            //builder.Entity<Funcao>().HasData(funcoes);
 
             // Seed Horários
             var HorariosFile = Path.Combine(env.ContentRootPath, folderName, "Horarios.json");

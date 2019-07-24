@@ -24,8 +24,14 @@ namespace MyWayRazor.Models.Colaboradores
         public int NumCartao { get; set; }
         [Required, Display(Name = "Número portway:", ShortName = "Núm pw:")]
         public int NumPw { get; set; }
+
+        string _nome;
         [Required, MaxLength(150), Display(Name = "Nome:")]
-        public string Nome { get; set; }
+        public string Nome
+        {
+            get => _nome;
+            set => _nome = value.ToUpper();
+        }
 
         //link com a tabela Funções
         [Display(Name = "Funções:")]

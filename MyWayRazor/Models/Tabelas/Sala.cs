@@ -1,24 +1,23 @@
-﻿using MyWayRazor.Models.Colaboradores;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWayRazor.Models.Tabelas
 {
-    [Table("Funcao")]
-    public class Funcao : IBaseEntity
+    public class Sala : IBaseEntity
     {
         [Key]
-        public int FuncaoId { get; set; }
+        public Guid SalaID { get; set; }
 
-        string _funcaoNome;
-        [Required, MaxLength(50), Display(Name = "Função:")]
-        public string FuncaoNome
+        string _salaNome;
+        [Required, MaxLength(50), Display(Name = "Sala:", ShortName = "S:")]
+        public string SalaNome
         {
-            get => _funcaoNome;
-            set => _funcaoNome = value.ToUpper();
+            get => _salaNome;
+            set => _salaNome = value.ToUpper();
         }
+
+        [Required, Display(Name = "Capacidade:")]
+        public int Capacidade { get; set; }
 
         [Display(Name = "Registo criado em:", ShortName = "Criado em:")]
         public DateTime? CreatedAt { get; set; }
@@ -28,7 +27,5 @@ namespace MyWayRazor.Models.Tabelas
         public DateTime? LastUpdatedAt { get; set; }
         [Display(Name = "Registo atualizado por:", ShortName = "Atualizado por:")]
         public string LastUpdatedBy { get; set; }
-
-        public ICollection<Colaborador> Colaboradores { get; set; }
     }
 }
